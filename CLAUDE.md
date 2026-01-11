@@ -426,10 +426,85 @@ Call `initAudioAnalytics()` in app initialization to forward events to GA4.
 - Format: MP3, 64 kbps, 24 kHz mono
 - Stored: `/public/audio/blog/` (CDN-ready)
 
+### LaTeX-Styled Resume
+
+Professional resume with Computer Modern Serif font styling:
+
+#### How It Works
+
+1. **Single Source of Truth**: All resume content lives in `lib/resume-data.ts`
+   - Contact info (phone, email, LinkedIn, GitHub)
+   - 3 projects with detailed bullet points
+   - 1 work experience entry (Red Hat internship)
+   - 22 skills in priority order
+   - Education (UofT Computer Science Specialist, 3.84 GPA)
+
+2. **Multiple Access Points**:
+   - Homepage tile: Click "Resume" in sidebar or "resume" in polybar
+   - Full page: Navigate to `/resume` (SEO-optimized)
+   - Download: 40+ PDF variants for different opportunities
+
+3. **Professional Styling**:
+   - Computer Modern Serif font (authentic LaTeX aesthetic)
+   - Always white background with black text (recruiter-friendly)
+   - Overrides theme system for consistency
+   - Mobile-responsive with `clamp()` scaling
+   - Sea-blue project titles (#66cccc), gray tech stack (#747369)
+
+#### Key Files
+
+- **Data**: `lib/resume-data.ts` (single source of truth)
+- **Component**: `components/tiles/content/ResumeContent.tsx`
+- **Styling**: `app/styles/13-resume-latex.css`
+- **Full page**: `app/resume/page.tsx`
+- **Sub-components**: `components/tiles/content/resume/` (5 focused components)
+- **PDFs**: `public/resume/` (40+ variants)
+- **Icons**: `public/icons/resume/` (phone, email, LinkedIn, GitHub)
+
+#### How to Update
+
+Edit `lib/resume-data.ts`:
+- Update `resumeData.contact` for phone/email/social
+- Edit `resumeData.projects[]` for project entries
+- Modify `resumeData.experience[]` for work history
+- Change `resumeData.skills[]` to add/remove technologies
+- Update `resumeData.education[]` for education entries
+
+After content changes, regenerate PDFs:
+1. Navigate to `/resume`
+2. Press Cmd+P (Mac) or Ctrl+P (Windows)
+3. Save as PDF with correct filename
+4. Replace in `public/resume/`
+
+#### PDF Variants
+
+11 selectable variants in dropdown:
+- General Resume (default)
+- Web Development, AWS/Cloud, Python focused
+- Combined variants (AWS+Web Dev, AWS+Python, Web Dev+Django)
+- IT Support, IT Support+AWS
+- Sales, Call Centre
+
+Plus 40+ total variants in `/public/resume/` for different opportunities.
+
+#### Documentation
+
+Complete documentation lives in `/docs/`:
+- `README_RESUME.md` - Start here
+- `RESUME_FEATURE_OVERVIEW.md` - Feature overview
+- `RESUME_ARCHITECTURE.md` - Technical architecture
+- `RESUME_MAINTENANCE.md` - Update procedures
+- `RESUME_MIGRATION.md` - Migration from old Hugo site
+- `RESUME_FILE_STRUCTURE.md` - File organization
+- `RESUME_DOCS_INDEX.md` - Documentation index
+
+**Always check `/docs/` before modifying resume feature.**
+
 ### Future Enhancements (Planned)
 - [x] MDX blog system integration
 - [x] Project detail pages with live demos
 - [x] Blog post audio narration with analytics - COMPLETED
+- [x] LaTeX-styled professional resume - COMPLETED
 - [ ] More terminal effects (typing animation, matrix rain)
 - [x] Dark/light theme toggle (Tokyo Night/Nord dark, Solarized light) - COMPLETED
 - [x] Mobile parallax scrolling mode - COMPLETED

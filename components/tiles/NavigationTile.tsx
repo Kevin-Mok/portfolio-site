@@ -156,6 +156,28 @@ const NavigationTile: React.FC<NavigationTileProps> = ({ onContentSelect, isBlur
           <span><span style={{ color: 'var(--accent-color)' }}>├──</span> About</span>
         </div>
 
+        {/* Resume */}
+        <div
+          className="touch-target touch-feedback cursor-pointer px-2 py-1 rounded transition-all duration-200"
+          style={{
+            backgroundColor: isActive('resume') ? 'rgba(var(--accent-color-rgb), 0.2)' : 'transparent',
+            color: isActive('resume') ? 'var(--accent-color)' : 'inherit'
+          }}
+          onMouseEnter={(e) => {
+            if (!isActive('resume')) {
+              e.currentTarget.style.backgroundColor = 'rgba(var(--accent-color-rgb), 0.1)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (!isActive('resume')) {
+              e.currentTarget.style.backgroundColor = 'transparent';
+            }
+          }}
+          onClick={(e) => handleSelect({ type: 'resume' }, e)}
+        >
+          <span><span style={{ color: 'var(--accent-color)' }}>├──</span> Resume</span>
+        </div>
+
         {/* Projects Directory */}
         <div>
           <div

@@ -207,67 +207,129 @@ and remove/redirect the AI copy to avoid drift.
 
 ---
 
-## 5) Repo-specific commands (fill these in per project)
-(Replace these placeholders with the real commands used in this repo.)
+## 5) Repo-specific commands (portfolio-site)
 
 ### Setup
-- Create venv:
-  - `python -m venv stb-mkt-src`
-- Activate venv:
-  - `source stb-mkt-src/bin/activate` (bash/zsh)
-  - `source stb-mkt-src/bin/activate.fish` (fish)
-- Install deps:
-  - `pip install -r requirements.txt`
+- Install dependencies:
+  - `npm install`
+- Clean up dev server:
+  - `npm run cleanup`
 
 ### Running / debugging
-- Start bot:
-  - (Fill in actual launch command)
-- Reload cog:
-  - (Fill in actual redbot command)
-- Tail logs:
-  - (Fill in actual log path)
+- Start dev server:
+  - `npm run dev` (automatically runs cleanup first)
+- Production build:
+  - `npm run build`
+- Type checking:
+  - `npm run typecheck`
+- Linting:
+  - `npm run lint`
+
+### Development
+- Dev server runs at: `http://localhost:3000`
+- Live reloading enabled
+- Turbopack for fast builds
+- TypeScript strict mode enabled
 
 ---
 
-## 6) Discord / Red-DiscordBot specifics
-### 6.1 Interaction rules
-- Always use `interaction.response` properly:
-  - First response: `send_message`, `send_modal`, `defer`, etc.
-  - Follow-ups: `interaction.followup.send(...)`
-- Respect ephemeral usage where appropriate (admin-only info, debug output).
+## 6) Portfolio Architecture & Conventions
 
-### 6.2 Rate limit safety
-- Board/leaderboard updates must be debounced or batched.
-- Avoid editing many messages in a tight loop.
-- Prefer caching computed aggregates and only updating diffs.
+### 6.1 General architecture
+- **Framework**: Next.js 15.5.4 with App Router
+- **Styling**: Tailwind CSS v4 + modular CSS architecture (12 focused modules in `app/styles/`)
+- **State management**: React Context API (FocusContext for navigation, ViewContext for layout)
+- **Font system**: Geist, Geist Mono, JetBrains Mono via next/font/google
+- **Theme system**: Dynamic CSS variables (Tokyo Night, Nord, Solarized Light presets)
+
+### 6.2 Component patterns
+- Use React.memo() for optimization when appropriate
+- Keep components focused and small (under 200 lines preferred)
+- Separate presentation from business logic
+- Use TypeScript interfaces for all data structures
+- Responsive design with tailwind breakpoints
+
+### 6.3 Styling approach
+- CSS variables stored in `/app/styles/01-theme-variables.css`
+- Each CSS module targets specific concern (typography, animations, mobile, etc.)
+- New styles go in new CSS module (not inline styles)
+- Override theme system sparingly and document why (e.g., Resume must be white/black)
+- Keep modular architecture: import `@import './styles/XX-*.css'` in globals.css
 
 ---
 
-## 7) Feature-specific guidance
-### 7.1 Listings lifecycle
-- Enforce explicit states (e.g., Draft → Pending Collection → Active → Held → Sold / Cancelled).
-- Validate allowed transitions; never allow illegal jumps.
-- Logs should clearly show the previous state, next state, and actor.
+## 7) Feature: LaTeX Resume
 
-### 7.2 Market boards
-- Boards should show lowest Active listing per brainrot + mutation.
-- Refresh must be resilient to:
-  - Missing channel
-  - Missing/deleted message
-  - Permission errors
-- Ensure home guild enforcement for writes.
+### 7.1 Resume feature overview
+**Status**: Complete and live. Content managed in single TypeScript file.
+
+**Single source of truth**: `lib/resume-data.ts`
+- All resume content (contact, projects, experience, skills, education) lives here
+- Update this file to change resume everywhere (tile, `/resume` page, PDFs)
+
+**Key files**:
+- **Data**: `lib/resume-data.ts`
+- **Main component**: `components/tiles/content/ResumeContent.tsx`
+- **Styling**: `app/styles/13-resume-latex.css` (Computer Modern Serif, white/black)
+- **Full page**: `app/resume/page.tsx` (SEO optimized)
+- **Sub-components**: `components/tiles/content/resume/` (ResumeHeader, ResumeSection, ProjectEntry, WorkEntry, EducationEntry)
+
+**Assets**:
+- **PDFs**: `public/resume/` (40+ variants for different opportunities)
+- **Icons**: `public/icons/resume/` (phone, email, LinkedIn, GitHub)
+
+**Navigation**:
+- Integrated into sidebar (after About)
+- Integrated into polybar workspaces
+- Full page route at `/resume`
+- Managed by FocusContext (like other content types)
+
+### 7.2 How to update resume
+1. Edit `lib/resume-data.ts`:
+   - `resumeData.contact` - Phone, email, LinkedIn, GitHub
+   - `resumeData.projects` - Add/remove/update projects
+   - `resumeData.experience` - Add/remove/update jobs
+   - `resumeData.skills` - Add/remove skills (order matters)
+   - `resumeData.education` - Add/remove/update education
+
+2. Test on `/resume` and homepage
+
+3. **Regenerate PDFs** (if content changed):
+   - Navigate to `/resume`
+   - Press Cmd+P (Mac) or Ctrl+P (Windows)
+   - Click "Save as PDF"
+   - Save with correct filename (e.g., `kevin-mok-resume.pdf`)
+   - Replace in `public/resume/`
+
+4. Add new PDF variant (if needed):
+   - Place PDF in `public/resume/new-name.pdf`
+   - Add entry to `pdfVariants` array in `ResumeContent.tsx`
+
+### 7.3 Resume styling notes
+- **Font**: Computer Modern Serif (CDN) - do NOT change without good reason
+- **Colors**: White background (#ffffff), black text (#000000) - always, regardless of theme
+- **Styling approach**: Centralized in `13-resume-latex.css` - all resume-specific styles there
+- **Mobile responsive**: Uses `clamp()` for font scaling
+- **Theme override**: `.resume-latex` class overrides theme system to ensure professional white appearance
+
+### 7.4 Documentation
+**Complete resume documentation lives in `/docs/`**:
+- `README_RESUME.md` - Start here
+- `RESUME_FEATURE_OVERVIEW.md` - What was built
+- `RESUME_ARCHITECTURE.md` - Technical details
+- `RESUME_MAINTENANCE.md` - How to maintain/update
+- `RESUME_MIGRATION.md` - Migration from old site
+- `RESUME_FILE_STRUCTURE.md` - File organization
+- `RESUME_DOCS_INDEX.md` - Index of all resume docs
+
+**Before making changes to resume feature, read the relevant doc** from above.
 
 ---
 
 ## 8) Logging & troubleshooting
-- Support verbose logging mode that writes to `log/` (gitignored).
-- Default logging must still capture critical errors.
-- Logs must include enough context to reproduce:
-  - Interaction IDs
-  - Guild/channel IDs
-  - Listing IDs
-  - State transitions
-  - Exception stack traces
+- Keep error messages actionable and context-rich
+- Use TypeScript for type safety where possible
+- Test responsive design on mobile before committing
 
 ---
 

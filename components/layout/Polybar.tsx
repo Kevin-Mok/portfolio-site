@@ -22,6 +22,7 @@ const Polybar: React.FC<PolybarProps> = ({ onNavigate }) => {
 
   const workspaces = [
     { id: 'about', label: 'about', icon: '●' },
+    { id: 'resume', label: 'resume', icon: '●' },
     { id: 'projects', label: 'projects', icon: '●' },
     { id: 'blog', label: 'blog', icon: '●' },
     { id: 'contact', label: 'contact', icon: '●' },
@@ -39,6 +40,8 @@ const Polybar: React.FC<PolybarProps> = ({ onNavigate }) => {
     if (workspace === 'projects' && activeContent.type === 'projects-overview') return true;
     // Check for blog section (legacy - shouldn't happen with zen-only)
     if (workspace === 'blog' && activeContent.type === 'blog-overview') return true;
+    // Check for resume section
+    if (workspace === 'resume' && activeContent.type === 'resume') return true;
     return false;
   };
 

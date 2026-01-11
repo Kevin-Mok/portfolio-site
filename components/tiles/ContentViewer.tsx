@@ -3,6 +3,7 @@
 import React from 'react';
 import { useFocusState, ContentType } from '@/contexts/FocusContext';
 import { AboutContent } from './content/AboutContent';
+import { ResumeContent } from './content/ResumeContent';
 import { BlogDetailContent } from './content/BlogDetailContent';
 import { ContactContent } from './content/ContactContent';
 import { ProjectsOverviewContent } from './content/ProjectsOverviewContent';
@@ -25,6 +26,9 @@ const ContentViewer: React.FC<ContentViewerProps> = ({ onNavigate }) => {
     switch (content.type) {
       case 'about':
         return <AboutContent />;
+
+      case 'resume':
+        return <ResumeContent />;
 
       case 'project':
         // Projects route to MDX pages, should never reach here

@@ -71,6 +71,7 @@ export interface ProjectData {
 export type ContentType =
   | { type: 'home' }
   | { type: 'about' }
+  | { type: 'resume' }
   | { type: 'project'; data: ProjectData }
   | { type: 'projects-overview' }
   | { type: 'blog'; data: BlogData }
@@ -136,7 +137,7 @@ const transitionRules = {
 
   // Content tile can show any content type
   content: {
-    validContent: ['home', 'about', 'projects-overview', 'blog-overview', 'contact', 'project', 'blog']
+    validContent: ['home', 'about', 'resume', 'projects-overview', 'blog-overview', 'contact', 'project', 'blog']
   },
 
   // Theme control tiles don't change content
@@ -315,6 +316,9 @@ export const FocusProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         break;
       case 'about':
         content = { type: 'about' };
+        break;
+      case 'resume':
+        content = { type: 'resume' };
         break;
       case 'projects':
         content = { type: 'projects-overview' };
