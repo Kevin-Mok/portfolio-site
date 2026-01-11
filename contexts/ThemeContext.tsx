@@ -9,7 +9,7 @@ export type ThemePreset = 'solarized-light' | 'nord' | 'tokyo-night';
 // Default accent colors for each theme preset (per spec)
 const themeDefaultAccents: Record<ThemePreset, AccentColor> = {
   'solarized-light': 'pink',    // #d33682 maps closest to pink/magenta
-  'nord': 'blue',                // #81A1C1 maps to blue
+  'nord': 'sky',                 // #0ea5e9 (sky blue accent for Nord)
   'tokyo-night': 'purple'        // #bb9af7 maps to purple
 };
 
@@ -88,12 +88,12 @@ const STORAGE_KEYS = {
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Initialize state with defaults - start with dark theme
+  // Initialize state with defaults - start with Nord theme
   const [theme, setTheme] = useState<ThemeState>({
-    preset: 'tokyo-night',
-    accentColor: themeDefaultAccents['tokyo-night'],  // Use theme default
+    preset: 'nord',
+    accentColor: themeDefaultAccents['nord'],  // Use theme default (sky)
     backgroundEffect: true,
-    backgroundImage: themeBackgrounds['tokyo-night'][0]  // Default to first bg of theme
+    backgroundImage: themeBackgrounds['nord'][0]  // Default to first bg of theme
   });
 
   // Load saved preferences on mount (desktop only)
@@ -115,7 +115,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
 
     // Desktop: load from localStorage as usual
-    const loadedPreset = (localStorage.getItem(STORAGE_KEYS.preset) as ThemePreset) || 'tokyo-night';
+    const loadedPreset = (localStorage.getItem(STORAGE_KEYS.preset) as ThemePreset) || 'nord';
     const loadedBgEffect = localStorage.getItem(STORAGE_KEYS.backgroundEffect);
     const loadedBgImage = localStorage.getItem(`${STORAGE_KEYS.backgroundImagePrefix}${loadedPreset}`);
 
