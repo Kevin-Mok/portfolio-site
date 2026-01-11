@@ -94,11 +94,11 @@ const LayoutManager: React.FC = () => {
   };
 
   // Theme-aware tile opacity for better differentiation - using spec surface colors
-  // Content tile uses lower opacity for transparency to show background (kitty terminal aesthetic)
+  // Content & neofetch tiles use lower opacity for transparency to show background (kitty terminal aesthetic)
   const getTileOpacity = (tileType: 'content' | 'navigation' | 'neofetch' | 'themePreset' | 'accentColor' | 'background', focused: boolean) => {
     // Tokyo Night - cooler, sharper contrasts
     if (theme.preset === 'tokyo-night') {
-      if (tileType === 'content') {
+      if (tileType === 'content' || tileType === 'neofetch') {
         return focused ? 'rgba(var(--color-surface-rgb), 0.35)' : 'rgba(var(--color-surface-rgb), 0.2)';
       }
       return focused ? 'rgba(var(--color-surface-rgb), 0.9)' : 'rgba(var(--color-surface-rgb), 0.25)';
@@ -106,7 +106,7 @@ const LayoutManager: React.FC = () => {
 
     // Nord - Arctic dark
     if (theme.preset === 'nord') {
-      if (tileType === 'content') {
+      if (tileType === 'content' || tileType === 'neofetch') {
         return focused ? 'rgba(var(--color-surface-rgb), 0.35)' : 'rgba(var(--color-surface-rgb), 0.2)';
       }
       return focused ? 'rgba(var(--color-surface-rgb), 0.85)' : 'rgba(var(--color-surface-rgb), 0.4)';
@@ -114,7 +114,7 @@ const LayoutManager: React.FC = () => {
 
     // Solarized Light - light theme needs different approach
     if (theme.preset === 'solarized-light') {
-      if (tileType === 'content') {
+      if (tileType === 'content' || tileType === 'neofetch') {
         return focused ? 'rgba(var(--color-surface-rgb), 0.5)' : 'rgba(var(--color-surface-rgb), 0.35)';
       }
       return focused ? 'rgba(var(--color-surface-rgb), 0.95)' : 'rgba(var(--color-surface-rgb), 0.6)';
@@ -179,8 +179,34 @@ const LayoutManager: React.FC = () => {
         <div className="flex-1 overflow-hidden" style={{ padding: '12px' }}>
           <LayoutGroup>
             <motion.div className="h-full flex" style={{ gap: '12px' }}>
-              {/* Left Column - Adjusted for gap */}
-              <motion.div className="flex flex-col" style={{ gap: '12px', width: 'calc(50% - 6px)' }}>
+              {/* Left Column - Content (2/3 width) - Adjusted for gap */}
+              <motion.div
+                layout
+                layoutId="tile-content"
+                transition={layoutTransition}
+                className={`shadow-xl border overflow-auto no-scrollbar ${
+                  focusedTile === 'content' ? 'border-[var(--accent-color)] shadow-[var(--accent-color)]/30 shadow-2xl' : 'border-[var(--accent-color)]/30'
+                }`}
+                initial={{
+                  backgroundColor: getTileOpacity('content', false)
+                }}
+                animate={{
+                  backgroundColor: getTileOpacity('content', focusedTile === 'content'),
+                  backdropFilter: 'blur(0.5px)',
+                  borderRadius: '0px',
+                  borderWidth: '1px',
+                  padding: '24px',
+                  willChange: 'background-color',
+                  width: 'calc(68% - 8px)',
+                  containerType: 'inline-size'
+                }}
+                onClick={() => setFocusedTile('content')}
+              >
+                <ContentViewer onNavigate={handleDesktopContentSelect} />
+              </motion.div>
+
+              {/* Right Column - Controls (32% width) - Adjusted for gap */}
+              <motion.div className="flex flex-col" style={{ gap: '12px', width: 'calc(32% - 4px)' }}>
                 {/* Neofetch Tile */}
                 <motion.div
                   layout
@@ -317,32 +343,6 @@ const LayoutManager: React.FC = () => {
                     </motion.div>
                   </motion.div>
                 </motion.div>
-              </motion.div>
-
-              {/* Right Column - Content - Adjusted for gap */}
-              <motion.div
-                layout
-                layoutId="tile-content"
-                transition={layoutTransition}
-                className={`shadow-xl border overflow-auto no-scrollbar ${
-                  focusedTile === 'content' ? 'border-[var(--accent-color)] shadow-[var(--accent-color)]/30 shadow-2xl' : 'border-[var(--accent-color)]/30'
-                }`}
-                initial={{
-                  backgroundColor: getTileOpacity('content', false)
-                }}
-                animate={{
-                  backgroundColor: getTileOpacity('content', focusedTile === 'content'),
-                  backdropFilter: 'blur(0.5px)',
-                  borderRadius: '0px',
-                  borderWidth: '1px',
-                  padding: '24px',
-                  willChange: 'background-color',
-                  width: 'calc(50% - 6px)',
-                  containerType: 'inline-size'
-                }}
-                onClick={() => setFocusedTile('content')}
-              >
-                <ContentViewer onNavigate={handleDesktopContentSelect} />
               </motion.div>
             </motion.div>
           </LayoutGroup>

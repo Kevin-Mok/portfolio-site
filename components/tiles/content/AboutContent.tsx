@@ -16,9 +16,9 @@ const AboutContentComponent: React.FC = () => {
     <div>
       <div style={{
         color: 'var(--theme-text)',
-        fontSize: 'clamp(0.85rem, 0.85rem + 1.5cqi, 0.95rem)',
-        paddingLeft: '40px',
-        paddingRight: '40px'
+        fontSize: 'clamp(1rem, 1rem + 1.5cqi, 1.1rem)',
+        paddingLeft: '8px',
+        paddingRight: '0px'
       }}>
         {/* Header - Large, full-width, at top */}
         <h1

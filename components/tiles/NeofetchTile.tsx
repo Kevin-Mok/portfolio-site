@@ -43,11 +43,11 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
   // Tile layout uses container queries (cqw) for responsive sizing relative to tile size
   // Parallax layout uses viewport queries (vw) for responsive sizing relative to viewport
   // ASCII art max capped lower to prevent overflow in fixed-height tile
-  const gapClass = layout === 'parallax' ? 'gap-6 sm:gap-8 md:gap-10' : 'gap-4 sm:gap-6 md:gap-8';
+  const gapClass = layout === 'parallax' ? 'gap-6 sm:gap-8 md:gap-10' : 'gap-4 sm:gap-5 md:gap-6';
   const asciiFontSize = layout === 'parallax' ?
     (logoType === 'dleer' ? 'clamp(0.55rem, 1vw, 0.75rem)' : 'clamp(0.5rem, 1.4vw, 0.7rem)') :
-    (logoType === 'dleer' ? 'clamp(0.3rem, 1.5cqw, 0.75rem)' : 'clamp(0.28rem, 1.8cqw, 0.8rem)');
-  const infoFontSize = layout === 'parallax' ? 'clamp(0.75rem, 1.2vw, 0.875rem)' : 'clamp(0.6rem, 2cqw, 1.1rem)';
+    (logoType === 'dleer' ? 'clamp(0.3rem, 1.5cqw, 0.75rem)' : 'clamp(0.22rem, 1.5cqw, 0.65rem)');
+  const infoFontSize = layout === 'parallax' ? 'clamp(0.75rem, 1.2vw, 0.875rem)' : 'clamp(0.94rem, 2cqw, 1.54rem)';
 
   return (
     <div
@@ -60,8 +60,8 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
       <div className="flex-shrink-0"
         style={{
           width: logoType === 'dleer' ? 'auto' : (layout === 'parallax' ? '40%' : '35%'),
-          minWidth: logoType === 'dleer' ? 'auto' : '120px',
-          maxWidth: logoType === 'dleer' ? 'auto' : '200px'
+          minWidth: logoType === 'dleer' ? 'auto' : '100px',
+          maxWidth: logoType === 'dleer' ? 'auto' : '330px'
         }}>
         <pre
           className={`leading-tight transition-all duration-300`}
@@ -124,7 +124,6 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
               >
                 {system.twitter.username}
               </a>
-              {system.twitter.followers && <span style={{ color: 'rgba(var(--theme-text-dimmed), 0.8)' }}> ({system.twitter.followers})</span>}
             </div>
           )}
 

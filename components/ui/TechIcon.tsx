@@ -2,13 +2,14 @@ import React from 'react';
 import { IconType } from 'react-icons';
 import {
   SiPython,
+  SiDjango,
   SiTypescript,
   SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
   SiTailwindcss,
   SiPostgresql,
-  SiNeo4J,
-  SiRedis,
-  SiApachekafka,
+  SiMongodb,
   SiDocker
 } from 'react-icons/si';
 
@@ -21,13 +22,14 @@ interface TechIconProps {
 // Icon map for tree-shaking - only imports icons actually used
 const ICON_MAP: Record<string, IconType> = {
   SiPython,
+  SiDjango,
   SiTypescript,
   SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
   SiTailwindcss,
   SiPostgresql,
-  SiNeo4J,
-  SiRedis,
-  SiApachekafka,
+  SiMongodb,
   SiDocker
 };
 
