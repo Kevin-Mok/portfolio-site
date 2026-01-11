@@ -25,16 +25,8 @@ export const portfolioConfig: PortfolioConfig = {
         aperture: process.env.NEXT_PUBLIC_PHOTO_APERTURE || "f/1.7",
         shutter: process.env.NEXT_PUBLIC_PHOTO_SHUTTER || "1/1000s",
         iso: process.env.NEXT_PUBLIC_PHOTO_ISO || "100"
-      },
-      // Detection variant for AI/ML theme (optional - set NEXT_PUBLIC_PROFILE_DETECTION)
-      detectionVariant: {
-        src: process.env.NEXT_PUBLIC_PROFILE_DETECTION || getImageUrl("profile/placeholder-detection.webp"),
-        exif: {
-          location: process.env.NEXT_PUBLIC_PHOTO_LOCATION || "Location",
-          model: "RF-DETR",
-          task: "Object Detection"
-        }
       }
+      // Detection variant disabled - only showing main profile photo
     },
     bio: {
       // Structured bio for parallax sections (minimal version)
