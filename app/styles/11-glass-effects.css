@@ -7,8 +7,8 @@
 
 /* Glass Morphism Effects */
 .glass-tile {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .glass-tile-clear {
@@ -41,8 +41,8 @@
 .dotted-border {
   background-image: radial-gradient(transparent 1px, var(--theme-bg) 1px);
   background-size: 4px 4px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 /* kyrre.dev-inspired glass diffusion for top/bottom borders */
@@ -59,10 +59,10 @@
   );
   background-size: 3px 3px;
 
-  /* Strong blur creates "bathroom privacy glass" diffusion */
-  /* Blurs content visible through semi-transparent circles */
-  backdrop-filter: blur(12px) saturate(150%) brightness(110%) contrast(90%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%) brightness(110%) contrast(90%);
+  /* Minimal blur for clean terminal transparency effect */
+  /* Matches kitty terminal aesthetic */
+  backdrop-filter: blur(1px) saturate(100%) brightness(100%) contrast(100%);
+  -webkit-backdrop-filter: blur(1px) saturate(100%) brightness(100%) contrast(100%);
 
   /* Mask gradient for smooth fade (top/bottom borders) */
   mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
@@ -82,13 +82,13 @@
 /* Mobile performance optimization */
 @media (max-width: 1023px) {
   .dotted-border {
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
   }
 
-  /* Reduced but still effective blur on mobile for performance */
+  /* Minimal blur on mobile for performance and clarity */
   .gradient-dots {
-    backdrop-filter: blur(8px) saturate(140%) brightness(105%);
-    -webkit-backdrop-filter: blur(8px) saturate(140%) brightness(105%);
+    backdrop-filter: blur(0.5px) saturate(100%) brightness(100%);
+    -webkit-backdrop-filter: blur(0.5px) saturate(100%) brightness(100%);
   }
 }

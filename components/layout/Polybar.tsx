@@ -47,7 +47,7 @@ const Polybar: React.FC<PolybarProps> = ({ onNavigate }) => {
 
   return (
     <>
-      <div className="h-9 backdrop-blur-md border-b-2 flex items-center justify-between px-3 font-mono text-xs relative z-50"
+      <div className="h-9 backdrop-blur border-b-2 flex items-center justify-between px-3 font-mono text-xs relative z-50"
         style={{
           backgroundColor: 'rgba(var(--color-surface-rgb), 0.8)',
           borderColor: 'rgba(var(--accent-color-rgb), 0.3)',

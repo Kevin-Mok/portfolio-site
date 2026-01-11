@@ -16,20 +16,25 @@ const themeDefaultAccents: Record<ThemePreset, AccentColor> = {
 // Background images for each theme preset
 export const themeBackgrounds: Record<ThemePreset, string[]> = {
   'tokyo-night': [
-    getImageUrl('purple-girl.webp'),
-    getImageUrl('cat_anime-girl.webp'),
-    getImageUrl('shiny_purple.webp'),
-    getImageUrl('pixel_big_city.webp')
+    getImageUrl('night-sky.webp'),
+    getImageUrl('circuit-board-city.webp'),
+    getImageUrl('motorcycle-night.webp'),
+    getImageUrl('aurora-lights.webp'),
+    getImageUrl('dashboard-futuristic.webp')
   ],
   'nord': [
-    getImageUrl('cool_rocks.webp'),
-    getImageUrl('lets_go_home.webp'),
-    getImageUrl('gradient-pb.webp')
+    getImageUrl('night-sky.webp'),
+    getImageUrl('circuit-board-city.webp'),
+    getImageUrl('motorcycle-night.webp'),
+    getImageUrl('aurora-lights.webp'),
+    getImageUrl('dashboard-futuristic.webp')
   ],
   'solarized-light': [
-    getImageUrl('pastel-window.webp'),
-    getImageUrl('yellow_kyoto.webp'),
-    getImageUrl('ign_colorful.webp')
+    getImageUrl('night-sky.webp'),
+    getImageUrl('circuit-board-city.webp'),
+    getImageUrl('motorcycle-night.webp'),
+    getImageUrl('aurora-lights.webp'),
+    getImageUrl('dashboard-futuristic.webp')
   ]
 };
 

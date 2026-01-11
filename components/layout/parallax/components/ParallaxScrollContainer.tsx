@@ -60,7 +60,7 @@ export const ParallaxScrollContainer: React.FC<ParallaxScrollContainerProps> = (
           height: '65vh',
           opacity: backgroundOpacity, // MotionValue is handled by Framer Motion
           backgroundColor: 'rgba(var(--theme-surface-rgb), 0.5)',
-          backdropFilter: 'blur(10px)',
+          backdropFilter: 'blur(0.5px)',
           zIndex: 1,
           pointerEvents: 'none'
         }}
@@ -117,7 +117,7 @@ export const ParallaxScrollContainer: React.FC<ParallaxScrollContainerProps> = (
                   backgroundImage: `radial-gradient(circle at 1px 1px, rgba(var(--theme-bg-rgb), 0.8) 0.8px, transparent 0.8px)`,
                   backgroundSize: '3px 3px',
                   backgroundPosition: '0 0',
-                  backdropFilter: 'blur(4px)',
+                  backdropFilter: 'blur(0.5px)',
                   WebkitBackdropFilter: 'blur(4px)',
                   maskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)',

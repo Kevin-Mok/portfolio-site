@@ -189,7 +189,7 @@ const FocusedView: React.FC<FocusedViewProps> = ({ className = '' }) => {
                 backgroundColor: 'rgba(var(--theme-surface-rgb), 0.85)',
                 border: '0.5px solid rgba(var(--accent-color-rgb), 0.4)',
                 borderRadius: '0px',
-                backdropFilter: 'blur(8px)',
+                backdropFilter: 'blur(1px)',
                 color: 'var(--theme-text)'
               }}
               whileHover={{

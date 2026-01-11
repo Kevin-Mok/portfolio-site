@@ -94,29 +94,28 @@ const LayoutManager: React.FC = () => {
   };
 
   // Theme-aware tile opacity for better differentiation - using spec surface colors
+  // Content tile uses lower opacity for transparency to show background (kitty terminal aesthetic)
   const getTileOpacity = (tileType: 'content' | 'navigation' | 'neofetch' | 'themePreset' | 'accentColor' | 'background', focused: boolean) => {
-    const isContentHeavy = tileType === 'content' && (activeContent.type === 'project' || activeContent.type === 'blog');
-
     // Tokyo Night - cooler, sharper contrasts
     if (theme.preset === 'tokyo-night') {
-      if (isContentHeavy) {
-        return focused ? 'rgba(var(--color-surface-rgb), 0.95)' : 'rgba(var(--color-surface-rgb), 0.4)';
+      if (tileType === 'content') {
+        return focused ? 'rgba(var(--color-surface-rgb), 0.35)' : 'rgba(var(--color-surface-rgb), 0.2)';
       }
       return focused ? 'rgba(var(--color-surface-rgb), 0.9)' : 'rgba(var(--color-surface-rgb), 0.25)';
     }
 
     // Nord - Arctic dark
     if (theme.preset === 'nord') {
-      if (isContentHeavy) {
-        return focused ? 'rgba(var(--color-surface-rgb), 0.92)' : 'rgba(var(--color-surface-rgb), 0.5)';
+      if (tileType === 'content') {
+        return focused ? 'rgba(var(--color-surface-rgb), 0.35)' : 'rgba(var(--color-surface-rgb), 0.2)';
       }
       return focused ? 'rgba(var(--color-surface-rgb), 0.85)' : 'rgba(var(--color-surface-rgb), 0.4)';
     }
 
     // Solarized Light - light theme needs different approach
     if (theme.preset === 'solarized-light') {
-      if (isContentHeavy) {
-        return focused ? 'rgba(var(--color-surface-rgb), 0.98)' : 'rgba(var(--color-surface-rgb), 0.7)';
+      if (tileType === 'content') {
+        return focused ? 'rgba(var(--color-surface-rgb), 0.5)' : 'rgba(var(--color-surface-rgb), 0.35)';
       }
       return focused ? 'rgba(var(--color-surface-rgb), 0.95)' : 'rgba(var(--color-surface-rgb), 0.6)';
     }
@@ -125,12 +124,6 @@ const LayoutManager: React.FC = () => {
     return focused ? 'rgba(var(--color-surface-rgb), 0.85)' : 'rgba(var(--color-surface-rgb), 0.35)';
   };
 
-  // Content-aware transparency for better readability
-  const getContentTileOpacity = () => {
-    const focused = getTileOpacity('content', focusedTile === 'content');
-    const unfocused = getTileOpacity('content', false);
-    return { focused, unfocused };
-  };
 
   // Handle navigation from polybar - route projects/blog to list pages, about/contact to tiled
   const handlePolybarNavigate = (section: string) => {
@@ -201,7 +194,7 @@ const LayoutManager: React.FC = () => {
                   }}
                   animate={{
                     backgroundColor: getTileOpacity('neofetch', focusedTile === 'neofetch'),
-                    backdropFilter: 'blur(12px)',
+                    backdropFilter: 'blur(0.5px)',
                     borderRadius: '0px',
                     borderWidth: '1px',
                     padding: '24px',
@@ -229,7 +222,7 @@ const LayoutManager: React.FC = () => {
                     animate={{
                       backgroundColor: getTileOpacity('navigation', focusedTile === 'navigation'),
                       flex: '0 0 calc(70% - 6px)',
-                      backdropFilter: 'blur(12px)',
+                      backdropFilter: 'blur(0.5px)',
                       borderRadius: '0px',
                       borderWidth: '1px',
                       borderColor: focusedTile === 'navigation' ? 'var(--accent-color)' : 'rgba(var(--accent-color-rgb), 0.3)',
@@ -259,7 +252,7 @@ const LayoutManager: React.FC = () => {
                       animate={{
                         backgroundColor: getTileOpacity('themePreset', focusedTile === 'themePreset'),
                         height: 'calc((100% - 24px) * 0.15)',
-                        backdropFilter: 'blur(12px)',
+                        backdropFilter: 'blur(0.5px)',
                         borderRadius: '0px',
                         borderWidth: '1px',
                         padding: '12px',
@@ -285,7 +278,7 @@ const LayoutManager: React.FC = () => {
                       animate={{
                         backgroundColor: getTileOpacity('accentColor', focusedTile === 'accentColor'),
                         height: 'calc((100% - 24px) * 0.35)',
-                        backdropFilter: 'blur(12px)',
+                        backdropFilter: 'blur(0.5px)',
                         borderRadius: '0px',
                         borderWidth: '1px',
                         padding: '12px',
@@ -311,7 +304,7 @@ const LayoutManager: React.FC = () => {
                       animate={{
                         backgroundColor: getTileOpacity('background', focusedTile === 'background'),
                         height: 'calc((100% - 24px) * 0.50)',
-                        backdropFilter: 'blur(12px)',
+                        backdropFilter: 'blur(0.5px)',
                         borderRadius: '0px',
                         borderWidth: '1px',
                         padding: '12px',
@@ -335,13 +328,11 @@ const LayoutManager: React.FC = () => {
                   focusedTile === 'content' ? 'border-[var(--accent-color)] shadow-[var(--accent-color)]/30 shadow-2xl' : 'border-[var(--accent-color)]/30'
                 }`}
                 initial={{
-                  backgroundColor: getContentTileOpacity().unfocused
+                  backgroundColor: getTileOpacity('content', false)
                 }}
                 animate={{
-                  backgroundColor: focusedTile === 'content'
-                    ? getContentTileOpacity().focused
-                    : getContentTileOpacity().unfocused,
-                  backdropFilter: 'blur(12px)',
+                  backgroundColor: getTileOpacity('content', focusedTile === 'content'),
+                  backdropFilter: 'blur(0.5px)',
                   borderRadius: '0px',
                   borderWidth: '1px',
                   padding: '24px',

@@ -19,28 +19,28 @@ const themeBackgrounds: Record<string, {
   scale: number;
 }> = {
   'theme-tokyo-night': {
-    url: getImageUrl('purple-girl.webp'),
-    overlay: 'rgba(26, 27, 38, 0.5)',
-    blur: '8px',
-    brightness: 0.6,
-    contrast: 1.1,
-    scale: 1.1
+    url: getImageUrl('night-sky.webp'),
+    overlay: 'rgba(26, 27, 38, 0.3)',
+    blur: '2px',
+    brightness: 0.7,
+    contrast: 1.0,
+    scale: 1.0
   },
   'theme-nord': {
-    url: getImageUrl('cool_rocks.webp'),
-    overlay: 'rgba(46, 52, 64, 0.5)',
-    blur: '6px',
-    brightness: 0.7,
-    contrast: 1.05,
-    scale: 1.1
+    url: getImageUrl('night-sky.webp'),
+    overlay: 'rgba(46, 52, 64, 0.3)',
+    blur: '2px',
+    brightness: 0.75,
+    contrast: 1.0,
+    scale: 1.0
   },
   'theme-solarized-light': {
-    url: getImageUrl('pastel-window.webp'),
-    overlay: 'rgba(253, 246, 227, 0.65)',
-    blur: '4px',
-    brightness: 0.95,
+    url: getImageUrl('night-sky.webp'),
+    overlay: 'rgba(253, 246, 227, 0.5)',
+    blur: '1px',
+    brightness: 0.9,
     contrast: 0.95,
-    scale: 1.1
+    scale: 1.0
   }
 };
 

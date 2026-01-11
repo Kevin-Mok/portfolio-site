@@ -47,7 +47,7 @@ export const ParallaxBorderFrame: React.FC<ParallaxBorderFrameProps> = ({ border
             left: 0,
             right: 0,
             height: `${borderPadding}px`,
-            backdropFilter: 'blur(4px) saturate(120%)',
+            backdropFilter: 'blur(0.5px) saturate(100%)',
             WebkitBackdropFilter: 'blur(4px) saturate(120%)'
           }}
         />
@@ -60,7 +60,7 @@ export const ParallaxBorderFrame: React.FC<ParallaxBorderFrameProps> = ({ border
             left: 0,
             right: 0,
             height: `${borderPadding}px`,
-            backdropFilter: 'blur(4px) saturate(120%)',
+            backdropFilter: 'blur(0.5px) saturate(100%)',
             WebkitBackdropFilter: 'blur(4px) saturate(120%)'
           }}
         />

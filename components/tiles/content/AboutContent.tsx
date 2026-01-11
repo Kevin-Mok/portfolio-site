@@ -16,7 +16,7 @@ const AboutContentComponent: React.FC = () => {
     <div>
       <div style={{
         color: 'var(--theme-text)',
-        fontSize: 'clamp(1.125rem, 1.125rem + 2cqi, 1.25rem)',
+        fontSize: 'clamp(0.85rem, 0.85rem + 1.5cqi, 0.95rem)',
         paddingLeft: '40px',
         paddingRight: '40px'
       }}>
@@ -25,8 +25,8 @@ const AboutContentComponent: React.FC = () => {
           className="font-bold"
           style={{
             color: 'var(--accent-color)',
-            fontSize: 'clamp(2rem, 2rem + 4cqi, 2.5rem)',
-            marginBottom: '24px'
+            fontSize: 'clamp(1.1rem, 1.1rem + 1.5cqi, 1.5rem)',
+            marginBottom: '16px'
           }}
         >
           {personal.greeting || `Hi, I'm ${personal.name}`}
@@ -84,7 +84,7 @@ const AboutContentComponent: React.FC = () => {
             style={{
               color: 'var(--theme-text-dimmed)',
               opacity: 0.8,
-              fontSize: 'clamp(1rem, 1rem + 1.5cqi, 1.125rem)'
+              fontSize: 'clamp(0.875rem, 0.875rem + 1cqi, 1rem)'
             }}
           >
             {personal.bio.tagline}

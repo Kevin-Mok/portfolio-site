@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { archLogoASCII, archLogoCompact, minimalLogo, dleerBlockLetters, dlBlockLetters } from '@/components/assets/archAscii';
+import { archLogoASCII, archLogoCompact, minimalLogo, dleerBlockLetters, dlBlockLetters, kevinBlockLetters } from '@/components/assets/archAscii';
 import { usePersonalInfo, useSystemInfo } from '@/lib/config';
 import { FONT_SIZES } from '@/lib/constants/typography';
 
@@ -24,12 +24,14 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Get ASCII logo preference from environment or default to dleer
-  const logoType = process.env.NEXT_PUBLIC_ASCII_LOGO || 'dleer';
+  // Get ASCII logo preference from environment or default to kevin
+  const logoType = process.env.NEXT_PUBLIC_ASCII_LOGO || 'kevin';
 
   // Switch ASCII art based on screen size and preference
   let asciiArt;
-  if (logoType === 'dleer') {
+  if (logoType === 'kevin') {
+    asciiArt = kevinBlockLetters;
+  } else if (logoType === 'dleer') {
     asciiArt = windowWidth < 400 ? dlBlockLetters : dleerBlockLetters;
   } else if (logoType === 'arch') {
     asciiArt = windowWidth < 400 ? archLogoCompact : archLogoASCII;
@@ -139,56 +141,6 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
               >
                 {system.linkedin.username}
               </a>
-            </div>
-          )}
-
-          {/* YouTube */}
-          {system.youtube && (
-            <div>
-              <span className={`font-bold transition-all duration-300`} style={{ color: 'var(--accent-color)' }}>{system.youtube.platform}</span>:{' '}
-              <a
-                href={system.youtube.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline transition-colors duration-200 cursor-pointer"
-                style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
-              >
-                {system.youtube.username}
-              </a>
-            </div>
-          )}
-
-          {/* Instagram */}
-          {system.instagram && (
-            <div>
-              <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.instagram.platform}</span>:{' '}
-              <a
-                href={system.instagram.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline transition-colors duration-200 cursor-pointer"
-                style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
-              >
-                {system.instagram.username}
-              </a>
-              {system.instagram.followers && <span style={{ color: 'rgba(var(--theme-text-dimmed), 0.8)' }}> ({system.instagram.followers})</span>}
-            </div>
-          )}
-
-          {/* TikTok */}
-          {system.tiktok && (
-            <div>
-              <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.tiktok.platform}</span>:{' '}
-              <a
-                href={system.tiktok.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline transition-colors duration-200 cursor-pointer"
-                style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
-              >
-                {system.tiktok.username}
-              </a>
-              {system.tiktok.followers && <span style={{ color: 'rgba(var(--theme-text-dimmed), 0.8)' }}> ({system.tiktok.followers})</span>}
             </div>
           )}
 
