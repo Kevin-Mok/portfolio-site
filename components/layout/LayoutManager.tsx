@@ -21,7 +21,7 @@ type ContentType = FocusContentType;
 const LayoutManager: React.FC = () => {
   const {
     focusedTile,
-    activeContent,
+    activeContent: _activeContent,
     setFocusedTile,
     handleTabNavigation,
     handleDirectionalNavigation,
