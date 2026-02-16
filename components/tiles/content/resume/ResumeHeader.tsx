@@ -21,13 +21,13 @@ export const ResumeHeader: React.FC<ResumeHeaderProps> = ({ contact }) => {
       alt: 'email',
     },
     {
-      icon: '/icons/social/linkedin.svg',
+      icon: '/icons/resume/linkedin.svg',
       label: contact.linkedin,
       href: `https://www.linkedin.com/in/Kev-Mok`,
       alt: 'linkedin',
     },
     {
-      icon: '/icons/social/github.svg',
+      icon: '/icons/resume/github.svg',
       label: contact.github,
       href: `https://github.com/Kevin-Mok`,
       alt: 'github',
