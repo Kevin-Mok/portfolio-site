@@ -21,7 +21,7 @@ export function useParallaxScroll(
   scrollRef: RefObject<HTMLDivElement>,
   sections: Section[]
 ): UseParallaxScrollReturn {
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? 'neofetch');
   const [scrollPercent, setScrollPercent] = useState(0);
 
   // Framer Motion scroll tracking
@@ -43,30 +43,37 @@ export function useParallaxScroll(
       if (!container) return;
 
       const scrollPosition = container.scrollTop;
-      const scrollHeight = container.scrollHeight - container.clientHeight;
-      const windowHeight = window.innerHeight;
+      const maxScrollable = Math.max(container.scrollHeight - container.clientHeight, 1);
+      const viewportCenter = window.innerHeight / 2;
 
       // Calculate scroll percentage for smooth tracking
-      const percent = Math.round((scrollPosition / scrollHeight) * 100);
+      const percent = Math.round((scrollPosition / maxScrollable) * 100);
       setScrollPercent(percent);
 
       // Check if we're at the top (Neofetch section)
-      if (scrollPosition < windowHeight * 0.4) {  // Less than 40% of viewport height
+      if (scrollPosition < window.innerHeight * 0.4) {
         setActiveSection('neofetch');  // Special case for top
         return;
       }
 
-      // Determine which section is most visible (center of viewport)
+      // Determine active section by closest section center to viewport center.
+      let closestSection = sections[0]?.id ?? 'neofetch';
+      let closestDistance = Number.POSITIVE_INFINITY;
+
       sections.forEach((section) => {
         const sectionElement = document.getElementById(`section-${section.id}`);
         if (sectionElement) {
           const rect = sectionElement.getBoundingClientRect();
-          // Check if section center is in viewport center
-          if (rect.top < windowHeight / 2 && rect.bottom > windowHeight / 2) {
-            setActiveSection(section.id);
+          const sectionCenter = rect.top + (rect.height / 2);
+          const distanceToCenter = Math.abs(sectionCenter - viewportCenter);
+          if (distanceToCenter < closestDistance) {
+            closestDistance = distanceToCenter;
+            closestSection = section.id;
           }
         }
       });
+
+      setActiveSection(closestSection);
     };
 
     const container = scrollRef.current;

@@ -40,26 +40,10 @@ export function useSectionNavigation(
     const container = scrollRef.current;
 
     if (element && container) {
-      // Get the section index to calculate position
-      const sectionIndex = sections.findIndex(s => s.id === sectionId);
+      const containerRect = container.getBoundingClientRect();
+      const elementRect = element.getBoundingClientRect();
+      const targetScroll = container.scrollTop + (elementRect.top - containerRect.top);
 
-      // Calculate scroll position based on section structure
-      // Each section is min-h-screen, plus we have a 60vh spacer at the top
-      const viewportHeight = window.innerHeight;
-      const spacerHeight = viewportHeight * 0.6; // 60vh spacer
-
-      // For first section, scroll to just after the spacer
-      // For other sections, calculate based on index
-      let targetScroll = spacerHeight;
-
-      if (sectionIndex > 0) {
-        // Add the height of all previous sections
-        targetScroll = spacerHeight + (viewportHeight * sectionIndex);
-      }
-
-      // Scroll to the calculated position
-      // For About section, this will scroll to where the content starts (after spacer)
-      // For other sections, it calculates based on their position
       container.scrollTo({
         top: targetScroll,
         behavior: 'smooth'
@@ -67,22 +51,20 @@ export function useSectionNavigation(
     } else {
       console.error('[useSectionNavigation] Failed to find element or container');
     }
-  }, [scrollRef, sections]);
+  }, [scrollRef]);
 
   const navigateToNextSection = useCallback((
     activeSection: string,
     reverse = false
   ) => {
     const currentIndex = sections.findIndex(s => s.id === activeSection);
+    const normalizedIndex = currentIndex >= 0 ? currentIndex : 0;
     const direction = reverse ? -1 : 1;
-    let nextIndex = currentIndex + direction;
+    let nextIndex = normalizedIndex + direction;
 
-    // Wrap around navigation
-    if (nextIndex >= sections.length) {
-      nextIndex = 0; // Wrap to first section (About)
-    } else if (nextIndex < 0) {
-      nextIndex = sections.length - 1; // Wrap to last section (Contact)
-    }
+    // Wrap around navigation.
+    if (nextIndex >= sections.length) nextIndex = 0;
+    if (nextIndex < 0) nextIndex = sections.length - 1;
 
     navigateToSection(sections[nextIndex].id);
   }, [sections, navigateToSection]);

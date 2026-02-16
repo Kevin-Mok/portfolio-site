@@ -101,25 +101,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     backgroundImage: themeBackgrounds['nord'][0]  // Default to first bg of theme
   });
 
-  // Load saved preferences on mount (desktop only)
+  // Load saved preferences on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    // Skip localStorage loading on mobile - always use Tokyo Night defaults
-    const isMobile = window.innerWidth < 1024;
-
-    if (isMobile) {
-      // Force Tokyo Night theme for mobile
-      setTheme({
-        preset: 'tokyo-night',
-        accentColor: 'purple',  // Will be overridden by cyan in useEnforceMobileTheme
-        backgroundEffect: true,
-        backgroundImage: themeBackgrounds['tokyo-night'][0]
-      });
-      return;
-    }
-
-    // Desktop: load from localStorage as usual
+    // Load from localStorage
     const loadedPreset = (localStorage.getItem(STORAGE_KEYS.preset) as ThemePreset) || 'nord';
     const loadedBgEffect = localStorage.getItem(STORAGE_KEYS.backgroundEffect);
     const loadedBgImage = localStorage.getItem(`${STORAGE_KEYS.backgroundImagePrefix}${loadedPreset}`);
@@ -167,44 +153,27 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   }, [theme]);
 
-  // Force theme class re-application when transitioning from mobile to desktop
-  // This recovers from MobileParallaxLayout's className override
+  // Cleanup any stale inline accent overrides left by legacy mobile theme logic.
   useEffect(() => {
+    const cleanupInlineAccentOverrides = () => {
+      const root = document.documentElement;
+      root.style.removeProperty('--accent-color');
+      root.style.removeProperty('--accent-color-rgb');
+    };
+
+    cleanupInlineAccentOverrides();
+
     const handleResize = () => {
       if (typeof window === 'undefined') return;
-
-      // Only act when in desktop view (where ThemeContext should be in control)
-      if (window.innerWidth >= 1024) {
-        const root = document.documentElement;
-
-        // CRITICAL: Remove inline styles set by MobileParallaxLayout
-        // Inline styles have higher CSS specificity than classes, so they override all theme changes
-        // Without this, accent color stays stuck at #7dcfff even when user changes theme/accent
-        root.style.removeProperty('--accent-color');
-        root.style.removeProperty('--accent-color-rgb');
-
-        const hasThemeClass = Array.from(root.classList).some(cls => cls.startsWith('theme-'));
-
-        // If theme classes are missing, mobile parallax left DOM in broken state
-        // Re-apply classes from current theme state
-        if (!hasThemeClass) {
-          root.classList.add(`theme-${theme.preset}`);
-          root.classList.add(`accent-${theme.accentColor}`);
-        }
-      }
+      cleanupInlineAccentOverrides();
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [theme.preset, theme.accentColor]);
+  }, []);
 
   // Set theme preset - resets accent to theme default per spec
   const setThemePreset = useCallback((preset: ThemePreset) => {
-    // Prevent theme changes on mobile
-    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-      return;
-    }
-
     const defaultAccent = themeDefaultAccents[preset];
 
     // Load saved background for this theme, or use first as default
@@ -224,11 +193,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Set accent color
   const setAccentColor = useCallback((color: AccentColor) => {
-    // Prevent accent changes on mobile
-    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-      return;
-    }
-
     setTheme(prev => ({ ...prev, accentColor: color }));
     localStorage.setItem(STORAGE_KEYS.accent, color);
   }, []);

@@ -10,6 +10,7 @@ Target runtime: 15-25 minutes
 - [x] `docs/TODO.md` - Replace browser favicon with bracket-style `[K]` icon and metadata path `/favicon.svg`.
 - [x] `docs/TODO.md` - Regenerate `app/favicon.ico` from bracket-style `[K]` icon to satisfy `/favicon.ico` requests.
 - [x] `docs/TODO.md` - Update favicon to square `KM` mark (no brackets) and regenerate ICO.
+- [x] `docs/TODO.md` - Upgrade mobile homepage parity with desktop visual system (theme parity, resume CTA, inline settings, and section navigation fixes).
 
 ## T1 - Resume social icons render
 
@@ -119,3 +120,35 @@ Failure modes / debugging notes:
 - If old icon appears, stop dev server and run `npm run cleanup`, then start `npm run dev` and hard refresh.
 - If icon does not render, verify both SVG and ICO assets are present and not blocked by browser cache.
 - Deep test details: `docs/claude/favicon-bracket-k/QUICK_SMOKE_TEST.md`.
+
+## T5 - Mobile homepage parity and inline settings
+
+Objective: Verify mobile homepage now carries desktop-level theme behavior and upgraded section flow.
+
+Steps:
+
+```bash
+npm run dev
+```
+
+```bash
+rg -n "window\\.innerWidth < 1024|setProperty\\('--accent-color'" contexts/ThemeContext.tsx hooks/useEnforceMobileTheme.ts components/layout/parallax/hooks/useParallaxTheme.ts
+```
+
+Open in mobile viewport (e.g. 390x844):
+
+```text
+http://localhost:3000
+```
+
+Expected results:
+- Section sequence after Neofetch hero is `Bio` -> `Technologies` -> `Resume` -> `Settings`.
+- Resume section includes CTA to `/resume` and a PDF link.
+- Settings section shows working theme preset, accent, and background controls inline.
+- Theme and accent changes apply immediately on mobile (no forced reset to Tokyo Night/cyan).
+- Keyboard section navigation (`Tab`, arrows) scrolls to the correct section boundaries.
+
+Failure modes / debugging notes:
+- If theme resets on mobile, verify no force-set classes/inline accent in `hooks/useEnforceMobileTheme.ts` and `components/layout/parallax/hooks/useParallaxTheme.ts`.
+- If keyboard jumps land in wrong places, debug `components/layout/parallax/hooks/useSectionNavigation.ts` target offset calculation.
+- If sections are missing, verify section list and switch cases in `components/layout/MobileParallaxLayout.tsx`.

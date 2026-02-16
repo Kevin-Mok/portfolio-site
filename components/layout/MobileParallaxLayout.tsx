@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useRef, useState, useCallback } from 'react';
-import { usePersonalInfo, useSocialLinks } from '@/lib/config';
-import { allProjects, allBlogs } from 'content-collections';
+import React, { useRef, useCallback } from 'react';
+import { usePersonalInfo } from '@/lib/config';
 import Background from '@/components/layout/Background';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 
@@ -19,9 +18,8 @@ import { ParallaxScrollContainer } from './parallax/components/ParallaxScrollCon
 // Import section components
 import { ParallaxBioSection } from './parallax/sections/ParallaxBioSection';
 import { ParallaxTechSection } from './parallax/sections/ParallaxTechSection';
-import { ParallaxProjectsSection } from './parallax/sections/ParallaxProjectsSection';
-import { ParallaxBlogSection } from './parallax/sections/ParallaxBlogSection';
-import { ParallaxContactSection } from './parallax/sections/ParallaxContactSection';
+import { ParallaxResumeCtaSection } from './parallax/sections/ParallaxResumeCtaSection';
+import { ParallaxThemeSettingsSection } from './parallax/sections/ParallaxThemeSettingsSection';
 
 /**
  * MobileParallaxLayout Component
@@ -32,24 +30,18 @@ import { ParallaxContactSection } from './parallax/sections/ParallaxContactSecti
  */
 const MobileParallaxLayout: React.FC = () => {
   const personal = usePersonalInfo();
-  const projects = allProjects;
-  const blogPosts = allBlogs.filter(blog => blog.status === 'published');
-  const socialLinks = useSocialLinks();
-
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const scrollRef = useRef<HTMLDivElement>(null!);
 
   // Border padding for glass elevator effect (constant 16px for mobile-only parallax)
   // Future: When desktop parallax is added, use responsive logic (32px for ≥1024px)
   const borderPadding = 16;
 
-  // Sections for scrolling - split About into Bio and Technologies
+  // Sections for scrolling - compact, high-impact mobile flow.
   const sections = [
     { id: 'bio', title: 'Bio' },
     { id: 'technologies', title: 'Technologies' },
-    { id: 'projects', title: 'Projects' },
-    { id: 'blog', title: 'Blog' },
-    { id: 'contact', title: 'Contact' }
+    { id: 'resume', title: 'Resume' },
+    { id: 'settings', title: 'Settings' }
   ];
 
   // Use custom hooks for theme enforcement
@@ -98,41 +90,11 @@ const MobileParallaxLayout: React.FC = () => {
       case 'technologies':
         return <ParallaxTechSection />;
 
-      case 'projects':
-        return (
-          <ParallaxProjectsSection
-            projects={projects.map(p => ({
-              id: p.slug,
-              slug: p.slug,
-              name: p.title,
-              description: p.summary
-            }))}
-          />
-        );
+      case 'resume':
+        return <ParallaxResumeCtaSection />;
 
-      case 'blog':
-        return (
-          <ParallaxBlogSection
-            blogPosts={blogPosts.map(b => ({
-              id: b.slug,
-              slug: b.slug,
-              title: b.title,
-              date: b.date,
-              excerpt: b.summary,
-              category: b.tags[0]
-            }))}
-          />
-        );
-
-      case 'contact':
-        return (
-          <ParallaxContactSection
-            formData={formData}
-            setFormData={setFormData}
-            socialLinks={socialLinks}
-            personal={personal}
-          />
-        );
+      case 'settings':
+        return <ParallaxThemeSettingsSection />;
 
       default:
         return null;

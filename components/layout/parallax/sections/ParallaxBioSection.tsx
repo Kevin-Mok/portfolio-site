@@ -33,73 +33,16 @@ export const ParallaxBioSection: React.FC<ParallaxBioSectionProps> = ({
   const tagline = personal.bio.tagline || '';
 
   return (
-    <div className="flex flex-col justify-start">
-      {/* Plain content wrapper - no glass morphism */}
-      <div className="max-w-3xl mx-auto w-full p-6 sm:p-8">
-        {/* Greeting Header */}
-        <h2
-          className="text-3xl sm:text-4xl font-bold mb-10"
-          style={{ color: 'var(--accent-color)' }}
-        >
-          {personal.greeting || `Hi, I'm ${personal.name}`}
-        </h2>
+    <div className="parallax-panel parallax-panel-spacious">
+      <h2 className="parallax-section-title">
+        {personal.greeting || `Hi, I'm ${personal.name}`}
+      </h2>
 
-        {/* Bio Content */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          {/* Introduction */}
-          {intro && (
-            <p
-              className="text-base sm:text-lg leading-relaxed"
-              style={{
-                color: 'var(--theme-text)',
-                lineHeight: '1.7'
-              }}
-            >
-              {intro}
-            </p>
-          )}
-
-          {/* Experience */}
-          {experience && (
-            <p
-              className="text-sm sm:text-base leading-relaxed"
-              style={{
-                color: 'var(--theme-text)',
-                opacity: 0.95,
-                lineHeight: '1.7'
-              }}
-            >
-              {experience}
-            </p>
-          )}
-
-          {/* Leadership */}
-          {leadership && (
-            <p
-              className="text-sm sm:text-base leading-relaxed"
-              style={{
-                color: 'var(--theme-text)',
-                opacity: 0.9,
-                lineHeight: '1.7'
-              }}
-            >
-              {leadership}
-            </p>
-          )}
-
-          {/* Tagline */}
-          {tagline && (
-            <p
-              className="text-sm italic pt-4"
-              style={{
-                color: 'var(--theme-text-dimmed)',
-                opacity: 0.8
-              }}
-            >
-              {tagline}
-            </p>
-          )}
-        </div>
+      <div className="parallax-copy-stack">
+        {intro && <p className="parallax-copy-lead">{intro}</p>}
+        {experience && <p className="parallax-copy-body">{experience}</p>}
+        {leadership && <p className="parallax-copy-body parallax-copy-muted">{leadership}</p>}
+        {tagline && <p className="parallax-copy-tagline">{tagline}</p>}
       </div>
     </div>
   );

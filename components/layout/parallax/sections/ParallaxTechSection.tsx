@@ -21,28 +21,18 @@ export const ParallaxTechSection: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col justify-start py-4">
-      <div className="max-w-6xl mx-auto w-full" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-        {/* Plain text header - no container */}
-        <h2
-          className="text-3xl sm:text-4xl font-bold"
-          style={{ color: 'var(--accent-color)' }}
-        >
-          Technologies
-        </h2>
-
-        {/* Technology Grid - Proportionally spaced in available height */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-6 justify-items-center">
-          {technologies.items.map((tech, idx) => (
-            <div key={idx}>
-              <TechIcon
-                iconName={tech.icon}
-                name={tech.name}
-                size={48}
-              />
-            </div>
-          ))}
-        </div>
+    <div className="parallax-panel parallax-panel-spacious">
+      <h2 className="parallax-section-title">Technologies</h2>
+      <div className="parallax-tech-grid">
+        {technologies.items.map((tech, idx) => (
+          <div key={idx}>
+            <TechIcon
+              iconName={tech.icon}
+              name={tech.name}
+              size={48}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

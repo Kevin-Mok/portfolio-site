@@ -1,6 +1,6 @@
 # TODO
 
-Last updated: 2026-02-16 14:42 UTC
+Last updated: 2026-02-16 18:03 UTC
 
 ## What's Done
 
@@ -10,3 +10,4 @@ Last updated: 2026-02-16 14:42 UTC
 - [x] 2026-02-16 14:35 UTC - Replace browser favicon with bracket-style `[K]` icon and wire metadata to use `/favicon.svg`.
 - [x] 2026-02-16 14:38 UTC - Regenerate `app/favicon.ico` from the bracket-style `[K]` icon so browsers requesting `/favicon.ico` receive updated branding.
 - [x] 2026-02-16 14:42 UTC - Update favicon mark to square `KM` (no brackets) using the same color palette and mono font, and regenerate `app/favicon.ico`.
+- [x] 2026-02-16 18:03 UTC - Upgrade mobile homepage parity with desktop visual system: remove forced mobile theme lock, add `Resume` CTA + inline `Settings` sections to parallax flow, and fix section navigation to use real element offsets.
