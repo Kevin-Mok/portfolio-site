@@ -72,15 +72,10 @@ const Background: React.FC<BackgroundProps> = ({ wallpaperUrl, minimalOverlay = 
 
   const bgConfig = themeBackgrounds[currentTheme] || themeBackgrounds['theme-tokyo-night'];
 
-  // In minimalOverlay (mobile parallax), use a stable wallpaper source that does not
-  // depend on mutable background state so accent changes cannot collapse to flat bg.
-  const activeWallpaper = minimalOverlay
-    ? (wallpaperUrl || bgConfig.url)
-    : (wallpaperUrl || theme.backgroundImage || bgConfig.url);
-  // In minimal overlay mode, always keep wallpaper visible to avoid fallback to flat bg.
-  const showWallpaper = minimalOverlay
-    ? true
-    : (theme.backgroundImage !== null || wallpaperUrl !== undefined);
+  // Mobile minimalOverlay should still honor ThemeContext wallpaper changes.
+  // Fall back to theme default when no explicit wallpaper is selected.
+  const activeWallpaper = wallpaperUrl || theme.backgroundImage || bgConfig.url;
+  const showWallpaper = wallpaperUrl !== undefined || theme.backgroundImage !== null;
   const wallpaperSrc = displayedWallpaper || activeWallpaper;
 
   // FIX 1: Preload adjacent carousel images for instant switching

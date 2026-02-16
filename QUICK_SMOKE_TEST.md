@@ -11,6 +11,12 @@ Target runtime: 15-25 minutes
 - [x] `docs/TODO.md` - Regenerate `app/favicon.ico` from bracket-style `[K]` icon to satisfy `/favicon.ico` requests.
 - [x] `docs/TODO.md` - Update favicon to square `KM` mark (no brackets) and regenerate ICO.
 - [x] `docs/TODO.md` - Upgrade mobile homepage parity with desktop visual system (theme parity, resume CTA, inline settings, and section navigation fixes).
+- [x] `docs/TODO.md` - Make mobile parallax backgrounds transparent and reduce gray overlay fill on section/settings surfaces.
+- [x] `docs/TODO.md` - Convert mobile Neofetch to a top hero that scrolls away and ensure Neofetch accent palette changes actually apply.
+- [x] `docs/TODO.md` - Fix Neofetch mobile accent swatch taps by making the hero bottom gradient overlay non-interactive.
+- [x] `docs/TODO.md` - Remove redundant Neofetch accent swatch palette from desktop/mobile and keep accent control in dedicated settings tiles.
+- [x] `docs/TODO.md` - Keep mobile parallax surfaces transparent during accent changes by removing gray theme-surface fills.
+- [x] `docs/TODO.md` - Fix mobile wallpaper switching so Settings -> Background controls apply to the active parallax wallpaper.
 
 ## T1 - Resume social icons render
 
@@ -146,9 +152,20 @@ Expected results:
 - Resume section includes CTA to `/resume` and a PDF link.
 - Settings section shows working theme preset, accent, and background controls inline.
 - Theme and accent changes apply immediately on mobile (no forced reset to Tokyo Night/cyan).
+- Background carousel changes immediately update the visible mobile wallpaper.
 - Keyboard section navigation (`Tab`, arrows) scrolls to the correct section boundaries.
+- Section/frame backgrounds are transparent enough that wallpaper clearly shows through (no dominant flat gray backplate).
+- Neofetch appears only as the top hero and is no longer visible as a persistent background while scrolling through lower sections.
+- No accent swatch palette appears under Neofetch (desktop or mobile).
+- Accent changes are done from dedicated settings controls only (Accent tile/settings section).
+- Changing accent on mobile does not introduce gray panel/card backgrounds; surfaces remain transparent.
 
 Failure modes / debugging notes:
 - If theme resets on mobile, verify no force-set classes/inline accent in `hooks/useEnforceMobileTheme.ts` and `components/layout/parallax/hooks/useParallaxTheme.ts`.
 - If keyboard jumps land in wrong places, debug `components/layout/parallax/hooks/useSectionNavigation.ts` target offset calculation.
 - If sections are missing, verify section list and switch cases in `components/layout/MobileParallaxLayout.tsx`.
+- If gray still dominates, inspect `components/layout/parallax/components/ParallaxScrollContainer.tsx`, `components/layout/parallax/components/ParallaxBorderFrame.tsx`, and `.parallax-panel` styles in `app/styles/10-mobile.css`.
+- If background controls do not change mobile wallpaper, inspect `components/layout/Background.tsx` `minimalOverlay` wallpaper selection logic and confirm it uses `theme.backgroundImage`.
+- If Neofetch persists behind content, inspect `components/layout/parallax/components/ParallaxScrollContainer.tsx` for fixed-position background usage.
+- If Neofetch still shows swatches, inspect `components/tiles/NeofetchTile.tsx` for remaining `setAccentColor`/swatch button rendering.
+- If gray returns when accent changes, inspect `app/styles/10-mobile.css` (`.parallax-panel`, `.parallax-settings-card`) and the Neofetch hero wrapper background in `components/layout/parallax/components/ParallaxScrollContainer.tsx`.
