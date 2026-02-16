@@ -10,6 +10,7 @@ import ThemePresetTile from '@/components/tiles/ThemePresetTile';
 import AccentColorTile from '@/components/tiles/AccentColorTile';
 import BackgroundTile from '@/components/tiles/BackgroundTile';
 import Background from '@/components/layout/Background';
+import MobileParallaxLayout from '@/components/layout/MobileParallaxLayout';
 import Polybar from '@/components/layout/Polybar';
 import { useFocus, ContentType as FocusContentType } from '@/contexts/FocusContext';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -145,7 +146,7 @@ const LayoutManager: React.FC = () => {
   // Prevent hydration mismatch - show neutral state during SSR/hydration
   if (!hasChecked) {
     return (
-      <div className="fixed inset-0 bg-[var(--theme-bg)]">
+      <div className="fixed inset-0 bg-transparent">
         {/* Neutral state during SSR and hydration - prevents mismatch */}
       </div>
     );
@@ -153,16 +154,7 @@ const LayoutManager: React.FC = () => {
 
   // Mobile Layout - Always use Parallax
   if (isStacked) {
-    const MobileParallaxLayout = React.lazy(() => import('@/components/layout/MobileParallaxLayout'));
-    return (
-      <React.Suspense fallback={
-        <div className="fixed inset-0 bg-[var(--theme-bg)]">
-          {/* Minimal invisible fallback - parallax loads almost instantly */}
-        </div>
-      }>
-        <MobileParallaxLayout />
-      </React.Suspense>
-    );
+    return <MobileParallaxLayout />;
   }
 
   // Desktop Layout

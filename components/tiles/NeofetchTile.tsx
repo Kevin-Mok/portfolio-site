@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { archLogoASCII, archLogoCompact, minimalLogo, kmokBlockLetters, dlBlockLetters, kevinBlockLetters } from '@/components/assets/archAscii';
 import { usePersonalInfo, useSystemInfo } from '@/lib/config';
 import { FONT_SIZES } from '@/lib/constants/typography';
-import { useTheme, AccentColor } from '@/contexts/ThemeContext';
 
 interface NeofetchTileProps {
   isBlurred?: boolean;
@@ -15,18 +14,6 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
   const [windowWidth, setWindowWidth] = useState(1024);
   const personal = usePersonalInfo();
   const system = useSystemInfo();
-  const { theme, setAccentColor } = useTheme();
-
-  const neofetchAccentSwatches: Array<{ name: AccentColor; cssVar: string }> = [
-    { name: 'indigo', cssVar: 'var(--theme-bg)' },
-    { name: 'rose', cssVar: 'var(--theme-error)' },
-    { name: 'emerald', cssVar: 'var(--theme-success)' },
-    { name: 'amber', cssVar: 'var(--theme-warning)' },
-    { name: 'sky', cssVar: 'var(--accent-color)' },
-    { name: 'cyan', cssVar: 'var(--theme-info)' },
-    { name: 'blue', cssVar: 'var(--theme-primary)' },
-    { name: 'violet', cssVar: 'var(--theme-text)' }
-  ];
 
   useEffect(() => {
     // Set initial width
@@ -170,26 +157,7 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
             </div>
           </div>
 
-          <div className="flex-1 min-h-12 grid grid-rows-[1fr_auto_2fr] px-1">
-            <div />
-            <div className="flex gap-1">
-              {neofetchAccentSwatches.map((swatch) => (
-                <button
-                  key={swatch.name}
-                  type="button"
-                  onClick={() => setAccentColor(swatch.name)}
-                  className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 border ${isBlurred ? 'opacity-50' : 'opacity-100'} ${theme.accentColor === swatch.name ? 'scale-110' : ''}`}
-                  style={{
-                    backgroundColor: swatch.cssVar,
-                    borderColor: theme.accentColor === swatch.name ? 'var(--theme-text)' : 'rgba(var(--theme-text-rgb), 0.3)'
-                  }}
-                  title={`Set accent color to ${swatch.name}`}
-                  aria-label={`Set accent color to ${swatch.name}`}
-                />
-              ))}
-            </div>
-            <div />
-          </div>
+          <div className="flex-1" />
         </div>
       </div>
     </div>

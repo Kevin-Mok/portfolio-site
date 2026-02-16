@@ -144,13 +144,7 @@
 
 .parallax-panel {
   border: 1px solid rgba(var(--accent-color-rgb), 0.24);
-  background: linear-gradient(
-    180deg,
-    rgba(var(--theme-surface-rgb), 0.62) 0%,
-    rgba(var(--theme-surface-rgb), 0.46) 100%
-  );
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  background: transparent;
   padding: 20px;
 }
 
@@ -253,7 +247,7 @@
 
 .parallax-settings-card {
   border: 1px solid rgba(var(--accent-color-rgb), 0.18);
-  background: rgba(var(--theme-bg-rgb), 0.34);
+  background: transparent;
   padding: 12px;
 }
 

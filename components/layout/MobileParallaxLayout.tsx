@@ -50,8 +50,7 @@ const MobileParallaxLayout: React.FC = () => {
   // Use custom hooks for scroll management
   const {
     activeSection,
-    scrollPercent,
-    backgroundOpacity
+    scrollPercent
   } = useParallaxScroll(scrollRef, sections);
 
   // Use custom hooks for navigation
@@ -103,19 +102,18 @@ const MobileParallaxLayout: React.FC = () => {
 
   return (
     <>
-      <Background />
+      <Background minimalOverlay />
 
       {/* Custom scrollbar positioned outside window frame */}
       <ScrollProgress scrollPercent={scrollPercent} />
 
-      {/* Border frame with glass effects */}
-      <ParallaxBorderFrame borderPadding={borderPadding} />
+      {/* Border frame without glass overlays (keeps mobile background truly transparent). */}
+      <ParallaxBorderFrame borderPadding={borderPadding} showGlassEffects={false} />
 
       {/* Scrollable content container */}
       <ParallaxScrollContainer
         scrollRef={scrollRef}
         borderPadding={borderPadding}
-        backgroundOpacity={backgroundOpacity}
         sections={sections}
         renderSection={renderSection}
       />

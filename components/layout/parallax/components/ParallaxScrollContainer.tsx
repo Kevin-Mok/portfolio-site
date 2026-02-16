@@ -1,7 +1,6 @@
 'use client';
 
 import React, { RefObject, ReactNode } from 'react';
-import { motion, MotionValue } from 'framer-motion';
 import NeofetchTile from '@/components/tiles/NeofetchTile';
 
 interface Section {
@@ -12,7 +11,6 @@ interface Section {
 interface ParallaxScrollContainerProps {
   scrollRef: RefObject<HTMLDivElement>;
   borderPadding: number;
-  backgroundOpacity: MotionValue<number>;
   sections: Section[];
   renderSection: (sectionId: string) => ReactNode;
 }
@@ -28,7 +26,6 @@ interface ParallaxScrollContainerProps {
 export const ParallaxScrollContainer: React.FC<ParallaxScrollContainerProps> = ({
   scrollRef,
   borderPadding,
-  backgroundOpacity,
   sections,
   renderSection
 }) => {
@@ -50,43 +47,32 @@ export const ParallaxScrollContainer: React.FC<ParallaxScrollContainerProps> = (
       role="main"
       aria-label="Main content"
     >
-      {/* Fixed Neofetch Background - Now inside scroll container for clickability */}
-      <motion.div
-        className="fixed flex items-center justify-center"
+      {/* Top Neofetch hero section (scrolls away with content) */}
+      <section
+        className="relative flex items-center justify-center"
         style={{
-          top: `${borderPadding}px`,
-          left: `${borderPadding}px`,
-          right: `${borderPadding}px`,
-          height: '65vh',
-          opacity: backgroundOpacity, // MotionValue is handled by Framer Motion
-          backgroundColor: 'rgba(var(--theme-surface-rgb), 0.5)',
-          backdropFilter: 'blur(0.5px)',
-          zIndex: 1,
-          pointerEvents: 'none'
+          minHeight: '65vh',
+          paddingTop: '24px',
+          paddingBottom: '20px',
+          paddingLeft: '16px',
+          paddingRight: '16px',
+          zIndex: 2
         }}
+        role="region"
+        aria-label="Neofetch section"
       >
-        <div className="w-full max-w-4xl mx-auto" style={{
-          marginTop: `${borderPadding}px`,
-          paddingLeft: '48px',
-          paddingRight: '48px',
-          pointerEvents: 'none'
-        }}>
-          <NeofetchTile isBlurred={false} layout="parallax" />
+        <div className="w-full max-w-4xl mx-auto">
+          <div
+            style={{
+              border: '1px solid rgba(var(--accent-color-rgb), 0.25)',
+              background: 'transparent',
+              padding: '20px'
+            }}
+          >
+            <NeofetchTile isBlurred={false} layout="parallax" />
+          </div>
         </div>
-        <div
-          className="absolute inset-x-0 bottom-0 h-32"
-          style={{
-            background: 'linear-gradient(to bottom, transparent, var(--theme-bg))'
-          }}
-        />
-      </motion.div>
-
-      {/* Spacer for fixed background */}
-      <div
-        style={{
-          height: `calc(65vh + ${borderPadding}px)`
-        }}
-      />
+      </section>
 
       {/* Content Sections */}
       {sections.map((section, index) => (
@@ -99,32 +85,16 @@ export const ParallaxScrollContainer: React.FC<ParallaxScrollContainerProps> = (
             paddingBottom: '32px',
             paddingLeft: '16px',
             paddingRight: '16px',
-            backgroundColor: 'var(--theme-bg)',
+            backgroundColor: 'transparent',
             zIndex: 2,
             scrollMarginTop: '0px'
           }}
           role="region"
           aria-label={`${section.title} section`}
         >
-          {/* Dot gradient transition from Neofetch to content */}
+          {/* Divider transition from Neofetch to content */}
           {index === 0 && (
             <>
-              <div
-                className="absolute left-0 right-0"
-                style={{
-                  top: '-75px',
-                  height: '75px',
-                  backgroundImage: `radial-gradient(circle at 1px 1px, rgba(var(--theme-bg-rgb), 0.8) 0.8px, transparent 0.8px)`,
-                  backgroundSize: '3px 3px',
-                  backgroundPosition: '0 0',
-                  backdropFilter: 'blur(0.5px)',
-                  WebkitBackdropFilter: 'blur(4px)',
-                  maskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)',
-                  zIndex: 2,
-                  pointerEvents: 'none'
-                }}
-              />
               {/* Line after gradient transition */}
               <div
                 className="absolute max-w-3xl mx-auto w-full"

@@ -1,5 +1,5 @@
 import { useEffect, useState, RefObject } from 'react';
-import { useScroll, useTransform, MotionValue } from 'framer-motion';
+import { useScroll, MotionValue } from 'framer-motion';
 
 interface Section {
   id: string;
@@ -10,7 +10,6 @@ interface UseParallaxScrollReturn {
   activeSection: string;
   scrollPercent: number;
   scrollYProgress: MotionValue<number>;
-  backgroundOpacity: MotionValue<number>;
 }
 
 /**
@@ -28,13 +27,6 @@ export function useParallaxScroll(
   const { scrollYProgress } = useScroll({
     container: scrollRef
   });
-
-  // Transform scroll progress to background opacity
-  const backgroundOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.2],
-    [0.7, 0.3]
-  );
 
   // Track active section based on scroll position
   useEffect(() => {
@@ -90,7 +82,6 @@ export function useParallaxScroll(
   return {
     activeSection,
     scrollPercent,
-    scrollYProgress,
-    backgroundOpacity
+    scrollYProgress
   };
 }

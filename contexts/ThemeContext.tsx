@@ -125,24 +125,26 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }));
   }, []);
 
-  // Apply theme classes to root element
+  // Apply theme preset and background-effect classes to root element.
+  // Keep this separate from accent updates to avoid flicker to :root defaults.
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const root = document.documentElement;
+    const legacyThemeClasses = ['tokyo-night', 'nord', 'solarized-light'];
+    legacyThemeClasses.forEach((cls) => root.classList.remove(cls));
 
-    // Remove old theme and accent classes using classList API
+    // Remove old theme classes using classList API
     const classesToRemove: string[] = [];
     root.classList.forEach((cls) => {
-      if (cls.startsWith('theme-') || cls.startsWith('accent-')) {
+      if (cls.startsWith('theme-')) {
         classesToRemove.push(cls);
       }
     });
     classesToRemove.forEach((cls) => root.classList.remove(cls));
 
-    // Add new theme classes
+    // Add current theme class
     root.classList.add(`theme-${theme.preset}`);
-    root.classList.add(`accent-${theme.accentColor}`);
 
     // Handle background effect
     if (theme.backgroundEffect) {
@@ -151,7 +153,31 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       root.classList.remove('bg-effect-enabled');
     }
 
-  }, [theme]);
+  }, [theme.preset, theme.backgroundEffect]);
+
+  // Apply accent class independently so accent changes do not touch theme classes.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const root = document.documentElement;
+    const expectedThemeClass = `theme-${theme.preset}`;
+    const hasThemeClass = Array.from(root.classList).some((cls) => cls.startsWith('theme-'));
+    if (!hasThemeClass) {
+      root.classList.add(expectedThemeClass);
+    }
+    const legacyThemeClasses = ['tokyo-night', 'nord', 'solarized-light'];
+    legacyThemeClasses.forEach((cls) => root.classList.remove(cls));
+
+    const classesToRemove: string[] = [];
+    root.classList.forEach((cls) => {
+      if (cls.startsWith('accent-')) {
+        classesToRemove.push(cls);
+      }
+    });
+    classesToRemove.forEach((cls) => root.classList.remove(cls));
+
+    root.classList.add(`accent-${theme.accentColor}`);
+  }, [theme.accentColor]);
 
   // Cleanup any stale inline accent overrides left by legacy mobile theme logic.
   useEffect(() => {
