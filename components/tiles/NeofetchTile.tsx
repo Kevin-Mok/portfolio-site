@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { archLogoASCII, archLogoCompact, minimalLogo, kmokBlockLetters, dlBlockLetters, kevinBlockLetters } from '@/components/assets/archAscii';
 import { usePersonalInfo, useSystemInfo } from '@/lib/config';
 import { FONT_SIZES } from '@/lib/constants/typography';
+import { useTheme, AccentColor } from '@/contexts/ThemeContext';
 
 interface NeofetchTileProps {
   isBlurred?: boolean;
@@ -14,6 +15,18 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
   const [windowWidth, setWindowWidth] = useState(1024);
   const personal = usePersonalInfo();
   const system = useSystemInfo();
+  const { theme, setAccentColor } = useTheme();
+
+  const neofetchAccentSwatches: Array<{ name: AccentColor; cssVar: string }> = [
+    { name: 'indigo', cssVar: 'var(--theme-bg)' },
+    { name: 'rose', cssVar: 'var(--theme-error)' },
+    { name: 'emerald', cssVar: 'var(--theme-success)' },
+    { name: 'amber', cssVar: 'var(--theme-warning)' },
+    { name: 'sky', cssVar: 'var(--accent-color)' },
+    { name: 'cyan', cssVar: 'var(--theme-info)' },
+    { name: 'blue', cssVar: 'var(--theme-primary)' },
+    { name: 'violet', cssVar: 'var(--theme-text)' }
+  ];
 
   useEffect(() => {
     // Set initial width
@@ -51,7 +64,7 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
 
   return (
     <div
-      className={`flex ${gapClass} font-mono transition-all duration-300 w-full`}
+      className={`flex ${gapClass} font-mono transition-all duration-300 w-full h-full`}
       style={{
         color: isBlurred ? 'rgba(var(--theme-text-rgb), 0.7)' : 'var(--theme-text)',
         fontSize: layout === 'tile' ? FONT_SIZES.sm : undefined
@@ -81,7 +94,7 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
       </div>
 
       {/* Info Column */}
-      <div className="flex-1 flex flex-col justify-center">
+      <div className="flex-1 flex flex-col justify-start h-full">
         <div
           className={`font-bold mb-1 transition-all duration-300`}
           style={{
@@ -94,64 +107,88 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
           }}>---------------</div>
         </div>
 
-        <div className="space-y-1" style={{ fontSize: infoFontSize }}>
-          {/* GitHub */}
-          {system.github && (
+        <div className="flex flex-col flex-1 min-h-0" style={{ fontSize: infoFontSize }}>
+          <div className="space-y-1">
+            {/* GitHub */}
+            {system.github && (
+              <div>
+                <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.github.platform}</span>:{' '}
+                <a
+                  href={system.github.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline transition-colors duration-200 cursor-pointer"
+                  style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
+                >
+                  {system.github.username}
+                </a>
+              </div>
+            )}
+
+            {/* Twitter/X */}
+            {system.twitter && (
+              <div>
+                <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.twitter.platform}</span>:{' '}
+                <a
+                  href={system.twitter.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline transition-colors duration-200 cursor-pointer"
+                  style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
+                >
+                  {system.twitter.username}
+                </a>
+              </div>
+            )}
+
+            {/* LinkedIn */}
+            {system.linkedin && (
+              <div>
+                <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.linkedin.platform}</span>:{' '}
+                <a
+                  href={system.linkedin.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline transition-colors duration-200 cursor-pointer"
+                  style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
+                >
+                  {system.linkedin.username}
+                </a>
+              </div>
+            )}
+
+            {/* Email */}
             <div>
-              <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.github.platform}</span>:{' '}
+              <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>Email</span>:{' '}
               <a
-                href={system.github.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:me@kevin-mok.com"
                 className="hover:underline transition-colors duration-200 cursor-pointer"
                 style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
               >
-                {system.github.username}
+                me@kevin-mok.com
               </a>
             </div>
-          )}
+          </div>
 
-          {/* Twitter/X */}
-          {system.twitter && (
-            <div>
-              <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.twitter.platform}</span>:{' '}
-              <a
-                href={system.twitter.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline transition-colors duration-200 cursor-pointer"
-                style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
-              >
-                {system.twitter.username}
-              </a>
+          <div className="flex-1 min-h-12 grid grid-rows-[1fr_auto_2fr] px-1">
+            <div />
+            <div className="flex gap-1">
+              {neofetchAccentSwatches.map((swatch) => (
+                <button
+                  key={swatch.name}
+                  type="button"
+                  onClick={() => setAccentColor(swatch.name)}
+                  className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 border ${isBlurred ? 'opacity-50' : 'opacity-100'} ${theme.accentColor === swatch.name ? 'scale-110' : ''}`}
+                  style={{
+                    backgroundColor: swatch.cssVar,
+                    borderColor: theme.accentColor === swatch.name ? 'var(--theme-text)' : 'rgba(var(--theme-text-rgb), 0.3)'
+                  }}
+                  title={`Set accent color to ${swatch.name}`}
+                  aria-label={`Set accent color to ${swatch.name}`}
+                />
+              ))}
             </div>
-          )}
-
-          {/* LinkedIn */}
-          {system.linkedin && (
-            <div>
-              <span className={`font-bold transition-all duration-300`} style={{ color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)' }}>{system.linkedin.platform}</span>:{' '}
-              <a
-                href={system.linkedin.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:underline transition-colors duration-200 cursor-pointer"
-                style={{ color: 'var(--accent-color)', pointerEvents: 'auto' }}
-              >
-                {system.linkedin.username}
-              </a>
-            </div>
-          )}
-
-          <div className="pt-1 flex gap-1">
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--theme-bg)'}}></span>
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--theme-error)'}}></span>
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--theme-success)'}}></span>
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--theme-warning)'}}></span>
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--accent-color)'}}></span>
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--theme-info)'}}></span>
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--theme-primary)'}}></span>
-            <span className={`w-3 h-3 inline-block rounded-sm transition-all duration-300 ${isBlurred ? 'opacity-50' : 'opacity-100'}`} style={{backgroundColor: 'var(--theme-text)'}}></span>
+            <div />
           </div>
         </div>
       </div>

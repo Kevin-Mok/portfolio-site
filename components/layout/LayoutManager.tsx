@@ -212,7 +212,7 @@ const LayoutManager: React.FC = () => {
                   layout
                   layoutId="tile-neofetch"
                   transition={layoutTransition}
-                  className={`h-2/5 shadow-xl border overflow-auto no-scrollbar ${
+                  className={`h-[45%] shadow-xl border overflow-auto no-scrollbar ${
                     focusedTile === 'neofetch' ? 'border-[var(--accent-color)] shadow-[var(--accent-color)]/30 shadow-2xl' : 'border-[var(--accent-color)]/30'
                   }`}
                   initial={{
@@ -233,7 +233,7 @@ const LayoutManager: React.FC = () => {
                 </motion.div>
 
                 {/* Bottom Section - Navigation and 3 Theme Tiles */}
-                <motion.div className="h-3/5 flex" style={{ gap: '12px', overflow: 'hidden' }}>
+                <motion.div className="h-[55%] flex" style={{ gap: '12px', overflow: 'hidden' }}>
                   {/* Navigation Tile - 70% of bottom width */}
                   <motion.div
                     layout

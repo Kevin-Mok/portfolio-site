@@ -16,6 +16,7 @@ const NavigationTile: React.FC<NavigationTileProps> = ({ onContentSelect, isBlur
   const router = useRouter();
   const { activeContent } = useFocusState();
   const { handleContentNavigation } = useFocusNavigation();
+  const hiddenSections = new Set(['projects', 'blog', 'contact']);
 
   // Use content-collections instead of config
   const projects = allProjects;
@@ -175,10 +176,11 @@ const NavigationTile: React.FC<NavigationTileProps> = ({ onContentSelect, isBlur
           }}
           onClick={(e) => handleSelect({ type: 'resume' }, e)}
         >
-          <span><span style={{ color: 'var(--accent-color)' }}>├──</span> Resume</span>
+          <span><span style={{ color: 'var(--accent-color)' }}>{hiddenSections.size > 0 ? '└──' : '├──'}</span> Resume</span>
         </div>
 
         {/* Projects Directory */}
+        {!hiddenSections.has('projects') && (
         <div>
           <div
             className="touch-target touch-feedback cursor-pointer px-2 py-1 rounded transition-all duration-200 flex items-center justify-between"
@@ -341,8 +343,10 @@ const NavigationTile: React.FC<NavigationTileProps> = ({ onContentSelect, isBlur
             </div>
           )}
         </div>
+        )}
 
         {/* Blog Directory */}
+        {!hiddenSections.has('blog') && (
         <div>
           <div
             className="touch-target touch-feedback cursor-pointer px-2 py-1 rounded transition-all duration-200 flex items-center justify-between"
@@ -411,8 +415,10 @@ const NavigationTile: React.FC<NavigationTileProps> = ({ onContentSelect, isBlur
             </div>
           )}
         </div>
+        )}
 
         {/* Contact */}
+        {!hiddenSections.has('contact') && (
         <div
           className="touch-target touch-feedback cursor-pointer px-2 py-1 rounded transition-all duration-200"
           style={{
@@ -433,6 +439,7 @@ const NavigationTile: React.FC<NavigationTileProps> = ({ onContentSelect, isBlur
         >
           <span><span style={{ color: 'var(--accent-color)' }}>└──</span> Contact</span>
         </div>
+        )}
       </div>
 
       <div className="mt-auto pt-4" style={{ color: 'var(--theme-text-dimmed)', fontSize: FONT_SIZES.sm }}>
