@@ -16,7 +16,7 @@ const AboutContentComponent: React.FC = () => {
     <div>
       <div style={{
         color: 'var(--theme-text)',
-        fontSize: 'clamp(1rem, 1rem + 1.5cqi, 1.1rem)',
+        fontSize: 'calc(clamp(1rem, 1rem + 1.5cqi, 1.1rem) - 2px)',
         paddingLeft: '8px',
         paddingRight: '0px'
       }}>
@@ -25,7 +25,7 @@ const AboutContentComponent: React.FC = () => {
           className="font-bold"
           style={{
             color: 'var(--accent-color)',
-            fontSize: 'clamp(1.1rem, 1.1rem + 1.5cqi, 1.5rem)',
+            fontSize: 'calc(clamp(1.1rem, 1.1rem + 1.5cqi, 1.5rem) - 2px)',
             marginBottom: '16px'
           }}
         >

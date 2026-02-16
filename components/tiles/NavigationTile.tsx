@@ -125,13 +125,13 @@ const NavigationTile: React.FC<NavigationTileProps> = ({ onContentSelect, isBlur
       className="font-mono transition-all duration-300"
       style={{
         color: isBlurred ? 'rgba(var(--theme-text-rgb), 0.7)' : 'var(--theme-text)',
-        fontSize: FONT_SIZES.sm
+        fontSize: FONT_SIZES.xs
       }}>
       <div
         className="mb-3 font-bold transition-all duration-300"
         style={{
           color: isBlurred ? 'rgba(var(--theme-primary-rgb), 0.6)' : 'var(--theme-primary)',
-          fontSize: FONT_SIZES.lg
+          fontSize: FONT_SIZES.base
         }}>Contents</div>
 
       <div className="touch-spacing">
