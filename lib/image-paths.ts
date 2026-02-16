@@ -2,7 +2,7 @@
  * Image path utilities for flexible CDN or local image loading
  *
  * Usage:
- * - Set NEXT_PUBLIC_CDN_URL to use a CDN (e.g., https://cdn.dleer.ai)
+ * - Set NEXT_PUBLIC_CDN_URL to use a CDN (e.g., https://cdn.kmok.ai)
  * - Leave unset to use local /public/images/ directory
  *
  * This allows the project to work both with and without a CDN,

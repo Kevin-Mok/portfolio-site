@@ -143,7 +143,7 @@ export async function POST(req: NextRequest) {
     const { data, error } = await resend.emails.send({
       // Use environment variable for FROM address
       // Falls back to noreply@ if not configured
-      from: process.env.RESEND_FROM_EMAIL || `noreply@${process.env.NEXT_PUBLIC_DOMAIN || 'dleer.com'}`,
+      from: process.env.RESEND_FROM_EMAIL || `noreply@${process.env.NEXT_PUBLIC_DOMAIN || 'kmok.com'}`,
       to: process.env.NEXT_PUBLIC_CONTACT_EMAIL!,
       replyTo: email,  // Allow direct reply to sender
       subject: `Portfolio Contact: ${name}`,

@@ -92,7 +92,7 @@ export function useFeatureFlags() {
 // All UI text is hardcoded directly in components for simplicity
 
 /**
- * Format username for display (e.g., "dleer@portfolio")
+ * Format username for display (e.g., "kmok@portfolio")
  */
 export function formatUsername(): string {
   const config = getPortfolioConfig();

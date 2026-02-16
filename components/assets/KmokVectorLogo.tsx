@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-interface DleerVectorLogoProps {
+interface KmokVectorLogoProps {
   /** Triggers the draw-in animation */
   isAnimating?: boolean;
   /** Additional CSS classes */
@@ -15,16 +15,16 @@ interface DleerVectorLogoProps {
  * Vectorized DL logo - Abstract geometric shapes inspired by fastfetch
  * Slanted/diagonal forms filled with horizontal colored bars
  */
-export function DleerVectorLogo({
+export function KmokVectorLogo({
   isAnimating = false,
   className = '',
   style = {}
-}: DleerVectorLogoProps) {
+}: KmokVectorLogoProps) {
   return (
     <svg
       viewBox="0 0 140 80"
       xmlns="http://www.w3.org/2000/svg"
-      className={`dleer-vector-logo ${isAnimating ? 'animating' : ''} ${className}`}
+      className={`kmok-vector-logo ${isAnimating ? 'animating' : ''} ${className}`}
       style={{
         width: '100%',
         height: 'auto',
@@ -52,25 +52,25 @@ export function DleerVectorLogo({
 
       {/* Internal CSS for animation */}
       <style>{`
-        .dleer-vector-logo .bar {
+        .kmok-vector-logo .bar {
           transform-origin: left center;
           transform: scaleX(0);
           transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Stagger delays for draw-in effect */
-        .dleer-vector-logo.animating .bar-1 { transform: scaleX(1); transition-delay: 0ms; }
-        .dleer-vector-logo.animating .bar-2 { transform: scaleX(1); transition-delay: 50ms; }
-        .dleer-vector-logo.animating .bar-3 { transform: scaleX(1); transition-delay: 100ms; }
-        .dleer-vector-logo.animating .bar-4 { transform: scaleX(1); transition-delay: 150ms; }
-        .dleer-vector-logo.animating .bar-5 { transform: scaleX(1); transition-delay: 200ms; }
-        .dleer-vector-logo.animating .bar-6 { transform: scaleX(1); transition-delay: 250ms; }
-        .dleer-vector-logo.animating .bar-7 { transform: scaleX(1); transition-delay: 300ms; }
-        .dleer-vector-logo.animating .bar-8 { transform: scaleX(1); transition-delay: 350ms; }
-        .dleer-vector-logo.animating .bar-9 { transform: scaleX(1); transition-delay: 400ms; }
+        .kmok-vector-logo.animating .bar-1 { transform: scaleX(1); transition-delay: 0ms; }
+        .kmok-vector-logo.animating .bar-2 { transform: scaleX(1); transition-delay: 50ms; }
+        .kmok-vector-logo.animating .bar-3 { transform: scaleX(1); transition-delay: 100ms; }
+        .kmok-vector-logo.animating .bar-4 { transform: scaleX(1); transition-delay: 150ms; }
+        .kmok-vector-logo.animating .bar-5 { transform: scaleX(1); transition-delay: 200ms; }
+        .kmok-vector-logo.animating .bar-6 { transform: scaleX(1); transition-delay: 250ms; }
+        .kmok-vector-logo.animating .bar-7 { transform: scaleX(1); transition-delay: 300ms; }
+        .kmok-vector-logo.animating .bar-8 { transform: scaleX(1); transition-delay: 350ms; }
+        .kmok-vector-logo.animating .bar-9 { transform: scaleX(1); transition-delay: 400ms; }
 
         /* Initial state when not animating - show all bars */
-        .dleer-vector-logo:not(.animating) .bar {
+        .kmok-vector-logo:not(.animating) .bar {
           transform: scaleX(1);
           transition: none;
         }

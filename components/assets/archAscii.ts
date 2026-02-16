@@ -33,7 +33,7 @@ export const minimalLogo = `    ╱╲
  ╱  ··  ╲
 ╱________╲`;
 
-export const dleerBlockLetters = `██████╗ ██╗     ███████╗███████╗██████╗
+export const kmokBlockLetters = `██████╗ ██╗     ███████╗███████╗██████╗
 ██╔══██╗██║     ██╔════╝██╔════╝██╔══██╗
 ██║  ██║██║     █████╗  █████╗  ██████╔╝
 ██║  ██║██║     ██╔══╝  ██╔══╝  ██╔══██╗
@@ -47,18 +47,18 @@ export const dlBlockLetters = `██████╗ ██╗
 ██████╔╝███████╗
 ╚═════╝ ╚══════╝`;
 
-export const dleerShadow = `▓█████▄  ██▓    ▓█████ ▓█████  ██▀███
+export const kmokShadow = `▓█████▄  ██▓    ▓█████ ▓█████  ██▀███
 ▒██▀ ██▌▓██▒    ▓█   ▀ ▓█   ▀ ▓██ ▒ ██▒
 ░██   █▌▒██░    ▒███   ▒███   ▓██ ░▄█ ▒
 ░▓█▄   ▌▒██░    ▒▓█  ▄ ▒▓█  ▄ ▒██▀▀█▄
 ░▒████▓ ░██████▒░▒████▒░▒████▒░██▓ ▒██▒
  ▒▒▓  ▒ ░ ▒░▓  ░░░ ▒░ ░░░ ▒░ ░░ ▒▓ ░▒▓░`;
 
-export const dleerCompact = ` ╔╦╗╦  ╔═╗╔═╗╦═╗
+export const kmokCompact = ` ╔╦╗╦  ╔═╗╔═╗╦═╗
   ║║║  ║╣ ║╣ ╠╦╝
  ═╩╝╩═╝╚═╝╚═╝╩╚═`;
 
-export const dleerMini = `DLEER`;
+export const kmokMini = `KMOK`;
 
 export const kevinBlockLetters = `██╗ ██╗███████╗██╗   ██╗██╗███╗   ██╗
 ██║ ██║██╔════╝██║   ██║██║████╗  ██║

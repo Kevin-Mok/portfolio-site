@@ -67,8 +67,8 @@ Implement a production-grade deployment architecture using:
    - Solarized Light: 3 images (pastel-window, yellow_kyoto, ign_colorful)
 
 2. **Profile Photos** (2 images):
-   - `profile/dleer-shinjuku.webp` (main)
-   - `profile/dleer-shinjuku-RF-DETR.webp` (detection variant)
+   - `profile/kmok-shinjuku.webp` (main)
+   - `profile/kmok-shinjuku-RF-DETR.webp` (detection variant)
 
 3. **Image Variants**:
    - Original resolution (PNG/WebP)
@@ -194,7 +194,7 @@ NODE_ENV=production
 
 4. **Create Bucket**:
    - Click "Create bucket"
-   - **Bucket name**: `dleer-portfolio-images` (must be globally unique)
+   - **Bucket name**: `kmok-portfolio-images` (must be globally unique)
    - **Location**: Automatic (or choose region closest to primary audience)
    - Click "Create bucket"
 
@@ -217,22 +217,22 @@ npm install -g wrangler
 wrangler login
 
 # Upload entire images directory
-wrangler r2 object put dleer-portfolio-images/images --file=public/images --recursive
+wrangler r2 object put kmok-portfolio-images/images --file=public/images --recursive
 
 # Verify upload
-wrangler r2 bucket list dleer-portfolio-images
+wrangler r2 bucket list kmok-portfolio-images
 ```
 
 **Expected Directory Structure in R2**:
 ```
-dleer-portfolio-images/
+kmok-portfolio-images/
 ├── images/
 │   ├── purple-girl.webp
 │   ├── cat_anime-girl.webp
 │   ├── cool_rocks.webp
 │   ├── profile/
-│   │   ├── dleer-shinjuku.webp
-│   │   └── dleer-shinjuku-RF-DETR.webp
+│   │   ├── kmok-shinjuku.webp
+│   │   └── kmok-shinjuku-RF-DETR.webp
 │   ├── thumbs/
 │   │   ├── purple-girl_thumb.webp
 │   │   └── ...
@@ -449,7 +449,7 @@ export const portfolioConfig: PortfolioConfig = {
   personal: {
     // ... other config
     profilePhoto: {
-      src: getCdnUrl(process.env.NEXT_PUBLIC_PROFILE_PHOTO || "/images/profile/dleer-shinjuku.webp"),
+      src: getCdnUrl(process.env.NEXT_PUBLIC_PROFILE_PHOTO || "/images/profile/kmok-shinjuku.webp"),
       alt: "David in Tokyo",
       width: 1536,
       height: 2048,
@@ -460,7 +460,7 @@ export const portfolioConfig: PortfolioConfig = {
         iso: "32"
       },
       detectionVariant: {
-        src: getCdnUrl("/images/profile/dleer-shinjuku-RF-DETR.webp"),
+        src: getCdnUrl("/images/profile/kmok-shinjuku-RF-DETR.webp"),
         exif: {
           location: "Shinjuku, Tokyo",
           model: "RF-DETR",
@@ -636,7 +636,7 @@ See `docs/CDN_DEPLOYMENT_SPEC.md` for complete setup guide.
 1. **Click** "New Project"
 2. **Select** "Deploy from GitHub repo"
 3. **Authorize** Railway to access your GitHub account
-4. **Select** `dleer-portfolio` repository
+4. **Select** `kmok-portfolio` repository
 5. Railway auto-detects Dockerfile
 
 ### Step 3.3: Configure Environment Variables
@@ -810,8 +810,8 @@ Solarized Light:
 - `/images/ign_colorful.png` (10.9MB)
 
 **Profile Photos** (2 files, ~2MB):
-- `/images/profile/dleer-shinjuku.webp` (1.2MB)
-- `/images/profile/dleer-shinjuku-RF-DETR.webp` (0.8MB)
+- `/images/profile/kmok-shinjuku.webp` (1.2MB)
+- `/images/profile/kmok-shinjuku-RF-DETR.webp` (0.8MB)
 
 **Thumbnails** (`/images/thumbs/`, 10 files, ~2MB):
 - All wallpapers have `_thumb.webp` variants (200-300KB each)
@@ -878,10 +878,10 @@ NODE_ENV=production
 **Solutions**:
 ```bash
 # Verify R2 bucket contents
-wrangler r2 object list dleer-portfolio-images
+wrangler r2 object list kmok-portfolio-images
 
 # Re-upload missing files
-wrangler r2 object put dleer-portfolio-images/images/purple-girl.webp \
+wrangler r2 object put kmok-portfolio-images/images/purple-girl.webp \
   --file=public/images/purple-girl.webp
 
 # Check public access in dashboard
@@ -1092,17 +1092,17 @@ echo $NEXT_PUBLIC_CDN_URL
 
 ```bash
 # List R2 bucket contents
-wrangler r2 object list dleer-portfolio-images
+wrangler r2 object list kmok-portfolio-images
 
 # Upload single image
-wrangler r2 object put dleer-portfolio-images/images/new-photo.webp \
+wrangler r2 object put kmok-portfolio-images/images/new-photo.webp \
   --file=public/images/new-photo.webp
 
 # Delete image
-wrangler r2 object delete dleer-portfolio-images/images/old-photo.webp
+wrangler r2 object delete kmok-portfolio-images/images/old-photo.webp
 
 # Download image from R2
-wrangler r2 object get dleer-portfolio-images/images/photo.webp \
+wrangler r2 object get kmok-portfolio-images/images/photo.webp \
   --file=downloaded.webp
 
 # Check Railway logs

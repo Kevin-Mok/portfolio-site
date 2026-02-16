@@ -55,7 +55,7 @@ const Polybar: React.FC<PolybarProps> = ({ onNavigate }) => {
         }}>
         {/* Left Section */}
         <div className="flex items-center gap-2">
-          <span className="font-bold" style={{ color: 'var(--accent-color)' }}>[DLEER]</span>
+          <span className="font-bold" style={{ color: 'var(--accent-color)' }}>[KMOK]</span>
           <span className="hidden sm:inline" style={{ color: 'var(--color-text-dimmed)' }}>portfolio</span>
         </div>
 

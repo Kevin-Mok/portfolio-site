@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       // Cloudflare R2 CDN for portfolio images
       {
         protocol: 'https',
-        hostname: 'cdn.dleer.ai',
+        hostname: 'cdn.kmok.ai',
         pathname: '/**',
       },
     ],

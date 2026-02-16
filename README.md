@@ -13,7 +13,7 @@ A production-ready developer portfolio built with Next.js 15, featuring a tiled 
 
 **Modern tech stack meets terminal aesthetics—designed for developers who appreciate both craft and performance.**
 
-[dleer.ai](https://dleer.ai) • [Report Issue](https://github.com/dleerdefi/dleer-portfolio/issues)
+[kmok.ai](https://kmok.ai) • [Report Issue](https://github.com/kmokdefi/kmok-portfolio/issues)
 
 </div>
 
@@ -47,8 +47,8 @@ npm >= 9.0.0
 
 ```bash
 # Clone and install
-git clone https://github.com/dleerdefi/dleer-portfolio.git
-cd dleer-portfolio
+git clone https://github.com/kmokdefi/kmok-portfolio.git
+cd kmok-portfolio
 npm install
 
 # Configure environment
@@ -81,9 +81,9 @@ Create `.env.local` from template and configure:
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `RESEND_API_KEY` | ✅ Yes | Resend API key ([resend.com](https://resend.com) - free: 100 emails/day, 3K/month) |
-| `RESEND_FROM_EMAIL` | ✅ Yes | Verified domain email for Resend (e.g., `contact@dleer.ai`) |
+| `RESEND_FROM_EMAIL` | ✅ Yes | Verified domain email for Resend (e.g., `contact@kmok.ai`) |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | ✅ Yes | Email address to receive form submissions |
-| `NEXT_PUBLIC_CDN_URL` | Optional | Cloudflare R2 CDN URL (e.g., `https://cdn.dleer.ai`) |
+| `NEXT_PUBLIC_CDN_URL` | Optional | Cloudflare R2 CDN URL (e.g., `https://cdn.kmok.ai`) |
 | `NEXT_PUBLIC_NAME` | Recommended | Your full name |
 | `NEXT_PUBLIC_TITLE` | Recommended | Your professional title |
 | `NEXT_PUBLIC_GITHUB_URL` | Recommended | GitHub profile URL |
@@ -108,7 +108,7 @@ This project supports **Cloudflare R2** for image hosting:
 **Quick Setup:**
 1. Create Cloudflare R2 bucket
 2. Upload images maintaining `/images/` folder structure
-3. Connect custom domain (e.g., `cdn.dleer.ai`)
+3. Connect custom domain (e.g., `cdn.kmok.ai`)
 4. Set `NEXT_PUBLIC_CDN_URL` in environment variables
 5. Deploy - images automatically load from CDN!
 
@@ -132,7 +132,7 @@ See [CLAUDE.md](CLAUDE.md) for detailed architecture documentation.
 Auto-deployment with Railpack builder:
 
 1. Visit [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub**
-2. Select `dleer-portfolio` repository
+2. Select `kmok-portfolio` repository
 3. **Add environment variables** in **Variables** tab:
    - `RESEND_API_KEY` (required)
    - `RESEND_FROM_EMAIL` (required)
@@ -187,7 +187,7 @@ Add environment variables via Vercel dashboard → Settings → Environment Vari
 ## 📁 Project Structure
 
 ```
-dleer-portfolio/
+kmok-portfolio/
 ├── app/                    # Next.js App Router
 │   ├── api/contact/       # Contact form API endpoint
 │   ├── styles/            # 12 modular CSS files
@@ -281,14 +281,14 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 **David Leer**
 
-- **GitHub**: [@dleerdefi](https://github.com/dleerdefi)
-- **Twitter**: [@dleer_defi](https://x.com/dleer_defi)
+- **GitHub**: [@kmokdefi](https://github.com/kmokdefi)
+- **Twitter**: [@kmok_defi](https://x.com/kmok_defi)
 
 ---
 
 <div align="center">
 
-**Built with <3 by [@dleerdefi](https://github.com/dleerdefi)**
+**Built with <3 by [@kmokdefi](https://github.com/kmokdefi)**
 
 [⬆ Back to Top](#david-leers-portfolio)
 

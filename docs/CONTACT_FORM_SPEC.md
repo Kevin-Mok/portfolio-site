@@ -483,7 +483,7 @@ Currently button is outside form and uses `dispatchEvent`. Replace with:
 ```typescript
 personal: {
   name: process.env.NEXT_PUBLIC_NAME || "David Leer",
-  username: process.env.NEXT_PUBLIC_USERNAME || "dleer",
+  username: process.env.NEXT_PUBLIC_USERNAME || "kmok",
   // ... existing fields
   email: process.env.NEXT_PUBLIC_EMAIL || "your.email@example.com",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "email@email.com",
@@ -673,7 +673,7 @@ Copy full code from [Component Breakdown → API Route](#1-api-route-appapic ont
 
 **File location in project structure:**
 ```
-dleer-portfolio/
+kmok-portfolio/
 ├── app/
 │   ├── api/
 │   │   └── contact/
@@ -768,7 +768,7 @@ interface FormData {
 ```typescript
 personal: {
   name: process.env.NEXT_PUBLIC_NAME || "David Leer",
-  username: process.env.NEXT_PUBLIC_USERNAME || "dleer",
+  username: process.env.NEXT_PUBLIC_USERNAME || "kmok",
   greeting: process.env.NEXT_PUBLIC_GREETING || "Hi, I'm David Leer",
   title: process.env.NEXT_PUBLIC_TITLE || "Founder & Software Engineer",
   subtitle: process.env.NEXT_PUBLIC_SUBTITLE || "Building next-generation AI memory systems",
@@ -1033,7 +1033,7 @@ GitHub repo (main branch) → Railway detects push → Auto-build → Auto-deplo
    - Visit railway.app → New Project
    - Select "Deploy from GitHub repo"
    - Authorize Railway GitHub app
-   - Select `dleer-portfolio` repository
+   - Select `kmok-portfolio` repository
 
 2. **Configure service:**
    - Railway auto-detects Next.js
@@ -1538,7 +1538,7 @@ npm install resend
 ### Code Repository Structure
 
 ```
-dleer-portfolio/
+kmok-portfolio/
 ├── app/
 │   ├── api/
 │   │   └── contact/

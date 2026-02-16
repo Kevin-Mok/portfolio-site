@@ -6,6 +6,7 @@ Target runtime: 15-25 minutes
 
 - [x] `docs/TODO.md` - Fix resume header social icon paths so LinkedIn/GitHub icons load correctly.
 - [x] `docs/TODO.md` - Adapt `AGENTS.md` and `CLAUDE.md` to portfolio-site project guidance.
+- [x] `docs/TODO.md` - Replace legacy branding tokens and legacy creator phrase with `kmok` across code/content/docs and renamed image assets.
 
 ## T1 - Resume social icons render
 
@@ -44,11 +45,11 @@ Objective: Verify agent guidance references Next.js portfolio workflows (not Exp
 Steps:
 
 ```bash
-rg -n \"Next\\.js 15\\.5\\.4|npm run dev|docs/TODO\\.md|QUICK_SMOKE_TEST\\.md\" AGENTS.md CLAUDE.md
+rg -n "Next\.js 15\.5\.4|npm run dev|docs/TODO\.md|QUICK_SMOKE_TEST\.md" AGENTS.md CLAUDE.md
 ```
 
 ```bash
-rg -n \"expo|React Native|eas build\" AGENTS.md CLAUDE.md
+rg -n "expo|React Native|eas build" AGENTS.md CLAUDE.md
 ```
 
 Expected results:
@@ -57,3 +58,26 @@ Expected results:
 
 Failure modes / debugging notes:
 - If mobile keywords still appear, re-open both files and remove remaining quit-weed/Expo references.
+
+## T3 - Kmok rebrand strings are complete
+
+Objective: Ensure all target legacy tokens were replaced and renamed assets exist.
+
+Steps:
+
+```bash
+rg -n -P --hidden -S -g '!.git/**' -g '!.next/**' -g '!node_modules/**' "(?i)\\x64\\x6c\\x65\\x65\\x72|\\x6f\\x72\\x69\\x67\\x69\\x6e\\x61\\x6c\\x20\\x63\\x72\\x65\\x61\\x74\\x6f\\x72" .
+```
+
+```bash
+ls -l public/images/kmok-homelab.webp public/images/kmok-tower-crane.webp public/images/profile/kmok-shinjuku.webp public/images/profile/kmok-shinjuku-RF-DETR.webp
+```
+
+Expected results:
+- First command returns no output.
+- Second command lists all four files successfully.
+
+Failure modes / debugging notes:
+- If `rg` finds matches, update remaining files and re-run.
+- If image files are missing, check rename operations in `public/images/` and `public/images/profile/`.
+- Deep test details: `docs/claude/kmok-rebrand/QUICK_SMOKE_TEST.md`.

@@ -1,4 +1,4 @@
-# robots.txt for dleer.ai
+# robots.txt for kmok.ai
 # Cloudflare manages User-agent rules above this line via Scrape Shield
 # Custom path blocks below
 
@@ -11,4 +11,4 @@ Disallow: /about
 Disallow: /contact
 
 # Sitemap for better indexing
-Sitemap: https://dleer.ai/sitemap.xml
+Sitemap: https://kmok.ai/sitemap.xml

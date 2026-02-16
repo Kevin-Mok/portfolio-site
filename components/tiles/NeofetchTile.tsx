@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { archLogoASCII, archLogoCompact, minimalLogo, dleerBlockLetters, dlBlockLetters, kevinBlockLetters } from '@/components/assets/archAscii';
+import { archLogoASCII, archLogoCompact, minimalLogo, kmokBlockLetters, dlBlockLetters, kevinBlockLetters } from '@/components/assets/archAscii';
 import { usePersonalInfo, useSystemInfo } from '@/lib/config';
 import { FONT_SIZES } from '@/lib/constants/typography';
 
@@ -31,8 +31,8 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
   let asciiArt;
   if (logoType === 'kevin') {
     asciiArt = kevinBlockLetters;
-  } else if (logoType === 'dleer') {
-    asciiArt = windowWidth < 400 ? dlBlockLetters : dleerBlockLetters;
+  } else if (logoType === 'kmok') {
+    asciiArt = windowWidth < 400 ? dlBlockLetters : kmokBlockLetters;
   } else if (logoType === 'arch') {
     asciiArt = windowWidth < 400 ? archLogoCompact : archLogoASCII;
   } else {
@@ -45,8 +45,8 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
   // ASCII art max capped lower to prevent overflow in fixed-height tile
   const gapClass = layout === 'parallax' ? 'gap-6 sm:gap-8 md:gap-10' : 'gap-4 sm:gap-5 md:gap-6';
   const asciiFontSize = layout === 'parallax' ?
-    (logoType === 'dleer' ? 'clamp(0.55rem, 1vw, 0.75rem)' : 'clamp(0.5rem, 1.4vw, 0.7rem)') :
-    (logoType === 'dleer' ? 'clamp(0.3rem, 1.5cqw, 0.75rem)' : 'clamp(0.22rem, 1.5cqw, 0.65rem)');
+    (logoType === 'kmok' ? 'clamp(0.55rem, 1vw, 0.75rem)' : 'clamp(0.5rem, 1.4vw, 0.7rem)') :
+    (logoType === 'kmok' ? 'clamp(0.3rem, 1.5cqw, 0.75rem)' : 'clamp(0.22rem, 1.5cqw, 0.65rem)');
   const infoFontSize = layout === 'parallax' ? 'clamp(0.75rem, 1.2vw, 0.875rem)' : 'clamp(0.94rem, 2cqw, 1.54rem)';
 
   return (
@@ -59,9 +59,9 @@ const NeofetchTile: React.FC<NeofetchTileProps> = ({ isBlurred = false, layout =
       {/* ASCII Art Column */}
       <div className="flex-shrink-0"
         style={{
-          width: logoType === 'dleer' ? 'auto' : (layout === 'parallax' ? '40%' : '35%'),
-          minWidth: logoType === 'dleer' ? 'auto' : '100px',
-          maxWidth: logoType === 'dleer' ? 'auto' : '330px'
+          width: logoType === 'kmok' ? 'auto' : (layout === 'parallax' ? '40%' : '35%'),
+          minWidth: logoType === 'kmok' ? 'auto' : '100px',
+          maxWidth: logoType === 'kmok' ? 'auto' : '330px'
         }}>
         <pre
           className={`leading-tight transition-all duration-300`}
