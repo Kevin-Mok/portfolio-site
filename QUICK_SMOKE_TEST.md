@@ -7,6 +7,9 @@ Target runtime: 15-25 minutes
 - [x] `docs/TODO.md` - Fix resume header social icon paths so LinkedIn/GitHub icons load correctly.
 - [x] `docs/TODO.md` - Adapt `AGENTS.md` and `CLAUDE.md` to portfolio-site project guidance.
 - [x] `docs/TODO.md` - Replace legacy branding tokens and legacy creator phrase with `kmok` across code/content/docs and renamed image assets.
+- [x] `docs/TODO.md` - Replace browser favicon with bracket-style `[K]` icon and metadata path `/favicon.svg`.
+- [x] `docs/TODO.md` - Regenerate `app/favicon.ico` from bracket-style `[K]` icon to satisfy `/favicon.ico` requests.
+- [x] `docs/TODO.md` - Update favicon to square `KM` mark (no brackets) and regenerate ICO.
 
 ## T1 - Resume social icons render
 
@@ -81,3 +84,38 @@ Failure modes / debugging notes:
 - If `rg` finds matches, update remaining files and re-run.
 - If image files are missing, check rename operations in `public/images/` and `public/images/profile/`.
 - Deep test details: `docs/claude/kmok-rebrand/QUICK_SMOKE_TEST.md`.
+
+## T4 - Square KM favicon is active for SVG and ICO
+
+Objective: Verify browser favicon uses the new square `KM` icon for both `/favicon.svg` and `/favicon.ico`.
+
+Steps:
+
+```bash
+rg -n "icons:\s*\{|icon:\s*'/favicon.svg'|shortcut:\s*'/favicon.svg'" app/layout.tsx
+```
+
+```bash
+ls -l public/favicon.svg app/favicon.ico
+```
+
+```bash
+file app/favicon.ico
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+Expected results:
+- `app/layout.tsx` points icon and shortcut to `/favicon.svg`.
+- `public/favicon.svg` and `app/favicon.ico` exist.
+- `app/favicon.ico` contains multiple icon sizes.
+- Browser tab shows square `KM` favicon on dark background.
+
+Failure modes / debugging notes:
+- If old icon appears, stop dev server and run `npm run cleanup`, then start `npm run dev` and hard refresh.
+- If icon does not render, verify both SVG and ICO assets are present and not blocked by browser cache.
+- Deep test details: `docs/claude/favicon-bracket-k/QUICK_SMOKE_TEST.md`.

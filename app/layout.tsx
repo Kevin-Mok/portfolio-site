@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   keywords: config.seo.keywords,
   authors: [{ name: config.seo.author }],
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
   },
   openGraph: {
     title: config.seo.title,
