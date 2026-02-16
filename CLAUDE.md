@@ -63,7 +63,7 @@ npm run build
 - `lib/` - typed content/data and utilities
 - `public/` - static assets (icons, resume PDFs)
 - `docs/` - canonical feature and maintenance docs
-- `docs/claude/` - supplemental AI-generated docs by feature
+- `docs/claude/` - optional supplemental AI-generated docs by feature
 
 ---
 
@@ -136,11 +136,7 @@ For every feature or behavior change:
 
 1. Update `docs/TODO.md` (uppercase path only) with status + timestamp.
 2. Update root `QUICK_SMOKE_TEST.md` so coverage map matches checked TODO items.
-3. Create or update:
-   - `docs/claude/<feature-slug>/QUICK_SMOKE_TEST.md`
-   - `docs/claude/<feature-slug>/SUMMARY.md`
-
-Do not place ad-hoc AI docs at repo root.
+3. Create/update `docs/claude/<feature-slug>/` docs only when explicitly requested.
 
 ---
 

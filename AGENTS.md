@@ -58,28 +58,13 @@ If behavior changes, docs must change immediately.
 
 ---
 
-## 3) Required Docs For Every Feature
+## 3) Optional Feature Docs
 
-Create or update a per-feature folder:
+Do not require per-feature docs in `docs/claude/` for normal changes.
 
-- `docs/claude/<feature-slug>/`
-
-Required files:
-
-1. `docs/claude/<feature-slug>/QUICK_SMOKE_TEST.md`
-2. `docs/claude/<feature-slug>/SUMMARY.md`
-
-Optional for larger features:
-
-- `TESTING.md`
-- `IMPLEMENTATION.md`
-- `QUICK_REF.md`
-
-Feature slug rules:
-
-- kebab-case
-- short, domain-correct
-- one folder per feature (update existing folder if present)
+- Only create/update `docs/claude/<feature-slug>/` when explicitly requested.
+- Keep feature slugs kebab-case when those docs are used.
+- Prefer root `QUICK_SMOKE_TEST.md` + `docs/TODO.md` as the default documentation path.
 
 ### Smoke test formatting rules
 
@@ -97,7 +82,6 @@ Root `QUICK_SMOKE_TEST.md` is the go/no-go smoke gate.
 - It must cover every `[x]` item in `docs/TODO.md`.
 - Whenever a TODO item changes to `[x]`, update root smoke coverage map and matching smoke section.
 - Keep runtime fast (target 15-25 minutes).
-- Link deeper tests in `docs/claude/<feature-slug>/QUICK_SMOKE_TEST.md`.
 
 ---
 
@@ -207,8 +191,6 @@ Before major resume edits, read:
 
 ## 9) PR Checklist
 
-- Smoke test doc updated: `docs/claude/<feature-slug>/QUICK_SMOKE_TEST.md`
-- Summary doc updated: `docs/claude/<feature-slug>/SUMMARY.md`
 - Root smoke test updated: `QUICK_SMOKE_TEST.md`
 - TODO updated: `docs/TODO.md`
 - Test steps included and runnable
@@ -235,6 +217,4 @@ For coding tasks, return:
 3. Test plan (exact commands + manual checks)
 4. Docs updates (always include `docs/TODO.md` when notable)
 5. Conventional commit suggestion
-6. Per-feature docs bundle content (`QUICK_SMOKE_TEST.md` + `SUMMARY.md`)
-7. Root smoke test updates aligned with `docs/TODO.md`
-
+6. Root smoke test updates aligned with `docs/TODO.md`

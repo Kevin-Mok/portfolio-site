@@ -27,6 +27,9 @@ const Polybar: React.FC<PolybarProps> = ({ onNavigate }) => {
     { id: 'blog', label: 'blog', icon: '●' },
     { id: 'contact', label: 'contact', icon: '●' },
   ];
+  // Keep these sections defined for future re-enable, but hide them from nav for now.
+  const hiddenWorkspaceIds = new Set(['projects', 'blog', 'contact']);
+  const visibleWorkspaces = workspaces.filter((workspace) => !hiddenWorkspaceIds.has(workspace.id));
 
   const isActive = (workspace: string) => {
     // When in zen mode, check ViewContext.section
@@ -61,7 +64,7 @@ const Polybar: React.FC<PolybarProps> = ({ onNavigate }) => {
 
         {/* Center Section - Workspaces */}
         <div className="flex items-center gap-2 sm:gap-4">
-          {workspaces.map((ws) => (
+          {visibleWorkspaces.map((ws) => (
             <button
               key={ws.id}
               onClick={() => onNavigate(ws.id)}
