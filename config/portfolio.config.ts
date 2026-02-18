@@ -133,9 +133,9 @@ export const portfolioConfig: PortfolioConfig = {
   },
 
   seo: {
-    title: process.env.NEXT_PUBLIC_SEO_TITLE || "Portfolio | Terminal Style",
+    title: process.env.NEXT_PUBLIC_SEO_TITLE || "Kevin Mok | Software Engineer Building AI and Web Systems",
     description: process.env.NEXT_PUBLIC_SEO_DESCRIPTION ||
-      "A modern, terminal-inspired portfolio showcasing projects and expertise in web development and software engineering.",
+      "Explore Kevin Mok's portfolio of full-stack projects, AI systems, and production web apps built with TypeScript, React, Node.js, and cloud tools.",
     keywords: ["Web Development", "Software Engineering", "React", "TypeScript", "Node.js", "Full Stack", "Portfolio"],
     author: process.env.NEXT_PUBLIC_NAME || "Your Name",
     ogImage: hasCustomOgImage ? envOgImage : "/opengraph-image.png",

@@ -20,6 +20,7 @@ OpenGraph.xyz recommendations to follow:
 2) Keep important content (face, name, title) centered with generous safe margins to avoid platform cropping.
 3) Prefer high-clarity JPG/PNG output compatibility and keep visual complexity reasonable.
 4) Keep text concise and readable at small preview size.
+5) Include a clear call-to-action phrase in the design (example: "View Projects & Resume").
 
 Composition requirements:
 - Use my headshot as the hero element.
@@ -33,6 +34,7 @@ Text to include:
 - Software Engineer
 - TypeScript • React • Node.js • AI Systems
 - kevin-mok.com
+- View Projects & Resume
 
 Color direction:
 - Background: deep navy / charcoal tones

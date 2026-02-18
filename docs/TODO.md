@@ -1,6 +1,6 @@
 # TODO
 
-Last updated: 2026-02-18 17:17 UTC
+Last updated: 2026-02-18 17:43 UTC
 
 ## What's Done
 
@@ -19,3 +19,5 @@ Last updated: 2026-02-18 17:17 UTC
 - [x] 2026-02-16 18:35 UTC - Fix mobile wallpaper switching so Settings -> Background controls update the active parallax wallpaper instead of staying pinned to the default image.
 - [x] 2026-02-16 18:38 UTC - Make Web Development resume PDF the default selection on desktop resume view and the default PDF link in mobile Resume CTA.
 - [x] 2026-02-18 16:36 UTC - Add deploy recovery tooling with `rebuild-restart-portfolio.sh` and `docs/DEPLOY_RECOVERY.md` to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.
+- [x] 2026-02-18 17:35 UTC - Fix OG metadata quality checks by lengthening SEO title/description, switching fallback OG image paths to `opengraph-image.jpg`, and regenerating a 1200x630 CTA image under WhatsApp size guidance.
+- [x] 2026-02-18 17:43 UTC - Use the new `public/opengraph-image.png` asset as the default OG image by optimizing it in-place to 1200x630 (~305 KB) and repointing fallback metadata/image URLs from `.jpg` to `.png`.
