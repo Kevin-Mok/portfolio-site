@@ -1,1 +1,2 @@
 - make resume look better
+- photo on mobile

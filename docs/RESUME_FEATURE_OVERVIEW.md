@@ -110,12 +110,12 @@ Resume is structured data, not prose. Using TypeScript interfaces provides:
 - Simpler data structure than MDX frontmatter
 - Direct TypeScript references in components
 
-### Pre-Generated PDFs (Not Dynamic)
-PDFs are pre-generated and stored in `/public/resume/`:
-- Simpler than client-side generation
-- Ensures consistency with web version
-- No additional dependencies (no react-pdf)
-- Reliable downloads for recruiters
+### Automated Build-Time PDF Generation
+Resume PDFs are generated during `npm run build` and written to `/public/resume/`:
+- Keeps existing recruiter-facing download URLs stable
+- Ensures PDFs stay in sync with current variant data in `lib/resume-data.ts`
+- Uses headless Chrome print output from the real `/resume` UI for LaTeX-style fidelity
+- Supports multiple typed variants without manual browser export
 
 ### Theme Override
 Resume always displays white background with black text:

@@ -83,35 +83,41 @@ Root `QUICK_SMOKE_TEST.md` is the quick validation reference.
 
 ## 5) Repo Commands (`portfolio-site`)
 
+### Shell preference
+
+- Always provide shell commands in Fish syntax by default.
+- Use `fish` fenced code blocks for shell snippets unless a different shell is explicitly requested.
+- If Bash syntax is required, label it explicitly.
+
 ### Setup
 
-```bash
+```fish
 npm install
 ```
 
 ### Running
 
-```bash
+```fish
 npm run cleanup
 ```
 
-```bash
+```fish
 npm run dev
 ```
 
 ### Quality checks
 
-```bash
+```fish
 npm run typecheck
 ```
 
-```bash
+```fish
 npm run lint
 ```
 
 ### Build
 
-```bash
+```fish
 npm run build
 ```
 

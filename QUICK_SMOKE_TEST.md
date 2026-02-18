@@ -19,6 +19,8 @@ Target runtime: 15-25 minutes
 - [x] `docs/TODO.md` - Fix mobile wallpaper switching so Settings -> Background controls apply to the active parallax wallpaper.
 - [x] `docs/TODO.md` - Add deploy recovery tooling to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.
 - [x] `docs/TODO.md` - Make Web Development resume PDF the default selection on desktop and mobile resume download links.
+- [x] `docs/TODO.md` - Automate build-time generation of LaTeX-style resume PDFs from variant data with US Letter output and black-text styling.
+- [x] `docs/TODO.md` - Rework resume header/layout density to match old one-page structure and remove Chrome print header/footer from generated PDFs.
 
 ## T1 - Resume social icons render
 
@@ -235,5 +237,69 @@ Expected results:
 - In mobile Resume section CTA, `PDF` link opens `/resume/kevin-mok-resume-web-dev.pdf`.
 
 Failure modes / debugging notes:
-- If desktop defaults to general resume, inspect `components/tiles/content/ResumeContent.tsx` selected PDF initialization.
+- If desktop defaults to general resume, inspect `lib/resume-data.ts` (`DEFAULT_RESUME_VARIANT_ID`) and `components/tiles/content/ResumeContent.tsx` variant initialization.
 - If mobile PDF still opens general resume, inspect `components/layout/parallax/sections/ParallaxResumeCtaSection.tsx` link target.
+
+## T8 - Build-time resume PDF generation
+
+Objective: Verify resume PDFs are regenerated from typed variant data during build.
+
+Steps:
+
+```bash
+npm run build
+```
+
+```bash
+for f in public/resume/kevin-mok-resume.pdf public/resume/kevin-mok-resume-web-dev.pdf public/resume/kevin-mok-resume-sales.pdf; do echo "--- $f"; pdfinfo "$f" | rg "Page size|CreationDate"; done
+```
+
+```bash
+pdffonts public/resume/kevin-mok-resume-web-dev.pdf
+```
+
+Expected results:
+- Build completes and logs `Generated 11 resume PDFs`.
+- Generated files exist under `public/resume/` with current timestamps.
+- PDFs report `Page size: 612 x 792 pts (letter)`.
+- `pdffonts` output includes `CMUSerif-*` fonts.
+- Generated PDFs do not include browser print chrome (date/time/title/url/footer text).
+
+Failure modes / debugging notes:
+- If generation fails before output, verify `google-chrome` exists in PATH or set `CHROME_BIN`.
+- If server startup fails, inspect `scripts/generate-resume-pdfs.mjs` output for `Next.js server stdout/stderr`.
+- If a variant file is missing, verify the variant exists in both `lib/resume-data.ts` and `scripts/generate-resume-pdfs.mjs`.
+
+## T9 - Resume layout parity (old-style header + full-page usage)
+
+Objective: Verify resume layout uses the old-style header arrangement and available page width.
+
+Steps:
+
+```bash
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:3000/resume
+```
+
+```bash
+pdftotext public/resume/kevin-mok-resume-web-dev.pdf - | sed -n '1,40p'
+```
+
+Expected results:
+- `/resume` is not wrapped in the framed/glass border shell.
+- Name (`Kevin Mok`) is larger, black, centered, and underlined.
+- No `Software Engineer` subtitle appears below the name.
+- Header contact rows are left/right split:
+  - left side: phone above email
+  - right side: LinkedIn above GitHub
+- `pdftotext` output for generated web-dev PDF does not begin with date/time and does not include local URL/footer line.
+
+Failure modes / debugging notes:
+- If frame borders still appear, inspect `app/resume/page.tsx` and verify `FramedPageLayout` is not used.
+- If header layout is stacked in one column on desktop, inspect `components/tiles/content/resume/ResumeHeader.tsx` and `.resume-contact-columns` in `app/styles/13-resume-latex.css`.
+- If date/title/url footer text appears in PDFs, inspect `scripts/generate-resume-pdfs.mjs` Chrome flags and verify `--no-pdf-header-footer` is present.

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { FramedPageLayout } from '@/components/layout/FramedPageLayout';
 import { ResumeContent } from '@/components/tiles/content/ResumeContent';
+import { resolveResumeVariantId } from '@/lib/resume-data';
 
 /**
  * Resume Full Page View
@@ -52,14 +52,25 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600; // ISR: 1 hour
 
-export default function ResumePage() {
+interface ResumePageProps {
+  searchParams?: Promise<{
+    variant?: string;
+    render?: string;
+  }>;
+}
+
+export default async function ResumePage({ searchParams }: ResumePageProps) {
+  const resolvedSearchParams = await searchParams;
+  const initialVariantId = resolveResumeVariantId(resolvedSearchParams?.variant);
+  const renderMode = resolvedSearchParams?.render === 'pdf' ? 'pdf' : 'screen';
+
   return (
-    <FramedPageLayout>
-      <div className="py-8 sm:py-12 px-4 sm:px-6 md:px-8">
-        <div className="max-w-4xl mx-auto">
-          <ResumeContent />
+    <div className="bg-white text-black min-h-screen py-6 sm:py-8 px-3 sm:px-5 md:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1180px]">
+        <div className="resume-page-surface">
+          <ResumeContent initialVariantId={initialVariantId} renderMode={renderMode} />
         </div>
       </div>
-    </FramedPageLayout>
+    </div>
   );
 }

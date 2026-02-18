@@ -10,29 +10,33 @@ This guide covers how to update, maintain, and manage the resume feature.
 
 **File**: `lib/resume-data.ts`
 
-All resume content lives in this single TypeScript file. Update this file to change what appears everywhere (homepage tile, `/resume` page, and PDF downloads).
+All resume content lives in this single TypeScript file. Update `resumeVariants` to change what appears on the homepage tile, `/resume` page, and generated PDF downloads.
 
 ### Updating Contact Information
 
-**Location**: `resumeData.contact` object
+**Location**: `resumeVariants[*].resume.contact` object
 
 ```typescript
-export const resumeData: Resume = {
-  contact: {
-    phone: '647-685-2500',           // Update phone number
-    email: 'me@kevin-mok.com',       // Update email
-    linkedin: 'linkedin.com/in/Kev-Mok',  // Update LinkedIn profile
-    github: 'github.com/Kevin-Mok',       // Update GitHub username
+export const resumeVariants = [
+  {
+    id: 'web-dev',
+    resume: {
+      contact: {
+        phone: '647-685-2500',
+        email: 'me@kevin-mok.com',
+        linkedin: 'linkedin.com/in/Kev-Mok',
+        github: 'github.com/Kevin-Mok',
+      },
+    },
   },
-  // ... rest of data
-};
+];
 ```
 
 **After updating**: Contact info updates on all views automatically.
 
 ### Adding a New Project
 
-**Location**: `resumeData.projects` array
+**Location**: `resumeVariants[*].resume.projects` array
 
 ```typescript
 projects: [
@@ -62,7 +66,7 @@ projects: [
 
 ### Updating Work Experience
 
-**Location**: `resumeData.experience` array
+**Location**: `resumeVariants[*].resume.experience` array
 
 ```typescript
 experience: [
@@ -88,7 +92,7 @@ experience: [
 
 ### Updating Skills
 
-**Location**: `resumeData.skills` array
+**Location**: `resumeVariants[*].resume.skills` or `skillsLines`
 
 ```typescript
 skills: [
@@ -111,7 +115,7 @@ Skills are:
 
 ### Updating Education
 
-**Location**: `resumeData.education` array
+**Location**: `resumeVariants[*].resume.education` array
 
 ```typescript
 education: [
@@ -133,77 +137,62 @@ Each education entry displays:
 
 ## Regenerating PDFs
 
-### Method 1: Browser Print Dialog (Recommended)
+### Method 1: Build Pipeline (Recommended)
 
-1. Navigate to `/resume` page
-2. Press `Cmd+P` (Mac) or `Ctrl+P` (Windows)
-3. Click "Save as PDF"
-4. Save with appropriate filename (e.g., `kevin-mok-resume.pdf`)
-5. Replace existing PDF in `public/resume/`
-
-**Advantages**:
-- Perfect visual match with web version
-- No additional tools needed
-- Exact styling preserved
-- Computer Modern font renders correctly
-
-### Method 2: Programmatic PDF Generation (Future)
-
-Could use Puppeteer/Playwright to automate PDF generation:
+PDFs are generated automatically from `/resume` variants during build.
 
 ```bash
-npm run generate-pdfs
+npm run build
 ```
 
-Not currently implemented, but would be useful for bulk regeneration.
+This runs `next build` and then `npm run generate-resume-pdfs`, which:
+- Starts the built app locally
+- Renders each variant from `lib/resume-data.ts`
+- Prints each page to `public/resume/*.pdf` using headless Chrome
+- Preserves the existing download filenames
 
-### Method 3: Manual PDF Creation
+### Method 2: Manual Generator Run
 
-Use your preferred PDF editor/creator:
-- LaTeX compiler (for authentic LaTeX aesthetics)
-- Markdown to PDF converter
-- Word/Google Docs export
-- Canva or similar design tool
+If you only changed resume content and want to regenerate quickly:
 
-**Important**: Ensure filename matches entry in `pdfVariants` array in `ResumeContent.tsx`.
+```bash
+npm run generate-resume-pdfs
+```
+
+### Prerequisites
+
+- `google-chrome` must be available in PATH (or set `CHROME_BIN`).
+- Build requires localhost binding for temporary `next start` during generation.
 
 ## Managing PDF Variants
 
 ### Adding a New Variant
 
-1. **Create the PDF file**:
-   - Generate PDF using browser print or your preferred method
-   - Save to `public/resume/new-resume-name.pdf`
+1. Add typed variant content to `lib/resume-data.ts` in `resumeVariants`.
+2. Add matching entry in `scripts/generate-resume-pdfs.mjs` (`id` + `fileName`).
+3. Run generator:
 
-2. **Add to variant selector**:
-   - Edit `components/tiles/content/ResumeContent.tsx`
-   - Add entry to `pdfVariants` array:
-
-```typescript
-const pdfVariants = [
-  { label: 'General Resume', value: 'kevin-mok-resume.pdf' },
-  { label: 'Web Development', value: 'kevin-mok-resume-web-dev.pdf' },
-  // Add new variant here:
-  { label: 'Machine Learning', value: 'kevin-mok-resume-ml.pdf' },
-];
+```bash
+npm run generate-resume-pdfs
 ```
 
-3. **Test the download**:
+4. Test the download:
    - Visit `/resume`
    - Select new variant from dropdown
    - Verify download works
 
 ### Removing a Variant
 
-1. Delete PDF file from `public/resume/`
-2. Remove entry from `pdfVariants` array in `ResumeContent.tsx`
-3. Test that dropdown options are correct
+1. Remove variant from `resumeVariants` in `lib/resume-data.ts`.
+2. Remove it from `scripts/generate-resume-pdfs.mjs`.
+3. Optionally delete old PDF from `public/resume/`.
+4. Regenerate and test variant dropdown.
 
 ### Renaming a Variant
 
-1. Rename PDF file in `public/resume/`
-2. Update `value` field in `pdfVariants` array
-3. Update `label` field to be user-friendly
+1. Update `label` and/or `fileName` in `lib/resume-data.ts`.
+2. Update matching filename in `scripts/generate-resume-pdfs.mjs`.
+3. Regenerate PDFs and verify download URLs.
 
 ## Styling Customization
 
@@ -222,7 +211,7 @@ All resume styling lives in this single CSS module. Common customizations:
 }
 
 .entry-title {
-  color: #66cccc;                   /* Project titles */
+  color: #000000;                   /* Project titles */
 }
 
 .entry-company {
@@ -230,11 +219,11 @@ All resume styling lives in this single CSS module. Common customizations:
 }
 
 .entry-tech {
-  color: #747369;                   /* Tech stack text */
+  color: #000000;                   /* Tech stack text */
 }
 
 .contact-item a {
-  color: #4287cd;                   /* Links */
+  color: #1e4fa3;                   /* Links */
 }
 ```
 
@@ -395,7 +384,7 @@ To change size:
 
 ### Updating to New Job
 
-1. **Remove old work experience** from `resumeData.experience`
+1. **Remove old work experience** from the target variant's `resume.experience`
 2. **Add new work experience** with:
    - Company name
    - Job title
@@ -414,7 +403,7 @@ To change size:
 
 ### Emphasizing New Skills
 
-1. **Move skill higher** in `resumeData.skills` array
+1. **Move skill higher** in the target variant's `resume.skills` array
    - Order matters - most relevant first
 
 2. **Update projects** to highlight new skill usage:
@@ -436,7 +425,7 @@ To change size:
 
 **Standard process**:
 1. Edit `lib/resume-data.ts`
-2. Update PDFs with `Cmd+P` → Save as PDF
+2. Regenerate PDFs with `npm run build` (or `npm run generate-resume-pdfs`)
 3. Test all views
 4. Commit changes
 

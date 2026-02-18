@@ -1,56 +1,66 @@
 'use client';
 
-import React, { useState } from 'react';
-import { resumeData } from '@/lib/resume-data';
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  pdfVariants,
+  resumeVariantById,
+  resolveResumeVariantId,
+  type ResumeVariantId,
+} from '@/lib/resume-data';
 import { ResumeHeader } from './resume/ResumeHeader';
 import { ResumeSection } from './resume/ResumeSection';
 import { ProjectEntry } from './resume/ProjectEntry';
 import { WorkEntry } from './resume/WorkEntry';
 import { EducationEntry } from './resume/EducationEntry';
 
-const pdfVariants = [
-  { label: 'General Resume', value: 'kevin-mok-resume.pdf' },
-  { label: 'Web Development', value: 'kevin-mok-resume-web-dev.pdf' },
-  { label: 'AWS/Cloud', value: 'kevin-mok-resume-aws.pdf' },
-  { label: 'Python', value: 'kevin-mok-resume-python.pdf' },
-  { label: 'AWS + Web Dev', value: 'kevin-mok-resume-aws-web-dev.pdf' },
-  { label: 'AWS + Python', value: 'kevin-mok-resume-aws-python.pdf' },
-  { label: 'Python + Django', value: 'kevin-mok-resume-web-dev-django.pdf' },
-  { label: 'IT Support', value: 'kevin-mok-resume-it-support.pdf' },
-  { label: 'IT Support + AWS', value: 'kevin-mok-resume-it-support-aws.pdf' },
-  { label: 'Sales', value: 'kevin-mok-resume-sales.pdf' },
-  { label: 'Call Centre', value: 'kevin-mok-resume-call-centre.pdf' },
-];
+interface ResumeContentProps {
+  initialVariantId?: string;
+  renderMode?: 'screen' | 'pdf';
+}
 
-const DEFAULT_RESUME_PDF = 'kevin-mok-resume-web-dev.pdf';
+const ResumeContentComponent: React.FC<ResumeContentProps> = ({
+  initialVariantId,
+  renderMode = 'screen',
+}) => {
+  const [selectedVariantId, setSelectedVariantId] = useState<ResumeVariantId>(() =>
+    resolveResumeVariantId(initialVariantId)
+  );
 
-const ResumeContentComponent: React.FC = () => {
-  const [selectedPDF, setSelectedPDF] = useState(DEFAULT_RESUME_PDF);
+  useEffect(() => {
+    setSelectedVariantId(resolveResumeVariantId(initialVariantId));
+  }, [initialVariantId]);
+
+  const selectedVariant = resumeVariantById[selectedVariantId];
+  const sectionTitles = useMemo(
+    () => ({
+      projects: selectedVariant.sectionTitles?.projects ?? 'Web Dev Projects',
+      experience: selectedVariant.sectionTitles?.experience ?? 'Work Experience',
+      skills: selectedVariant.sectionTitles?.skills ?? 'Skills',
+      education: selectedVariant.sectionTitles?.education ?? 'Education',
+    }),
+    [selectedVariant.sectionTitles]
+  );
+
+  const resume = selectedVariant.resume;
 
   return (
-    <div className="resume-latex">
-      {/* Contact Header */}
-      <ResumeHeader contact={resumeData.contact} />
+    <div className={`resume-latex ${renderMode === 'pdf' ? 'resume-latex--pdf' : 'resume-latex--screen'}`}>
+      <ResumeHeader contact={resume.contact} />
 
-      {/* PDF Download Section */}
       <div className="pdf-download-section">
-        <a
-          href={`/resume/${selectedPDF}`}
-          download
-          className="pdf-download-btn"
-        >
-          📄 Download PDF
+        <a href={`/resume/${selectedVariant.fileName}`} download className="pdf-download-btn">
+          Download PDF
         </a>
 
         <div className="pdf-variant-selector">
           <label htmlFor="pdf-variant">Resume variant:</label>
           <select
             id="pdf-variant"
-            value={selectedPDF}
-            onChange={(e) => setSelectedPDF(e.target.value)}
+            value={selectedVariantId}
+            onChange={(e) => setSelectedVariantId(resolveResumeVariantId(e.target.value))}
           >
             {pdfVariants.map((variant) => (
-              <option key={variant.value} value={variant.value}>
+              <option key={variant.id} value={variant.id}>
                 {variant.label}
               </option>
             ))}
@@ -58,38 +68,56 @@ const ResumeContentComponent: React.FC = () => {
         </div>
       </div>
 
-      {/* Projects Section */}
-      <ResumeSection title="Web Dev Projects">
-        {resumeData.projects.map((project) => (
-          <ProjectEntry key={project.name} project={project} />
+      {selectedVariant.summary && (
+        <ResumeSection title="Summary">
+          <p className="resume-summary">{selectedVariant.summary}</p>
+        </ResumeSection>
+      )}
+
+      <ResumeSection title={sectionTitles.projects}>
+        {resume.projects.map((project) => (
+          <ProjectEntry key={`${project.name}-${project.date}`} project={project} />
         ))}
       </ResumeSection>
 
-      {/* Work Experience */}
-      <ResumeSection title="Work Experience">
-        {resumeData.experience.map((work) => (
-          <WorkEntry key={work.company} work={work} />
+      <ResumeSection title={sectionTitles.experience}>
+        {resume.experience.map((work) => (
+          <WorkEntry key={`${work.company}-${work.date}-${work.title}`} work={work} />
         ))}
       </ResumeSection>
 
-      {/* Skills */}
-      <ResumeSection title="Skills">
-        <p style={{ margin: 0 }}>
-          {resumeData.skills.map((skill, index) => (
-            <React.Fragment key={skill}>
-              <strong>{skill}</strong>
-              {index < resumeData.skills.length - 1 ? ', ' : ''}
-            </React.Fragment>
-          ))}
-        </p>
+      <ResumeSection title={sectionTitles.skills}>
+        {selectedVariant.skillsLines && selectedVariant.skillsLines.length > 0 ? (
+          <div className="resume-skills-lines">
+            {selectedVariant.skillsLines.map((line) => (
+              <p key={line} className="resume-skill-line">
+                {line}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p style={{ margin: 0 }}>
+            {resume.skills.map((skill, index) => (
+              <React.Fragment key={skill}>
+                <strong>{skill}</strong>
+                {index < resume.skills.length - 1 ? ', ' : ''}
+              </React.Fragment>
+            ))}
+          </p>
+        )}
       </ResumeSection>
 
-      {/* Education */}
-      <ResumeSection title="Education">
-        {resumeData.education.map((edu) => (
-          <EducationEntry key={edu.institution} education={edu} />
+      <ResumeSection title={sectionTitles.education}>
+        {resume.education.map((edu) => (
+          <EducationEntry key={`${edu.institution}-${edu.date}`} education={edu} />
         ))}
       </ResumeSection>
+
+      {selectedVariant.references && (
+        <ResumeSection title="References">
+          <p className="resume-references">{selectedVariant.references}</p>
+        </ResumeSection>
+      )}
     </div>
   );
 };

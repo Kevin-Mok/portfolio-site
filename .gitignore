@@ -60,7 +60,10 @@ public/images/originals/
 
 docs/PERF-OPTIMIZATION-SPEC.md
 docs/PROJECT_CONTENT_OPTIMIZATION_SPEC.md
-scripts/
+scripts/*
+!scripts/cleanup-dev.sh
+!scripts/convert-to-webp.js
+!scripts/generate-resume-pdfs.mjs
 
 articles/
 blog-post-source

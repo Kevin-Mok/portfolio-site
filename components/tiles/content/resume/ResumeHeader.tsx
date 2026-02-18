@@ -7,7 +7,7 @@ interface ResumeHeaderProps {
 }
 
 export const ResumeHeader: React.FC<ResumeHeaderProps> = ({ contact }) => {
-  const contactItems = [
+  const leftContactItems = [
     {
       icon: '/icons/resume/smartphone.svg',
       label: contact.phone,
@@ -20,6 +20,9 @@ export const ResumeHeader: React.FC<ResumeHeaderProps> = ({ contact }) => {
       href: `mailto:${contact.email}`,
       alt: 'email',
     },
+  ];
+
+  const rightContactItems = [
     {
       icon: '/icons/resume/linkedin.svg',
       label: contact.linkedin,
@@ -36,30 +39,44 @@ export const ResumeHeader: React.FC<ResumeHeaderProps> = ({ contact }) => {
 
   return (
     <header className="resume-header">
-      <h1 style={{ fontSize: '1.8em', fontWeight: 'bold', margin: 0 }}>Kevin Mok</h1>
-      <p style={{ fontSize: '1.1em', margin: '0.25rem 0 0 0', color: '#747369' }}>
-        Software Engineer
-      </p>
+      <h1 className="resume-name">Kevin Mok</h1>
 
-      <div className="resume-header-grid">
-        {contactItems.map((item) => (
-          <a
-            key={item.alt}
-            href={item.href}
-            target={item.alt !== 'phone' && item.alt !== 'email' ? '_blank' : undefined}
-            rel={item.alt !== 'phone' && item.alt !== 'email' ? 'noopener noreferrer' : undefined}
-            className="contact-item"
-          >
-            <Image
-              src={item.icon}
-              alt={item.alt}
-              width={20}
-              height={20}
-              className="contact-icon"
-            />
-            <span>{item.label}</span>
-          </a>
-        ))}
+      <div className="resume-contact-columns">
+        <div className="resume-contact-column resume-contact-column-left">
+          {leftContactItems.map((item) => (
+            <a key={item.alt} href={item.href} className="contact-item contact-item-left">
+              <Image
+                src={item.icon}
+                alt={item.alt}
+                width={18}
+                height={18}
+                className="contact-icon"
+              />
+              <span className="contact-label">{item.label}</span>
+            </a>
+          ))}
+        </div>
+
+        <div className="resume-contact-column resume-contact-column-right">
+          {rightContactItems.map((item) => (
+            <a
+              key={item.alt}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-item contact-item-right"
+            >
+              <Image
+                src={item.icon}
+                alt={item.alt}
+                width={18}
+                height={18}
+                className="contact-icon"
+              />
+              <span className="contact-label">{item.label}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </header>
   );

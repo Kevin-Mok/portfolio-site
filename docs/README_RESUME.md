@@ -98,20 +98,20 @@ This file covers:
 
 ### Update Your Resume
 1. Open `lib/resume-data.ts`
-2. Update the `resumeData` object:
+2. Update `resumeVariants` entries for the variants you maintain:
    - Contact info
    - Projects array
    - Experience array
-   - Skills array
+   - Skills array (or `skillsLines` for grouped text)
    - Education array
 3. Test on `/resume`
-4. Regenerate PDFs if needed
+4. Regenerate PDFs
 5. Commit changes
 
 **Full guide**: [RESUME_MAINTENANCE.md § Updating Resume Content](./RESUME_MAINTENANCE.md#updating-resume-content)
 
 ### Add New Project
-1. Add entry to `resumeData.projects` array in `lib/resume-data.ts`
+1. Add entry to the target variant's `projects` array in `resumeVariants` (`lib/resume-data.ts`)
 2. Include: name, url, languages, date, bullets
 3. Test on `/resume`
 4. Add PDF variant if creating new focused resume
@@ -119,19 +119,26 @@ This file covers:
 **Full guide**: [RESUME_MAINTENANCE.md § Adding a New Project](./RESUME_MAINTENANCE.md#adding-a-new-project)
 
 ### Regenerate PDFs
-1. Navigate to `/resume` in your browser
-2. Press `Cmd+P` (Mac) or `Ctrl+P` (Windows)
-3. Click "Save as PDF"
-4. Save with appropriate filename
-5. Replace old PDF in `public/resume/`
-6. Commit changes
+1. Run build-time generator:
+
+```bash
+npm run build
+```
+
+2. Verify regenerated files in `public/resume/`
+3. Commit changes
 
 **Full guide**: [RESUME_MAINTENANCE.md § Regenerating PDFs](./RESUME_MAINTENANCE.md#regenerating-pdfs)
 
 ### Add New PDF Variant
-1. Create/generate PDF with new focus
-2. Save to `public/resume/new-name.pdf`
-3. Add to `pdfVariants` array in `components/tiles/content/ResumeContent.tsx`
+1. Add variant content in `resumeVariants` (`lib/resume-data.ts`)
+2. Add matching generator entry in `scripts/generate-resume-pdfs.mjs`
+3. Run:
+
+```bash
+npm run generate-resume-pdfs
+```
+
 4. Test dropdown and download
 5. Commit changes
 
@@ -176,7 +183,7 @@ FocusContext manages state
     ↓
 ContentViewer routes to ResumeContent component
     ↓
-ResumeContent reads resumeData.ts
+ResumeContent reads variant-aware data from `lib/resume-data.ts`
     ↓
 Sub-components render sections:
 ├─ ResumeHeader (contact info)
