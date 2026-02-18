@@ -18,6 +18,7 @@ Target runtime: 15-25 minutes
 - [x] `docs/TODO.md` - Keep mobile parallax surfaces transparent during accent changes by removing gray theme-surface fills.
 - [x] `docs/TODO.md` - Fix mobile wallpaper switching so Settings -> Background controls apply to the active parallax wallpaper.
 - [x] `docs/TODO.md` - Add deploy recovery tooling to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.
+- [x] `docs/TODO.md` - Make Web Development resume PDF the default selection on desktop and mobile resume download links.
 
 ## T1 - Resume social icons render
 
@@ -205,3 +206,34 @@ Failure modes / debugging notes:
 - If restart fails with auth error, run as a user with sudo access to `systemctl restart portfolio`.
 - If chunk extraction fails, inspect homepage HTML for missing `/_next/static/chunks/webpack-*.js` references and verify app is serving the expected build.
 - If homepage check fails, verify DNS and nginx routing for `kevin-mok.com` before re-running recovery.
+
+## T7 - Resume defaults (desktop + mobile)
+
+Objective: Verify Web Development resume is the default download on desktop resume page and mobile homepage CTA.
+
+Steps:
+
+```bash
+npm run dev
+```
+
+Open desktop:
+
+```text
+http://localhost:3000/resume
+```
+
+Open mobile viewport (e.g. 390x844):
+
+```text
+http://localhost:3000
+```
+
+Expected results:
+- On `/resume`, download button points to `/resume/kevin-mok-resume-web-dev.pdf` before changing the variant selector.
+- On `/resume`, selector initially shows `Web Development`.
+- In mobile Resume section CTA, `PDF` link opens `/resume/kevin-mok-resume-web-dev.pdf`.
+
+Failure modes / debugging notes:
+- If desktop defaults to general resume, inspect `components/tiles/content/ResumeContent.tsx` selected PDF initialization.
+- If mobile PDF still opens general resume, inspect `components/layout/parallax/sections/ParallaxResumeCtaSection.tsx` link target.

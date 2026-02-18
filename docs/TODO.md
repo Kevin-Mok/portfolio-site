@@ -1,6 +1,6 @@
 # TODO
 
-Last updated: 2026-02-18 16:36 UTC
+Last updated: 2026-02-18 17:17 UTC
 
 ## What's Done
 
@@ -17,4 +17,5 @@ Last updated: 2026-02-18 16:36 UTC
 - [x] 2026-02-16 18:13 UTC - Remove redundant Neofetch accent swatch palette in both desktop and mobile layouts; keep accent control only in dedicated settings/accent tiles.
 - [x] 2026-02-16 18:16 UTC - Force mobile parallax surfaces to stay transparent across accent changes by removing theme-surface gray fills from section cards/settings and Neofetch hero wrapper.
 - [x] 2026-02-16 18:35 UTC - Fix mobile wallpaper switching so Settings -> Background controls update the active parallax wallpaper instead of staying pinned to the default image.
+- [x] 2026-02-16 18:38 UTC - Make Web Development resume PDF the default selection on desktop resume view and the default PDF link in mobile Resume CTA.
 - [x] 2026-02-18 16:36 UTC - Add deploy recovery tooling with `rebuild-restart-portfolio.sh` and `docs/DEPLOY_RECOVERY.md` to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.

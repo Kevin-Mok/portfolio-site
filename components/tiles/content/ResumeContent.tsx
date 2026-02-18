@@ -22,8 +22,10 @@ const pdfVariants = [
   { label: 'Call Centre', value: 'kevin-mok-resume-call-centre.pdf' },
 ];
 
+const DEFAULT_RESUME_PDF = 'kevin-mok-resume-web-dev.pdf';
+
 const ResumeContentComponent: React.FC = () => {
-  const [selectedPDF, setSelectedPDF] = useState(pdfVariants[0].value);
+  const [selectedPDF, setSelectedPDF] = useState(DEFAULT_RESUME_PDF);
 
   return (
     <div className="resume-latex">

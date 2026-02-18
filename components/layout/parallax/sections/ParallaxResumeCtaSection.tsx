@@ -18,7 +18,7 @@ export const ParallaxResumeCtaSection: React.FC = () => {
           Open Resume
         </Link>
         <a
-          href="/resume/kevin-mok-resume.pdf"
+          href="/resume/kevin-mok-resume-web-dev.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="parallax-cta-link"
