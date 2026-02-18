@@ -44,7 +44,11 @@ const ResumeContentComponent: React.FC<ResumeContentProps> = ({
   const resume = selectedVariant.resume;
 
   return (
-    <div className={`resume-latex ${renderMode === 'pdf' ? 'resume-latex--pdf' : 'resume-latex--screen'}`}>
+    <div
+      className={`resume-latex ${
+        renderMode === 'pdf' ? 'resume-latex--pdf' : 'resume-latex--screen'
+      } resume-variant-${selectedVariantId}`}
+    >
       <ResumeHeader contact={resume.contact} />
 
       <div className="pdf-download-section">

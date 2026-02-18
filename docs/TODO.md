@@ -1,6 +1,6 @@
 # TODO
 
-Last updated: 2026-02-18 21:58 UTC
+Last updated: 2026-02-18 22:21 UTC
 
 ## What's Done
 
@@ -23,3 +23,4 @@ Last updated: 2026-02-18 21:58 UTC
 - [x] 2026-02-18 17:43 UTC - Use the new `public/opengraph-image.png` asset as the default OG image by optimizing it in-place to 1200x630 (~305 KB) and repointing fallback metadata/image URLs from `.jpg` to `.png`.
 - [x] 2026-02-18 21:04 UTC - Implement typed resume variants with build-time PDF generation (`npm run build`), preserve `/resume/<name>.pdf` downloads, switch resume styling to black text with blue links, and generate US Letter PDFs via headless Chrome.
 - [x] 2026-02-18 21:58 UTC - Rework resume layout to match old one-page structure on US Letter: remove framed `/resume` shell, place phone/email left and LinkedIn/GitHub right under a larger underlined name, remove subtitle line, tighten spacing for one-page fit across generated variants, and disable Chrome print header/footer in PDF generation.
+- [x] 2026-02-18 22:21 UTC - Increase resume print legibility (larger font/looser spacing) and add variant-specific print scaling so all generated resume variants remain one-page on US Letter.
