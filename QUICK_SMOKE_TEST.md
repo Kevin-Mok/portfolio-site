@@ -17,6 +17,7 @@ Target runtime: 15-25 minutes
 - [x] `docs/TODO.md` - Remove redundant Neofetch accent swatch palette from desktop/mobile and keep accent control in dedicated settings tiles.
 - [x] `docs/TODO.md` - Keep mobile parallax surfaces transparent during accent changes by removing gray theme-surface fills.
 - [x] `docs/TODO.md` - Fix mobile wallpaper switching so Settings -> Background controls apply to the active parallax wallpaper.
+- [x] `docs/TODO.md` - Add deploy recovery tooling to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.
 
 ## T1 - Resume social icons render
 
@@ -169,3 +170,38 @@ Failure modes / debugging notes:
 - If Neofetch persists behind content, inspect `components/layout/parallax/components/ParallaxScrollContainer.tsx` for fixed-position background usage.
 - If Neofetch still shows swatches, inspect `components/tiles/NeofetchTile.tsx` for remaining `setAccentColor`/swatch button rendering.
 - If gray returns when accent changes, inspect `app/styles/10-mobile.css` (`.parallax-panel`, `.parallax-settings-card`) and the Neofetch hero wrapper background in `components/layout/parallax/components/ParallaxScrollContainer.tsx`.
+
+## T6 - Deploy recovery script rebuilds and validates live assets
+
+Objective: Verify the deploy recovery workflow is present and catches stale Next.js chunk issues.
+
+Steps:
+
+```bash
+ls -l rebuild-restart-portfolio.sh docs/DEPLOY_RECOVERY.md
+```
+
+```bash
+bash -n rebuild-restart-portfolio.sh
+```
+
+```bash
+rg -n "npm run build|systemctl restart|/_next/static/chunks/webpack-" rebuild-restart-portfolio.sh docs/DEPLOY_RECOVERY.md
+```
+
+Run on server with restart permissions:
+
+```bash
+./rebuild-restart-portfolio.sh
+```
+
+Expected results:
+- Script and runbook files exist.
+- Shell syntax check passes with no output.
+- Grep confirms build + restart + chunk verification logic is present.
+- Recovery command rebuilds, restarts `portfolio` service, returns `200` on homepage, and returns `200` on extracted webpack chunk URL.
+
+Failure modes / debugging notes:
+- If restart fails with auth error, run as a user with sudo access to `systemctl restart portfolio`.
+- If chunk extraction fails, inspect homepage HTML for missing `/_next/static/chunks/webpack-*.js` references and verify app is serving the expected build.
+- If homepage check fails, verify DNS and nginx routing for `kevin-mok.com` before re-running recovery.
