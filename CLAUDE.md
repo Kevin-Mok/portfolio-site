@@ -130,13 +130,11 @@ Read before major resume changes:
 
 ---
 
-## Required Documentation Workflow
+## Documentation Workflow
 
-For every feature or behavior change:
+For feature or behavior changes:
 
-1. Update `docs/TODO.md` (uppercase path only) with status + timestamp.
-2. Update root `QUICK_SMOKE_TEST.md` so coverage map matches checked TODO items.
-3. Create/update `docs/claude/<feature-slug>/` docs only when explicitly requested.
+1. Create/update `docs/claude/<feature-slug>/` docs only when explicitly requested.
 
 ---
 

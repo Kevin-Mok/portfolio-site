@@ -22,8 +22,6 @@ Project-specific instructions for AI assistants working in the `portfolio-site` 
 The canonical TODO file is exactly `docs/TODO.md` (uppercase).
 
 - Never create `docs/todo.md`.
-- Every code change must update `docs/TODO.md` with status + timestamp.
-- Keep root `QUICK_SMOKE_TEST.md` aligned with checked items in `docs/TODO.md`.
 
 If lowercase `docs/todo.md` appears anywhere, treat it as a bug and fix it.
 
@@ -77,10 +75,8 @@ Do not require per-feature docs in `docs/claude/` for normal changes.
 
 ## 4) Repo-Wide Smoke Gate
 
-Root `QUICK_SMOKE_TEST.md` is the go/no-go smoke gate.
+Root `QUICK_SMOKE_TEST.md` is the quick validation reference.
 
-- It must cover every `[x]` item in `docs/TODO.md`.
-- Whenever a TODO item changes to `[x]`, update root smoke coverage map and matching smoke section.
 - Keep runtime fast (target 15-25 minutes).
 
 ---
@@ -191,8 +187,6 @@ Before major resume edits, read:
 
 ## 9) PR Checklist
 
-- Root smoke test updated: `QUICK_SMOKE_TEST.md`
-- TODO updated: `docs/TODO.md`
 - Test steps included and runnable
 - Conventional commit suggested
 - No unnecessary churn
@@ -215,6 +209,6 @@ For coding tasks, return:
 1. Atomic plan
 2. Cursor prompt
 3. Test plan (exact commands + manual checks)
-4. Docs updates (always include `docs/TODO.md` when notable)
+4. Docs updates (when relevant)
 5. Conventional commit suggestion
-6. Root smoke test updates aligned with `docs/TODO.md`
+6. Additional validation notes (if any)

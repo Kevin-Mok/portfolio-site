@@ -2,6 +2,9 @@ import { PortfolioConfig } from './types';
 import { projectsData } from './projects.config';
 import { getImageUrl } from '@/lib/image-paths';
 
+const envOgImage = process.env.NEXT_PUBLIC_OG_IMAGE;
+const hasCustomOgImage = Boolean(envOgImage && envOgImage !== 'YOUR_OPEN_GRAPH_IMAGE');
+
 // Main portfolio configuration
 // Replace values with your own information
 export const portfolioConfig: PortfolioConfig = {
@@ -135,7 +138,7 @@ export const portfolioConfig: PortfolioConfig = {
       "A modern, terminal-inspired portfolio showcasing projects and expertise in web development and software engineering.",
     keywords: ["Web Development", "Software Engineering", "React", "TypeScript", "Node.js", "Full Stack", "Portfolio"],
     author: process.env.NEXT_PUBLIC_NAME || "Your Name",
-    ogImage: process.env.NEXT_PUBLIC_OG_IMAGE || getImageUrl("og-image.png"),
+    ogImage: hasCustomOgImage ? envOgImage : "/opengraph-image.png",
     twitterHandle: process.env.NEXT_PUBLIC_TWITTER_USERNAME || "@username"
   },
 

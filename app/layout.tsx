@@ -6,6 +6,7 @@ import { Providers } from "@/components/providers/Providers";
 
 // Get configuration at build time
 const config = getPortfolioConfig();
+const defaultOgImage = config.seo.ogImage || "/opengraph-image.png";
 
 // Next.js 15: viewport must be separate export
 export const viewport: Viewport = {
@@ -29,11 +30,14 @@ export const metadata: Metadata = {
     title: config.seo.title,
     description: config.seo.description,
     type: "website",
-    images: config.seo.ogImage ? [config.seo.ogImage] : undefined,
+    images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
+    title: config.seo.title,
+    description: config.seo.description,
     creator: config.seo.twitterHandle,
+    images: [defaultOgImage],
   },
 };
 

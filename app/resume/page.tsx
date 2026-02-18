@@ -33,11 +33,20 @@ export const metadata: Metadata = {
     description: 'Full-stack engineer with expertise in TypeScript, React, Node.js, and cloud infrastructure',
     type: 'profile',
     url: 'https://kevin-mok.com/resume',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Kevin Mok - Software Engineer Resume',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kevin Mok - Software Engineer Resume',
     description: 'TypeScript, React, Node.js, Python | Ex-Red Hat | UofT CS',
+    images: ['/opengraph-image.png'],
   },
 };
 

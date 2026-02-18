@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const ogImage = blog.cover || `${siteUrl}/og-image.png`;
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  const ogImage = blog.cover || `${siteUrl}/opengraph-image.png`;
 
   return {
     title: blog.title,

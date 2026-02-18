@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const ogImage = project.cover || `${siteUrl}/og-image.png`;
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  const ogImage = project.cover || `${siteUrl}/opengraph-image.png`;
 
   return {
     title: project.title,
