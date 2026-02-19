@@ -1,2 +1,7 @@
 - make resume look better
+  - add projects
+    - leaves
+    - nomar
+    - rain
+    - portfolio
 - photo on mobile
