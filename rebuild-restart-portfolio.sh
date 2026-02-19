@@ -14,21 +14,24 @@ run_systemctl() {
   fi
 }
 
-echo "[1/5] Building production bundle"
+echo "[1/6] Building production bundle"
 cd "$ROOT_DIR"
 npm run build
 
-echo "[2/5] Restarting service: $SERVICE_NAME"
+echo "[2/6] Validating resume PDF generation"
+npm run validate-resume-pdfs
+
+echo "[3/6] Restarting service: $SERVICE_NAME"
 run_systemctl restart "$SERVICE_NAME"
 
-echo "[3/5] Verifying service is active"
+echo "[4/6] Verifying service is active"
 run_systemctl is-active --quiet "$SERVICE_NAME"
 echo "Service is active: $SERVICE_NAME"
 
-echo "[4/5] Checking homepage response: $SITE_URL"
+echo "[5/6] Checking homepage response: $SITE_URL"
 curl -fsSIL --max-redirs 5 --connect-timeout 10 "$SITE_URL" | sed -n '1,8p'
 
-echo "[5/5] Checking active Next.js chunk response"
+echo "[6/6] Checking active Next.js chunk response"
 tmp_html="$(mktemp)"
 trap 'rm -f "$tmp_html"' EXIT
 

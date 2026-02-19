@@ -57,6 +57,7 @@ public/images/*.png
 public/images/*.jpg
 public/images/*.sh
 public/images/originals/
+/public/resume/*.pdf
 
 docs/PERF-OPTIMIZATION-SPEC.md
 docs/PROJECT_CONTENT_OPTIMIZATION_SPEC.md
@@ -64,6 +65,7 @@ scripts/*
 !scripts/cleanup-dev.sh
 !scripts/convert-to-webp.js
 !scripts/generate-resume-pdfs.mjs
+!scripts/validate-resume-pdfs.mjs
 
 articles/
 blog-post-source

@@ -10,6 +10,7 @@ Use this when `kevin-mok.com` serves HTML but the UI does not load (for example,
 
 This script will:
 - build a fresh production bundle
+- validate generated resume PDFs (`npm run validate-resume-pdfs`)
 - restart the `portfolio` systemd service
 - verify homepage HTTP response
 - verify the active webpack chunk URL from homepage HTML
@@ -34,6 +35,10 @@ If script execution fails, run the core sequence directly:
 
 ```bash
 npm run build
+```
+
+```bash
+npm run validate-resume-pdfs
 ```
 
 ```bash
