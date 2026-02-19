@@ -166,7 +166,7 @@ npm run validate-resume-pdfs
 
 ### Method 2: Manual Generator Run
 
-If you only changed resume content and want to regenerate quickly:
+If you only changed resume content and want to regenerate quickly (and already have a current production build in `.next/`):
 
 ```bash
 npm run generate-resume-pdfs
@@ -179,10 +179,13 @@ npm run validate-resume-pdfs
 ```
 
 If validation fails, tune per-variant `--resume-print-scale` in `app/styles/13-resume-latex.css`, regenerate, and re-validate until all variants pass.
+If generation fails with `No Next.js production build found at .next/BUILD_ID`, run `npm run build` first.
 
 ### Prerequisites
 
-- `google-chrome` must be available in PATH (or set `CHROME_BIN`).
+- A Chrome/Chromium executable must be available in PATH (`google-chrome`, `google-chrome-stable`, `chromium`, or `chromium-browser`) or set `CHROME_BIN` to a valid executable path.
+- If using Snap Chromium and generation fails with `is not a snap cgroup for tag snap.chromium.chromium`, switch to a non-Snap browser binary and point `CHROME_BIN` to it (for example `/usr/bin/google-chrome-stable`).
+- `pdfinfo`, `pdffonts`, and `pdftohtml` must be available in PATH for `npm run validate-resume-pdfs` (`poppler-utils` on Ubuntu/Debian).
 - Build requires localhost binding for temporary `next start` during generation.
 
 ## Managing PDF Variants

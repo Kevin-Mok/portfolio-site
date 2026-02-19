@@ -292,7 +292,11 @@ Expected results:
 - Generated PDFs do not include browser print chrome (date/time/title/url/footer text).
 
 Failure modes / debugging notes:
-- If generation fails before output, verify `google-chrome` exists in PATH or set `CHROME_BIN`.
+- If generation fails before output, verify a Chrome/Chromium binary exists in PATH (`google-chrome`, `google-chrome-stable`, `chromium`, or `chromium-browser`) or set `CHROME_BIN`.
+- If generation fails with `is not a snap cgroup for tag snap.chromium.chromium`, your `CHROME_BIN` is Snap Chromium and cannot run in this session; install a non-Snap Chrome/Chromium binary (for example `google-chrome-stable`) and set `CHROME_BIN` to that path.
+- If generation fails with `No Next.js production build found at .next/BUILD_ID`, run `npm run build` first.
+- If validation fails with `spawnSync pdfinfo/pdffonts/pdftohtml ENOENT`, install `poppler-utils` (Ubuntu/Debian: `sudo apt install -y poppler-utils`).
+- If validation fails with `Missing generated resume PDF(s)`, run `npm run build` (or `npm run generate-resume-pdfs`) before validation.
 - If server startup fails, inspect `scripts/generate-resume-pdfs.mjs` output for `Next.js server stdout/stderr`.
 - If a variant file is missing, verify the variant exists in both `lib/resume-data.ts` and `scripts/generate-resume-pdfs.mjs`.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 
@@ -23,6 +23,45 @@ const minBottomWhitespaceRatio = 0.02;
 const maxBottomWhitespaceRatio = 0.09;
 const allowedFontFamilies = new Set(['CMUSerif']);
 const pdfDir = path.join(process.cwd(), 'public', 'resume');
+const requiredTools = ['pdfinfo', 'pdffonts', 'pdftohtml'];
+
+function commandExists(command) {
+  const result = spawnSync(command, ['--version'], { stdio: 'ignore' });
+  if (result.error) {
+    return false;
+  }
+
+  return true;
+}
+
+function validateDependencies() {
+  const missingTools = requiredTools.filter((tool) => !commandExists(tool));
+  if (missingTools.length === 0) {
+    return;
+  }
+
+  throw new Error(
+    [
+      `Missing required PDF tool(s): ${missingTools.join(', ')}`,
+      'Install poppler-utils and rerun validation.',
+      'Ubuntu/Debian: sudo apt install -y poppler-utils',
+    ].join('\n')
+  );
+}
+
+function validateGeneratedPdfs() {
+  const missingPdfs = variants.filter((fileName) => !existsSync(path.join(pdfDir, fileName)));
+  if (missingPdfs.length === 0) {
+    return;
+  }
+
+  throw new Error(
+    [
+      `Missing generated resume PDF(s): ${missingPdfs.join(', ')}`,
+      'Run "npm run build" (or "npm run generate-resume-pdfs") before validation.',
+    ].join('\n')
+  );
+}
 
 function run(command, args) {
   return execFileSync(command, args, {
@@ -111,6 +150,15 @@ function formatPercent(value) {
 }
 
 let hasFailures = false;
+
+try {
+  validateDependencies();
+  validateGeneratedPdfs();
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error);
+  console.error(message);
+  process.exit(1);
+}
 
 for (const fileName of variants) {
   const pdfPath = path.join(pdfDir, fileName);

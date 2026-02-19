@@ -1,6 +1,6 @@
 # TODO
 
-Last updated: 2026-02-19 18:14 UTC
+Last updated: 2026-02-19 18:49 UTC
 
 ## What's Done
 
@@ -27,3 +27,8 @@ Last updated: 2026-02-19 18:14 UTC
 - [x] 2026-02-18 22:21 UTC - Increase resume print legibility (larger font/looser spacing) and add variant-specific print scaling so all generated resume variants remain one-page on US Letter.
 - [x] 2026-02-19 18:04 UTC - Apply mf-site resume style patterns to all portfolio variants: inline project technologies with right-aligned dates, two-line education rows, variant-specific skills bolding, all-CMU PDF fonts, and per-variant one-page fill enforcement via `scripts/validate-resume-pdfs.mjs` plus regenerated `public/resume/*.pdf`.
 - [x] 2026-02-19 18:14 UTC - Stop tracking `public/resume/*.pdf` in git (server rebuild now regenerates them), add `.gitkeep` for directory retention, and harden `rebuild-restart-portfolio.sh` to run `npm run validate-resume-pdfs` before service restart.
+- [x] 2026-02-19 18:30 UTC - Make resume PDF generation preflight-check Chrome/Chromium binaries (`google-chrome*`/`chromium*`) with actionable errors and update resume troubleshooting docs accordingly.
+- [x] 2026-02-19 18:35 UTC - Make resume PDF validation preflight-check required Poppler tools (`pdfinfo`, `pdffonts`, `pdftohtml`) with a single actionable install error and document `poppler-utils` prerequisite.
+- [x] 2026-02-19 18:39 UTC - Add resume PDF pipeline preflight checks for missing `.next` build and missing generated PDF files, and update troubleshooting docs for those explicit failure modes.
+- [x] 2026-02-19 18:42 UTC - Add targeted resume PDF generator guidance for Snap Chromium cgroup failures (`is not a snap cgroup...`) and document switching `CHROME_BIN` to a non-Snap browser path.
+- [x] 2026-02-19 18:49 UTC - Restore bounded readiness retries in `rebuild-restart-portfolio.sh` (`wait_for_http_200` + webpack chunk retry extraction) so transient post-restart `502` responses no longer fail deploy recovery immediately.

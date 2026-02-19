@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
+import { access } from 'node:fs/promises';
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -20,9 +21,46 @@ const variants = [
 
 const host = process.env.RESUME_PDF_HOST || '127.0.0.1';
 const port = process.env.RESUME_PDF_PORT || '3100';
-const chromeBin = process.env.CHROME_BIN || 'google-chrome';
 const origin = `http://${host}:${port}`;
 const outputDir = path.join(process.cwd(), 'public', 'resume');
+const nextBuildIdPath = path.join(process.cwd(), '.next', 'BUILD_ID');
+
+function commandExists(command) {
+  const result = spawnSync(command, ['--version'], { stdio: 'ignore' });
+  return !result.error;
+}
+
+function resolveChromeBinary() {
+  if (process.env.CHROME_BIN) {
+    if (commandExists(process.env.CHROME_BIN)) {
+      return process.env.CHROME_BIN;
+    }
+
+    throw new Error(
+      `CHROME_BIN is set to "${process.env.CHROME_BIN}" but that executable is not available.`
+    );
+  }
+
+  const chromeCandidates = [
+    'google-chrome',
+    'google-chrome-stable',
+    'chromium',
+    'chromium-browser',
+  ];
+
+  const resolved = chromeCandidates.find(commandExists);
+  if (resolved) {
+    return resolved;
+  }
+
+  throw new Error(
+    [
+      'No Chrome/Chromium executable found for resume PDF generation.',
+      `Checked: ${chromeCandidates.join(', ')}`,
+      'Install one of those binaries or set CHROME_BIN to an executable path.',
+    ].join('\n')
+  );
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -70,7 +108,11 @@ function runCommand(command, args, label) {
         return;
       }
 
-      reject(new Error(`${label} failed with exit code ${code}\n${stderr}`));
+      const snapCgroupHint = /is not a snap cgroup/i.test(stderr)
+        ? '\nDetected Snap Chromium confinement failure. Use a non-Snap Chrome/Chromium binary and set CHROME_BIN (for example: /usr/bin/google-chrome-stable).'
+        : '';
+
+      reject(new Error(`${label} failed with exit code ${code}\n${stderr}${snapCgroupHint}`));
     });
   });
 }
@@ -82,7 +124,7 @@ function buildResumeUrl(variantId) {
   return url.toString();
 }
 
-async function generateVariantPdf(variant) {
+async function generateVariantPdf(variant, chromeBin) {
   const pdfPath = path.join(outputDir, variant.fileName);
   const url = buildResumeUrl(variant.id);
 
@@ -130,6 +172,15 @@ async function shutdownServer(serverProcess) {
 }
 
 async function main() {
+  try {
+    await access(nextBuildIdPath);
+  } catch {
+    throw new Error(
+      'No Next.js production build found at .next/BUILD_ID.\nRun "npm run build" before "npm run generate-resume-pdfs".'
+    );
+  }
+
+  const chromeBin = resolveChromeBinary();
   await mkdir(outputDir, { recursive: true });
 
   const server = startNextServer();
@@ -150,7 +201,7 @@ async function main() {
     for (const variant of variants) {
       // Keep output visible in CI/local builds for easier diagnosis.
       console.log(`Generating ${variant.fileName} (${variant.id})`);
-      await generateVariantPdf(variant);
+      await generateVariantPdf(variant, chromeBin);
     }
 
     console.log(`Generated ${variants.length} resume PDFs in ${outputDir}`);
