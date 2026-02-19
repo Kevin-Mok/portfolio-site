@@ -18,6 +18,9 @@ Target runtime: 15-25 minutes
 - [x] `docs/TODO.md` - Keep mobile parallax surfaces transparent during accent changes by removing gray theme-surface fills.
 - [x] `docs/TODO.md` - Fix mobile wallpaper switching so Settings -> Background controls apply to the active parallax wallpaper.
 - [x] `docs/TODO.md` - Add deploy recovery tooling to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.
+- [x] `docs/TODO.md` - Harden deploy recovery checks with bounded retries so transient post-restart `502` responses do not fail recovery.
+- [x] `docs/TODO.md` - Fix OG metadata quality checks and regenerate a 1200x630 fallback image under WhatsApp size guidance.
+- [x] `docs/TODO.md` - Use `public/opengraph-image.png` as default OG image and repoint fallback metadata URLs from `.jpg` to `.png`.
 - [x] `docs/TODO.md` - Make Web Development resume PDF the default selection on desktop and mobile resume download links.
 - [x] `docs/TODO.md` - Automate build-time generation of LaTeX-style resume PDFs from variant data with US Letter output and black-text styling.
 - [x] `docs/TODO.md` - Rework resume header/layout density to match old one-page structure and remove Chrome print header/footer from generated PDFs.
@@ -189,7 +192,7 @@ bash -n rebuild-restart-portfolio.sh
 ```
 
 ```bash
-rg -n "npm run build|systemctl restart|/_next/static/chunks/webpack-" rebuild-restart-portfolio.sh docs/DEPLOY_RECOVERY.md
+rg -n "npm run build|systemctl restart|wait_for_http_200|READINESS_MAX_ATTEMPTS|/_next/static/chunks/webpack-" rebuild-restart-portfolio.sh docs/DEPLOY_RECOVERY.md
 ```
 
 Run on server with restart permissions:
@@ -201,15 +204,38 @@ Run on server with restart permissions:
 Expected results:
 - Script and runbook files exist.
 - Shell syntax check passes with no output.
-- Grep confirms build + restart + chunk verification logic is present.
-- Recovery command rebuilds, restarts `portfolio` service, returns `200` on homepage, and returns `200` on extracted webpack chunk URL.
+- Grep confirms build + restart + bounded readiness retry + chunk verification logic is present.
+- Recovery command rebuilds, restarts `portfolio` service, waits through transient warm-up responses, returns `200` on homepage, and returns `200` on extracted webpack chunk URL.
 
 Failure modes / debugging notes:
 - If restart fails with auth error, run as a user with sudo access to `systemctl restart portfolio`.
+- If homepage returns temporary `502` after restart, allow retry loop to run; tune `READINESS_MAX_ATTEMPTS` and `READINESS_SLEEP_SECONDS` if warm-up exceeds defaults.
 - If chunk extraction fails, inspect homepage HTML for missing `/_next/static/chunks/webpack-*.js` references and verify app is serving the expected build.
 - If homepage check fails, verify DNS and nginx routing for `kevin-mok.com` before re-running recovery.
 
-## T7 - Resume defaults (desktop + mobile)
+## T7 - OG metadata fallback image and path
+
+Objective: Verify fallback OG metadata points to optimized `opengraph-image.png` and the image stays within expected size.
+
+Steps:
+
+```bash
+rg -n "opengraph-image\\.png|ogImage|openGraph|twitter" app/layout.tsx config/portfolio.config.ts
+```
+
+```bash
+ls -lh public/opengraph-image.png
+```
+
+Expected results:
+- Metadata config and layout fallback reference `/opengraph-image.png`.
+- `public/opengraph-image.png` exists and remains close to ~300 KB (well under common social crawler size limits).
+
+Failure modes / debugging notes:
+- If metadata points to `.jpg` or a missing path, update `config/portfolio.config.ts` and `app/layout.tsx` fallback image references.
+- If image is oversized, re-optimize to 1200x630 and keep file size constrained for crawler compatibility.
+
+## T8 - Resume defaults (desktop + mobile)
 
 Objective: Verify Web Development resume is the default download on desktop resume page and mobile homepage CTA.
 

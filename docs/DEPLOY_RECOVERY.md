@@ -12,8 +12,8 @@ This script will:
 - build a fresh production bundle
 - validate generated resume PDFs (`npm run validate-resume-pdfs`)
 - restart the `portfolio` systemd service
-- verify homepage HTTP response
-- verify the active webpack chunk URL from homepage HTML
+- wait for homepage HTTP `200` with bounded retries
+- verify the active webpack chunk URL from homepage HTML also returns HTTP `200` with bounded retries
 
 ## Optional overrides
 
@@ -27,6 +27,12 @@ Use a different site URL:
 
 ```bash
 SITE_URL=https://www.kevin-mok.com ./rebuild-restart-portfolio.sh
+```
+
+Tune readiness retry behavior (defaults: 12 attempts, 5 seconds between attempts):
+
+```bash
+READINESS_MAX_ATTEMPTS=18 READINESS_SLEEP_SECONDS=5 ./rebuild-restart-portfolio.sh
 ```
 
 ## Manual fallback
