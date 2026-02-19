@@ -69,6 +69,8 @@ export interface ResumeVariantDefinition {
   resume: Resume;
   sectionTitles?: Partial<ResumeSectionTitles>;
   summary?: string;
+  skillsBold?: string[];
+  skillsHtmlLines?: string[];
   skillsLines?: string[];
   references?: string;
 }
@@ -97,7 +99,7 @@ const educationGeneral: Education = {
 const educationSupport: Education = {
   institution: 'University of Toronto (St. George)',
   degree: 'Computer Science Specialist',
-  gpa: '3.84 GPA (CS). Graduated with High Distinction. Relevant Coursework: Computer Networking, Databases, Operating Systems',
+  gpa: '3.84 GPA (CS). Graduated with High Distinction.',
   date: '2019 — 2024',
 };
 
@@ -362,6 +364,32 @@ const pythonSkills = [
   'C',
 ];
 
+const generalBoldSkills = [
+  'JavaScript',
+  'React',
+  'Python',
+  'Django',
+  'Git',
+  'Linux',
+  'Command Line',
+];
+
+const webDevBoldSkills = [
+  'TypeScript',
+  'JavaScript',
+  'React',
+  'Node.js',
+  'Python',
+  'Django',
+  'Git',
+  'Linux',
+  'Command Line',
+];
+
+const awsBoldSkills = ['Linux', 'JavaScript', 'React', 'Python', 'Django', 'Git', 'Command Line'];
+
+const pythonBoldSkills = ['Python', 'Django', 'JavaScript', 'React', 'Git', 'Linux', 'Command Line'];
+
 const defaultSectionTitles: ResumeSectionTitles = {
   projects: 'Web Dev Projects',
   experience: 'Work Experience',
@@ -382,6 +410,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     references:
       'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
+    skillsBold: generalBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [raritySurfPythonProject],
@@ -417,6 +446,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     label: 'Web Development',
     fileName: 'kevin-mok-resume-web-dev.pdf',
     sectionTitles: defaultSectionTitles,
+    skillsBold: webDevBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [raritySurfWebProject, kanbanCalendarProject, astronoftyProject],
@@ -440,6 +470,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     references:
       'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
+    skillsBold: awsBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [awsServerProject],
@@ -458,6 +489,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     references:
       'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
+    skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [raritySurfPythonProject, discordAdventureProject, spotifyVisualizedProject],
@@ -476,6 +508,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     references:
       'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
+    skillsBold: awsBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [
@@ -506,6 +539,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     references:
       'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
+    skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [awsServerProject, raritySurfPythonProject],
@@ -527,6 +561,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       ...defaultSectionTitles,
       projects: 'Projects',
     },
+    skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [raritySurfPythonProject, spotifyVisualizedProject, astronoftyProject],
@@ -545,6 +580,12 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     label: 'IT Support',
     fileName: 'kevin-mok-resume-it-support.pdf',
     sectionTitles: defaultSectionTitles,
+    skillsHtmlLines: [
+      '<strong>IT Support Skills:</strong> Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
+      '<strong>Customer Support:</strong> Cross-team Collaboration, Communication, User Training, Documentation',
+      '<strong>Programming Languages:</strong> Python, Go, JavaScript, TypeScript',
+      '<strong>Web Development:</strong> PostgreSQL, Linux, React, Django',
+    ],
     skillsLines: [
       'IT Support Skills: Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
       'Customer Support: Cross-team Collaboration, Communication, User Training, Documentation',
@@ -571,6 +612,12 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     label: 'IT Support + AWS',
     fileName: 'kevin-mok-resume-it-support-aws.pdf',
     sectionTitles: defaultSectionTitles,
+    skillsHtmlLines: [
+      '<strong>IT Support Skills:</strong> Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
+      '<strong>Customer Support:</strong> Cross-team Collaboration, Communication, User Training, Documentation',
+      '<strong>Programming Languages:</strong> Python, Go, JavaScript, TypeScript',
+      '<strong>Web Development:</strong> PostgreSQL, Linux, React, Django',
+    ],
     skillsLines: [
       'IT Support Skills: Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
       'Customer Support: Cross-team Collaboration, Communication, User Training, Documentation',
@@ -609,6 +656,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     summary:
       'Customer-focused call centre professional with Tier 1/2 support experience, de-escalation, and clear communication. Improves first-response, reduces escalations, and shortens resolution times across high-volume phone/chat/email queues.',
+    skillsHtmlLines: [
+      '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, clear written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
+      '<strong>Technical:</strong> Microsoft 365, VPN/log basics, Linux basics',
+      '<strong>Languages:</strong> English; <strong>Cantonese (fluent)</strong>',
+    ],
     skillsLines: [
       'Customer Support & Call Centre: Active listening, empathy, de-escalation, clear written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
       'Technical: Microsoft 365, VPN/log basics, Linux basics',
@@ -632,6 +684,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     summary:
       'Customer-focused call centre professional with Tier 1/2 support experience, de-escalation, and clear communication. Improves first-response, reduces escalations, and shortens resolution times across high-volume phone/chat/email queues.',
+    skillsHtmlLines: [
+      '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, <strong>SLA awareness</strong>, call/chat/email etiquette, documentation and <strong>KB</strong> writing',
+      '<strong>Technical:</strong> <strong>Microsoft 365</strong>, <strong>VPN/log basics</strong>, <strong>Linux</strong>',
+      '<strong>Languages:</strong> <strong>English</strong>, <strong>Cantonese (fluent)</strong>',
+    ],
     skillsLines: [
       'Customer Support & Call Centre: Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
       'Technical: Microsoft 365, VPN/log basics, Linux',

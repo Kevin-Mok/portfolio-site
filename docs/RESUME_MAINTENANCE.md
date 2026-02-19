@@ -92,7 +92,7 @@ experience: [
 
 ### Updating Skills
 
-**Location**: `resumeVariants[*].resume.skills` or `skillsLines`
+**Location**: `resumeVariants[*].resume.skills`, `skillsBold`, `skillsHtmlLines`, or `skillsLines`
 
 ```typescript
 skills: [
@@ -105,13 +105,21 @@ skills: [
   // Add or remove skills here
   'NewTechnology',
 ],
+
+skillsBold: ['TypeScript', 'JavaScript', 'React'],
+
+skillsHtmlLines: [
+  '<strong>Customer Support &amp; Call Centre:</strong> Active listening, ...',
+  '<strong>Technical:</strong> <strong>Microsoft 365</strong>, VPN/log basics',
+],
 ```
 
 Skills are:
-- Displayed as comma-separated list
-- Bolded in output
-- Order matters (most relevant first)
-- No special formatting needed
+- `resume.skills`: ordered comma-separated list.
+- `skillsBold`: optional subset to bold in `resume.skills`.
+- `skillsHtmlLines`: optional rich-text lines for variant-specific emphasis.
+- `skillsLines`: plain-text fallback for grouped lines.
+- For parity-focused resumes, keep `skillsBold` / `skillsHtmlLines` aligned with the canonical PDF style.
 
 ### Updating Education
 
@@ -150,6 +158,11 @@ This runs `next build` and then `npm run generate-resume-pdfs`, which:
 - Renders each variant from `lib/resume-data.ts`
 - Prints each page to `public/resume/*.pdf` using headless Chrome
 - Preserves the existing download filenames
+- Must be followed by validation:
+
+```bash
+npm run validate-resume-pdfs
+```
 
 ### Method 2: Manual Generator Run
 
@@ -158,6 +171,14 @@ If you only changed resume content and want to regenerate quickly:
 ```bash
 npm run generate-resume-pdfs
 ```
+
+Then validate:
+
+```bash
+npm run validate-resume-pdfs
+```
+
+If validation fails, tune per-variant `--resume-print-scale` in `app/styles/13-resume-latex.css`, regenerate, and re-validate until all variants pass.
 
 ### Prerequisites
 
@@ -351,6 +372,7 @@ To change size:
    - Select each variant from dropdown
    - Click "Download PDF"
    - Verify correct file downloads
+   - Run `npm run validate-resume-pdfs` and resolve all failures
 
 6. **Test responsive design**:
    - Resize browser to mobile width (<640px)

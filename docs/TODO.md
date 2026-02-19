@@ -1,6 +1,6 @@
 # TODO
 
-Last updated: 2026-02-18 22:21 UTC
+Last updated: 2026-02-19 18:14 UTC
 
 ## What's Done
 
@@ -24,3 +24,5 @@ Last updated: 2026-02-18 22:21 UTC
 - [x] 2026-02-18 21:04 UTC - Implement typed resume variants with build-time PDF generation (`npm run build`), preserve `/resume/<name>.pdf` downloads, switch resume styling to black text with blue links, and generate US Letter PDFs via headless Chrome.
 - [x] 2026-02-18 21:58 UTC - Rework resume layout to match old one-page structure on US Letter: remove framed `/resume` shell, place phone/email left and LinkedIn/GitHub right under a larger underlined name, remove subtitle line, tighten spacing for one-page fit across generated variants, and disable Chrome print header/footer in PDF generation.
 - [x] 2026-02-18 22:21 UTC - Increase resume print legibility (larger font/looser spacing) and add variant-specific print scaling so all generated resume variants remain one-page on US Letter.
+- [x] 2026-02-19 18:04 UTC - Apply mf-site resume style patterns to all portfolio variants: inline project technologies with right-aligned dates, two-line education rows, variant-specific skills bolding, all-CMU PDF fonts, and per-variant one-page fill enforcement via `scripts/validate-resume-pdfs.mjs` plus regenerated `public/resume/*.pdf`.
+- [x] 2026-02-19 18:14 UTC - Stop tracking `public/resume/*.pdf` in git (server rebuild now regenerates them), add `.gitkeep` for directory retention, and harden `rebuild-restart-portfolio.sh` to run `npm run validate-resume-pdfs` before service restart.

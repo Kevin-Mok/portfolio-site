@@ -174,6 +174,8 @@ Resume constraints:
 - Maintain white background and black text for print-ready output.
 - If content changes, verify `/resume` and homepage tile rendering.
 - Regenerate `public/resume/*.pdf` variants when resume copy changes.
+- After any resume content change, recalibrate per-variant page fill (`--resume-print-scale` in `app/styles/13-resume-latex.css`) so each resume variant fills a single US Letter page.
+- Run `npm run validate-resume-pdfs` after regeneration and resolve all failures before considering the resume change done.
 
 Before major resume edits, read:
 

@@ -10,7 +10,8 @@
     "lint": "next lint",
     "cleanup": "bash scripts/cleanup-dev.sh",
     "predev": "npm run cleanup",
-    "generate-resume-pdfs": "node scripts/generate-resume-pdfs.mjs"
+    "generate-resume-pdfs": "node scripts/generate-resume-pdfs.mjs",
+    "validate-resume-pdfs": "node scripts/validate-resume-pdfs.mjs"
   },
   "dependencies": {
     "@content-collections/core": "^0.11.1",

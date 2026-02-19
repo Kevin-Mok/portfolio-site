@@ -42,6 +42,10 @@ const ResumeContentComponent: React.FC<ResumeContentProps> = ({
   );
 
   const resume = selectedVariant.resume;
+  const boldSkills = useMemo(
+    () => new Set(selectedVariant.skillsBold ?? resume.skills),
+    [selectedVariant.skillsBold, resume.skills]
+  );
 
   return (
     <div
@@ -91,7 +95,17 @@ const ResumeContentComponent: React.FC<ResumeContentProps> = ({
       </ResumeSection>
 
       <ResumeSection title={sectionTitles.skills}>
-        {selectedVariant.skillsLines && selectedVariant.skillsLines.length > 0 ? (
+        {selectedVariant.skillsHtmlLines && selectedVariant.skillsHtmlLines.length > 0 ? (
+          <div className="resume-skills-lines">
+            {selectedVariant.skillsHtmlLines.map((line) => (
+              <p
+                key={line}
+                className="resume-skill-line"
+                dangerouslySetInnerHTML={{ __html: line }}
+              />
+            ))}
+          </div>
+        ) : selectedVariant.skillsLines && selectedVariant.skillsLines.length > 0 ? (
           <div className="resume-skills-lines">
             {selectedVariant.skillsLines.map((line) => (
               <p key={line} className="resume-skill-line">
@@ -100,10 +114,10 @@ const ResumeContentComponent: React.FC<ResumeContentProps> = ({
             ))}
           </div>
         ) : (
-          <p style={{ margin: 0 }}>
+          <p className="resume-skills-inline">
             {resume.skills.map((skill, index) => (
               <React.Fragment key={skill}>
-                <strong>{skill}</strong>
+                {boldSkills.has(skill) ? <strong>{skill}</strong> : skill}
                 {index < resume.skills.length - 1 ? ', ' : ''}
               </React.Fragment>
             ))}

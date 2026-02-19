@@ -102,11 +102,12 @@ This file covers:
    - Contact info
    - Projects array
    - Experience array
-   - Skills array (or `skillsLines` for grouped text)
+   - Skills array plus optional `skillsBold` / `skillsHtmlLines` formatting controls
    - Education array
 3. Test on `/resume`
 4. Regenerate PDFs
-5. Commit changes
+5. Run layout validation (`npm run validate-resume-pdfs`) and tune page fill if needed
+6. Commit changes
 
 **Full guide**: [RESUME_MAINTENANCE.md § Updating Resume Content](./RESUME_MAINTENANCE.md#updating-resume-content)
 
@@ -125,8 +126,15 @@ This file covers:
 npm run build
 ```
 
-2. Verify regenerated files in `public/resume/`
-3. Commit changes
+2. Validate one-page/page-fill/font constraints:
+
+```bash
+npm run validate-resume-pdfs
+```
+
+3. If validation fails, adjust per-variant `--resume-print-scale` in `app/styles/13-resume-latex.css`, regenerate, and re-run validation.
+4. Verify regenerated files in `public/resume/`
+5. Commit changes
 
 **Full guide**: [RESUME_MAINTENANCE.md § Regenerating PDFs](./RESUME_MAINTENANCE.md#regenerating-pdfs)
 

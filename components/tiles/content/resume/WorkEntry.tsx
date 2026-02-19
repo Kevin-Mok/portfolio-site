@@ -8,14 +8,15 @@ interface WorkEntryProps {
 export const WorkEntry: React.FC<WorkEntryProps> = ({ work }) => {
   return (
     <div className="resume-entry">
-      <h3 className="entry-company">{work.company}</h3>
-
-      <div className="entry-subtitle">
-        <span className="entry-position">{work.title}</span>
+      <div className="resume-entry-header">
+        <h3 className="entry-company">{work.company}</h3>
         <span className="entry-date">{work.date}</span>
       </div>
 
-      <div className="entry-tech">{work.languages.join(', ')}</div>
+      <div className="entry-subtitle">
+        <span className="entry-position">{work.title}</span>
+        <span className="entry-tech-inline">&lt;{work.languages.join(', ')}&gt;</span>
+      </div>
 
       <ul className="resume-bullets">
         {work.bullets.map((bullet, index) => (

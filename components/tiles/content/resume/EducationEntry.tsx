@@ -8,12 +8,13 @@ interface EducationEntryProps {
 export const EducationEntry: React.FC<EducationEntryProps> = ({ education }) => {
   return (
     <div className="resume-education">
-      <h3 className="education-institution">{education.institution}</h3>
-      <div className="education-details">
-        <span>{education.degree}</span>
-        <span>{education.gpa}</span>
-        <span>{education.date}</span>
+      <div className="education-header">
+        <h3 className="education-institution">{education.institution}</h3>
+        <span className="entry-date">{education.date}</span>
       </div>
+      <p className="education-details">
+        {education.degree} — {education.gpa}
+      </p>
     </div>
   );
 };
