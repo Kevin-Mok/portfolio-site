@@ -295,48 +295,81 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ## Resume-ready points by variant
 
 ### `general`
-- Shipped a production Next.js 15 portfolio combining tiled desktop UX, parallax mobile flows, and MDX content operations in a maintainable TypeScript codebase.
-- Delivered end-to-end product quality with deployment automation, modular CSS architecture, and documented recovery procedures that keep releases reliable under real hosting constraints.
+- **Designed a portfolio experience** with a **6-panel desktop layout** and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.
+- **Added 3 themes** and **15 accent colors** to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.
+- **Set up 5 spam checks** on the contact form and **cut low-quality submissions**, so real recruiter outreach was easier to identify and respond to quickly.
+- **Split styles into 12 small CSS modules** (under **200 lines each**), making edits safer and reducing accidental UI regressions during rapid updates.
+- **Auto-generated and validated 11 resume variants** and **kept role-specific links consistent**, so resume content stayed accurate whenever project details changed.
 
 ### `web-dev`
-- Built a six-tile desktop interface plus parallax mobile experience with Tailwind v4, React Context state, and polished interaction patterns inspired by Linux window managers.
-- Implemented MDX-powered blog and project publishing, syntax-highlighted content rendering, and reusable UI modules that accelerate feature delivery without sacrificing design consistency.
+- **Designed a portfolio experience** with a **6-panel desktop layout** and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.
+- **Added 3 themes** and **15 accent colors** to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.
+- **Set up 5 spam checks** on the contact form and **cut low-quality submissions**, so real recruiter outreach was easier to identify and respond to quickly.
+- **Split styles into 12 small CSS modules** (under **200 lines each**), making edits safer and reducing accidental UI regressions during rapid updates.
+- **Auto-generated and validated 11 resume variants** and **kept role-specific links consistent**, so resume content stayed accurate whenever project details changed.
 
 ### `aws`
-- Established cloud-ready delivery practices through environment-driven configuration, CDN fallback strategy, and deterministic build/deploy workflows suitable for infrastructure-heavy teams.
-- Added operational resilience with documented restart and recovery routines plus validation gates, reflecting the reliability mindset expected in cloud platform ownership roles.
+- **Designed a portfolio experience** with a **6-panel desktop layout** and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.
+- **Added 3 themes** and **15 accent colors** to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.
+- **Set up 5 spam checks** on the contact form and **cut low-quality submissions**, so real recruiter outreach was easier to identify and respond to quickly.
+- **Split styles into 12 small CSS modules** (under **200 lines each**), making edits safer and reducing accidental UI regressions during rapid updates.
+- **Auto-generated and validated 11 resume variants** and **kept role-specific links consistent**, so resume content stayed accurate whenever project details changed.
 
 ### `python`
-- Enforced strict typing, schema validation, and explicit data boundaries that transfer well to Python service design, API integration, and backend quality control.
-- Built maintainable integration surfaces for contact workflows and content pipelines, mirroring patterns used by Python teams managing production web applications.
+- **Designed a portfolio experience** with a **6-panel desktop layout** and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.
+- **Added 3 themes** and **15 accent colors** to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.
+- **Set up 5 spam checks** on the contact form and **cut low-quality submissions**, so real recruiter outreach was easier to identify and respond to quickly.
+- **Split styles into 12 small CSS modules** (under **200 lines each**), making edits safer and reducing accidental UI regressions during rapid updates.
+- **Auto-generated and validated 11 resume variants** and **kept role-specific links consistent**, so resume content stayed accurate whenever project details changed.
 
 ### `aws-web-dev`
-- Combined frontend product craftsmanship with infrastructure-aware decisions across CDN routing, deploy behavior, and environment-specific configuration management.
-- Balanced rapid UI iteration with operational safeguards so web features can ship quickly while still fitting cloud-managed release and rollback workflows.
+- **Designed a portfolio experience** with a **6-panel desktop layout** and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.
+- **Added 3 themes** and **15 accent colors** to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.
+- **Set up 5 spam checks** on the contact form and **cut low-quality submissions**, so real recruiter outreach was easier to identify and respond to quickly.
+- **Split styles into 12 small CSS modules** (under **200 lines each**), making edits safer and reducing accidental UI regressions during rapid updates.
+- **Auto-generated and validated 11 resume variants** and **kept role-specific links consistent**, so resume content stayed accurate whenever project details changed.
 
 ### `aws-python`
-- Developed integration-heavy web systems and validation tooling using architecture patterns portable to Python services running in cloud deployment pipelines.
-- Applied reliability-first thinking to feature delivery, creating clear seams between presentation logic and backend responsibilities for scalable Python and cloud collaboration.
+- **Designed a portfolio experience** with a **6-panel desktop layout** and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.
+- **Added 3 themes** and **15 accent colors** to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.
+- **Set up 5 spam checks** on the contact form and **cut low-quality submissions**, so real recruiter outreach was easier to identify and respond to quickly.
+- **Split styles into 12 small CSS modules** (under **200 lines each**), making edits safer and reducing accidental UI regressions during rapid updates.
+- **Auto-generated and validated 11 resume variants** and **kept role-specific links consistent**, so resume content stayed accurate whenever project details changed.
 
 ### `web-dev-django`
-- Structured routes, form handling, and content architecture in ways that map directly to Django-backed full-stack applications and API-driven frontend integrations.
-- Implemented reusable modular styling and component boundaries that support long-lived web products maintained by cross-functional frontend and backend teams.
+- **Designed a portfolio experience** with a **6-panel desktop layout** and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.
+- **Added 3 themes** and **15 accent colors** to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.
+- **Set up 5 spam checks** on the contact form and **cut low-quality submissions**, so real recruiter outreach was easier to identify and respond to quickly.
+- **Split styles into 12 small CSS modules** (under **200 lines each**), making edits safer and reducing accidental UI regressions during rapid updates.
+- **Auto-generated and validated 11 resume variants** and **kept role-specific links consistent**, so resume content stayed accurate whenever project details changed.
 
 ### `it-support`
-- Improved supportability with actionable error surfaces, clear operator documentation, and troubleshooting workflows that shorten diagnosis time for production issues.
-- Added practical recovery guidance so maintainers can isolate failures quickly, execute fixes consistently, and restore service with minimal downtime.
+- **Built a portfolio that is easy to scan** with a **6-panel desktop layout**, so recruiters can find key information quickly on both desktop and mobile.
+- **Added 3 themes** and **15 color options** to improve readability for different viewers and make longer browsing sessions more comfortable.
+- **Used 5 spam checks** in the contact form and **reduced junk messages**, so real hiring conversations received faster attention.
+- **Kept 11 resume variants aligned automatically** and **avoided manual cleanup**, so each role-focused resume stayed accurate after content updates.
+- **Organized styles into 12 small modules** (under **200 lines each**) and **made updates predictable**, reducing avoidable rework during iterative changes.
 
 ### `it-support-aws`
-- Documented deployment recovery, validation checks, and rollback paths that align with support engineering workflows in cloud-hosted environments.
-- Built predictable operational runbooks and health-gate practices that help support teams triage incidents and coordinate effectively with infrastructure owners.
+- **Built a portfolio that is easy to scan** with a **6-panel desktop layout**, so recruiters can find key information quickly on both desktop and mobile.
+- **Added 3 themes** and **15 color options** to improve readability for different viewers and make longer browsing sessions more comfortable.
+- **Used 5 spam checks** in the contact form and **reduced junk messages**, so real hiring conversations received faster attention.
+- **Kept 11 resume variants aligned automatically** and **avoided manual cleanup**, so each role-focused resume stayed accurate after content updates.
+- **Organized styles into 12 small modules** (under **200 lines each**) and **made updates predictable**, reducing avoidable rework during iterative changes.
 
 ### `sales`
-- Crafted a high-credibility technical narrative that communicates capabilities clearly, helping convert visitors into leads through concrete product depth and polish.
-- Combined visual differentiation with measurable feature framing, strengthening client-facing conversations where trust, clarity, and delivery confidence drive decisions.
+- **Built a portfolio that is easy to scan** with a **6-panel desktop layout**, so recruiters can find key information quickly on both desktop and mobile.
+- **Added 3 themes** and **15 color options** to improve readability for different viewers and make longer browsing sessions more comfortable.
+- **Used 5 spam checks** in the contact form and **reduced junk messages**, so real hiring conversations received faster attention.
+- **Kept 11 resume variants aligned automatically** and **avoided manual cleanup**, so each role-focused resume stayed accurate after content updates.
+- **Organized styles into 12 small modules** (under **200 lines each**) and **made updates predictable**, reducing avoidable rework during iterative changes.
 
 ### `call-centre`
-- Designed intuitive navigation and contact paths that reduce friction, helping users find answers quickly during high-volume support moments.
-- Implemented clarity-first validation feedback and information hierarchy to improve communication quality and reduce repetitive back-and-forth in support interactions.
+- **Built a portfolio that is easy to scan** with a **6-panel desktop layout**, so recruiters can find key information quickly on both desktop and mobile.
+- **Added 3 themes** and **15 color options** to improve readability for different viewers and make longer browsing sessions more comfortable.
+- **Used 5 spam checks** in the contact form and **reduced junk messages**, so real hiring conversations received faster attention.
+- **Kept 11 resume variants aligned automatically** and **avoided manual cleanup**, so each role-focused resume stayed accurate after content updates.
+- **Organized styles into 12 small modules** (under **200 lines each**) and **made updates predictable**, reducing avoidable rework during iterative changes.
 
 ## 📧 Contact
 
