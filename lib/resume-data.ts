@@ -137,20 +137,6 @@ const kanbanCalendarProject: ResumeProject = {
   ],
 };
 
-const astronoftyProject: ResumeProject = {
-  name: 'Astronofty',
-  url: 'https://github.com/Kevin-Mok/astronofty',
-  languages: ['JavaScript', 'React', 'Solidity'],
-  date: 'Jan 2023',
-  bullets: [
-    '<strong>Secured 2nd place among 150+ competitors</strong> at UofTHacks by delivering a fully functional <strong>Solidity-based NFT marketplace</strong> within a strict 36-hour deadline.',
-    '<strong>Captured a niche target audience of 2.6M+ astrophotographers</strong> by aligning core product features to solve specialized digital ownership and licensing challenges.',
-    '<strong>Engineered a multi-asset tokenization standard</strong> supporting composite image NFTs, empowering creators to bundle assets and <strong>increasing buyer evaluation context</strong>.',
-    '<strong>Streamlined the Web3 onboarding funnel</strong>, reducing minting and listing friction to achieve a <strong>90% task completion rate</strong> during live platform demonstrations.',
-    '<strong>Drove an 80% lift in judge engagement</strong> through an optimized UX flow, effectively communicating complex blockchain interactions in an intuitive UI.',
-  ],
-};
-
 const awsServerProject: ResumeProject = {
   name: 'AWS Server',
   languages: ['AWS', 'Kubernetes', 'Docker', 'Terraform'],
@@ -425,22 +411,35 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       contact: sharedContact,
       projects: [
         {
-          ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[2]],
-        },
-        {
-          ...astronoftyProject,
-          bullets: [astronoftyProject.bullets[0], astronoftyProject.bullets[4]],
+          ...portfolioSiteProject,
+          bullets: [
+            portfolioSiteProject.bullets[0],
+            portfolioSiteProject.bullets[2],
+            portfolioSiteProject.bullets[4],
+          ],
         },
         {
           ...spotifyVisualizedProject,
-          bullets: [spotifyVisualizedProject.bullets[0], spotifyVisualizedProject.bullets[1]],
+          bullets: [
+            spotifyVisualizedProject.bullets[0],
+            spotifyVisualizedProject.bullets[1],
+            spotifyVisualizedProject.bullets[4],
+          ],
+        },
+        {
+          ...awsServerProject,
+          bullets: [awsServerProject.bullets[1], awsServerProject.bullets[2], awsServerProject.bullets[3]],
         },
       ],
       experience: [
         {
           ...redHatCloudExperience,
-          bullets: redHatCloudExperience.bullets.slice(0, 3),
+          bullets: [
+            redHatCloudExperience.bullets[0],
+            redHatCloudExperience.bullets[1],
+            redHatCloudExperience.bullets[2],
+            redHatCloudExperience.bullets[3],
+          ],
         },
       ],
       skills: [
@@ -484,7 +483,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             raritySurfProject.bullets[0],
             raritySurfProject.bullets[1],
             raritySurfProject.bullets[2],
-            raritySurfProject.bullets[3],
             raritySurfProject.bullets[4],
           ],
         },
@@ -494,7 +492,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             portfolioSiteProject.bullets[0],
             portfolioSiteProject.bullets[1],
             portfolioSiteProject.bullets[2],
-            portfolioSiteProject.bullets[4],
+            portfolioSiteProject.bullets[3],
           ],
         },
         {
@@ -503,10 +501,21 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             kanbanCalendarProject.bullets[0],
             kanbanCalendarProject.bullets[1],
             kanbanCalendarProject.bullets[2],
+            kanbanCalendarProject.bullets[3],
           ],
         },
       ],
-      experience: [redHatWebExperience],
+      experience: [
+        {
+          ...redHatWebExperience,
+          bullets: [
+            redHatWebExperience.bullets[0],
+            redHatWebExperience.bullets[1],
+            redHatWebExperience.bullets[2],
+            redHatWebExperience.bullets[3],
+          ],
+        },
+      ],
       skills: webSkills,
       education: [
         {
@@ -537,15 +546,16 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             awsServerProject.bullets[1],
             awsServerProject.bullets[2],
             awsServerProject.bullets[3],
+            awsServerProject.bullets[4],
           ],
         },
         {
           ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[3], raritySurfProject.bullets[4]],
+          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[4]],
         },
         {
-          ...stbMarketplaceProject,
-          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[3]],
+          ...portfolioSiteProject,
+          bullets: [portfolioSiteProject.bullets[4]],
         },
       ],
       experience: [redHatCloudExperience],
@@ -573,17 +583,30 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
             spotifyVisualizedProject.bullets[2],
-            spotifyVisualizedProject.bullets[3],
             spotifyVisualizedProject.bullets[4],
           ],
         },
         discordAdventureProject,
         {
-          ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[2]],
+          ...stbMarketplaceProject,
+          bullets: [
+            stbMarketplaceProject.bullets[0],
+            stbMarketplaceProject.bullets[2],
+            stbMarketplaceProject.bullets[3],
+          ],
         },
       ],
-      experience: [redHatCloudExperience],
+      experience: [
+        {
+          ...redHatCloudExperience,
+          bullets: [
+            redHatCloudExperience.bullets[0],
+            redHatCloudExperience.bullets[1],
+            redHatCloudExperience.bullets[2],
+            redHatCloudExperience.bullets[3],
+          ],
+        },
+      ],
       skills: pythonSkills,
       education: [educationDefault],
     },
@@ -604,16 +627,16 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: [
         {
           ...awsServerProject,
-          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1], awsServerProject.bullets[2]],
+          bullets: [
+            awsServerProject.bullets[0],
+            awsServerProject.bullets[1],
+            awsServerProject.bullets[2],
+            awsServerProject.bullets[3],
+          ],
         },
         {
           ...raritySurfProject,
-          bullets: [
-            raritySurfProject.bullets[0],
-            raritySurfProject.bullets[1],
-            raritySurfProject.bullets[2],
-            raritySurfProject.bullets[3],
-          ],
+          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[4]],
         },
         {
           ...portfolioSiteProject,
@@ -624,7 +647,17 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ],
         },
       ],
-      experience: [redHatCloudExperience],
+      experience: [
+        {
+          ...redHatCloudExperience,
+          bullets: [
+            redHatCloudExperience.bullets[0],
+            redHatCloudExperience.bullets[1],
+            redHatCloudExperience.bullets[2],
+            redHatCloudExperience.bullets[3],
+          ],
+        },
+      ],
       skills: awsSkills,
       education: [educationGeneral],
     },
@@ -645,7 +678,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: [
         {
           ...awsServerProject,
-          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1], awsServerProject.bullets[2]],
+          bullets: [awsServerProject.bullets[1], awsServerProject.bullets[2], awsServerProject.bullets[3]],
         },
         {
           ...spotifyVisualizedProject,
@@ -656,12 +689,19 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[4],
           ],
         },
+        discordAdventureProject,
+      ],
+      experience: [
         {
-          ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1]],
+          ...redHatCloudExperience,
+          bullets: [
+            redHatCloudExperience.bullets[0],
+            redHatCloudExperience.bullets[1],
+            redHatCloudExperience.bullets[2],
+            redHatCloudExperience.bullets[3],
+          ],
         },
       ],
-      experience: [redHatCloudExperience],
       skills: pythonSkills,
       education: [educationDefault],
     },
@@ -688,8 +728,12 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ],
         },
         {
-          ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[2]],
+          ...kanbanCalendarProject,
+          bullets: [
+            kanbanCalendarProject.bullets[0],
+            kanbanCalendarProject.bullets[1],
+            kanbanCalendarProject.bullets[3],
+          ],
         },
         {
           ...portfolioSiteProject,
@@ -700,7 +744,17 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ],
         },
       ],
-      experience: [redHatWebExperience],
+      experience: [
+        {
+          ...redHatWebExperience,
+          bullets: [
+            redHatWebExperience.bullets[0],
+            redHatWebExperience.bullets[1],
+            redHatWebExperience.bullets[2],
+            redHatWebExperience.bullets[3],
+          ],
+        },
+      ],
       skills: pythonSkills,
       education: [educationDefault],
     },
@@ -727,18 +781,32 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: [
         {
           ...leavesSupportProject,
-          bullets: [leavesSupportProject.bullets[0], leavesSupportProject.bullets[2], leavesSupportProject.bullets[4]],
+          bullets: [leavesSupportProject.bullets[2], leavesSupportProject.bullets[3], leavesSupportProject.bullets[4]],
         },
         {
           ...stbMarketplaceProject,
-          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[2]],
+          bullets: [
+            stbMarketplaceProject.bullets[1],
+            stbMarketplaceProject.bullets[3],
+            stbMarketplaceProject.bullets[4],
+          ],
         },
         {
           ...portfolioSiteProject,
-          bullets: [portfolioSiteProject.bullets[2], portfolioSiteProject.bullets[3], portfolioSiteProject.bullets[4]],
+          bullets: [portfolioSiteProject.bullets[2], portfolioSiteProject.bullets[3]],
         },
       ],
-      experience: [redHatSupportExperience],
+      experience: [
+        {
+          ...redHatSupportExperience,
+          bullets: [
+            redHatSupportExperience.bullets[1],
+            redHatSupportExperience.bullets[2],
+            redHatSupportExperience.bullets[3],
+            redHatSupportExperience.bullets[4],
+          ],
+        },
+      ],
       skills: [],
       education: [educationSupport],
     },
@@ -764,19 +832,29 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       contact: sharedContact,
       projects: [
         {
-          ...leavesSupportProject,
-          bullets: [leavesSupportProject.bullets[0], leavesSupportProject.bullets[2], leavesSupportProject.bullets[4]],
-        },
-        {
           ...awsServerProject,
-          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1]],
+          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1], awsServerProject.bullets[3]],
         },
         {
-          ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[3], raritySurfProject.bullets[4]],
+          ...leavesSupportProject,
+          bullets: [leavesSupportProject.bullets[3], leavesSupportProject.bullets[4]],
+        },
+        {
+          ...stbMarketplaceProject,
+          bullets: [stbMarketplaceProject.bullets[1], stbMarketplaceProject.bullets[3]],
         },
       ],
-      experience: [redHatSupportExperience],
+      experience: [
+        {
+          ...redHatSupportExperience,
+          bullets: [
+            redHatSupportExperience.bullets[1],
+            redHatSupportExperience.bullets[2],
+            redHatSupportExperience.bullets[3],
+            redHatSupportExperience.bullets[4],
+          ],
+        },
+      ],
       skills: [],
       education: [educationSupport],
     },
@@ -790,7 +868,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: 'Web Dev Projects',
     },
     summary:
-      'Customer-focused call centre professional with Tier 1/2 support experience, de-escalation, and clear communication. Improves first-response, reduces escalations, and shortens resolution times across high-volume phone/chat/email queues.',
+      'Revenue-focused customer operations professional with high-value transaction support, negotiation, and dispute prevention experience, consistently improving GMV outcomes and customer trust.',
     skillsHtmlLines: [
       '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, clear written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
       '<strong>Technical:</strong> Microsoft 365, VPN/log basics, Linux basics',
@@ -819,18 +897,13 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           bullets: [
             digitalMarketplaceExperience.bullets[0],
             digitalMarketplaceExperience.bullets[1],
-            digitalMarketplaceExperience.bullets[2],
             digitalMarketplaceExperience.bullets[3],
             digitalMarketplaceExperience.bullets[5],
           ],
         },
         {
           ...redHatSupportExperience,
-          bullets: [
-            redHatSupportExperience.bullets[0],
-            redHatSupportExperience.bullets[3],
-            redHatSupportExperience.bullets[4],
-          ],
+          bullets: [redHatSupportExperience.bullets[4]],
         },
       ],
       skills: [],
@@ -846,7 +919,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: 'Dev Projects',
     },
     summary:
-      'Customer-focused call centre professional with Tier 1/2 support experience, de-escalation, and clear communication. Improves first-response, reduces escalations, and shortens resolution times across high-volume phone/chat/email queues.',
+      'High-volume customer support professional with Tier 1/2 troubleshooting, de-escalation, and documentation discipline, improving response quality and reducing escalation friction across phone/chat/email queues.',
     skillsHtmlLines: [
       '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, <strong>SLA awareness</strong>, call/chat/email etiquette, documentation and <strong>KB</strong> writing',
       '<strong>Technical:</strong> <strong>Microsoft 365</strong>, <strong>VPN/log basics</strong>, <strong>Linux</strong>',
@@ -866,7 +939,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         },
         {
           ...stbMarketplaceProject,
-          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[2], stbMarketplaceProject.bullets[4]],
+          bullets: [stbMarketplaceProject.bullets[1], stbMarketplaceProject.bullets[3], stbMarketplaceProject.bullets[4]],
         },
       ],
       experience: [
@@ -876,17 +949,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             digitalMarketplaceExperience.bullets[1],
             digitalMarketplaceExperience.bullets[2],
             digitalMarketplaceExperience.bullets[3],
-            digitalMarketplaceExperience.bullets[4],
           ],
         },
         {
           ...redHatSupportExperience,
-          bullets: [
-            redHatSupportExperience.bullets[1],
-            redHatSupportExperience.bullets[2],
-            redHatSupportExperience.bullets[3],
-            redHatSupportExperience.bullets[4],
-          ],
+          bullets: [redHatSupportExperience.bullets[3], redHatSupportExperience.bullets[4]],
         },
       ],
       skills: [],

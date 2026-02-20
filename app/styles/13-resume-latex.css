@@ -352,69 +352,69 @@
 
 /* Per-variant print scaling tuned for one-page fill on US Letter */
 .resume-variant-general {
-  --resume-print-scale: 1.189;
-  --resume-print-leading: 1;
-  --resume-print-top-offset: 38.642pt;
+  --resume-print-scale: 1.11;
+  --resume-print-leading: 0.977;
+  --resume-print-top-offset: 26.125pt;
 }
 
 .resume-variant-web-dev {
-  --resume-print-scale: 1.015;
-  --resume-print-leading: 0.974;
-  --resume-print-top-offset: 14.182pt;
+  --resume-print-scale: 1.07;
+  --resume-print-leading: 1.002;
+  --resume-print-top-offset: 15.94pt;
 }
 
 .resume-variant-aws {
-  --resume-print-scale: 1.028;
-  --resume-print-leading: 0.972;
-  --resume-print-top-offset: 23.145pt;
+  --resume-print-scale: 1.104;
+  --resume-print-leading: 1.011;
+  --resume-print-top-offset: 24.345pt;
 }
 
 .resume-variant-python {
-  --resume-print-scale: 1.026;
-  --resume-print-top-offset: 10.439pt;
-  --resume-print-leading: 1.001;
+  --resume-print-scale: 1.119;
+  --resume-print-top-offset: 14.57pt;
+  --resume-print-leading: 1.05;
 }
 
 .resume-variant-aws-web-dev {
-  --resume-print-scale: 1.0264;
-  --resume-print-leading: 0.981;
-  --resume-print-top-offset: 11.293pt;
+  --resume-print-scale: 1.082;
+  --resume-print-leading: 1.009;
+  --resume-print-top-offset: 12.793pt;
 }
 
 .resume-variant-aws-python {
-  --resume-print-scale: 1.047;
-  --resume-print-leading: 1;
-  --resume-print-top-offset: 9.659pt;
+  --resume-print-scale: 1.119;
+  --resume-print-leading: 1.0355;
+  --resume-print-top-offset: 16pt;
 }
 
 .resume-variant-web-dev-django {
-  --resume-print-scale: 1.069;
-  --resume-print-leading: 0.993;
-  --resume-print-top-offset: 5.582pt;
+  --resume-print-scale: 1.125;
+  --resume-print-leading: 1.028;
+  --resume-print-top-offset: 7.864pt;
 }
 
 .resume-variant-it-support {
-  --resume-print-scale: 1.106;
-  --resume-print-top-offset: 15.38pt;
-  --resume-print-leading: 0.988;
+  --resume-print-scale: 1.14;
+  --resume-print-top-offset: 20.83pt;
+  --resume-print-leading: 1.003;
 }
 
 .resume-variant-it-support-aws {
-  --resume-print-scale: 1.106;
-  --resume-print-top-offset: 15.38pt;
-  --resume-print-leading: 0.988;
+  --resume-print-scale: 1.172;
+  --resume-print-top-offset: 16.28pt;
+  --resume-print-leading: 1.019;
 }
 
 .resume-variant-sales {
-  --resume-print-scale: 1.014;
-  --resume-print-leading: 0.998;
-  --resume-print-top-offset: 28pt;
+  --resume-print-scale: 1.0722;
+  --resume-print-leading: 1.0282;
+  --resume-print-top-offset: 22.63pt;
 }
 
 .resume-variant-call-centre {
-  --resume-print-scale: 1.02;
-  --resume-print-leading: 0.991;
-  --resume-print-top-offset: 24.229pt;
+  --resume-print-scale: 1.07;
+  --resume-print-leading: 1.016;
+  --resume-print-top-offset: 25.017pt;
 }
 
 /* Mobile */
