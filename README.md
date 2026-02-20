@@ -73,9 +73,11 @@ npm run lint       # Code linting
 ### Resume PDF Workflow
 
 `npm run build` also regenerates resume PDFs in `public/resume/`.
+Resume PDF rendering uses local Computer Modern assets in `public/fonts/cmu/` for deterministic layout metrics.
 
 ```bash
 npm run measure:resume-layout   # Measure bottom whitespace for all generated resume PDFs
+npm run calibrate:resume-layout # Auto-tune per-variant print settings toward legacy baseline
 npm run verify:resume-layout    # Enforce legacy baseline bottom whitespace lock
 npm run validate-resume-pdfs    # Full gate: page count, page size, fonts, bold, layout baseline
 ```

@@ -352,35 +352,43 @@
 
 /* Per-variant print scaling tuned for one-page fill on US Letter */
 .resume-variant-general {
-  --resume-print-scale: 1.3;
-  --resume-print-leading: 1.02;
-  --resume-print-top-offset: 11.7pt;
+  --resume-print-scale: 1.189;
+  --resume-print-leading: 1;
+  --resume-print-top-offset: 0.267pt;
 }
 
 .resume-variant-web-dev {
-  --resume-print-scale: 1.192;
+  --resume-print-scale: 1.099;
+  --resume-print-leading: 1;
+  --resume-print-top-offset: -12pt;
 }
 
 .resume-variant-aws {
-  --resume-print-scale: 1.24;
+  --resume-print-scale: 1.112;
+  --resume-print-leading: 1;
+  --resume-print-top-offset: 13.2pt;
 }
 
 .resume-variant-python {
-  --resume-print-scale: 1.1;
-  --resume-print-leading: 1.003;
-  --resume-print-top-offset: 1.25pt;
+  --resume-print-scale: 1.041;
 }
 
 .resume-variant-aws-web-dev {
-  --resume-print-scale: 1.152;
+  --resume-print-scale: 1.07;
+  --resume-print-leading: 1;
+  --resume-print-top-offset: 11.6pt;
 }
 
 .resume-variant-aws-python {
-  --resume-print-scale: 1.106;
+  --resume-print-scale: 1.047;
+  --resume-print-leading: 1;
+  --resume-print-top-offset: 12.7pt;
 }
 
 .resume-variant-web-dev-django {
-  --resume-print-scale: 1.216;
+  --resume-print-scale: 1.097;
+  --resume-print-leading: 1;
+  --resume-print-top-offset: -0.034pt;
 }
 
 .resume-variant-it-support {
@@ -392,11 +400,15 @@
 }
 
 .resume-variant-sales {
-  --resume-print-scale: 1.054;
+  --resume-print-scale: 1.045;
+  --resume-print-leading: 1.008;
+  --resume-print-top-offset: 19pt;
 }
 
 .resume-variant-call-centre {
-  --resume-print-scale: 1.054;
+  --resume-print-scale: 1.046;
+  --resume-print-leading: 1;
+  --resume-print-top-offset: 6.958pt;
 }
 
 /* Mobile */

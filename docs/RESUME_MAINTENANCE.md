@@ -186,6 +186,12 @@ npm run verify:resume-layout
 npm run validate-resume-pdfs
 ```
 
+Optional automated calibration loop:
+
+```bash
+npm run calibrate:resume-layout
+```
+
 If layout verification or validation fails, tune per-variant print controls (`--resume-print-scale`, `--resume-print-leading`, `--resume-print-top-offset`) in `app/styles/13-resume-latex.css`, regenerate, and re-validate until all variants pass.
 If generation fails with `No Next.js production build found at .next/BUILD_ID`, run `npm run build` first.
 
@@ -195,6 +201,7 @@ If generation fails with `No Next.js production build found at .next/BUILD_ID`, 
 - If using Snap Chromium and generation fails with `is not a snap cgroup for tag snap.chromium.chromium`, switch to a non-Snap browser binary and point `CHROME_BIN` to it (for example `/usr/bin/google-chrome-stable`).
 - `pdfinfo`, `pdffonts`, and `pdftotext` must be available in PATH for resume layout checks (`poppler-utils` on Ubuntu/Debian).
 - Build requires localhost binding for temporary `next start` during generation.
+- Local Computer Modern font files in `public/fonts/cmu/` must be present for deterministic PDF metrics.
 - Baseline source and enforcement rules are defined in `docs/resume-generation-spec.md` and `docs/resume-layout-baseline.json`.
 
 ### Measuring Bottom Whitespace
@@ -209,6 +216,12 @@ Measure all generated resume PDFs:
 
 ```bash
 npm run measure:resume-layout
+```
+
+Run auto-calibration:
+
+```bash
+npm run calibrate:resume-layout
 ```
 
 ## Managing PDF Variants
@@ -516,13 +529,16 @@ For major resume restructuring:
 
 ### Font Not Loading
 
-**Issue**: Computer Modern font appears as fallback (Georgia)
+**Issue**: Resume PDF does not embed `CMUSerif` (fallback serif appears)
 
 **Solutions**:
-- Check CDN availability: https://cdn.jsdelivr.net
-- Clear browser cache
-- Hard refresh (Cmd+Shift+R or Ctrl+Shift+R)
-- Check browser console for CDN errors
+- Verify local font files exist:
+  - `public/fonts/cmu/cmunrm.woff`
+  - `public/fonts/cmu/cmunbx.woff`
+  - `public/fonts/cmu/cmunti.woff`
+  - `public/fonts/cmu/cmunbi.woff`
+- Verify `@font-face` declarations in `app/styles/03-fonts.css`
+- Rebuild and regenerate PDFs: `npm run build`
 
 **Fallback chain**: Computer Modern → Georgia → Generic serif
 

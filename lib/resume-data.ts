@@ -115,10 +115,10 @@ const raritySurfWebProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
   date: 'March 2025',
   bullets: [
-    'Developed a full-stack web application (TypeScript/JavaScript) to generate rarity rankings for NFTs, integrating with a leading marketplace API to help users identify rare NFTs and listing status, improving market research efficiency by 80%.',
-    'Built a scalable Node.js backend with REST API endpoints and PostgreSQL-backed caching to support filters such as max rank, price, and rare traits while handling 3,000+ concurrent requests.',
-    'Built a dynamic React frontend (TypeScript/JavaScript) to load and display NFTs in real-time with user-defined filters, reducing load times by 50%.',
-    'Developed a Discord bot (TypeScript/JavaScript/Node.js) to notify users of profitable resale opportunities using historical sales data, increasing user engagement by 80%.',
+    '<strong>Developed a full-stack web application (TypeScript/JavaScript)</strong> to generate rarity rankings for NFTs, integrating with a <strong>leading marketplace API</strong> to help users identify rare NFTs and listing status, <strong>improving market research efficiency by 80%</strong>.',
+    '<strong>Built a scalable Node.js backend</strong> with REST API endpoints and <strong>PostgreSQL</strong>-backed caching to support filters such as max rank, price, and rare traits. <strong>Optimized performance</strong> while handling <strong>3,000+ concurrent requests</strong>.',
+    '<strong>Built a dynamic React frontend (TypeScript/JavaScript)</strong> to load and display NFTs in real-time with user-defined filters, <strong>reducing load times by 50%</strong>.',
+    '<strong>Developed a Discord bot (TypeScript/JavaScript/Node.js)</strong> to notify users of profitable resale opportunities using historical sales data. This feature <strong>increased user engagement by 80%</strong>.',
   ],
 };
 
@@ -128,8 +128,8 @@ const kanbanCalendarProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
   date: 'Mar 2024',
   bullets: [
-    'Developed a responsive calendar Kanban board using Next.js, TypeScript, and Tailwind CSS, featuring draggable events and smooth card-to-detail transitions across week/day views.',
-    'Engineered cross-device interactions including swipe gestures, infinite horizontal scrolling (mobile), and arrow controls (desktop) while improving drag-and-drop consistency.',
+    '<strong>Developed a responsive calendar Kanban board using Next.js, TypeScript, and Tailwind CSS</strong>, featuring draggable events and smooth card-to-detail transitions across week/day views.',
+    '<strong>Engineered intuitive navigation and cross-device interactivity</strong>, implementing swipe gestures, infinite horizontal scrolling (mobile), and arrow controls (desktop) while improving drag-and-drop consistency.',
   ],
 };
 
@@ -139,8 +139,8 @@ const astronoftyProject: ResumeProject = {
   languages: ['JavaScript', 'React', 'Solidity'],
   date: 'Jan 2023',
   bullets: [
-    'Secured 2nd place overall out of 150+ teams at UofTHacks X for developing a blockchain-based NFT marketplace app.',
-    'Built and optimized React components to synchronously upload images and metadata to IPFS, enhancing user engagement by 80% during the demo.',
+    '<strong>Secured 2nd place overall out of 150+ teams</strong> at UofTHacks X for developing a blockchain-based NFT marketplace app.',
+    '<strong>Built and optimized React (JavaScript) components</strong> to synchronously upload images and metadata to IPFS, <strong>enhancing user engagement by 80%</strong> during the demo.',
   ],
 };
 
@@ -149,11 +149,11 @@ const awsServerProject: ResumeProject = {
   languages: ['AWS', 'Kubernetes', 'Docker', 'Terraform'],
   date: 'May 2024',
   bullets: [
-    'Deployed and maintained multiple web applications on AWS EC2 Debian/Linux servers using Docker Compose, supporting 2,000+ monthly requests.',
-    'Automated infrastructure provisioning with Terraform for EC2 instances and Docker workloads, reducing deployment time by 80%.',
-    'Configured Route 53 DNS and NGINX subdomain routing to improve discoverability and navigation across hosted applications.',
-    'Implemented uptime monitoring with a JavaScript service and systemd timer, reducing downtime by 95%.',
-    'Automated EBS snapshot backups to improve disaster recovery readiness and reduce potential data loss by 95%.',
+    '<strong>Deployed and maintained multiple web applications</strong> on <strong>AWS EC2 Debian/Linux servers</strong> using <strong>Docker Compose</strong>, supporting <strong>2,000+ monthly requests</strong>.',
+    '<strong>Automated AWS infrastructure provisioning</strong> with <strong>Terraform</strong> for EC2 instances and Docker workloads, <strong>accelerating deployment times by 80%</strong>.',
+    '<strong>Improved web application accessibility</strong> by configuring <strong>Route 53</strong> DNS and <strong>NGINX</strong> subdomain routing, <strong>enabling seamless navigation between apps</strong>.',
+    '<strong>Built an uptime monitoring system</strong> with a JavaScript service and systemd timer, <strong>reducing downtime by 95%</strong>.',
+    '<strong>Enhanced data resilience</strong> with automated EBS snapshot backups, ensuring <strong>99.9% uptime and data integrity</strong> while <strong>reducing potential data loss by 95%</strong>.',
   ],
 };
 
@@ -162,9 +162,9 @@ const raritySurfPythonProject: ResumeProject = {
   languages: ['Python', 'Django', 'JavaScript', 'React'],
   date: 'Oct 2021',
   bullets: [
-    'Developed a full-stack web application to generate NFT rarity rankings integrated with OpenSea APIs, improving market research efficiency by 80%.',
-    'Architected a Django (Python) backend to fetch and process NFT metadata from IPFS, store rankings in PostgreSQL, and expose data through GraphQL APIs at low latency.',
-    'Developed a dynamic React frontend using hooks and responsive UI patterns, reducing frontend load times by 70%.',
+    '<strong>Developed a full-stack web application</strong> to generate NFT rarity rankings integrated with leading NFT marketplace APIs, enabling users to <strong>quickly identify rare NFTs</strong> and listing status, <strong>improving market research efficiency by 80%</strong>.',
+    '<strong>Architected a robust Django (Python) backend</strong> to fetch and process NFT metadata from IPFS, store rankings in <strong>PostgreSQL</strong>, and expose data through GraphQL APIs, <strong>ensuring low-latency access and scaling to handle 2,000+ concurrent requests</strong>.',
+    '<strong>Developed a dynamic React frontend</strong> using hooks and responsive UI patterns, <strong>improving user experience and reducing frontend load times by 70%</strong>.',
   ],
 };
 
@@ -173,8 +173,8 @@ const spotifyVisualizedProject: ResumeProject = {
   languages: ['Python', 'Django'],
   date: 'June 2019',
   bullets: [
-    'Built a high-performance Django backend that processed 10,000+ tracks per user library using the Spotify API.',
-    'Optimized PostgreSQL data modeling and query paths to reduce latency by 50% for core workflows.',
+    '<strong>Built a high-performance Django backend</strong> that processed <strong>10,000+ tracks per user library</strong> using the Spotify API.',
+    '<strong>Engineered and optimized PostgreSQL data models</strong>, achieving a <strong>50% reduction in query latency</strong> for core workflows.',
   ],
 };
 
@@ -183,8 +183,8 @@ const discordAdventureProject: ResumeProject = {
   languages: ['Python'],
   date: 'Jan 2020',
   bullets: [
-    'Redesigned item generation for an open source Python Discord game, replacing 83k-line static JSON with dynamic generation and reducing file size by 99%.',
-    'Implemented modular item components that enabled 152,000+ unique item combinations and improved game diversity.',
+    '<strong>Redesigned item generation system</strong> for an open-source <strong>Python</strong> Discord game, replacing 83k-line static JSON with dynamic generation and achieving a <strong>99% reduction</strong> in file size.',
+    '<strong>Implemented modular item components</strong> that enabled <strong>152,000+ unique item combinations</strong> and improved game diversity.',
   ],
 };
 
@@ -193,10 +193,10 @@ const raritySurfSupportProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
   date: 'March 2025',
   bullets: [
-    'Provided direct user support for a live NFT analytics platform, resolving front-end filtering bugs and API integration issues in real-time.',
-    'Developed a PostgreSQL-backed full-stack analytics workflow that improved market research efficiency by 80%.',
-    'Translated user requests into features, implementing real-time filtering that improved usability for non-technical traders.',
-    'Debugged API performance under load, reducing latency by 50% while supporting 3,000+ concurrent users.',
+    '<strong>Provided direct user support</strong> for a live NFT analytics platform, resolving front-end filtering bugs and API integration issues in real-time.',
+    '<strong>Developed a full-stack web application with PostgreSQL database</strong> to analyze NFT rarity rankings, improving market research efficiency by 80%.',
+    '<strong>Translated user requests into technical features</strong>, implementing real-time PostgreSQL-powered filters that improved usability for non-technical traders.',
+    '<strong>Debugged and optimized API performance</strong> under load, reducing latency by 50% while supporting <strong>3,000+ concurrent users</strong>.',
   ],
 };
 
@@ -205,8 +205,8 @@ const astronoftySupportProject: ResumeProject = {
   languages: ['JavaScript', 'React', 'Solidity'],
   date: 'Jan 2023',
   bullets: [
-    'Developed technical solutions in a high-pressure environment, earning 2nd place at UofTHacks X.',
-    'Handled real-time user testing feedback and adapted components quickly to resolve blocking demo issues.',
+    '<strong>Developed technical solutions in high-pressure environments</strong>, earning 2nd place at UofTHacks X for a decentralized NFT marketplace app.',
+    '<strong>Handled real-time user testing feedback</strong> and adapted components quickly to resolve blocking demo issues.',
   ],
 };
 
@@ -215,8 +215,8 @@ const kanbanSupportProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
   date: 'Feb 2025',
   bullets: [
-    'Resolved UI bugs and cross-device compatibility issues while documenting reproducible steps for team-wide fixes.',
-    'Built and maintained a responsive calendar interface that improved user task management across devices.',
+    '<strong>Resolved UI bugs and cross-device compatibility issues</strong> while documenting reproducible steps for team-wide fixes.',
+    '<strong>Built and maintained a responsive calendar interface</strong> that improved user task management across devices.',
   ],
 };
 
@@ -225,8 +225,8 @@ const raritySurfSalesProject: ResumeProject = {
   languages: ['User Support', 'Bug Reproduction'],
   date: 'March 2024 — Dec 2024',
   bullets: [
-    'Reproduced user-reported issues and wrote concise repro steps with known-issue workarounds to reduce repeat questions.',
-    'Partnered with developers to prioritize high-impact fixes and shipped onboarding/troubleshooting snippets that improved first-contact resolution.',
+    'Reproduced user-reported issues and wrote <strong>concise repro steps</strong> with <strong>known-issue workarounds</strong> to reduce repeat questions.',
+    'Partnered with developers to ship <strong>onboarding/troubleshooting snippets</strong> that improved <strong>first-contact resolution (FCR)</strong>.',
   ],
 };
 
@@ -236,11 +236,11 @@ const redHatWebExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2022 — Aug 2023',
   bullets: [
-    'Eliminated 80% of manual configuration errors by enabling the Kubernetes operator to fetch service data and update configuration defaults automatically, reducing startup time by 40%.',
-    'Reduced deployment time by 66% by shipping a CLI workflow for locally-compiled binaries on Kubernetes/OpenShift, cutting release time from 45 minutes to 15 minutes.',
-    'Improved stability with startup probes for legacy services, reducing startup-related failures during production launches by 50%.',
-    'Improved system reliability by refactoring probe defaults from YAML sources, increasing probe accuracy by 30% and preventing misconfigurations.',
-    'Increased CI efficiency by rewriting a Jenkins nightly pipeline for GitHub PR environments, reducing manual intervention by 60%.',
+    '<strong>Eliminated 80% of manual configuration errors</strong> by enabling the Kubernetes operator to fetch service data and update configuration defaults automatically, <strong>deprecating legacy startup scripts and reducing overall startup time by 40%</strong> (<strong>Kubernetes/GoLang</strong> used for this and three below).',
+    '<strong>Reduced deployment time by 66%</strong> by shipping a CLI workflow for locally-compiled binaries on Kubernetes/OpenShift, <strong>cutting average deployment times from 45 minutes to 15 minutes</strong>.',
+    '<strong>Improved application stability</strong> with startup probes for legacy services, <strong>resulting in a 50% reduction in startup-related failures during production launches</strong>.',
+    '<strong>Improved system reliability</strong> by refactoring probe defaults from YAML sources, <strong>increasing probe accuracy by 30%</strong> and preventing misconfigurations.',
+    '<strong>Increased CI pipeline efficiency</strong> by rewriting a <strong>Jenkins (Groovy) nightly pipeline</strong> for GitHub PR environments, <strong>reducing manual intervention by 60%</strong>.',
   ],
 };
 
@@ -250,14 +250,14 @@ const redHatCloudExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2020 — Aug 2021',
   bullets: [
-    'Reduced deployment time by 66% by implementing a local-binary deployment path on Kubernetes/OpenShift, cutting release cycles from 45 minutes to 15 minutes.',
-    'Eliminated 80% of manual configuration errors by automating operator-side data fetching and config updates, reducing startup time by 40%.',
-    'Improved application stability by introducing startup probes for legacy applications with longer boot times, reducing startup failures by 50%.',
-    'Enhanced reliability by assigning probe defaults dynamically from deployed YAML and fixing reconciliation issues, increasing probe accuracy by 30%.',
-    'Increased CI pipeline efficiency by rewriting a Jenkins nightly pipeline for GitHub PR environments, reducing manual intervention by 60%.',
-    'Demonstrated leadership in Agile sprint planning within a 12-member team, improving sprint velocity through better task delegation.',
-    'Increased reproducibility by creating a reusable GitHub parameters file for the pipeline, enabling consistent setup across environments.',
-    'Streamlined onboarding by authoring project documentation and mentoring an incoming intern, reducing onboarding time by 50%.',
+    '<strong>Reduced deployment time by 66%</strong> by implementing a local-binary deployment path on Kubernetes/OpenShift, <strong>cutting average deployment times from 45 minutes to 15 minutes</strong> (<strong>Kubernetes/GoLang</strong> used for this and three below).',
+    '<strong>Eliminated 80% of manual configuration errors</strong> by automating operator-side data fetching and config updates, <strong>deprecating legacy startup scripts and reducing overall startup time by 40%</strong>.',
+    '<strong>Improved application stability</strong> by introducing startup probes for legacy applications with longer boot times, <strong>resulting in a 50% reduction in startup-related failures during production launches</strong>.',
+    '<strong>Enhanced system reliability</strong> by assigning probe defaults dynamically from deployed YAML and fixing reconciliation issues, <strong>increasing probe accuracy by 30%</strong> and preventing misconfigurations.',
+    '<strong>Increased CI pipeline efficiency</strong> by rewriting a <strong>Jenkins (Groovy) nightly pipeline</strong> for GitHub PR environments, <strong>reducing manual intervention by 60%</strong>.',
+    '<strong>Demonstrated leadership and collaboration</strong> in <strong>Agile sprint planning</strong> within a 12-member team, improving sprint velocity through better task delegation.',
+    '<strong>Increased project reproducibility</strong> by creating a reusable GitHub parameters file, <strong>enabling 100% reusability</strong> across environments.',
+    '<strong>Streamlined developer onboarding</strong> by authoring project documentation and mentoring an incoming intern, <strong>reducing onboarding time by 50%</strong>.',
   ],
 };
 
@@ -267,12 +267,12 @@ const redHatSupportExperience: WorkExperience = {
   languages: ['Ticketing/Triage', 'De-escalation', 'Knowledge Base Writing'],
   date: 'Aug 2022 — Aug 2024',
   bullets: [
-    'Delivered Tier 1/2 frontline support for CI/CD and Kubernetes issues through ticket triage and routing, improving first-response time by 40%.',
-    'Performed incident troubleshooting and root-cause analysis, resolving 80% of configuration errors and reducing downtime by 40%.',
-    'Wrote clear knowledge-base articles and troubleshooting flows that enabled Tier 1 to resolve common probe issues, cutting escalations by 30%.',
-    'Built a deployment runbook that reduced repeat contacts and shortened resolution time from 45 minutes to 15 minutes.',
-    'Kept users informed with concise status updates and expectation-setting to de-escalate stakeholder friction.',
-    'Partnered with QA/DevOps to capture startup failure root causes and implement dynamic probes, reducing launch issues by 50%.',
+    'Delivered <strong>Tier 1/2 frontline support</strong> for CI/CD and Kubernetes issues through ticket triage and routing, improving <strong>first-response time by 40%</strong>.',
+    'Performed <strong>incident troubleshooting and root-cause analysis</strong>, resolving <strong>80% of configuration errors</strong> and <strong>reducing downtime by 40%</strong>.',
+    'Wrote <strong>clear, step-by-step knowledge-base articles</strong> and troubleshooting flows that enabled Tier 1 to resolve common probe issues, <strong>cutting escalations by 30%</strong>.',
+    'Built a deployment <strong>runbook</strong> that reduced repeat contacts by 66% and <strong>shortened resolution time from 45 minutes to 15 minutes</strong>.',
+    'Kept users informed with <strong>concise status updates</strong> and expectation-setting to <strong>de-escalate frustrated stakeholders</strong>.',
+    'Partnered with QA/DevOps to capture <strong>root causes</strong> of startup failures and implement dynamic probes, <strong>cutting production launch issues by 50%</strong>.',
   ],
 };
 
@@ -282,12 +282,12 @@ const digitalMarketplaceExperience: WorkExperience = {
   languages: ['Live Chat Support', 'Dispute Resolution', 'Sales Negotiation'],
   date: 'July 2025 — Present',
   bullets: [
-    'Built and managed a peer-to-peer e-commerce operation for digital items with $50,000+ gross merchandise value.',
-    'Closed and middlemanned high-value trades over $5,000 with 250+ verified vouches and zero unresolved disputes.',
-    'Handled end-to-end escrow operations including sourcing, pricing, listings, secure payments, and fulfillment.',
-    'Implemented fair-value pricing and bundle strategies to improve margins and reduce low-value inquiry volume.',
-    'Standardized ownership verification and middleman workflows to reduce fraud and chargeback risk.',
-    'Tracked P&L and cash flow while maintaining auditable payment and fulfillment records.',
+    'Built and managed a <strong>peer-to-peer e-commerce operation</strong> for digital items with <strong>$50,000+ gross merchandise value</strong>.',
+    'Closed and middlemanned <strong>high-value trades over $5,000</strong> with <strong>250+ verified vouches</strong>, maintaining <strong>zero unresolved disputes</strong>.',
+    'Handled <strong>end-to-end operations and escrow</strong> including sourcing, pricing, listings, secure payments, and fulfillment.',
+    'Implemented <strong>fair-value pricing</strong> and <strong>bundle offers</strong> to improve margins and reduce low-value inquiry volume.',
+    'Standardized <strong>ownership verification and middleman workflows</strong> to reduce <strong>fraud/chargeback risk</strong>.',
+    'Tracked <strong>P&L and cash flow</strong> while maintaining auditable payment and fulfillment records.',
   ],
 };
 

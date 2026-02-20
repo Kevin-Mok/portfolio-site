@@ -29,3 +29,36 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* Computer Modern Serif for resume rendering/PDF generation */
+@font-face {
+  font-family: "Computer Modern Serif";
+  src: url("/fonts/cmu/cmunrm.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Computer Modern Serif";
+  src: url("/fonts/cmu/cmunbx.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Computer Modern Serif";
+  src: url("/fonts/cmu/cmunti.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Computer Modern Serif";
+  src: url("/fonts/cmu/cmunbi.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}

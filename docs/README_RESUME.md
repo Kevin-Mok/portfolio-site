@@ -151,7 +151,7 @@ npm run verify:resume-layout
 npm run validate-resume-pdfs
 ```
 
-3. If validation fails, adjust per-variant print controls (`--resume-print-scale`, `--resume-print-leading`, `--resume-print-top-offset`) in `app/styles/13-resume-latex.css`, regenerate, and re-run validation.
+3. If validation fails, run auto-calibration (`npm run calibrate:resume-layout`) or manually adjust per-variant print controls (`--resume-print-scale`, `--resume-print-leading`, `--resume-print-top-offset`) in `app/styles/13-resume-latex.css`, regenerate, and re-run validation.
 4. Verify regenerated files in `public/resume/`
 5. Commit changes
 
@@ -239,7 +239,7 @@ Browser renders professional LaTeX-styled resume
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: CSS (modular architecture)
-- **Font**: Computer Modern Serif (CDN)
+- **Font**: Computer Modern Serif (local `public/fonts/cmu/`)
 - **State**: React Context (FocusContext)
 - **Components**: Modular React components
 

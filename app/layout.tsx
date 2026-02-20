@@ -75,12 +75,21 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
-
-        {/* Computer Modern Serif font for resume (LaTeX aesthetic) */}
         <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css"
+          rel="preload"
+          href="/fonts/cmu/cmunrm.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href="/fonts/cmu/cmunbx.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+
       </head>
       <body className="font-mono antialiased bg-term-bg text-term-text min-h-screen">
         <SubtleBlobBackground />

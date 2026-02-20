@@ -13,7 +13,8 @@
     "generate-resume-pdfs": "node scripts/generate-resume-pdfs.mjs",
     "validate-resume-pdfs": "node scripts/validate-resume-pdfs.mjs",
     "verify:resume-layout": "node scripts/verify-resume-layout.mjs",
-    "measure:resume-layout": "node scripts/measure-resume-bottom-whitespace.mjs --all-generated"
+    "measure:resume-layout": "node scripts/measure-resume-bottom-whitespace.mjs --all-generated",
+    "calibrate:resume-layout": "node scripts/calibrate-resume-layout.mjs"
   },
   "dependencies": {
     "@content-collections/core": "^0.11.1",

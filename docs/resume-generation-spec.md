@@ -20,6 +20,9 @@ This document defines the required layout rules for all generated resume PDFs.
 3. Bold preservation:
    - Bold emphasis from legacy style must remain visible in generated PDFs.
    - Validate both CSS `font-weight` emphasis and embedded bold font faces in output PDFs.
+4. Font determinism:
+   - Resume PDFs must use the local Computer Modern font assets under `public/fonts/cmu/`.
+   - Do not depend on external font CDNs for PDF generation.
 
 ## Measurement Method
 
@@ -51,6 +54,12 @@ Verify baseline lock against the stored legacy baseline:
 npm run verify:resume-layout
 ```
 
+Automatically calibrate print variables (iterative build -> measure -> adjust loop):
+
+```fish
+npm run calibrate:resume-layout
+```
+
 Run full resume PDF validation (pages, page size, fonts, bold, baseline lock):
 
 ```fish
@@ -71,6 +80,12 @@ npm run build
   - `--resume-print-scale`
   - `--resume-print-leading`
   - `--resume-print-top-offset` (fine-tuning offset in print only)
+- Local resume font assets:
+  - `public/fonts/cmu/cmunrm.woff`
+  - `public/fonts/cmu/cmunbx.woff`
+  - `public/fonts/cmu/cmunti.woff`
+  - `public/fonts/cmu/cmunbi.woff`
+  - `app/styles/03-fonts.css` (`@font-face` declarations)
 
 ## Recalibration Workflow
 
@@ -100,4 +115,10 @@ npm run verify:resume-layout
 
 ```fish
 npm run validate-resume-pdfs
+```
+
+Optional automated loop:
+
+```fish
+npm run calibrate:resume-layout
 ```
