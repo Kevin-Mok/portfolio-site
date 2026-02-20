@@ -29,6 +29,27 @@ run_systemctl() {
   fi
 }
 
+repair_build_cache_permissions() {
+  if [[ "$(id -u)" -ne 0 || -z "${SUDO_USER:-}" ]]; then
+    return 0
+  fi
+
+  local cache_path="$ROOT_DIR/.next"
+  local sudo_group
+  local mismatched_owner_path=""
+  sudo_group="$(id -gn "$SUDO_USER")"
+
+  if [[ ! -e "$cache_path" ]]; then
+    return 0
+  fi
+
+  mismatched_owner_path="$(find "$cache_path" ! -user "$SUDO_USER" -print -quit 2>/dev/null || true)"
+  if [[ -n "$mismatched_owner_path" ]]; then
+    echo "Repairing build cache ownership under $cache_path for $SUDO_USER:$sudo_group"
+    chown -R "$SUDO_USER:$sudo_group" "$cache_path"
+  fi
+}
+
 wait_for_http_200() {
   local url="$1"
   local label="$2"
@@ -93,6 +114,7 @@ else
 fi
 
 echo "[2/9] Building production bundle"
+repair_build_cache_permissions
 run_repo_cmd npm run build
 
 echo "[3/9] Verifying resume layout baseline lock"
