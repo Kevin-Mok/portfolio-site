@@ -292,6 +292,20 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ---
 
+## Resume-ready points by variant
+
+- `general`: Shipped a production Next.js portfolio balancing strong UX, content operations, and deployment reliability in one maintainable codebase.
+- `web-dev`: Built a six-tile desktop interface and parallax mobile experience with TypeScript, Tailwind, and MDX-driven publishing workflows.
+- `aws`: Implemented cloud-ready delivery patterns with CDN fallback, environment-driven configuration, and repeatable recovery workflows for dependable operations.
+- `python`: Enforced strict validation and typed integration boundaries that translate directly to Python service design and backend API work.
+- `aws-web-dev`: Combined frontend product execution with infrastructure-conscious decisions across CDN routing, deployment automation, and environment-based feature controls.
+- `aws-python`: Built integration-heavy web systems and verification tooling using patterns readily portable to Python services in cloud deployment pipelines.
+- `web-dev-django`: Structured routes, form handling, and content architecture in ways that map cleanly to Django-powered full-stack applications.
+- `it-support`: Added actionable troubleshooting surfaces and documented recovery steps so issues can be diagnosed quickly and resolved consistently.
+- `it-support-aws`: Defined operational validation gates and rollback guidance that mirror cloud support workflows for incidents and service health checks.
+- `sales`: Crafted a polished technical narrative with measurable feature depth, strengthening credibility during client-facing conversations and conversion-focused demos.
+- `call-centre`: Built clear navigation, contact pathways, and validation feedback that improve communication quality in high-volume support interactions.
+
 ## 📧 Contact
 
 **David Leer**
