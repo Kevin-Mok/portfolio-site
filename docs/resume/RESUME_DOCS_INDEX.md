@@ -183,6 +183,19 @@ This directory contains the core resume feature documentation. Related AI prompt
 
 ---
 
+### 🧩 docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md
+**ChatGPT prompt for rebuilding resume variants from README variant points**
+
+- Single-pass attachment checklist including all README sources in `UPDATED_README_PATHS.md`
+- Deterministic selection rubric for strongest role-relevant bullets
+- One-page fit workflow: select strongest bullets, reduce counts, then tune print variables only if needed
+- Strict edit boundaries for `lib/resume-data.ts` and optional last-resort changes in `app/styles/13-resume-latex.css`
+- Required validation command sequence before finalizing changes
+
+**Best for**: AI-assisted resume variant restructuring with one-page enforcement.
+
+---
+
 ## Quick Navigation Guide
 
 ### Based on Your Task:
@@ -198,6 +211,7 @@ This directory contains the core resume feature documentation. Related AI prompt
 | Need PDF layout rules? | resume-generation-spec.md |
 | Choose the right variant? | RESUME_VARIANT_POSITIONING.md |
 | Generate README bullets with AI? | docs/prompts/README_RESUME_POINTS_PROMPT.md |
+| Rebuild resume variants from README points with AI? | docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md |
 
 ### Based on Your Role:
 
@@ -210,6 +224,7 @@ This directory contains the core resume feature documentation. Related AI prompt
 | Project manager (overview) | RESUME_FEATURE_OVERVIEW.md |
 | Job applicant (targeting roles) | RESUME_VARIANT_POSITIONING.md |
 | AI-assisted documentation editor | docs/prompts/README_RESUME_POINTS_PROMPT.md |
+| AI-assisted resume restructuring | docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md |
 
 ## Documentation Statistics
 

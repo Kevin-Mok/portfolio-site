@@ -137,6 +137,20 @@ This file covers:
 
 ---
 
+#### 🧩 **I want ChatGPT to rebuild resume variants from README points**
+→ Read: **[RESUME_VARIANT_RESTRUCTURE_PROMPT.md](../prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md)**
+
+This file covers:
+- Single-pass attachment list for all source README files
+- Variant-by-variant selection rules for strongest project bullets
+- One-page fit policy (choose strongest points, reduce bullet count, then tune print variables only if needed)
+- Required acceptance checks (`build`, `verify:resume-layout`, `validate-resume-pdfs`)
+
+**Reading time**: 5-8 minutes
+**For**: AI-assisted resume variant restructuring in `lib/resume-data.ts`
+
+---
+
 ## Common Tasks Quick Links
 
 ### Update Your Resume
@@ -229,6 +243,22 @@ docs/prompts/README_RESUME_POINTS_PROMPT.md
 4. Apply diffs in each target project repo
 
 **Prompt guide**: [README_RESUME_POINTS_PROMPT.md](../prompts/README_RESUME_POINTS_PROMPT.md)
+
+### Restructure Resume Variants From README Points (ChatGPT)
+1. Open the prompt guide:
+
+```text
+docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md
+```
+
+2. Attach all files listed in the prompt doc (including all paths from `docs/archive/UPDATED_README_PATHS.md`)
+3. Run the prompt and review unified diffs for `lib/resume-data.ts` (and `app/styles/13-resume-latex.css` only if needed)
+4. Run validation commands and resolve all failures before merging:
+   - `npm run build`
+   - `npm run verify:resume-layout`
+   - `npm run validate-resume-pdfs`
+
+**Prompt guide**: [RESUME_VARIANT_RESTRUCTURE_PROMPT.md](../prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md)
 
 ## File Locations Reference
 

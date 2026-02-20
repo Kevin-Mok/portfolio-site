@@ -1,9 +1,10 @@
 # TODO
 
-Last updated: 2026-02-20 18:44 UTC
+Last updated: 2026-02-20 18:59 UTC
 
 ## What's Done
 
+- [x] 2026-02-20 18:59 UTC - Add `docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md` to guide AI-assisted resume variant restructuring from README variant points (strongest-bullet selection, one-page fit workflow, and required validation checks), and link it from `docs/resume/README_RESUME.md` + `docs/resume/RESUME_DOCS_INDEX.md`.
 - [x] 2026-02-20 18:44 UTC - Organize documentation into purpose-based folders (`docs/resume/`, `docs/specs/`, `docs/prompts/`, `docs/ops/`, `docs/archive/`), add `docs/README.md` as a docs hub, and archive legacy root `todo.md` as `docs/archive/ROOT_TODO_LEGACY.md`.
 - [x] 2026-02-20 14:36 UTC - Lock resume PDF bottom whitespace to legacy baseline ratio (A3 source normalized to Letter with ±1pt tolerance), add reusable measurement/verification tooling (`measure-resume-bottom-whitespace`, `verify-resume-layout`), tune print spacing/typography while preserving bold emphasis, and document the workflow in `docs/resume/resume-generation-spec.md` + README/resume docs.
 - [x] 2026-02-16 14:19 UTC - Fix resume header social icon paths so LinkedIn/GitHub icons load correctly from `public/icons/resume/`.
