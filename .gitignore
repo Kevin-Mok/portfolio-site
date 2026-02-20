@@ -66,6 +66,10 @@ scripts/*
 !scripts/convert-to-webp.js
 !scripts/generate-resume-pdfs.mjs
 !scripts/validate-resume-pdfs.mjs
+!scripts/measure-resume-bottom-whitespace.mjs
+!scripts/verify-resume-layout.mjs
+!scripts/lib/
+!scripts/lib/*.mjs
 
 articles/
 blog-post-source

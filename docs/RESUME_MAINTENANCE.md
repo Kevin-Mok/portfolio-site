@@ -158,7 +158,11 @@ This runs `next build` and then `npm run generate-resume-pdfs`, which:
 - Renders each variant from `lib/resume-data.ts`
 - Prints each page to `public/resume/*.pdf` using headless Chrome
 - Preserves the existing download filenames
-- Must be followed by validation:
+- Must be followed by layout verification and validation:
+
+```bash
+npm run verify:resume-layout
+```
 
 ```bash
 npm run validate-resume-pdfs
@@ -175,25 +179,44 @@ npm run generate-resume-pdfs
 Then validate:
 
 ```bash
+npm run verify:resume-layout
+```
+
+```bash
 npm run validate-resume-pdfs
 ```
 
-If validation fails, tune per-variant `--resume-print-scale` in `app/styles/13-resume-latex.css`, regenerate, and re-validate until all variants pass.
+If layout verification or validation fails, tune per-variant print controls (`--resume-print-scale`, `--resume-print-leading`, `--resume-print-top-offset`) in `app/styles/13-resume-latex.css`, regenerate, and re-validate until all variants pass.
 If generation fails with `No Next.js production build found at .next/BUILD_ID`, run `npm run build` first.
 
 ### Prerequisites
 
 - A Chrome/Chromium executable must be available in PATH (`google-chrome`, `google-chrome-stable`, `chromium`, or `chromium-browser`) or set `CHROME_BIN` to a valid executable path.
 - If using Snap Chromium and generation fails with `is not a snap cgroup for tag snap.chromium.chromium`, switch to a non-Snap browser binary and point `CHROME_BIN` to it (for example `/usr/bin/google-chrome-stable`).
-- `pdfinfo`, `pdffonts`, and `pdftohtml` must be available in PATH for `npm run validate-resume-pdfs` (`poppler-utils` on Ubuntu/Debian).
+- `pdfinfo`, `pdffonts`, and `pdftotext` must be available in PATH for resume layout checks (`poppler-utils` on Ubuntu/Debian).
 - Build requires localhost binding for temporary `next start` during generation.
+- Baseline source and enforcement rules are defined in `docs/resume-generation-spec.md` and `docs/resume-layout-baseline.json`.
+
+### Measuring Bottom Whitespace
+
+Measure one PDF:
+
+```bash
+node scripts/measure-resume-bottom-whitespace.mjs --pdf /home/kevin/coding/mf-site/static/pdf/kevin-mok-resume-web-dev.pdf --json
+```
+
+Measure all generated resume PDFs:
+
+```bash
+npm run measure:resume-layout
+```
 
 ## Managing PDF Variants
 
 ### Adding a New Variant
 
 1. Add typed variant content to `lib/resume-data.ts` in `resumeVariants`.
-2. Add matching entry in `scripts/generate-resume-pdfs.mjs` (`id` + `fileName`).
+2. Add matching entry in `scripts/lib/resume-pdf-variants.mjs` (`id` + `fileName`).
 3. Run generator:
 
 ```bash
@@ -208,14 +231,14 @@ npm run generate-resume-pdfs
 ### Removing a Variant
 
 1. Remove variant from `resumeVariants` in `lib/resume-data.ts`.
-2. Remove it from `scripts/generate-resume-pdfs.mjs`.
+2. Remove it from `scripts/lib/resume-pdf-variants.mjs`.
 3. Optionally delete old PDF from `public/resume/`.
 4. Regenerate and test variant dropdown.
 
 ### Renaming a Variant
 
 1. Update `label` and/or `fileName` in `lib/resume-data.ts`.
-2. Update matching filename in `scripts/generate-resume-pdfs.mjs`.
+2. Update matching filename in `scripts/lib/resume-pdf-variants.mjs`.
 3. Regenerate PDFs and verify download URLs.
 
 ## Styling Customization

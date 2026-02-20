@@ -11,7 +11,9 @@
     "cleanup": "bash scripts/cleanup-dev.sh",
     "predev": "npm run cleanup",
     "generate-resume-pdfs": "node scripts/generate-resume-pdfs.mjs",
-    "validate-resume-pdfs": "node scripts/validate-resume-pdfs.mjs"
+    "validate-resume-pdfs": "node scripts/validate-resume-pdfs.mjs",
+    "verify:resume-layout": "node scripts/verify-resume-layout.mjs",
+    "measure:resume-layout": "node scripts/measure-resume-bottom-whitespace.mjs --all-generated"
   },
   "dependencies": {
     "@content-collections/core": "^0.11.1",

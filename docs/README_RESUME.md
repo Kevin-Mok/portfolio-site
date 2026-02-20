@@ -60,6 +60,21 @@ This file covers:
 
 ---
 
+#### 📏 **I want the exact PDF generation/layout rules**
+→ Read: **[resume-generation-spec.md](./resume-generation-spec.md)**
+
+This file covers:
+- Legacy baseline PDF source of truth
+- Bottom whitespace lock rule and tolerance
+- Typography/spacing constraints
+- Bold preservation requirements
+- Measurement and verification commands
+
+**Reading time**: 5-10 minutes
+**For**: Any resume PDF generation or layout change
+
+---
+
 #### 📦 **I want to know what was migrated from the old site**
 → Read: **[RESUME_MIGRATION.md](./RESUME_MIGRATION.md)**
 
@@ -106,7 +121,7 @@ This file covers:
    - Education array
 3. Test on `/resume`
 4. Regenerate PDFs
-5. Run layout validation (`npm run validate-resume-pdfs`) and tune page fill if needed
+5. Run layout checks (`npm run verify:resume-layout` then `npm run validate-resume-pdfs`) and tune page fill if needed
 6. Commit changes
 
 **Full guide**: [RESUME_MAINTENANCE.md § Updating Resume Content](./RESUME_MAINTENANCE.md#updating-resume-content)
@@ -129,10 +144,14 @@ npm run build
 2. Validate one-page/page-fill/font constraints:
 
 ```bash
+npm run verify:resume-layout
+```
+
+```bash
 npm run validate-resume-pdfs
 ```
 
-3. If validation fails, adjust per-variant `--resume-print-scale` in `app/styles/13-resume-latex.css`, regenerate, and re-run validation.
+3. If validation fails, adjust per-variant print controls (`--resume-print-scale`, `--resume-print-leading`, `--resume-print-top-offset`) in `app/styles/13-resume-latex.css`, regenerate, and re-run validation.
 4. Verify regenerated files in `public/resume/`
 5. Commit changes
 
@@ -140,7 +159,7 @@ npm run validate-resume-pdfs
 
 ### Add New PDF Variant
 1. Add variant content in `resumeVariants` (`lib/resume-data.ts`)
-2. Add matching generator entry in `scripts/generate-resume-pdfs.mjs`
+2. Add matching generator entry in `scripts/lib/resume-pdf-variants.mjs`
 3. Run:
 
 ```bash

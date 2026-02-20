@@ -1,0 +1,18 @@
+{
+  "reference": {
+    "pdfPath": "/home/kevin/coding/mf-site/static/pdf/kevin-mok-resume-web-dev.pdf",
+    "measurementMethod": "pdftotext -bbox-layout first-page max <word yMax>",
+    "pageHeightPts": 1191.12,
+    "lastContentYMaxPts": 1146.78086,
+    "bottomWhitespacePts": 44.33914,
+    "bottomWhitespaceRatio": 0.03722474645711584
+  },
+  "enforcement": {
+    "mode": "normalized_ratio",
+    "tolerancePts": 1
+  },
+  "notes": [
+    "Legacy baseline PDF is A3. Generated resumes are US Letter.",
+    "Verification normalizes by ratio and compares expected-vs-actual whitespace in points per target page height."
+  ]
+}

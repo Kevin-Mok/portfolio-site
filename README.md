@@ -70,6 +70,18 @@ npm run typecheck  # TypeScript validation
 npm run lint       # Code linting
 ```
 
+### Resume PDF Workflow
+
+`npm run build` also regenerates resume PDFs in `public/resume/`.
+
+```bash
+npm run measure:resume-layout   # Measure bottom whitespace for all generated resume PDFs
+npm run verify:resume-layout    # Enforce legacy baseline bottom whitespace lock
+npm run validate-resume-pdfs    # Full gate: page count, page size, fonts, bold, layout baseline
+```
+
+Layout rules and baseline source are documented in `docs/resume-generation-spec.md`.
+
 ---
 
 ## ⚙️ Configuration
@@ -224,6 +236,7 @@ kmok-portfolio/
 ## 📚 Documentation
 
 - **[CLAUDE.md](CLAUDE.md)** - Architecture, commands, and development guide
+- **[docs/resume-generation-spec.md](docs/resume-generation-spec.md)** - Resume PDF baseline/spacing/bold rules and verification workflow
 - **[CONTACT_FORM_SPEC.md](docs/CONTACT_FORM_SPEC.md)** - Contact form implementation details
 - **[CDN_DEPLOYMENT_SPEC.md](docs/CDN_DEPLOYMENT_SPEC.md)** - Cloudflare R2 CDN setup guide
 

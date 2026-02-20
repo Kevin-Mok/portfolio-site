@@ -4,20 +4,7 @@ import { spawn, spawnSync } from 'node:child_process';
 import { access } from 'node:fs/promises';
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
-
-const variants = [
-  { id: 'general', fileName: 'kevin-mok-resume.pdf' },
-  { id: 'web-dev', fileName: 'kevin-mok-resume-web-dev.pdf' },
-  { id: 'aws', fileName: 'kevin-mok-resume-aws.pdf' },
-  { id: 'python', fileName: 'kevin-mok-resume-python.pdf' },
-  { id: 'aws-web-dev', fileName: 'kevin-mok-resume-aws-web-dev.pdf' },
-  { id: 'aws-python', fileName: 'kevin-mok-resume-aws-python.pdf' },
-  { id: 'web-dev-django', fileName: 'kevin-mok-resume-web-dev-django.pdf' },
-  { id: 'it-support', fileName: 'kevin-mok-resume-it-support.pdf' },
-  { id: 'it-support-aws', fileName: 'kevin-mok-resume-it-support-aws.pdf' },
-  { id: 'sales', fileName: 'kevin-mok-resume-sales.pdf' },
-  { id: 'call-centre', fileName: 'kevin-mok-resume-call-centre.pdf' },
-];
+import { resumePdfVariants } from './lib/resume-pdf-variants.mjs';
 
 const host = process.env.RESUME_PDF_HOST || '127.0.0.1';
 const port = process.env.RESUME_PDF_PORT || '3100';
@@ -198,13 +185,13 @@ async function main() {
   try {
     await waitForServerReady(server);
 
-    for (const variant of variants) {
+    for (const variant of resumePdfVariants) {
       // Keep output visible in CI/local builds for easier diagnosis.
       console.log(`Generating ${variant.fileName} (${variant.id})`);
       await generateVariantPdf(variant, chromeBin);
     }
 
-    console.log(`Generated ${variants.length} resume PDFs in ${outputDir}`);
+    console.log(`Generated ${resumePdfVariants.length} resume PDFs in ${outputDir}`);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     throw new Error(
