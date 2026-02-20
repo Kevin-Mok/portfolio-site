@@ -294,17 +294,49 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ## Resume-ready points by variant
 
-- `general`: Shipped a production Next.js portfolio balancing strong UX, content operations, and deployment reliability in one maintainable codebase.
-- `web-dev`: Built a six-tile desktop interface and parallax mobile experience with TypeScript, Tailwind, and MDX-driven publishing workflows.
-- `aws`: Implemented cloud-ready delivery patterns with CDN fallback, environment-driven configuration, and repeatable recovery workflows for dependable operations.
-- `python`: Enforced strict validation and typed integration boundaries that translate directly to Python service design and backend API work.
-- `aws-web-dev`: Combined frontend product execution with infrastructure-conscious decisions across CDN routing, deployment automation, and environment-based feature controls.
-- `aws-python`: Built integration-heavy web systems and verification tooling using patterns readily portable to Python services in cloud deployment pipelines.
-- `web-dev-django`: Structured routes, form handling, and content architecture in ways that map cleanly to Django-powered full-stack applications.
-- `it-support`: Added actionable troubleshooting surfaces and documented recovery steps so issues can be diagnosed quickly and resolved consistently.
-- `it-support-aws`: Defined operational validation gates and rollback guidance that mirror cloud support workflows for incidents and service health checks.
-- `sales`: Crafted a polished technical narrative with measurable feature depth, strengthening credibility during client-facing conversations and conversion-focused demos.
-- `call-centre`: Built clear navigation, contact pathways, and validation feedback that improve communication quality in high-volume support interactions.
+### `general`
+- Shipped a production Next.js 15 portfolio combining tiled desktop UX, parallax mobile flows, and MDX content operations in a maintainable TypeScript codebase.
+- Delivered end-to-end product quality with deployment automation, modular CSS architecture, and documented recovery procedures that keep releases reliable under real hosting constraints.
+
+### `web-dev`
+- Built a six-tile desktop interface plus parallax mobile experience with Tailwind v4, React Context state, and polished interaction patterns inspired by Linux window managers.
+- Implemented MDX-powered blog and project publishing, syntax-highlighted content rendering, and reusable UI modules that accelerate feature delivery without sacrificing design consistency.
+
+### `aws`
+- Established cloud-ready delivery practices through environment-driven configuration, CDN fallback strategy, and deterministic build/deploy workflows suitable for infrastructure-heavy teams.
+- Added operational resilience with documented restart and recovery routines plus validation gates, reflecting the reliability mindset expected in cloud platform ownership roles.
+
+### `python`
+- Enforced strict typing, schema validation, and explicit data boundaries that transfer well to Python service design, API integration, and backend quality control.
+- Built maintainable integration surfaces for contact workflows and content pipelines, mirroring patterns used by Python teams managing production web applications.
+
+### `aws-web-dev`
+- Combined frontend product craftsmanship with infrastructure-aware decisions across CDN routing, deploy behavior, and environment-specific configuration management.
+- Balanced rapid UI iteration with operational safeguards so web features can ship quickly while still fitting cloud-managed release and rollback workflows.
+
+### `aws-python`
+- Developed integration-heavy web systems and validation tooling using architecture patterns portable to Python services running in cloud deployment pipelines.
+- Applied reliability-first thinking to feature delivery, creating clear seams between presentation logic and backend responsibilities for scalable Python and cloud collaboration.
+
+### `web-dev-django`
+- Structured routes, form handling, and content architecture in ways that map directly to Django-backed full-stack applications and API-driven frontend integrations.
+- Implemented reusable modular styling and component boundaries that support long-lived web products maintained by cross-functional frontend and backend teams.
+
+### `it-support`
+- Improved supportability with actionable error surfaces, clear operator documentation, and troubleshooting workflows that shorten diagnosis time for production issues.
+- Added practical recovery guidance so maintainers can isolate failures quickly, execute fixes consistently, and restore service with minimal downtime.
+
+### `it-support-aws`
+- Documented deployment recovery, validation checks, and rollback paths that align with support engineering workflows in cloud-hosted environments.
+- Built predictable operational runbooks and health-gate practices that help support teams triage incidents and coordinate effectively with infrastructure owners.
+
+### `sales`
+- Crafted a high-credibility technical narrative that communicates capabilities clearly, helping convert visitors into leads through concrete product depth and polish.
+- Combined visual differentiation with measurable feature framing, strengthening client-facing conversations where trust, clarity, and delivery confidence drive decisions.
+
+### `call-centre`
+- Designed intuitive navigation and contact paths that reduce friction, helping users find answers quickly during high-volume support moments.
+- Implemented clarity-first validation feedback and information hierarchy to improve communication quality and reduce repetitive back-and-forth in support interactions.
 
 ## 📧 Contact
 
