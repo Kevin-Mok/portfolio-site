@@ -1,0 +1,6 @@
+- refine resume
+  - add metrics
+  - fix links
+  - hand pick points
+  - reorg work/proj
+- photo on mobile
