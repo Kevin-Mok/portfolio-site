@@ -54,6 +54,11 @@ If behavior changes, docs must change immediately.
 - Update setup/run/test notes for new workflows.
 - Document gotchas and risks when non-obvious.
 
+### Commit + push policy
+
+- When an agent creates a commit, it must push that commit in the same task unless the user explicitly says not to push yet.
+- Default push target is `origin` on the active branch (for `main`, use `git push origin main`).
+
 ---
 
 ## 3) Optional Feature Docs
