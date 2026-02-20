@@ -10,6 +10,8 @@ Use this when `kevin-mok.com` serves HTML but the UI does not load (for example,
 
 This script will:
 - build a fresh production bundle
+- verify resume layout baseline lock (`npm run verify:resume-layout`)
+- auto-calibrate resume layout when needed (`npm run calibrate:resume-layout`)
 - validate generated resume PDFs (`npm run validate-resume-pdfs`)
 - restart the `portfolio` systemd service
 - wait for homepage HTTP `200` with bounded retries
@@ -35,12 +37,32 @@ Tune readiness retry behavior (defaults: 12 attempts, 5 seconds between attempts
 READINESS_MAX_ATTEMPTS=18 READINESS_SLEEP_SECONDS=5 ./rebuild-restart-portfolio.sh
 ```
 
+Disable auto-calibration during recovery (fail fast if layout is not already calibrated):
+
+```bash
+AUTO_CALIBRATE_RESUME_LAYOUT=0 ./rebuild-restart-portfolio.sh
+```
+
+Tune max calibration attempts (default: 10):
+
+```bash
+CALIBRATION_MAX_ITERATIONS=12 ./rebuild-restart-portfolio.sh
+```
+
 ## Manual fallback
 
 If script execution fails, run the core sequence directly:
 
 ```bash
 npm run build
+```
+
+```bash
+npm run verify:resume-layout
+```
+
+```bash
+npm run calibrate:resume-layout
 ```
 
 ```bash

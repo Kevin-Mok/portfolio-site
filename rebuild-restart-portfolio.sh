@@ -6,6 +6,8 @@ SERVICE_NAME="${SERVICE_NAME:-portfolio}"
 SITE_URL="${SITE_URL:-https://kevin-mok.com}"
 READINESS_MAX_ATTEMPTS="${READINESS_MAX_ATTEMPTS:-12}"
 READINESS_SLEEP_SECONDS="${READINESS_SLEEP_SECONDS:-5}"
+AUTO_CALIBRATE_RESUME_LAYOUT="${AUTO_CALIBRATE_RESUME_LAYOUT:-1}"
+CALIBRATION_MAX_ITERATIONS="${CALIBRATION_MAX_ITERATIONS:-10}"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 run_systemctl() {
@@ -64,24 +66,47 @@ extract_webpack_chunk_path() {
   return 1
 }
 
-echo "[1/6] Building production bundle"
+is_truthy() {
+  case "${1,,}" in
+    1|true|yes|y|on) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+echo "[1/8] Building production bundle"
 cd "$ROOT_DIR"
 npm run build
 
-echo "[2/6] Validating resume PDF generation"
+echo "[2/8] Verifying resume layout baseline lock"
+if npm run verify:resume-layout; then
+  echo "Resume layout baseline verification passed."
+else
+  if is_truthy "$AUTO_CALIBRATE_RESUME_LAYOUT"; then
+    echo "Resume layout verification failed; running auto calibration."
+    npm run calibrate:resume-layout -- --skip-build-first --max-iterations "$CALIBRATION_MAX_ITERATIONS"
+    echo "Re-running resume layout verification after calibration."
+    npm run verify:resume-layout
+  else
+    echo "Resume layout verification failed and AUTO_CALIBRATE_RESUME_LAYOUT is disabled."
+    echo "Set AUTO_CALIBRATE_RESUME_LAYOUT=1 to auto-fix calibration during recovery."
+    exit 1
+  fi
+fi
+
+echo "[3/8] Validating resume PDF generation"
 npm run validate-resume-pdfs
 
-echo "[3/6] Restarting service: $SERVICE_NAME"
+echo "[4/8] Restarting service: $SERVICE_NAME"
 run_systemctl restart "$SERVICE_NAME"
 
-echo "[4/6] Verifying service is active"
+echo "[5/8] Verifying service is active"
 run_systemctl is-active --quiet "$SERVICE_NAME"
 echo "Service is active: $SERVICE_NAME"
 
-echo "[5/6] Checking homepage response: $SITE_URL"
+echo "[6/8] Checking homepage response: $SITE_URL"
 wait_for_http_200 "$SITE_URL" "homepage response"
 
-echo "[6/6] Checking active Next.js chunk response"
+echo "[7/8] Checking active Next.js chunk response"
 tmp_html="$(mktemp)"
 trap 'rm -f "$tmp_html"' EXIT
 
@@ -94,4 +119,5 @@ fi
 
 wait_for_http_200 "$SITE_URL$chunk_path" "webpack chunk response"
 
+echo "[8/8] Recovery checks completed"
 echo "Recovery check passed."
