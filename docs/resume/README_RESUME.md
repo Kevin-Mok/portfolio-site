@@ -109,6 +109,34 @@ This file covers:
 
 ---
 
+#### 🎯 **I want to choose the right resume variant for a role**
+→ Read: **[RESUME_VARIANT_POSITIONING.md](./RESUME_VARIANT_POSITIONING.md)**
+
+This file covers:
+- All active variants in `resumeVariants`
+- The purpose of each variant
+- What each variant is trying to sell to employers
+- Quick differences between similar variants
+
+**Reading time**: 3-5 minutes
+**For**: Selecting the best resume version before applying
+
+---
+
+#### 🤖 **I want ChatGPT to draft variant-aware README bullets**
+→ Read: **[README_RESUME_POINTS_PROMPT.md](../prompts/README_RESUME_POINTS_PROMPT.md)**
+
+This file covers:
+- Exact files to attach for all target projects
+- Copy/paste prompt for ChatGPT
+- Strict bullet length and formatting constraints
+- Aggressive-but-defensible claim guidance
+
+**Reading time**: 3-5 minutes
+**For**: Fast AI-assisted README updates that feed resume tailoring
+
+---
+
 ## Common Tasks Quick Links
 
 ### Update Your Resume
@@ -189,6 +217,19 @@ npm run generate-resume-pdfs
 
 **Full guide**: [RESUME_MAINTENANCE.md § Testing Changes](./RESUME_MAINTENANCE.md#testing-changes)
 
+### Generate Resume-Ready README Points (ChatGPT)
+1. Open the prompt guide:
+
+```text
+docs/prompts/README_RESUME_POINTS_PROMPT.md
+```
+
+2. Attach the listed files and run the prompt in ChatGPT
+3. Review returned unified diffs for factual accuracy
+4. Apply diffs in each target project repo
+
+**Prompt guide**: [README_RESUME_POINTS_PROMPT.md](../prompts/README_RESUME_POINTS_PROMPT.md)
+
 ## File Locations Reference
 
 | Purpose | Location |
@@ -264,13 +305,16 @@ Browser renders professional LaTeX-styled resume
 - 40+ PDF variants in `public/resume/`
 - 4 contact icons in `public/icons/resume/`
 
-### Documentation (5 files)
+### Documentation (9 files)
 - This README
 - RESUME_FEATURE_OVERVIEW.md
 - RESUME_ARCHITECTURE.md
 - RESUME_MAINTENANCE.md
 - RESUME_MIGRATION.md
 - RESUME_FILE_STRUCTURE.md
+- RESUME_VARIANT_POSITIONING.md
+- docs/prompts/README_RESUME_POINTS_PROMPT.md
+- resume-generation-spec.md
 
 ## Next Steps
 
@@ -338,12 +382,24 @@ README_RESUME.md (you are here)
 │   ├── Asset migration
 │   ├── Styling preserved
 │   └── Features enhanced
-└── RESUME_FILE_STRUCTURE.md
-    ├── Complete file organization
-    ├── Component hierarchy
-    ├── Data organization
-    ├── Asset organization
-    └── Quick reference
+├── RESUME_FILE_STRUCTURE.md
+│   ├── Complete file organization
+│   ├── Component hierarchy
+│   ├── Data organization
+│   ├── Asset organization
+│   └── Quick reference
+├── RESUME_VARIANT_POSITIONING.md
+│   ├── Active variant matrix
+│   ├── Per-variant positioning
+│   └── Selection guidance
+├── ../prompts/README_RESUME_POINTS_PROMPT.md
+│   ├── Attachment checklist
+│   ├── Copy/paste ChatGPT prompt
+│   └── Claim/length quality guardrails
+└── resume-generation-spec.md
+    ├── Layout baseline/tolerances
+    ├── Verification rules
+    └── Calibration workflow
 ```
 
 ## Summary

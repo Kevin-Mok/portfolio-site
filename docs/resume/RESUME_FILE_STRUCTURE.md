@@ -166,11 +166,11 @@ portfolio-site/
 
 ### Documentation (5 files)
 
-1. **docs/RESUME_FEATURE_OVERVIEW.md** - High-level overview
-2. **docs/RESUME_ARCHITECTURE.md** - Technical architecture
-3. **docs/RESUME_MAINTENANCE.md** - Maintenance guide
-4. **docs/RESUME_MIGRATION.md** - Migration details
-5. **docs/RESUME_FILE_STRUCTURE.md** - This file
+1. **docs/resume/RESUME_FEATURE_OVERVIEW.md** - High-level overview
+2. **docs/resume/RESUME_ARCHITECTURE.md** - Technical architecture
+3. **docs/resume/RESUME_MAINTENANCE.md** - Maintenance guide
+4. **docs/resume/RESUME_MIGRATION.md** - Migration details
+5. **docs/resume/RESUME_FILE_STRUCTURE.md** - This file
 
 ## Import Dependencies
 

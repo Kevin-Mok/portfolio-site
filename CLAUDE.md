@@ -123,10 +123,10 @@ Rules:
 
 Read before major resume changes:
 
-- `docs/README_RESUME.md`
-- `docs/RESUME_FEATURE_OVERVIEW.md`
-- `docs/RESUME_ARCHITECTURE.md`
-- `docs/RESUME_MAINTENANCE.md`
+- `docs/resume/README_RESUME.md`
+- `docs/resume/RESUME_FEATURE_OVERVIEW.md`
+- `docs/resume/RESUME_ARCHITECTURE.md`
+- `docs/resume/RESUME_MAINTENANCE.md`
 
 ---
 

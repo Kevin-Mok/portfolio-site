@@ -616,7 +616,7 @@ RESEND_API_KEY=your_resend_api_key
 3. **Images served** from Cloudflare R2 CDN
 4. **Application available** at your Railway domain
 
-See `docs/CDN_DEPLOYMENT_SPEC.md` for complete setup guide.
+See `docs/specs/CDN_DEPLOYMENT_SPEC.md` for complete setup guide.
 ```
 
 ---

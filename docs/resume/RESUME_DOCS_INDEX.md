@@ -2,7 +2,7 @@
 
 ## Complete Resume Documentation Package
 
-This directory contains comprehensive documentation for the resume feature implementation. All knowledge, planning, and implementation details have been organized for easy reference and maintenance.
+This directory contains the core resume feature documentation. Related AI prompt workflows live in `docs/prompts/` and are linked from this index.
 
 ## Documentation Files
 
@@ -145,6 +145,44 @@ This directory contains comprehensive documentation for the resume feature imple
 
 ---
 
+### 🎯 RESUME_VARIANT_POSITIONING.md
+**Resume variant selection and targeting guide**
+
+- Canonical list of all active resume variants
+- Per-variant purpose and employer-facing angle
+- "What it is trying to sell" positioning statements
+- Side-by-side comparison for similar variants
+- Quick guidance for selecting the best version before applying
+
+**Best for**: Picking the right resume variant for a specific job posting.
+
+---
+
+### 📏 resume-generation-spec.md
+**Canonical PDF generation and layout constraints**
+
+- Legacy baseline and whitespace lock rules
+- Typography/spacing constraints and tolerances
+- Measurement and verification command workflow
+- Calibration guidance for per-variant print controls
+
+**Best for**: Any resume PDF generation or print-layout change.
+
+---
+
+### 🤖 docs/prompts/README_RESUME_POINTS_PROMPT.md
+**ChatGPT prompt for variant-aware README bullet generation**
+
+- Exact attachment checklist across target repos
+- Copy/paste prompt with deterministic output rules
+- One-sentence and word-count constraints for bullets
+- Aggressive-but-defensible claim guidelines
+- Missing-README fallback instructions (`nomar-stocks`)
+
+**Best for**: Generating recruiter-ready README bullets aligned to resume variant positioning.
+
+---
+
 ## Quick Navigation Guide
 
 ### Based on Your Task:
@@ -157,6 +195,9 @@ This directory contains comprehensive documentation for the resume feature imple
 | Update resume content? | RESUME_MAINTENANCE.md |
 | Find a file? | RESUME_FILE_STRUCTURE.md |
 | Understand migration? | RESUME_MIGRATION.md |
+| Need PDF layout rules? | resume-generation-spec.md |
+| Choose the right variant? | RESUME_VARIANT_POSITIONING.md |
+| Generate README bullets with AI? | docs/prompts/README_RESUME_POINTS_PROMPT.md |
 
 ### Based on Your Role:
 
@@ -167,12 +208,14 @@ This directory contains comprehensive documentation for the resume feature imple
 | Architect (understanding design) | RESUME_ARCHITECTURE.md |
 | New contributor (learning) | README_RESUME.md |
 | Project manager (overview) | RESUME_FEATURE_OVERVIEW.md |
+| Job applicant (targeting roles) | RESUME_VARIANT_POSITIONING.md |
+| AI-assisted documentation editor | docs/prompts/README_RESUME_POINTS_PROMPT.md |
 
 ## Documentation Statistics
 
 ### Total Documentation
-- **6 markdown files** for resume feature
-- **2,398 lines** of documentation
+- **9 markdown files** for resume feature
+- **2,806 lines** of documentation
 - **~80 KB** of documentation
 - **~50+ diagrams** and code examples
 
@@ -183,6 +226,9 @@ This directory contains comprehensive documentation for the resume feature imple
 - ✅ Step-by-step maintenance guide
 - ✅ Complete migration documentation
 - ✅ File structure and navigation
+- ✅ Resume variant positioning guide
+- ✅ PDF generation/layout specification
+- ✅ AI README prompt workflow
 - ✅ Common tasks quick reference
 - ✅ Troubleshooting guide
 - ✅ Code examples and snippets
@@ -244,14 +290,29 @@ README_RESUME.md
 │  └─ links to other docs for specific tasks
 ├─ RESUME_MIGRATION.md
 │  └─ links to RESUME_ARCHITECTURE.md for technical details
-└─ RESUME_FILE_STRUCTURE.md
-   └─ links to RESUME_MAINTENANCE.md for common tasks
+├─ RESUME_FILE_STRUCTURE.md
+│  └─ links to RESUME_MAINTENANCE.md for common tasks
+├─ RESUME_VARIANT_POSITIONING.md
+│  └─ links to `lib/resume-data.ts` variant source of truth
+├─ resume-generation-spec.md
+│  └─ links to layout verification and calibration workflow
+└─ docs/prompts/README_RESUME_POINTS_PROMPT.md
+   └─ links to target project README attachment requirements
 ```
 
 ## How to Use This Documentation
 
 ### For Quick Reference
 → Use **RESUME_FILE_STRUCTURE.md** quick reference tables
+
+### For Variant Selection
+→ Use **RESUME_VARIANT_POSITIONING.md** before applying to role-specific jobs
+
+### For Layout Rules
+→ Use **resume-generation-spec.md** for baseline/tolerance requirements
+
+### For AI-Assisted README Updates
+→ Use **docs/prompts/README_RESUME_POINTS_PROMPT.md** to generate variant-aware resume bullets
 
 ### For Learning
 → Start with **README_RESUME.md**, then read **RESUME_FEATURE_OVERVIEW.md**
@@ -303,6 +364,9 @@ When you update the resume, consider also updating:
 - RESUME_MAINTENANCE.md (if new sections added)
 - RESUME_FEATURE_OVERVIEW.md (if content changes significantly)
 - RESUME_FILE_STRUCTURE.md (if file structure changes)
+- RESUME_VARIANT_POSITIONING.md (if variants are added/removed/repositioned)
+- resume-generation-spec.md (if layout rules/tolerances change)
+- docs/prompts/README_RESUME_POINTS_PROMPT.md (if variants, repos, or claim policy changes)
 
 ## Summary
 
@@ -313,6 +377,9 @@ This documentation package provides **complete coverage** of the resume feature:
 ✅ How it works technically
 ✅ How to maintain and update it
 ✅ Where all the files are
+✅ Which variant to send for which role
+✅ How to enforce PDF layout standards
+✅ How to generate AI-assisted README bullets safely
 ✅ How it was migrated
 ✅ How to troubleshoot issues
 ✅ How to extend it

@@ -1,10 +1,11 @@
 # TODO
 
-Last updated: 2026-02-20 14:36 UTC
+Last updated: 2026-02-20 18:44 UTC
 
 ## What's Done
 
-- [x] 2026-02-20 14:36 UTC - Lock resume PDF bottom whitespace to legacy baseline ratio (A3 source normalized to Letter with ±1pt tolerance), add reusable measurement/verification tooling (`measure-resume-bottom-whitespace`, `verify-resume-layout`), tune print spacing/typography while preserving bold emphasis, and document the workflow in `docs/resume-generation-spec.md` + README/resume docs.
+- [x] 2026-02-20 18:44 UTC - Organize documentation into purpose-based folders (`docs/resume/`, `docs/specs/`, `docs/prompts/`, `docs/ops/`, `docs/archive/`), add `docs/README.md` as a docs hub, and archive legacy root `todo.md` as `docs/archive/ROOT_TODO_LEGACY.md`.
+- [x] 2026-02-20 14:36 UTC - Lock resume PDF bottom whitespace to legacy baseline ratio (A3 source normalized to Letter with ±1pt tolerance), add reusable measurement/verification tooling (`measure-resume-bottom-whitespace`, `verify-resume-layout`), tune print spacing/typography while preserving bold emphasis, and document the workflow in `docs/resume/resume-generation-spec.md` + README/resume docs.
 - [x] 2026-02-16 14:19 UTC - Fix resume header social icon paths so LinkedIn/GitHub icons load correctly from `public/icons/resume/`.
 - [x] 2026-02-16 14:23 UTC - Adapt `AGENTS.md` and `CLAUDE.md` from quit-weed instructions to portfolio-site-specific guidance; keep shared `AGENTS-BASE.md`.
 - [x] 2026-02-16 14:28 UTC - Replace legacy branding tokens and legacy creator phrase with `kmok` across app code, content, docs, and matching asset filenames.
@@ -19,7 +20,7 @@ Last updated: 2026-02-20 14:36 UTC
 - [x] 2026-02-16 18:16 UTC - Force mobile parallax surfaces to stay transparent across accent changes by removing theme-surface gray fills from section cards/settings and Neofetch hero wrapper.
 - [x] 2026-02-16 18:35 UTC - Fix mobile wallpaper switching so Settings -> Background controls update the active parallax wallpaper instead of staying pinned to the default image.
 - [x] 2026-02-16 18:38 UTC - Make Web Development resume PDF the default selection on desktop resume view and the default PDF link in mobile Resume CTA.
-- [x] 2026-02-18 16:36 UTC - Add deploy recovery tooling with `rebuild-restart-portfolio.sh` and `docs/DEPLOY_RECOVERY.md` to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.
+- [x] 2026-02-18 16:36 UTC - Add deploy recovery tooling with `rebuild-restart-portfolio.sh` and `docs/ops/DEPLOY_RECOVERY.md` to rebuild, restart `portfolio.service`, and verify Next.js chunk health after deploy drift.
 - [x] 2026-02-18 17:35 UTC - Fix OG metadata quality checks by lengthening SEO title/description, switching fallback OG image paths to `opengraph-image.jpg`, and regenerating a 1200x630 CTA image under WhatsApp size guidance.
 - [x] 2026-02-18 17:43 UTC - Use the new `public/opengraph-image.png` asset as the default OG image by optimizing it in-place to 1200x630 (~305 KB) and repointing fallback metadata/image URLs from `.jpg` to `.png`.
 - [x] 2026-02-18 17:48 UTC - Harden `rebuild-restart-portfolio.sh` with bounded readiness retries so transient post-restart `502` responses on homepage/chunk checks do not fail recovery prematurely.

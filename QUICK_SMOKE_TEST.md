@@ -184,7 +184,7 @@ Objective: Verify the deploy recovery workflow is present and catches stale Next
 Steps:
 
 ```bash
-ls -l rebuild-restart-portfolio.sh docs/DEPLOY_RECOVERY.md
+ls -l rebuild-restart-portfolio.sh docs/ops/DEPLOY_RECOVERY.md
 ```
 
 ```bash
@@ -192,7 +192,7 @@ bash -n rebuild-restart-portfolio.sh
 ```
 
 ```bash
-rg -n "npm run build|systemctl restart|wait_for_http_200|READINESS_MAX_ATTEMPTS|/_next/static/chunks/webpack-" rebuild-restart-portfolio.sh docs/DEPLOY_RECOVERY.md
+rg -n "npm run build|systemctl restart|wait_for_http_200|READINESS_MAX_ATTEMPTS|/_next/static/chunks/webpack-" rebuild-restart-portfolio.sh docs/ops/DEPLOY_RECOVERY.md
 ```
 
 Run on server with restart permissions:

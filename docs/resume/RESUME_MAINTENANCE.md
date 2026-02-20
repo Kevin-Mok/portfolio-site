@@ -202,7 +202,7 @@ If generation fails with `No Next.js production build found at .next/BUILD_ID`, 
 - `pdfinfo`, `pdffonts`, and `pdftotext` must be available in PATH for resume layout checks (`poppler-utils` on Ubuntu/Debian).
 - Build requires localhost binding for temporary `next start` during generation.
 - Local Computer Modern font files in `public/fonts/cmu/` must be present for deterministic PDF metrics.
-- Baseline source and enforcement rules are defined in `docs/resume-generation-spec.md` and `docs/resume-layout-baseline.json`.
+- Baseline source and enforcement rules are defined in `docs/resume/resume-generation-spec.md` and `docs/resume/resume-layout-baseline.json`.
 
 ### Measuring Bottom Whitespace
 

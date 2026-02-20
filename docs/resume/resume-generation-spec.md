@@ -5,7 +5,7 @@ This document defines the required layout rules for all generated resume PDFs.
 ## Baseline Reference (Source of Truth)
 
 - Legacy reference PDF: `/home/kevin/coding/mf-site/static/pdf/kevin-mok-resume-web-dev.pdf`
-- Baseline values are tracked in: `docs/resume-layout-baseline.json`
+- Baseline values are tracked in: `docs/resume/resume-layout-baseline.json`
 
 ## Non-Negotiable Rules
 

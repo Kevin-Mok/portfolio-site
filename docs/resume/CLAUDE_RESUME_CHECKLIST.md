@@ -7,7 +7,7 @@
 Before starting work on resume:
 
 - [ ] Read `CLAUDE.md` → "LaTeX-Styled Resume" section (2 min)
-- [ ] Read `docs/README_RESUME.md` for context (5 min)
+- [ ] Read `docs/resume/README_RESUME.md` for context (5 min)
 - [ ] Identify which documentation applies to your task:
   - Updating content? → `RESUME_MAINTENANCE.md`
   - Understanding code? → `RESUME_ARCHITECTURE.md`
@@ -175,13 +175,13 @@ Don't do these:
 
 Keep these docs handy:
 
-- **Quick start**: `docs/README_RESUME.md`
-- **Overview**: `docs/RESUME_FEATURE_OVERVIEW.md`
-- **Architecture**: `docs/RESUME_ARCHITECTURE.md`
-- **How to update**: `docs/RESUME_MAINTENANCE.md`
-- **Migration details**: `docs/RESUME_MIGRATION.md`
-- **File locations**: `docs/RESUME_FILE_STRUCTURE.md`
-- **Doc index**: `docs/RESUME_DOCS_INDEX.md`
+- **Quick start**: `docs/resume/README_RESUME.md`
+- **Overview**: `docs/resume/RESUME_FEATURE_OVERVIEW.md`
+- **Architecture**: `docs/resume/RESUME_ARCHITECTURE.md`
+- **How to update**: `docs/resume/RESUME_MAINTENANCE.md`
+- **Migration details**: `docs/resume/RESUME_MIGRATION.md`
+- **File locations**: `docs/resume/RESUME_FILE_STRUCTURE.md`
+- **Doc index**: `docs/resume/RESUME_DOCS_INDEX.md`
 
 ## Getting Help
 

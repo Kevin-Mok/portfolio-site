@@ -1,11 +1,11 @@
 # ChatGPT Prompt: Update Project READMEs With Resume-Ready Points
 
-Use this prompt in ChatGPT to update project READMEs with short, variant-aware resume points that maximize recruiter impact without fabricating claims.
+Use this prompt in ChatGPT to update project READMEs with short, variant-aware resume points that maximize recruiter impact.
 
 ## Attach These Files First
 
 Required resume targeting context:
-- `/home/kevin/coding/portfolio-site/docs/RESUME_VARIANT_POSITIONING.md`
+- `/home/kevin/coding/portfolio-site/docs/resume/RESUME_VARIANT_POSITIONING.md`
 - `/home/kevin/coding/portfolio-site/lib/resume-data.ts`
 
 Required project docs:
@@ -59,8 +59,6 @@ Content requirements:
 - Keep each bullet to a single sentence.
 - Length target per bullet: 12-22 words (hard max: 28 words).
 - Use aggressive, recruiter-effective wording while remaining fully defensible and accurate.
-- Never fabricate metrics, scope, timelines, tools, or ownership. Only use numbers explicitly supported by the attached README/docs.
-- If numeric proof is not available, keep the claim strong but qualitative (no invented percentages or counts).
 - Keep wording concrete: action + technical/context signal + outcome/impact.
 - Match each variant's positioning from `RESUME_VARIANT_POSITIONING.md`.
 - Style should fit existing resume bullet density in `lib/resume-data.ts` (concise, specific, employer-facing).

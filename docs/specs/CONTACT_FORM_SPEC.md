@@ -628,7 +628,7 @@ if (rateLimit && now < rateLimit.resetTime) {
 ## Implementation Steps
 
 ### Step 1: Create Documentation ✅
-- [x] This file (`docs/CONTACT_FORM_SPEC.md`)
+- [x] This file (`docs/specs/CONTACT_FORM_SPEC.md`)
 
 ### Step 2: Install Dependencies
 

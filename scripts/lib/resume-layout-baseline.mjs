@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-const baselinePath = path.join(process.cwd(), 'docs', 'resume-layout-baseline.json');
+const baselinePath = path.join(process.cwd(), 'docs', 'resume', 'resume-layout-baseline.json');
 
 export function loadResumeLayoutBaseline() {
   let raw;
@@ -9,7 +9,7 @@ export function loadResumeLayoutBaseline() {
     raw = readFileSync(baselinePath, 'utf8');
   } catch {
     throw new Error(
-      `Missing baseline file at ${baselinePath}\nRun the baseline setup workflow in docs/resume-generation-spec.md.`
+      `Missing baseline file at ${baselinePath}\nRun the baseline setup workflow in docs/resume/resume-generation-spec.md.`
     );
   }
 
