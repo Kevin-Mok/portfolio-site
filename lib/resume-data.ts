@@ -115,11 +115,11 @@ const raritySurfProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
   date: 'Mar 2025',
   bullets: [
-    '<strong>Engineered automated NFT research tooling</strong>, accelerating <strong>market analysis efficiency by 80%</strong> by transforming raw blockchain metadata into actionable trading signals.',
-    '<strong>Scaled backend architecture to handle 3,000+ concurrent requests</strong> with zero downtime during peak mints, ensuring <strong>&lt;200ms API response times</strong> under heavy load.',
-    '<strong>Slashed ranking-page load times by 50%</strong> and boosted Lighthouse performance scores to 95+ by implementing <strong>efficient caching and paginated data fetching</strong>.',
-    '<strong>Orchestrated a real-time alerting system</strong> via WebSockets, driving an <strong>80% increase in daily active user engagement</strong> by delivering instantaneous market signals.',
-    '<strong>Streamlined cross-platform CI/CD deployments</strong> across frontend, backend, and Discord bots, <strong>reducing release cycle drift by 40%</strong> and ensuring seamless feature rollouts.',
+    '<strong>Built automated NFT research tools</strong> that turned blockchain data into trading signals and <strong>cut market analysis time by 80%</strong>.',
+    '<strong>Scaled backend services for 3,000+ concurrent requests</strong> with zero downtime during peak mints and <strong>kept API response times under 200ms</strong>.',
+    '<strong>Cut ranking-page load time by 50%</strong> by adding caching and paginated fetching, raising <strong>Lighthouse performance to 95+</strong>.',
+    '<strong>Launched real-time WebSocket alerts</strong> that delivered instant market updates and drove an <strong>80% increase in daily active users</strong>.',
+    '<strong>Standardized CI/CD across frontend, backend, and Discord bots</strong>, <strong>reducing release drift by 40%</strong> and making rollouts more reliable.',
   ],
 };
 
@@ -129,11 +129,11 @@ const kanbanCalendarProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Architected a responsive scheduling application</strong>, achieving a <strong>seamless cross-device experience</strong> by implementing dynamic CSS breakpoints and context-aware rendering for viewports <strong>&lt;768px</strong>.',
-    '<strong>Accelerated user navigation speed by 35%</strong> by engineering custom touch-swipe gestures (<strong>50px threshold</strong>) and comprehensive global keyboard shortcuts.',
-    '<strong>Optimized drag-and-drop state management</strong>, eliminating UI jitter during rapid replanning and <strong>reducing task-move friction for dense calendars</strong>.',
-    '<strong>Fortified scheduling state reliability</strong> by decoupling UI rendering from core business logic, preventing regressions across <strong>100+ daily event mutations</strong>.',
-    '<strong>Enhanced user retention and workflow clarity</strong> by integrating fluid micro-animations, preserving context during complex multi-step scheduling actions.',
+    '<strong>Built a responsive scheduling app</strong> with breakpoint-aware layouts and context-aware rendering, creating a <strong>smooth desktop and mobile experience (&lt;768px)</strong>.',
+    '<strong>Improved navigation speed by 35%</strong> by adding touch-swipe gestures (<strong>50px threshold</strong>) and global keyboard shortcuts.',
+    '<strong>Stabilized drag-and-drop interactions</strong>, removing UI jitter during rapid replanning and <strong>making dense calendars easier to manage</strong>.',
+    '<strong>Separated scheduling logic from UI rendering</strong> to prevent regressions across <strong>100+ daily event updates</strong>.',
+    '<strong>Added motion cues for multi-step edits</strong> so users kept context during complex scheduling workflows, improving clarity and retention.',
   ],
 };
 
@@ -142,11 +142,11 @@ const awsServerProject: ResumeProject = {
   languages: ['AWS', 'Kubernetes', 'Docker', 'Terraform'],
   date: 'May 2024',
   bullets: [
-    '<strong>Provisioned scalable AWS infrastructure</strong> hosting multiple decoupled web applications via <strong>Docker Compose</strong>, reliably supporting <strong>2,000+ monthly active requests</strong>.',
-    '<strong>Spearheaded Infrastructure-as-Code (IaC) integration</strong> using <strong>Terraform</strong>, automating EC2 instance provisioning and <strong>accelerating deployment cycles by 80%</strong>.',
-    '<strong>Architected highly available DNS and reverse proxy routing</strong> utilizing <strong>AWS Route 53 and NGINX</strong>, ensuring seamless traffic distribution and zero-downtime application switching.',
-    '<strong>Developed an automated health-checking daemon</strong> via systemd timers, proactively resolving memory leaks and <strong>slashing system downtime by 95%</strong>.',
-    '<strong>Guaranteed 99.9% data durability and uptime</strong> by engineering automated EBS snapshot lifecycle policies, <strong>mitigating potential data loss risk by 95%</strong>.',
+    '<strong>Set up scalable AWS infrastructure</strong> for multiple decoupled web apps with <strong>Docker Compose</strong>, reliably handling <strong>2,000+ monthly requests</strong>.',
+    '<strong>Implemented Infrastructure as Code with Terraform</strong> to automate EC2 provisioning and <strong>speed up deployments by 80%</strong>.',
+    '<strong>Built highly available DNS and reverse-proxy routing</strong> using <strong>AWS Route 53 and NGINX</strong>, enabling seamless traffic shifts with no downtime.',
+    '<strong>Created automated health checks</strong> with systemd timers that caught and recovered from memory leaks, <strong>reducing downtime by 95%</strong>.',
+    '<strong>Automated EBS snapshot lifecycle policies</strong> to maintain <strong>99.9% uptime and data durability</strong> while <strong>cutting data-loss risk by 95%</strong>.',
   ],
 };
 
@@ -155,11 +155,11 @@ const spotifyVisualizedProject: ResumeProject = {
   languages: ['Python', 'Django', 'PostgreSQL'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Architected a robust data pipeline</strong> processing <strong>10,000+ tracks per user</strong>, transforming raw Spotify REST API payloads into actionable, high-fidelity analytics.',
-    '<strong>Slashed complex PostgreSQL query latency by 50%</strong> via advanced indexing and query optimization, ensuring instant chart generation during intensive user exploration.',
-    '<strong>Implemented secure OAuth 2.0 authorization flows</strong> with automated JWT token refreshing, reducing session drop-offs and <strong>improving user continuity metrics</strong>.',
-    '<strong>Translated dense audio feature matrices into interactive data visualizations</strong>, accelerating user insight discovery regarding genre and acoustic preferences.',
-    '<strong>Designed a modular backend architecture</strong> decoupling data ingestion from visualization layers, enabling the rapid integration of new analytics modules with <strong>zero technical debt</strong>.',
+    '<strong>Built a data pipeline for 10,000+ tracks per user</strong>, turning Spotify API data into clear analytics users could act on.',
+    '<strong>Reduced PostgreSQL query time by 50%</strong> through indexing and query tuning, enabling near-instant chart generation.',
+    '<strong>Implemented OAuth 2.0 with automatic JWT refresh</strong>, reducing session drop-offs and improving user continuity.',
+    '<strong>Turned complex audio-feature data into interactive visuals</strong>, helping users quickly understand genre and listening patterns.',
+    '<strong>Designed a modular backend</strong> that separated ingestion from visualization, making new analytics modules fast to add with <strong>no added technical debt</strong>.',
   ],
 };
 
@@ -169,8 +169,8 @@ const discordAdventureProject: ResumeProject = {
   languages: ['Python', 'Discord.py'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Expanded procedural generation logic to yield 2,800+ unique enemy configurations</strong>, significantly boosting long-term player retention and replayability.',
-    '<strong>Engineered a distributed persistence layer</strong> to synchronize player state across <strong>multiple concurrent servers</strong>, eliminating data loss and driving player trust.',
+    '<strong>Expanded procedural generation to 2,800+ enemy combinations</strong>, improving replayability and long-term player retention.',
+    '<strong>Built distributed persistence</strong> to sync player progress across <strong>multiple concurrent servers</strong>, preventing data loss and increasing player trust.',
   ],
 };
 
@@ -180,11 +180,11 @@ const portfolioSiteProject: ResumeProject = {
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Designed a high-conversion 6-panel portfolio interface</strong>, optimizing the recruiter scanning experience and achieving a <strong>seamless responsive flow across all viewports</strong>.',
-    '<strong>Engineered a dynamic theming system</strong> supporting 3 base modes and 15 accent colors via CSS variables, <strong>boosting accessibility and engagement duration</strong>.',
-    '<strong>Integrated robust 5-layer form validation and rate limiting</strong>, eliminating 99% of spam submissions and ensuring <strong>high-signal recruiter outreach</strong>.',
-    '<strong>Refactored global styles into 12 modular CSS components</strong> (under <strong>200 lines each</strong>), establishing strict scoping to <strong>prevent UI regressions during rapid iteration</strong>.',
-    '<strong>Automated the generation of 11 targeted resume variants</strong> via a custom TypeScript build script, ensuring 100% data consistency across all job-specific applications.',
+    '<strong>Built a 6-panel portfolio layout</strong> optimized for recruiter scanning, with a <strong>smooth responsive experience across all screen sizes</strong>.',
+    '<strong>Implemented a theming system</strong> with 3 base modes and 15 accent colors using CSS variables, improving accessibility and session engagement.',
+    '<strong>Added 5-layer form validation and rate limiting</strong>, removing <strong>99% of spam submissions</strong> and keeping recruiter inquiries high quality.',
+    '<strong>Split global styles into 12 modular CSS files</strong> (each under <strong>200 lines</strong>) to prevent regressions during fast iteration.',
+    '<strong>Automated generation of 11 role-targeted resume variants</strong> with a TypeScript build script, maintaining 100% data consistency across applications.',
   ],
 };
 
@@ -194,11 +194,11 @@ const leavesSupportProject: ResumeProject = {
   languages: ['TypeScript', 'React Native', 'Expo'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Architected a cross-platform React Native application</strong> deployed to <strong>3 separate ecosystems</strong>, capturing a broader demographic and <strong>increasing user accessibility</strong>.',
-    '<strong>Integrated an AI-driven coaching module</strong> executing daily interactive check-ins, delivering personalized cognitive behavioral support to <strong>improve 30-day retention rates</strong>.',
-    '<strong>Designed a multi-dimensional symptom tracking dashboard</strong> across <strong>5 distinct clinical categories</strong>, translating complex recovery data into <strong>easily interpretable progress metrics</strong>.',
-    '<strong>Engineered a real-time SOS intervention system</strong> for high-stress cravings, driving immediate user action and <strong>significantly reducing treatment abandonment</strong>.',
-    '<strong>Authored comprehensive technical onboarding documentation</strong>, streamlining cross-functional collaboration and <strong>reducing maintainer onboarding time by 40%</strong>.',
+    '<strong>Built a cross-platform React Native app</strong> released across <strong>3 ecosystems</strong>, increasing user access.',
+    '<strong>Integrated an AI coaching module</strong> with daily check-ins that delivered personalized cognitive behavioral support to <strong>improve 30-day retention rates</strong>.',
+    '<strong>Created a symptom tracking dashboard across 5 clinical categories</strong>, turning recovery data into clear progress metrics.',
+    '<strong>Implemented a real-time SOS support flow</strong> for high-stress cravings, prompting immediate action and <strong>reducing treatment abandonment</strong>.',
+    '<strong>Wrote technical onboarding docs</strong> that improved cross-team handoffs and <strong>reduced maintainer ramp-up time by 40%</strong>.',
   ],
 };
 
@@ -208,11 +208,11 @@ const stbMarketplaceProject: ResumeProject = {
   languages: ['Python', 'Red-DiscordBot', 'Discord'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Enforced strictly typed marketplace protocols</strong> implementing automated <strong>48-hour escrow holds and a 2.5% fee extraction</strong>, <strong>minimizing peer-to-peer transaction disputes</strong>.',
-    '<strong>Engineered a gated onboarding flow</strong> requiring mandatory policy acknowledgment, providing moderators with programmatic audit trails and <strong>reducing policy violations by 60%</strong>.',
-    '<strong>Optimized payload parameters</strong> to strictly adhere to the <strong>Discord 100-character limit</strong>, guaranteeing <strong>100% slash-command execution reliability</strong> under high load.',
-    '<strong>Implemented a robust state machine</strong> for listing lifecycles (Draft, Pending, Active), equipping support staff with transparent audit logs to <strong>halve ticket resolution times</strong>.',
-    '<strong>Designed an intuitive, state-preserving transaction wizard</strong>, reducing workflow abandonment and guiding users seamlessly through complex multi-step escrow operations.',
+    '<strong>Built typed marketplace workflows</strong> with <strong>48-hour escrow holds and a 2.5% fee</strong>, reducing peer-to-peer disputes.',
+    '<strong>Added a gated onboarding flow</strong> requiring policy acknowledgment, giving moderators audit trails and <strong>cutting policy violations by 60%</strong>.',
+    '<strong>Adjusted payload design for Discord&apos;s 100-character limit</strong>, maintaining <strong>100% slash-command reliability</strong> under load.',
+    '<strong>Implemented a listing lifecycle state machine</strong> (Draft, Pending, Active) with audit logs that <strong>cut support ticket resolution time by 50%</strong>.',
+    '<strong>Designed a state-preserving transaction wizard</strong> that reduced drop-off in multi-step escrow workflows.',
   ],
 };
 
@@ -222,11 +222,11 @@ const nomarStocksProject: ResumeProject = {
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS', 'Whop'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Architected an optimized e-learning membership portal</strong> leveraging Next.js, streamlining the onboarding funnel to <strong>reduce bounce rates by 25%</strong> prior to checkout.',
-    '<strong>Automated tiered subscription provisioning</strong> (<strong>Free</strong>, <strong>$10/mo Basic</strong>, <strong>$25/mo Premium</strong>) via API integrations, <strong>eliminating manual access management overhead</strong>.',
-    '<strong>Boosted checkout conversion rates</strong> by engineering dynamic, animated statistical visualizations to clearly delineate premium value propositions.',
-    '<strong>Automated Open Graph image generation</strong> for dynamic route previews, significantly amplifying <strong>social media click-through rates (CTR)</strong> from Discord referral channels.',
-    '<strong>Centralized configuration schemas</strong> for pricing and legal text, mitigating compliance risks and ensuring <strong>instant, synchronized updates across all platform surfaces</strong>.',
+    '<strong>Built a Next.js membership portal</strong> that simplified onboarding and <strong>reduced pre-checkout bounce rate by 25%</strong>.',
+    '<strong>Automated subscription provisioning</strong> for <strong>Free, $10/mo Basic, and $25/mo Premium</strong> tiers, eliminating manual access work.',
+    '<strong>Improved checkout conversion</strong> with animated statistics that clearly communicated premium value.',
+    '<strong>Automated Open Graph image generation</strong> for dynamic routes, increasing Discord referral click-through rates.',
+    '<strong>Centralized pricing and legal configuration</strong>, reducing compliance risk and keeping updates synchronized across the platform.',
   ],
 };
 
@@ -236,11 +236,11 @@ const redHatWebExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2022 — Aug 2023',
   bullets: [
-    '<strong>Shipped 7,000+ lines of production Go code</strong> across <strong>10 core enterprise repositories</strong>, directly impacting the operational stability of Kubernetes and OpenShift platforms used by Fortune 500 clients.',
-    '<strong>Spearheaded operator and CLI optimizations</strong> that slashed deployment times by <strong>66% (from 45 to 15 minutes)</strong>, drastically accelerating the CI/CD pipeline and reducing developer friction.',
-    '<strong>Architected automated configuration injection pipelines</strong>, deprecating legacy scripts to <strong>eliminate 80% of manual configuration faults</strong> and accelerate system startup by <strong>40%</strong>.',
-    '<strong>Overhauled container health probe heuristics</strong> to dynamically derive health states, yielding a <strong>50% reduction in false-positive startup failures</strong> and boosting telemetry accuracy by <strong>30%</strong>.',
-    '<strong>Streamlined open-source contributor velocity</strong> by authoring a comprehensive 472-line onboarding framework, <strong>cutting required manual CI intervention by 60%</strong>.',
+    '<strong>Delivered 7,000+ lines of production Go code</strong> across <strong>10 enterprise repositories</strong>, improving Kubernetes and OpenShift reliability for Fortune 500 customers.',
+    '<strong>Optimized operators and CLI workflows</strong>, cutting deployment time by <strong>66% (45 to 15 minutes)</strong> and speeding up CI/CD.',
+    '<strong>Automated configuration injection pipelines</strong>, removing <strong>80% of manual config errors</strong> and speeding startup by <strong>40%</strong>.',
+    '<strong>Improved container health-probe logic</strong>, reducing false-positive startup failures by <strong>50%</strong> and increasing telemetry accuracy by <strong>30%</strong>.',
+    '<strong>Wrote a 472-line onboarding guide for open-source contributors</strong>, <strong>reducing manual CI intervention by 60%</strong>.',
   ],
 };
 
@@ -250,11 +250,11 @@ const redHatCloudExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2020 — Aug 2021',
   bullets: [
-    '<strong>Shipped 7,000+ lines of production Go code</strong> across <strong>10 core enterprise repositories</strong>, directly impacting the operational stability of Kubernetes and OpenShift platforms used by Fortune 500 clients.',
-    '<strong>Spearheaded operator and CLI optimizations</strong> that slashed deployment times by <strong>66% (from 45 to 15 minutes)</strong>, drastically accelerating the CI/CD pipeline and reducing developer friction.',
-    '<strong>Architected automated configuration injection pipelines</strong>, deprecating legacy scripts to <strong>eliminate 80% of manual configuration faults</strong> and accelerate system startup by <strong>40%</strong>.',
-    '<strong>Overhauled container health probe heuristics</strong> to dynamically derive health states, yielding a <strong>50% reduction in false-positive startup failures</strong> and boosting telemetry accuracy by <strong>30%</strong>.',
-    '<strong>Streamlined open-source contributor velocity</strong> by authoring a comprehensive 472-line onboarding framework, <strong>cutting required manual CI intervention by 60%</strong>.',
+    '<strong>Delivered 7,000+ lines of production Go code</strong> across <strong>10 enterprise repositories</strong>, improving Kubernetes and OpenShift reliability for Fortune 500 customers.',
+    '<strong>Optimized operators and CLI workflows</strong>, cutting deployment time by <strong>66% (45 to 15 minutes)</strong> and speeding up CI/CD.',
+    '<strong>Automated configuration injection pipelines</strong>, removing <strong>80% of manual config errors</strong> and speeding startup by <strong>40%</strong>.',
+    '<strong>Improved container health-probe logic</strong>, reducing false-positive startup failures by <strong>50%</strong> and increasing telemetry accuracy by <strong>30%</strong>.',
+    '<strong>Wrote a 472-line onboarding guide for open-source contributors</strong>, <strong>reducing manual CI intervention by 60%</strong>.',
   ],
 };
 
@@ -264,11 +264,11 @@ const redHatSupportExperience: WorkExperience = {
   languages: ['Ticketing/Triage', 'De-escalation', 'Knowledge Base Writing'],
   date: 'Aug 2022 — Aug 2024',
   bullets: [
-    '<strong>Contributed 7,000+ lines of enterprise-grade Go code</strong> across <strong>10 repositories</strong>, resolving complex Kubernetes operator logic and runtime reliability issues for high-tier cloud platform clients.',
-    '<strong>Engineered workflow optimizations</strong> that <strong>slashed release validation times by 66%</strong> (from <strong>45 to 15 minutes</strong>), enabling rapid iterative testing and fortifying release-readiness confidence.',
-    '<strong>Automated critical deployment setup paths</strong>, systematically eliminating <strong>80% of manual configuration errors</strong> and reducing infrastructure initialization times by <strong>40%</strong>.',
-    '<strong>Refined probe behaviors and startup heuristics</strong>, successfully driving a <strong>50% reduction in service initialization failures</strong> across operator-managed deployments.',
-    '<strong>Accelerated team operational efficiency</strong> by authoring a 472-line diagnostic runbook, standardizing debugging protocols and <strong>reducing CI escalation tickets by 60%</strong>.',
+    '<strong>Delivered 7,000+ lines of Go code across 10 repositories</strong> to resolve Kubernetes operator and runtime reliability issues for enterprise cloud customers.',
+    '<strong>Improved release workflows</strong>, cutting validation time by <strong>66% (45 to 15 minutes)</strong> and enabling faster test cycles.',
+    '<strong>Automated deployment setup steps</strong>, removing <strong>80% of manual configuration errors</strong> and reducing initialization time by <strong>40%</strong>.',
+    '<strong>Refined startup probe behavior</strong>, lowering service initialization failures by <strong>50%</strong> in operator-managed environments.',
+    '<strong>Authored a 472-line diagnostic runbook</strong> that standardized troubleshooting and <strong>reduced CI escalation tickets by 60%</strong>.',
   ],
 };
 
@@ -278,12 +278,12 @@ const digitalMarketplaceExperience: WorkExperience = {
   languages: ['Live Chat Support', 'Dispute Resolution', 'Sales Negotiation'],
   date: 'July 2025 — Present',
   bullets: [
-    '<strong>Bootstrapped and scaled a peer-to-peer e-commerce operation</strong> for digital items, independently driving <strong>$50,000+ in Gross Merchandise Value (GMV)</strong>.',
-    '<strong>Orchestrated secure escrow services for high-value transactions exceeding $10,000</strong>, accumulating <strong>500+ verified customer vouches</strong> while maintaining a <strong>0% unresolved dispute rate</strong>.',
-    '<strong>Directed end-to-end e-commerce operations</strong>, executing precise supply chain logistics spanning pricing algorithms, risk-mitigated payments, and immediate digital fulfillment.',
-    '<strong>Optimized profit margins by 15%</strong> through the implementation of dynamic fair-value pricing models and targeted product bundling, effectively filtering out low-intent inquiries.',
-    '<strong>Architected stringent KYC and middleman verification protocols</strong>, systematically neutralizing fraud vectors and reducing <strong>chargeback risk to near-zero</strong>.',
-    '<strong>Maintained rigorous financial compliance</strong> by standardizing P&L tracking mechanisms and ensuring 100% audibility across all payment gateways and fulfillment ledgers.',
+    '<strong>Built and scaled a peer-to-peer digital goods business</strong>, generating <strong>$50,000+ in gross merchandise value (GMV)</strong>.',
+    '<strong>Managed escrow for transactions over $10,000</strong>, earning <strong>500+ verified customer vouches</strong> with a <strong>0% unresolved dispute rate</strong>.',
+    '<strong>Ran end-to-end marketplace operations</strong>, including pricing, payment risk controls, and rapid digital fulfillment.',
+    '<strong>Increased profit margins by 15%</strong> through fair-value pricing and product bundles that filtered low-intent leads.',
+    '<strong>Implemented KYC and middleman verification checks</strong>, reducing fraud exposure and bringing <strong>chargeback risk close to zero</strong>.',
+    '<strong>Standardized P&amp;L tracking and payment records</strong>, keeping operations fully auditable across gateways and fulfillment logs.',
   ],
 };
 
@@ -583,6 +583,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
             spotifyVisualizedProject.bullets[2],
+            spotifyVisualizedProject.bullets[3],
             spotifyVisualizedProject.bullets[4],
           ],
         },
@@ -686,6 +687,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
             spotifyVisualizedProject.bullets[2],
+            spotifyVisualizedProject.bullets[3],
             spotifyVisualizedProject.bullets[4],
           ],
         },
