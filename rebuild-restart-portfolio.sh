@@ -11,6 +11,16 @@ AUTO_CALIBRATE_RESUME_LAYOUT="${AUTO_CALIBRATE_RESUME_LAYOUT:-1}"
 CALIBRATION_MAX_ITERATIONS="${CALIBRATION_MAX_ITERATIONS:-10}"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+run_repo_cmd() {
+  # When invoked with sudo, keep repository operations on the original user
+  # so git SSH keys and npm cache/home resolve correctly.
+  if [[ "$(id -u)" -eq 0 && -n "${SUDO_USER:-}" ]]; then
+    sudo -H -u "$SUDO_USER" "$@"
+  else
+    "$@"
+  fi
+}
+
 run_systemctl() {
   if [[ "$(id -u)" -eq 0 ]]; then
     systemctl "$@"
@@ -77,23 +87,23 @@ is_truthy() {
 cd "$ROOT_DIR"
 if is_truthy "$GIT_PULL_BEFORE_BUILD"; then
   echo "[1/9] Pulling latest git changes (fast-forward only)"
-  git pull --ff-only
+  run_repo_cmd git pull --ff-only
 else
   echo "[1/9] Skipping git pull (GIT_PULL_BEFORE_BUILD=$GIT_PULL_BEFORE_BUILD)"
 fi
 
 echo "[2/9] Building production bundle"
-npm run build
+run_repo_cmd npm run build
 
 echo "[3/9] Verifying resume layout baseline lock"
-if npm run verify:resume-layout; then
+if run_repo_cmd npm run verify:resume-layout; then
   echo "Resume layout baseline verification passed."
 else
   if is_truthy "$AUTO_CALIBRATE_RESUME_LAYOUT"; then
     echo "Resume layout verification failed; running auto calibration."
-    npm run calibrate:resume-layout -- --skip-build-first --max-iterations "$CALIBRATION_MAX_ITERATIONS"
+    run_repo_cmd npm run calibrate:resume-layout -- --skip-build-first --max-iterations "$CALIBRATION_MAX_ITERATIONS"
     echo "Re-running resume layout verification after calibration."
-    npm run verify:resume-layout
+    run_repo_cmd npm run verify:resume-layout
   else
     echo "Resume layout verification failed and AUTO_CALIBRATE_RESUME_LAYOUT is disabled."
     echo "Set AUTO_CALIBRATE_RESUME_LAYOUT=1 to auto-fix calibration during recovery."
@@ -102,7 +112,7 @@ else
 fi
 
 echo "[4/9] Validating resume PDF generation"
-npm run validate-resume-pdfs
+run_repo_cmd npm run validate-resume-pdfs
 
 echo "[5/9] Restarting service: $SERVICE_NAME"
 run_systemctl restart "$SERVICE_NAME"
