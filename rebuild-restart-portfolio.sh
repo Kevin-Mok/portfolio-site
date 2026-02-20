@@ -6,6 +6,7 @@ SERVICE_NAME="${SERVICE_NAME:-portfolio}"
 SITE_URL="${SITE_URL:-https://kevin-mok.com}"
 READINESS_MAX_ATTEMPTS="${READINESS_MAX_ATTEMPTS:-12}"
 READINESS_SLEEP_SECONDS="${READINESS_SLEEP_SECONDS:-5}"
+GIT_PULL_BEFORE_BUILD="${GIT_PULL_BEFORE_BUILD:-1}"
 AUTO_CALIBRATE_RESUME_LAYOUT="${AUTO_CALIBRATE_RESUME_LAYOUT:-1}"
 CALIBRATION_MAX_ITERATIONS="${CALIBRATION_MAX_ITERATIONS:-10}"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -73,11 +74,18 @@ is_truthy() {
   esac
 }
 
-echo "[1/8] Building production bundle"
 cd "$ROOT_DIR"
+if is_truthy "$GIT_PULL_BEFORE_BUILD"; then
+  echo "[1/9] Pulling latest git changes (fast-forward only)"
+  git pull --ff-only
+else
+  echo "[1/9] Skipping git pull (GIT_PULL_BEFORE_BUILD=$GIT_PULL_BEFORE_BUILD)"
+fi
+
+echo "[2/9] Building production bundle"
 npm run build
 
-echo "[2/8] Verifying resume layout baseline lock"
+echo "[3/9] Verifying resume layout baseline lock"
 if npm run verify:resume-layout; then
   echo "Resume layout baseline verification passed."
 else
@@ -93,20 +101,20 @@ else
   fi
 fi
 
-echo "[3/8] Validating resume PDF generation"
+echo "[4/9] Validating resume PDF generation"
 npm run validate-resume-pdfs
 
-echo "[4/8] Restarting service: $SERVICE_NAME"
+echo "[5/9] Restarting service: $SERVICE_NAME"
 run_systemctl restart "$SERVICE_NAME"
 
-echo "[5/8] Verifying service is active"
+echo "[6/9] Verifying service is active"
 run_systemctl is-active --quiet "$SERVICE_NAME"
 echo "Service is active: $SERVICE_NAME"
 
-echo "[6/8] Checking homepage response: $SITE_URL"
+echo "[7/9] Checking homepage response: $SITE_URL"
 wait_for_http_200 "$SITE_URL" "homepage response"
 
-echo "[7/8] Checking active Next.js chunk response"
+echo "[8/9] Checking active Next.js chunk response"
 tmp_html="$(mktemp)"
 trap 'rm -f "$tmp_html"' EXIT
 
@@ -119,5 +127,5 @@ fi
 
 wait_for_http_200 "$SITE_URL$chunk_path" "webpack chunk response"
 
-echo "[8/8] Recovery checks completed"
+echo "[9/9] Recovery checks completed"
 echo "Recovery check passed."
