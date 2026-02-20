@@ -354,61 +354,67 @@
 .resume-variant-general {
   --resume-print-scale: 1.189;
   --resume-print-leading: 1;
-  --resume-print-top-offset: 0.267pt;
+  --resume-print-top-offset: 38.642pt;
 }
 
 .resume-variant-web-dev {
-  --resume-print-scale: 1.099;
-  --resume-print-leading: 1;
-  --resume-print-top-offset: -12pt;
+  --resume-print-scale: 1.015;
+  --resume-print-leading: 0.974;
+  --resume-print-top-offset: 14.182pt;
 }
 
 .resume-variant-aws {
-  --resume-print-scale: 1.112;
-  --resume-print-leading: 1;
-  --resume-print-top-offset: 13.2pt;
+  --resume-print-scale: 1.028;
+  --resume-print-leading: 0.972;
+  --resume-print-top-offset: 23.145pt;
 }
 
 .resume-variant-python {
-  --resume-print-scale: 1.041;
+  --resume-print-scale: 1.026;
+  --resume-print-top-offset: 10.439pt;
+  --resume-print-leading: 1.001;
 }
 
 .resume-variant-aws-web-dev {
-  --resume-print-scale: 1.07;
-  --resume-print-leading: 1;
-  --resume-print-top-offset: 11.6pt;
+  --resume-print-scale: 1.0264;
+  --resume-print-leading: 0.981;
+  --resume-print-top-offset: 11.293pt;
 }
 
 .resume-variant-aws-python {
   --resume-print-scale: 1.047;
   --resume-print-leading: 1;
-  --resume-print-top-offset: 12.7pt;
+  --resume-print-top-offset: 9.659pt;
 }
 
 .resume-variant-web-dev-django {
-  --resume-print-scale: 1.097;
-  --resume-print-leading: 1;
-  --resume-print-top-offset: -0.034pt;
+  --resume-print-scale: 1.069;
+  --resume-print-leading: 0.993;
+  --resume-print-top-offset: 5.582pt;
 }
 
 .resume-variant-it-support {
-  --resume-print-scale: 1.157;
+  --resume-print-scale: 1.106;
+  --resume-print-top-offset: 15.38pt;
+  --resume-print-leading: 0.988;
 }
 
 .resume-variant-it-support-aws {
-  --resume-print-scale: 1.157;
+  --resume-print-scale: 1.106;
+  --resume-print-top-offset: 15.38pt;
+  --resume-print-leading: 0.988;
 }
 
 .resume-variant-sales {
-  --resume-print-scale: 1.045;
-  --resume-print-leading: 1.008;
-  --resume-print-top-offset: 19pt;
+  --resume-print-scale: 1.014;
+  --resume-print-leading: 0.998;
+  --resume-print-top-offset: 28pt;
 }
 
 .resume-variant-call-centre {
-  --resume-print-scale: 1.046;
-  --resume-print-leading: 1;
-  --resume-print-top-offset: 6.958pt;
+  --resume-print-scale: 1.02;
+  --resume-print-leading: 0.991;
+  --resume-print-top-offset: 24.229pt;
 }
 
 /* Mobile */

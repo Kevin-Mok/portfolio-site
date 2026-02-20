@@ -110,26 +110,30 @@ const educationCustomerSupport: Education = {
   date: '2020 — 2025',
 };
 
-const raritySurfWebProject: ResumeProject = {
+const raritySurfProject: ResumeProject = {
   name: 'Rarity Surf',
   languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
-  date: 'March 2025',
+  date: 'Mar 2025',
   bullets: [
-    '<strong>Developed a full-stack web application (TypeScript/JavaScript)</strong> to generate rarity rankings for NFTs, integrating with a <strong>leading marketplace API</strong> to help users identify rare NFTs and listing status, <strong>improving market research efficiency by 80%</strong>.',
-    '<strong>Built a scalable Node.js backend</strong> with REST API endpoints and <strong>PostgreSQL</strong>-backed caching to support filters such as max rank, price, and rare traits. <strong>Optimized performance</strong> while handling <strong>3,000+ concurrent requests</strong>.',
-    '<strong>Built a dynamic React frontend (TypeScript/JavaScript)</strong> to load and display NFTs in real-time with user-defined filters, <strong>reducing load times by 50%</strong>.',
-    '<strong>Developed a Discord bot (TypeScript/JavaScript/Node.js)</strong> to notify users of profitable resale opportunities using historical sales data. This feature <strong>increased user engagement by 80%</strong>.',
+    '<strong>Created NFT research tools</strong> that improved <strong>market research efficiency by 80%</strong>, helping users move from raw metadata to practical buy and sell decisions much faster.',
+    '<strong>Supported 3,000+ concurrent requests</strong> during busy periods and kept lookups responsive, even when demand spikes made manual alternatives too slow.',
+    '<strong>Cut ranking-page load time by 50%</strong> and accelerated repeat evaluation loops, improving confidence in daily usage across active traders.',
+    '<strong>Added alert features</strong> that raised <strong>user engagement by 80%</strong>, giving traders timely signals they could act on instead of manually refreshing data.',
+    '<strong>Coordinated backend, frontend, and bot updates</strong> and reduced release drift, so fixes reached users faster without breaking core workflows.',
   ],
 };
 
 const kanbanCalendarProject: ResumeProject = {
-  name: 'Kanban Calendar',
-  url: 'https://github.com/Kevin-Mok/astronofty',
+  name: 'Kanban Calendar App',
+  url: 'https://github.com/Kevin-Mok/kanban-calendar',
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
-  date: 'Mar 2024',
+  date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Developed a responsive calendar Kanban board using Next.js, TypeScript, and Tailwind CSS</strong>, featuring draggable events and smooth card-to-detail transitions across week/day views.',
-    '<strong>Engineered intuitive navigation and cross-device interactivity</strong>, implementing swipe gestures, infinite horizontal scrolling (mobile), and arrow controls (desktop) while improving drag-and-drop consistency.',
+    '<strong>Built a planning app</strong> with a <strong>7-day desktop view</strong> and automatic mobile switch at <strong>&lt;768px</strong>, so users got the right layout for their device without manual toggles.',
+    '<strong>Added swipe controls</strong> (<strong>50px threshold</strong>) and keyboard shortcuts, giving both mobile and desktop users faster ways to move through dense schedules.',
+    '<strong>Improved drag-and-drop interactions</strong> and reduced task-move friction, especially during rapid replanning sessions with many event changes.',
+    '<strong>Kept scheduling logic reliable</strong> during UI changes and prevented planning regressions, so day-to-day workflows remained stable.',
+    '<strong>Focused on clear transitions</strong> and context-preserving interactions, helping users understand what changed after each action and where to continue next.',
   ],
 };
 
@@ -139,8 +143,11 @@ const astronoftyProject: ResumeProject = {
   languages: ['JavaScript', 'React', 'Solidity'],
   date: 'Jan 2023',
   bullets: [
-    '<strong>Secured 2nd place overall out of 150+ teams</strong> at UofTHacks X for developing a blockchain-based NFT marketplace app.',
-    '<strong>Built and optimized React (JavaScript) components</strong> to synchronously upload images and metadata to IPFS, <strong>enhancing user engagement by 80%</strong> during the demo.',
+    '<strong>Won 2nd place out of 150+ teams</strong> at UofTHacks and delivered a working NFT marketplace, showing strong execution under a tight hackathon timeline.',
+    '<strong>Targeted a 2.6M+ astrophotography audience</strong> and aligned scope to a clear use case, making product positioning sharper from day one.',
+    '<strong>Supported multiple images per NFT</strong> and improved listing quality for creators, helping buyers evaluate collections with more context.',
+    '<strong>Simplified minting, listing, and pricing flows</strong> and reduced user friction, improving task completion during live demos.',
+    '<strong>Drove an 80% engagement lift</strong> during judging and improved demo interaction flow, strengthening results under time pressure.',
   ],
 };
 
@@ -151,82 +158,89 @@ const awsServerProject: ResumeProject = {
   bullets: [
     '<strong>Deployed and maintained multiple web applications</strong> on <strong>AWS EC2 Debian/Linux servers</strong> using <strong>Docker Compose</strong>, supporting <strong>2,000+ monthly requests</strong>.',
     '<strong>Automated AWS infrastructure provisioning</strong> with <strong>Terraform</strong> for EC2 instances and Docker workloads, <strong>accelerating deployment times by 80%</strong>.',
-    '<strong>Improved web application accessibility</strong> by configuring <strong>Route 53</strong> DNS and <strong>NGINX</strong> subdomain routing, <strong>enabling seamless navigation between apps</strong>.',
+    '<strong>Improved web application accessibility</strong> by configuring <strong>Route 53</strong> DNS and <strong>NGINX</strong> subdomain routing, enabling seamless navigation between apps.',
     '<strong>Built an uptime monitoring system</strong> with a JavaScript service and systemd timer, <strong>reducing downtime by 95%</strong>.',
-    '<strong>Enhanced data resilience</strong> with automated EBS snapshot backups, ensuring <strong>99.9% uptime and data integrity</strong> while <strong>reducing potential data loss by 95%</strong>.',
-  ],
-};
-
-const raritySurfPythonProject: ResumeProject = {
-  name: 'Rarity Surf',
-  languages: ['Python', 'Django', 'JavaScript', 'React'],
-  date: 'Oct 2021',
-  bullets: [
-    '<strong>Developed a full-stack web application</strong> to generate NFT rarity rankings integrated with leading NFT marketplace APIs, enabling users to <strong>quickly identify rare NFTs</strong> and listing status, <strong>improving market research efficiency by 80%</strong>.',
-    '<strong>Architected a robust Django (Python) backend</strong> to fetch and process NFT metadata from IPFS, store rankings in <strong>PostgreSQL</strong>, and expose data through GraphQL APIs, <strong>ensuring low-latency access and scaling to handle 2,000+ concurrent requests</strong>.',
-    '<strong>Developed a dynamic React frontend</strong> using hooks and responsive UI patterns, <strong>improving user experience and reducing frontend load times by 70%</strong>.',
+    '<strong>Enhanced data resilience</strong> with automated EBS snapshot backups, ensuring <strong>99.9% uptime and data integrity</strong> while reducing potential data loss by 95%.',
   ],
 };
 
 const spotifyVisualizedProject: ResumeProject = {
   name: 'Spotify Visualized',
-  languages: ['Python', 'Django'],
-  date: 'June 2019',
+  languages: ['Python', 'Django', 'PostgreSQL'],
+  date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Built a high-performance Django backend</strong> that processed <strong>10,000+ tracks per user library</strong> using the Spotify API.',
-    '<strong>Engineered and optimized PostgreSQL data models</strong>, achieving a <strong>50% reduction in query latency</strong> for core workflows.',
+    '<strong>Built a music analytics app</strong> that processed <strong>10,000+ tracks per user</strong>, turning raw Spotify data into practical insights users could act on.',
+    '<strong>Reduced key query time by 50%</strong> and sped up chart refreshes, improving exploration flow during repeated analysis sessions.',
+    '<strong>Added secure Spotify login</strong> with automatic token refresh, reducing sign-in interruptions and improving session continuity.',
+    '<strong>Converted artist, genre, and audio data into readable charts</strong> and improved insight clarity, making listening patterns easier to interpret quickly.',
+    '<strong>Kept data ingest and chart logic modular</strong> and lowered report-expansion risk, so new analytics could be added without destabilizing existing dashboards.',
   ],
 };
 
 const discordAdventureProject: ResumeProject = {
-  name: 'Discord Adventure Game',
-  languages: ['Python'],
-  date: 'Jan 2020',
+  name: 'Gobcog Discord RPG',
+  url: 'https://github.com/Kevin-Mok/gobcog',
+  languages: ['Python', 'Discord.py'],
+  date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Redesigned item generation system</strong> for an open-source <strong>Python</strong> Discord game, replacing 83k-line static JSON with dynamic generation and achieving a <strong>99% reduction</strong> in file size.',
-    '<strong>Implemented modular item components</strong> that enabled <strong>152,000+ unique item combinations</strong> and improved game diversity.',
+    '<strong>Expanded content to 2,800+ monster combinations</strong> and increased replay value, reducing content fatigue for long-term players.',
+    '<strong>Kept player progress saved across multiple servers</strong> and reduced data-loss frustration, improving trust in long-term progression.',
   ],
 };
 
-const raritySurfSupportProject: ResumeProject = {
-  name: 'Rarity Surf',
-  languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
-  date: 'March 2025',
+const portfolioSiteProject: ResumeProject = {
+  name: 'Portfolio Site',
+  url: 'https://github.com/kmokdefi/kmok-portfolio',
+  languages: ['TypeScript', 'Next.js', 'Tailwind CSS'],
+  date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Provided direct user support</strong> for a live NFT analytics platform, resolving front-end filtering bugs and API integration issues in real-time.',
-    '<strong>Developed a full-stack web application with PostgreSQL database</strong> to analyze NFT rarity rankings, improving market research efficiency by 80%.',
-    '<strong>Translated user requests into technical features</strong>, implementing real-time PostgreSQL-powered filters that improved usability for non-technical traders.',
-    '<strong>Debugged and optimized API performance</strong> under load, reducing latency by 50% while supporting <strong>3,000+ concurrent users</strong>.',
+    '<strong>Designed a portfolio experience</strong> with a <strong>6-panel desktop layout</strong> and smooth mobile flow, so hiring managers could scan skills, projects, and resume links quickly without getting lost in navigation.',
+    '<strong>Added 3 themes and 15 accent colors</strong> to keep content readable across preferences, improving first impressions for recruiters and reducing friction for returning visitors.',
+    '<strong>Set up 5 spam checks on the contact form</strong> and cut low-quality submissions, so real recruiter outreach was easier to identify and respond to quickly.',
+    '<strong>Split styles into 12 small CSS modules</strong> (under <strong>200 lines each</strong>), making edits safer and reducing accidental UI regressions during rapid updates.',
+    '<strong>Auto-generated and validated 11 resume variants</strong> and kept role-specific links consistent, so resume content stayed accurate whenever project details changed.',
   ],
 };
 
-const astronoftySupportProject: ResumeProject = {
-  name: 'Astronofty',
-  languages: ['JavaScript', 'React', 'Solidity'],
-  date: 'Jan 2023',
+const leavesSupportProject: ResumeProject = {
+  name: 'Leaves',
+  url: 'https://github.com/Kevin-Mok/quit-weed',
+  languages: ['TypeScript', 'React Native', 'Expo'],
+  date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Developed technical solutions in high-pressure environments</strong>, earning 2nd place at UofTHacks X for a decentralized NFT marketplace app.',
-    '<strong>Handled real-time user testing feedback</strong> and adapted components quickly to resolve blocking demo issues.',
+    '<strong>Built a supportive quit-cannabis app</strong> available on <strong>3 platforms</strong>, so users could get help wherever they were instead of waiting until they were back on one specific device.',
+    '<strong>Added an AI coach and daily check-ins</strong> that kept encouragement consistent, making the experience feel more personal and reducing the number of users who stopped checking in.',
+    '<strong>Tracked symptoms in 5 areas</strong> and made progress easier to explain, so users, support staff, and non-technical stakeholders could discuss updates with less confusion.',
+    '<strong>Included streak tracking and SOS support</strong> for high-stress moments and reduced abandonment during cravings, helping users take immediate action instead of dropping out.',
+    '<strong>Wrote clear setup and support notes</strong> for maintainers and reduced repeat questions across teams, making collaboration between support, product, and engineering much smoother.',
   ],
 };
 
-const kanbanSupportProject: ResumeProject = {
-  name: 'Kanban Calendar',
-  languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
-  date: 'Feb 2025',
+const stbMarketplaceProject: ResumeProject = {
+  name: 'STB Marketplace Cog',
+  url: 'https://github.com/Kevin-Mok/stb-mkt',
+  languages: ['Python', 'Red-DiscordBot', 'Discord'],
+  date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Resolved UI bugs and cross-device compatibility issues</strong> while documenting reproducible steps for team-wide fixes.',
-    '<strong>Built and maintained a responsive calendar interface</strong> that improved user task management across devices.',
+    '<strong>Set clear marketplace rules</strong> with a <strong>48-hour hold and 2.5% fee</strong>, so buyers and sellers knew expectations before transactions and disputes were easier to prevent.',
+    '<strong>Required acceptance of 4 seller terms</strong> before listing and reduced repeat policy arguments, giving moderators a consistent baseline during high-volume periods.',
+    '<strong>Kept command text within the Discord 100-character limit</strong> and prevented broken prompts, improving slash-command reliability in day-to-day server use.',
+    '<strong>Added clear listing states</strong> (Draft, PendingCollection, Active) with audit-friendly logs, so staff could diagnose issues quickly and explain status changes without deep digging.',
+    '<strong>Guided users through buy and sell steps</strong> while preserving previous inputs, reducing drop-off when people paused and returned mid-transaction.',
   ],
 };
 
-const raritySurfSalesProject: ResumeProject = {
-  name: 'Rarity Surf',
-  languages: ['User Support', 'Bug Reproduction'],
-  date: 'March 2024 — Dec 2024',
+const nomarStocksProject: ResumeProject = {
+  name: "Nomar's Technical Charts",
+  url: 'https://github.com/Kevin-Mok/nomar-stocks',
+  languages: ['TypeScript', 'Next.js', 'Tailwind CSS', 'Whop'],
+  date: 'Jan 2026 — Feb 2026',
   bullets: [
-    'Reproduced user-reported issues and wrote <strong>concise repro steps</strong> with <strong>known-issue workarounds</strong> to reduce repeat questions.',
-    'Partnered with developers to ship <strong>onboarding/troubleshooting snippets</strong> that improved <strong>first-contact resolution (FCR)</strong>.',
+    '<strong>Built a membership site for trading education</strong> with fast onboarding, so visitors could understand the offer and reach checkout without bouncing between disconnected pages.',
+    '<strong>Implemented clear plan choices</strong> (<strong>Free</strong>, <strong>$10/mo Basic</strong>, <strong>$25/mo Premium</strong>) and automated checkout flows, making upgrades straightforward and reducing manual access handling.',
+    '<strong>Used animated stats and a cleaner pricing layout</strong>, improving clarity exactly where purchase decisions happen and helping visitors compare plans quickly.',
+    '<strong>Generated social preview images automatically</strong> and improved shared-link quality, strengthening click-through performance from Discord and other referral channels.',
+    '<strong>Centralized pricing, links, and legal copy</strong> and kept updates consistent site-wide, lowering risk when content had to change quickly.',
   ],
 };
 
@@ -236,11 +250,11 @@ const redHatWebExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2022 — Aug 2023',
   bullets: [
-    '<strong>Eliminated 80% of manual configuration errors</strong> by enabling the Kubernetes operator to fetch service data and update configuration defaults automatically, <strong>deprecating legacy startup scripts and reducing overall startup time by 40%</strong> (<strong>Kubernetes/GoLang</strong> used for this and three below).',
-    '<strong>Reduced deployment time by 66%</strong> by shipping a CLI workflow for locally-compiled binaries on Kubernetes/OpenShift, <strong>cutting average deployment times from 45 minutes to 15 minutes</strong>.',
-    '<strong>Improved application stability</strong> with startup probes for legacy services, <strong>resulting in a 50% reduction in startup-related failures during production launches</strong>.',
-    '<strong>Improved system reliability</strong> by refactoring probe defaults from YAML sources, <strong>increasing probe accuracy by 30%</strong> and preventing misconfigurations.',
-    '<strong>Increased CI pipeline efficiency</strong> by rewriting a <strong>Jenkins (Groovy) nightly pipeline</strong> for GitHub PR environments, <strong>reducing manual intervention by 60%</strong>.',
+    'Delivered <strong>50+ merged PRs across 10 repos</strong> with <strong>7,000+ lines of production code</strong>, spanning operator logic, runtime behavior, image pipelines, and deployment tooling that shipped to enterprise Kubernetes and OpenShift users.',
+    'Implemented operator and CLI paths that <strong>cut deployment time by 66%</strong> (from <strong>45 to 15 minutes</strong>), reducing release bottlenecks and making PR validation and rollout loops substantially faster.',
+    'Automated configuration fetch and default assignment in the operator, which <strong>eliminated 80% of manual config errors</strong> and <strong>reduced startup time by 40%</strong> by deprecating brittle legacy startup script paths.',
+    'Introduced and refactored probe behavior so health defaults were derived more reliably, driving a <strong>50% drop in startup-related failures</strong> and a <strong>30% improvement in probe accuracy</strong> during production launch windows.',
+    'Reworked nightly CI and contributor enablement, producing a <strong>60% reduction in manual intervention</strong> and a <strong>472-line onboarding guide</strong> that improved reproducibility and ramp-up quality for incoming contributors.',
   ],
 };
 
@@ -250,14 +264,11 @@ const redHatCloudExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2020 — Aug 2021',
   bullets: [
-    '<strong>Reduced deployment time by 66%</strong> by implementing a local-binary deployment path on Kubernetes/OpenShift, <strong>cutting average deployment times from 45 minutes to 15 minutes</strong> (<strong>Kubernetes/GoLang</strong> used for this and three below).',
-    '<strong>Eliminated 80% of manual configuration errors</strong> by automating operator-side data fetching and config updates, <strong>deprecating legacy startup scripts and reducing overall startup time by 40%</strong>.',
-    '<strong>Improved application stability</strong> by introducing startup probes for legacy applications with longer boot times, <strong>resulting in a 50% reduction in startup-related failures during production launches</strong>.',
-    '<strong>Enhanced system reliability</strong> by assigning probe defaults dynamically from deployed YAML and fixing reconciliation issues, <strong>increasing probe accuracy by 30%</strong> and preventing misconfigurations.',
-    '<strong>Increased CI pipeline efficiency</strong> by rewriting a <strong>Jenkins (Groovy) nightly pipeline</strong> for GitHub PR environments, <strong>reducing manual intervention by 60%</strong>.',
-    '<strong>Demonstrated leadership and collaboration</strong> in <strong>Agile sprint planning</strong> within a 12-member team, improving sprint velocity through better task delegation.',
-    '<strong>Increased project reproducibility</strong> by creating a reusable GitHub parameters file, <strong>enabling 100% reusability</strong> across environments.',
-    '<strong>Streamlined developer onboarding</strong> by authoring project documentation and mentoring an incoming intern, <strong>reducing onboarding time by 50%</strong>.',
+    'Delivered <strong>50+ merged PRs across 10 repos</strong> with <strong>7,000+ lines of production code</strong>, spanning operator logic, runtime behavior, image pipelines, and deployment tooling that shipped to enterprise Kubernetes and OpenShift users.',
+    'Implemented operator and CLI paths that <strong>cut deployment time by 66%</strong> (from <strong>45 to 15 minutes</strong>), reducing release bottlenecks and making PR validation and rollout loops substantially faster.',
+    'Automated configuration fetch and default assignment in the operator, which <strong>eliminated 80% of manual config errors</strong> and <strong>reduced startup time by 40%</strong> by deprecating brittle legacy startup script paths.',
+    'Introduced and refactored probe behavior so health defaults were derived more reliably, driving a <strong>50% drop in startup-related failures</strong> and a <strong>30% improvement in probe accuracy</strong> during production launch windows.',
+    'Reworked nightly CI and contributor enablement, producing a <strong>60% reduction in manual intervention</strong> and a <strong>472-line onboarding guide</strong> that improved reproducibility and ramp-up quality for incoming contributors.',
   ],
 };
 
@@ -267,12 +278,11 @@ const redHatSupportExperience: WorkExperience = {
   languages: ['Ticketing/Triage', 'De-escalation', 'Knowledge Base Writing'],
   date: 'Aug 2022 — Aug 2024',
   bullets: [
-    'Delivered <strong>Tier 1/2 frontline support</strong> for CI/CD and Kubernetes issues through ticket triage and routing, improving <strong>first-response time by 40%</strong>.',
-    'Performed <strong>incident troubleshooting and root-cause analysis</strong>, resolving <strong>80% of configuration errors</strong> and <strong>reducing downtime by 40%</strong>.',
-    'Wrote <strong>clear, step-by-step knowledge-base articles</strong> and troubleshooting flows that enabled Tier 1 to resolve common probe issues, <strong>cutting escalations by 30%</strong>.',
-    'Built a deployment <strong>runbook</strong> that reduced repeat contacts by 66% and <strong>shortened resolution time from 45 minutes to 15 minutes</strong>.',
-    'Kept users informed with <strong>concise status updates</strong> and expectation-setting to <strong>de-escalate frustrated stakeholders</strong>.',
-    'Partnered with QA/DevOps to capture <strong>root causes</strong> of startup failures and implement dynamic probes, <strong>cutting production launch issues by 50%</strong>.',
+    'Delivered <strong>50+ merged PRs across 10 repos</strong> with <strong>7,000+ lines of production code</strong>, including core work in Kubernetes operators, deployment scripts, runtime reliability, and related cloud platform tooling.',
+    'Shipped deployment and workflow changes that <strong>reduced release time by 66%</strong> (from <strong>45 to 15 minutes</strong>) while improving confidence in iterative testing and release-readiness checks.',
+    'Automated previously manual configuration paths to <strong>eliminate 80% of setup errors</strong> and <strong>reduce startup time by 40%</strong>, improving resilience in real deployment environments.',
+    'Improved startup reliability and health-check behavior, resulting in a <strong>50% reduction in startup failures</strong> and a <strong>30% improvement in probe accuracy</strong> across operator-managed services.',
+    'Strengthened team delivery by cutting CI handholding by <strong>60%</strong> and writing a <strong>472-line onboarding guide</strong> that standardized contributor setup, debugging, and PR workflow expectations.',
   ],
 };
 
@@ -283,7 +293,7 @@ const digitalMarketplaceExperience: WorkExperience = {
   date: 'July 2025 — Present',
   bullets: [
     'Built and managed a <strong>peer-to-peer e-commerce operation</strong> for digital items with <strong>$50,000+ gross merchandise value</strong>.',
-    'Closed and middlemanned <strong>high-value trades over $5,000</strong> with <strong>250+ verified vouches</strong>, maintaining <strong>zero unresolved disputes</strong>.',
+    'Closed and middlemanned <strong>high-value trades over $10,000</strong> with <strong>500+ verified vouches</strong>, maintaining <strong>zero unresolved disputes</strong>.',
     'Handled <strong>end-to-end operations and escrow</strong> including sourcing, pricing, listings, secure payments, and fulfillment.',
     'Implemented <strong>fair-value pricing</strong> and <strong>bundle offers</strong> to improve margins and reduce low-value inquiry volume.',
     'Standardized <strong>ownership verification and middleman workflows</strong> to reduce <strong>fraud/chargeback risk</strong>.',
@@ -413,8 +423,26 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     skillsBold: generalBoldSkills,
     resume: {
       contact: sharedContact,
-      projects: [raritySurfPythonProject],
-      experience: [redHatCloudExperience],
+      projects: [
+        {
+          ...raritySurfProject,
+          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[2]],
+        },
+        {
+          ...astronoftyProject,
+          bullets: [astronoftyProject.bullets[0], astronoftyProject.bullets[4]],
+        },
+        {
+          ...spotifyVisualizedProject,
+          bullets: [spotifyVisualizedProject.bullets[0], spotifyVisualizedProject.bullets[1]],
+        },
+      ],
+      experience: [
+        {
+          ...redHatCloudExperience,
+          bullets: redHatCloudExperience.bullets.slice(0, 3),
+        },
+      ],
       skills: [
         'JavaScript',
         'React',
@@ -449,7 +477,35 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     skillsBold: webDevBoldSkills,
     resume: {
       contact: sharedContact,
-      projects: [raritySurfWebProject, kanbanCalendarProject, astronoftyProject],
+      projects: [
+        {
+          ...raritySurfProject,
+          bullets: [
+            raritySurfProject.bullets[0],
+            raritySurfProject.bullets[1],
+            raritySurfProject.bullets[2],
+            raritySurfProject.bullets[3],
+            raritySurfProject.bullets[4],
+          ],
+        },
+        {
+          ...portfolioSiteProject,
+          bullets: [
+            portfolioSiteProject.bullets[0],
+            portfolioSiteProject.bullets[1],
+            portfolioSiteProject.bullets[2],
+            portfolioSiteProject.bullets[4],
+          ],
+        },
+        {
+          ...kanbanCalendarProject,
+          bullets: [
+            kanbanCalendarProject.bullets[0],
+            kanbanCalendarProject.bullets[1],
+            kanbanCalendarProject.bullets[2],
+          ],
+        },
+      ],
       experience: [redHatWebExperience],
       skills: webSkills,
       education: [
@@ -473,7 +529,25 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     skillsBold: awsBoldSkills,
     resume: {
       contact: sharedContact,
-      projects: [awsServerProject],
+      projects: [
+        {
+          ...awsServerProject,
+          bullets: [
+            awsServerProject.bullets[0],
+            awsServerProject.bullets[1],
+            awsServerProject.bullets[2],
+            awsServerProject.bullets[3],
+          ],
+        },
+        {
+          ...raritySurfProject,
+          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[3], raritySurfProject.bullets[4]],
+        },
+        {
+          ...stbMarketplaceProject,
+          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[3]],
+        },
+      ],
       experience: [redHatCloudExperience],
       skills: awsSkills,
       education: [educationDefault],
@@ -492,7 +566,23 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
-      projects: [raritySurfPythonProject, discordAdventureProject, spotifyVisualizedProject],
+      projects: [
+        {
+          ...spotifyVisualizedProject,
+          bullets: [
+            spotifyVisualizedProject.bullets[0],
+            spotifyVisualizedProject.bullets[1],
+            spotifyVisualizedProject.bullets[2],
+            spotifyVisualizedProject.bullets[3],
+            spotifyVisualizedProject.bullets[4],
+          ],
+        },
+        discordAdventureProject,
+        {
+          ...raritySurfProject,
+          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[2]],
+        },
+      ],
       experience: [redHatCloudExperience],
       skills: pythonSkills,
       education: [educationDefault],
@@ -514,13 +604,23 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: [
         {
           ...awsServerProject,
-          bullets: awsServerProject.bullets.slice(0, 4),
+          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1], awsServerProject.bullets[2]],
         },
         {
-          ...raritySurfPythonProject,
+          ...raritySurfProject,
           bullets: [
-            raritySurfPythonProject.bullets[1],
-            raritySurfPythonProject.bullets[2],
+            raritySurfProject.bullets[0],
+            raritySurfProject.bullets[1],
+            raritySurfProject.bullets[2],
+            raritySurfProject.bullets[3],
+          ],
+        },
+        {
+          ...portfolioSiteProject,
+          bullets: [
+            portfolioSiteProject.bullets[0],
+            portfolioSiteProject.bullets[2],
+            portfolioSiteProject.bullets[4],
           ],
         },
       ],
@@ -542,13 +642,26 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
-      projects: [awsServerProject, raritySurfPythonProject],
-      experience: [
+      projects: [
         {
-          ...redHatCloudExperience,
-          bullets: redHatCloudExperience.bullets.slice(0, 7),
+          ...awsServerProject,
+          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1], awsServerProject.bullets[2]],
+        },
+        {
+          ...spotifyVisualizedProject,
+          bullets: [
+            spotifyVisualizedProject.bullets[0],
+            spotifyVisualizedProject.bullets[1],
+            spotifyVisualizedProject.bullets[2],
+            spotifyVisualizedProject.bullets[4],
+          ],
+        },
+        {
+          ...raritySurfProject,
+          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1]],
         },
       ],
+      experience: [redHatCloudExperience],
       skills: pythonSkills,
       education: [educationDefault],
     },
@@ -564,13 +677,30 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
-      projects: [raritySurfPythonProject, spotifyVisualizedProject, astronoftyProject],
-      experience: [
+      projects: [
         {
-          ...redHatCloudExperience,
-          bullets: redHatCloudExperience.bullets.slice(0, 7),
+          ...spotifyVisualizedProject,
+          bullets: [
+            spotifyVisualizedProject.bullets[0],
+            spotifyVisualizedProject.bullets[1],
+            spotifyVisualizedProject.bullets[2],
+            spotifyVisualizedProject.bullets[3],
+          ],
+        },
+        {
+          ...raritySurfProject,
+          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[2]],
+        },
+        {
+          ...portfolioSiteProject,
+          bullets: [
+            portfolioSiteProject.bullets[0],
+            portfolioSiteProject.bullets[2],
+            portfolioSiteProject.bullets[3],
+          ],
         },
       ],
+      experience: [redHatWebExperience],
       skills: pythonSkills,
       education: [educationDefault],
     },
@@ -594,15 +724,21 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     ],
     resume: {
       contact: sharedContact,
-      projects: [raritySurfSupportProject, astronoftySupportProject, kanbanSupportProject],
-      experience: [
+      projects: [
         {
-          ...redHatSupportExperience,
-          title: 'Cloud/Software Engineer Intern',
-          date: 'May 2022 — Aug 2023',
-          languages: ['Kubernetes', 'GoLang', 'Jenkins'],
+          ...leavesSupportProject,
+          bullets: [leavesSupportProject.bullets[0], leavesSupportProject.bullets[2], leavesSupportProject.bullets[4]],
+        },
+        {
+          ...stbMarketplaceProject,
+          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[2]],
+        },
+        {
+          ...portfolioSiteProject,
+          bullets: [portfolioSiteProject.bullets[2], portfolioSiteProject.bullets[3], portfolioSiteProject.bullets[4]],
         },
       ],
+      experience: [redHatSupportExperience],
       skills: [],
       education: [educationSupport],
     },
@@ -627,21 +763,20 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     resume: {
       contact: sharedContact,
       projects: [
-        raritySurfSupportProject,
-        astronoftySupportProject,
+        {
+          ...leavesSupportProject,
+          bullets: [leavesSupportProject.bullets[0], leavesSupportProject.bullets[2], leavesSupportProject.bullets[4]],
+        },
         {
           ...awsServerProject,
-          bullets: awsServerProject.bullets.slice(0, 2),
+          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1]],
         },
-      ],
-      experience: [
         {
-          ...redHatSupportExperience,
-          title: 'Cloud/Software Engineer Intern',
-          date: 'May 2022 — Aug 2023',
-          languages: ['Kubernetes', 'GoLang', 'Jenkins'],
+          ...raritySurfProject,
+          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[3], raritySurfProject.bullets[4]],
         },
       ],
+      experience: [redHatSupportExperience],
       skills: [],
       education: [educationSupport],
     },
@@ -668,8 +803,36 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     ],
     resume: {
       contact: sharedContact,
-      projects: [raritySurfSalesProject],
-      experience: [digitalMarketplaceExperience, redHatSupportExperience],
+      projects: [
+        {
+          ...nomarStocksProject,
+          bullets: [nomarStocksProject.bullets[0], nomarStocksProject.bullets[1], nomarStocksProject.bullets[2]],
+        },
+        {
+          ...stbMarketplaceProject,
+          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[1], stbMarketplaceProject.bullets[4]],
+        },
+      ],
+      experience: [
+        {
+          ...digitalMarketplaceExperience,
+          bullets: [
+            digitalMarketplaceExperience.bullets[0],
+            digitalMarketplaceExperience.bullets[1],
+            digitalMarketplaceExperience.bullets[2],
+            digitalMarketplaceExperience.bullets[3],
+            digitalMarketplaceExperience.bullets[5],
+          ],
+        },
+        {
+          ...redHatSupportExperience,
+          bullets: [
+            redHatSupportExperience.bullets[0],
+            redHatSupportExperience.bullets[3],
+            redHatSupportExperience.bullets[4],
+          ],
+        },
+      ],
       skills: [],
       education: [educationCustomerSupport],
     },
@@ -696,8 +859,36 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     ],
     resume: {
       contact: sharedContact,
-      projects: [raritySurfSalesProject],
-      experience: [redHatSupportExperience, digitalMarketplaceExperience],
+      projects: [
+        {
+          ...leavesSupportProject,
+          bullets: [leavesSupportProject.bullets[1], leavesSupportProject.bullets[3], leavesSupportProject.bullets[4]],
+        },
+        {
+          ...stbMarketplaceProject,
+          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[2], stbMarketplaceProject.bullets[4]],
+        },
+      ],
+      experience: [
+        {
+          ...digitalMarketplaceExperience,
+          bullets: [
+            digitalMarketplaceExperience.bullets[1],
+            digitalMarketplaceExperience.bullets[2],
+            digitalMarketplaceExperience.bullets[3],
+            digitalMarketplaceExperience.bullets[4],
+          ],
+        },
+        {
+          ...redHatSupportExperience,
+          bullets: [
+            redHatSupportExperience.bullets[1],
+            redHatSupportExperience.bullets[2],
+            redHatSupportExperience.bullets[3],
+            redHatSupportExperience.bullets[4],
+          ],
+        },
+      ],
       skills: [],
       education: [educationCustomerSupport],
     },
