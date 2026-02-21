@@ -977,11 +977,27 @@ export const resumeVariantByFileName: Record<string, ResumeVariantDefinition> =
     return acc;
   }, {} as Record<string, ResumeVariantDefinition>);
 
-export const pdfVariants = resumeVariants.map((variant) => ({
-  id: variant.id,
-  label: variant.label,
-  value: variant.fileName,
-}));
+export const orderedResumeVariantIds: ResumeVariantId[] = [
+  'web-dev',
+  'web-dev-django',
+  'python',
+  'aws',
+  'aws-web-dev',
+  'aws-python',
+  'it-support',
+  'it-support-aws',
+  'sales',
+  'call-centre',
+];
+
+export const pdfVariants = orderedResumeVariantIds.map((variantId) => {
+  const variant = resumeVariantById[variantId];
+  return {
+    id: variant.id,
+    label: variant.label,
+    value: variant.fileName,
+  };
+});
 
 export function isResumeVariantId(value: string): value is ResumeVariantId {
   return value in resumeVariantById;

@@ -1,9 +1,10 @@
 # TODO
 
-Last updated: 2026-02-21 14:51 UTC
+Last updated: 2026-02-21 15:29 UTC
 
 ## What's Done
 
+- [x] 2026-02-21 15:29 UTC - Reorder active resume variant selection/generation order to prioritize `web-dev` first (default), followed by `web-dev-django`, `python`, `aws`, `aws-web-dev`, `aws-python`, `it-support`, `it-support-aws`, `sales`, and `call-centre`; leave `general` data defined but out of active ordered variants.
 - [x] 2026-02-21 14:51 UTC - Reorder mobile parallax flow so Neofetch appears after `Resume` and before `Settings`, moving Neofetch into the normal section sequence and updating parallax active-section/number-key navigation handling accordingly.
 - [x] 2026-02-21 14:46 UTC - Add mobile bio photo parity with desktop by rendering `ProfilePhoto` in `ParallaxBioSection`, adding responsive mobile sizing, and using face-priority cropping (`object-position`) with a slight size reduction on narrow phones.
 - [x] 2026-02-20 22:05 UTC - Rewrite `lib/resume-data.ts` bullets for clearer HR-friendly language, add one additional Spotify bullet to `python` + `aws-python` variants for page-fill balance, and retune per-variant `--resume-print-*` values in `app/styles/13-resume-latex.css` so `build`, `verify:resume-layout`, and `validate-resume-pdfs` all pass.
