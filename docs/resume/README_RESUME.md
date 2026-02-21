@@ -183,6 +183,8 @@ This file covers:
 npm run build
 ```
 
+`npm run generate-resume-pdfs` now skips unchanged variants automatically and regenerates only changed/missing PDFs.
+
 2. Validate one-page/page-fill/font constraints:
 
 ```bash

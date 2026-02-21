@@ -1,9 +1,11 @@
 # TODO
 
-Last updated: 2026-02-21 15:47 UTC
+Last updated: 2026-02-21 21:53 UTC
 
 ## What's Done
 
+- [x] 2026-02-21 21:53 UTC - Make `npm run generate-resume-pdfs` incremental by caching per-variant rendered HTML fingerprints plus a global resume-layout fingerprint, regenerating only changed/missing variants, and persisting cache metadata in `.next/cache/resume-pdf-manifest.json`.
+- [x] 2026-02-21 21:37 UTC - Replace Nomar project bullets from `lib/nomar-stocks.md` and re-optimize variant project selection so `general`, `web-dev`, `aws-web-dev`, `web-dev-django`, and `sales` use the strongest role-relevant Nomar bullet subsets while preserving one-page resume constraints.
 - [x] 2026-02-21 15:47 UTC - Add role-row `Open-source contributions` evidence link to all Red Hat resume entries by extending `WorkExperience` with optional evidence fields, wiring the link in `WorkEntry`, and preserving print-safe resume styling.
 - [x] 2026-02-21 15:29 UTC - Reorder active resume variant selection/generation order to prioritize `web-dev` first (default), followed by `web-dev-django`, `python`, `aws`, `aws-web-dev`, `aws-python`, `it-support`, `it-support-aws`, `sales`, and `call-centre`; leave `general` data defined but out of active ordered variants.
 - [x] 2026-02-21 14:51 UTC - Reorder mobile parallax flow so Neofetch appears after `Resume` and before `Settings`, moving Neofetch into the normal section sequence and updating parallax active-section/number-key navigation handling accordingly.

@@ -155,9 +155,11 @@ npm run build
 
 This runs `next build` and then `npm run generate-resume-pdfs`, which:
 - Starts the built app locally
-- Renders each variant from `lib/resume-data.ts`
-- Prints each page to `public/resume/*.pdf` using headless Chrome
+- Renders each variant from `lib/resume-data.ts` and computes a per-variant HTML fingerprint
+- Computes per-variant style fingerprints from `app/styles/13-resume-latex.css` (shared rules + variant block)
+- Prints only changed/missing variants to `public/resume/*.pdf` using headless Chrome
 - Preserves the existing download filenames
+- Persists generation fingerprints in `.next/cache/resume-pdf-manifest.json`
 - Must be followed by layout verification and validation:
 
 ```bash
