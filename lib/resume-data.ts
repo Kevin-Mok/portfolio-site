@@ -111,7 +111,8 @@ const educationCustomerSupport: Education = {
 };
 
 const raritySurfProject: ResumeProject = {
-  name: 'Rarity Surf',
+  name: 'Magic Eden NFT Sniper',
+  url: 'https://github.com/Kevin-Mok#featured-projects',
   languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
   date: 'Mar 2025',
   bullets: [
@@ -125,7 +126,7 @@ const raritySurfProject: ResumeProject = {
 
 const kanbanCalendarProject: ResumeProject = {
   name: 'Kanban Calendar App',
-  url: 'https://github.com/Kevin-Mok/kanban-calendar',
+  url: 'https://kanban-calendar-lake.vercel.app/',
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
@@ -152,6 +153,7 @@ const awsServerProject: ResumeProject = {
 
 const spotifyVisualizedProject: ResumeProject = {
   name: 'Spotify Visualized',
+  url: 'https://github.com/Kevin-Mok/spotify-lib-vis?tab=readme-ov-file#spotify-library-visualizer',
   languages: ['Python', 'Django', 'PostgreSQL'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
@@ -176,7 +178,7 @@ const discordAdventureProject: ResumeProject = {
 
 const portfolioSiteProject: ResumeProject = {
   name: 'Portfolio Site',
-  url: 'https://github.com/kmokdefi/kmok-portfolio',
+  url: 'https://kevin-mok.com/',
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
@@ -190,7 +192,7 @@ const portfolioSiteProject: ResumeProject = {
 
 const leavesSupportProject: ResumeProject = {
   name: 'Leaves',
-  url: 'https://github.com/Kevin-Mok/quit-weed',
+  url: 'http://tryleaves.app/',
   languages: ['TypeScript', 'React Native', 'Expo'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
@@ -204,7 +206,6 @@ const leavesSupportProject: ResumeProject = {
 
 const stbMarketplaceProject: ResumeProject = {
   name: 'STB Marketplace Cog',
-  url: 'https://github.com/Kevin-Mok/stb-mkt',
   languages: ['Python', 'Red-DiscordBot', 'Discord'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
@@ -218,7 +219,7 @@ const stbMarketplaceProject: ResumeProject = {
 
 const nomarStocksProject: ResumeProject = {
   name: "Nomar's Technical Charts",
-  url: 'https://github.com/Kevin-Mok/nomar-stocks',
+  url: 'https://www.ntcharts.com/',
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS', 'Whop'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
