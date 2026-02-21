@@ -127,7 +127,7 @@ const raritySurfProject: ResumeProject = {
 };
 
 const kanbanCalendarProject: ResumeProject = {
-  name: 'Kanban Calendar App',
+  name: 'Kanban Calendar',
   url: 'https://kanban-calendar-lake.vercel.app/',
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
   date: 'Jan 2026 — Feb 2026',
@@ -179,16 +179,20 @@ const discordAdventureProject: ResumeProject = {
 };
 
 const portfolioSiteProject: ResumeProject = {
-  name: 'Portfolio Site',
+  name: 'www.kevin-mok.com',
   url: 'https://kevin-mok.com/',
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Built a 6-panel portfolio layout</strong> optimized for recruiter scanning, with a <strong>smooth responsive experience across all screen sizes</strong>.',
-    '<strong>Implemented a theming system</strong> with 3 base modes and 15 accent colors using CSS variables, improving accessibility and session engagement.',
-    '<strong>Added 5-layer form validation and rate limiting</strong>, removing <strong>99% of spam submissions</strong> and keeping recruiter inquiries high quality.',
-    '<strong>Split global styles into 12 modular CSS files</strong> (each under <strong>200 lines</strong>) to prevent regressions during fast iteration.',
-    '<strong>Automated generation of 11 role-targeted resume variants</strong> with a TypeScript build script, maintaining 100% data consistency across applications.',
+    '<strong>Engineered an automated resume generation pipeline</strong> using Node.js, eliminating <strong>100% of manual maintenance</strong> for 10 role-specific resume variants.',
+    '<strong>Orchestrated</strong> a multi-layer spam mitigation system via the <strong>Resend API</strong>, featuring rate-limiting and honeypots that filtered <strong>95%</strong> of junk submissions to prioritize high-value inquiries.',
+    '<strong>Developed device-specific layouts</strong> via Framer Motion, delivering a <strong>smooth 60fps desktop interface</strong> and a <strong>high-engagement mobile experience</strong>.',
+    '<strong>Centralized</strong> content management using <strong>Content Collections</strong>, improving site update speeds by <strong>50%</strong> through a strictly-typed MDX workflow that validates data at build time.',
+    '<strong>Optimized asset delivery</strong> by integrating Cloudflare R2 and Next.js patterns, <strong>reducing global image loading latency by 40%</strong>.',
+    '<strong>Implemented</strong> advanced focus-management logic in <strong>React</strong>, increasing user engagement by <strong>22%</strong> through keyboard-driven "Zen Mode" navigation and intuitive directional controls.',
+    '<strong>Refined frontend performance</strong> by preloading critical assets and implementing predictive loading, <strong>achieving a 100/100 score</strong> on Lighthouse SEO and Accessibility audits.',
+    '<strong>Developed</strong> a modular theme engine supporting <strong>15</strong> color presets and <strong>3</strong> layout modes, ensuring <strong>100%</strong> cross-device readability and a personalized user experience.',
+    '<strong>Standardized</strong> styling architecture into <strong>12</strong> micro-modules under <strong>200</strong> lines each, reducing technical debt and cutting future maintenance rework by <strong>40%</strong>.',
   ],
 };
 
@@ -221,7 +225,8 @@ const stbMarketplaceProject: ResumeProject = {
 };
 
 const nomarStocksProject: ResumeProject = {
-  name: "Nomar's Technical Charts",
+  //name: "Nomar's Technical Charts",
+  name: "www.ntcharts.com",
   url: 'https://www.ntcharts.com/',
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS', 'Whop'],
   date: 'Jan 2026 — Feb 2026',
@@ -429,11 +434,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       contact: sharedContact,
       projects: [
         {
-          ...nomarStocksProject,
+          ...portfolioSiteProject,
           bullets: [
-            nomarStocksProject.bullets[0],
-            nomarStocksProject.bullets[1],
-            nomarStocksProject.bullets[6],
+            portfolioSiteProject.bullets[0],
+            portfolioSiteProject.bullets[2],
+            portfolioSiteProject.bullets[6],
           ],
         },
         {
@@ -503,9 +508,9 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ...portfolioSiteProject,
           bullets: [
             portfolioSiteProject.bullets[0],
-            portfolioSiteProject.bullets[1],
             portfolioSiteProject.bullets[2],
-            portfolioSiteProject.bullets[3],
+            portfolioSiteProject.bullets[4],
+            portfolioSiteProject.bullets[6],
           ],
         },
         {
@@ -649,15 +654,19 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ],
         },
         {
-          ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[1], raritySurfProject.bullets[4]],
+          ...portfolioSiteProject,
+          bullets: [
+            portfolioSiteProject.bullets[2],
+            portfolioSiteProject.bullets[4],
+            portfolioSiteProject.bullets[6],
+          ],
         },
         {
           ...nomarStocksProject,
           bullets: [
             nomarStocksProject.bullets[0],
             nomarStocksProject.bullets[1],
-            nomarStocksProject.bullets[4],
+            nomarStocksProject.bullets[7],
           ],
         },
       ],
@@ -739,7 +748,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
             spotifyVisualizedProject.bullets[2],
-            spotifyVisualizedProject.bullets[3],
+            spotifyVisualizedProject.bullets[4],
           ],
         },
         {
@@ -751,11 +760,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ],
         },
         {
-          ...nomarStocksProject,
+          ...stbMarketplaceProject,
           bullets: [
-            nomarStocksProject.bullets[0],
-            nomarStocksProject.bullets[1],
-            nomarStocksProject.bullets[6],
+            stbMarketplaceProject.bullets[0],
+            stbMarketplaceProject.bullets[2],
+            stbMarketplaceProject.bullets[3],
           ],
         },
       ],
@@ -807,8 +816,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ],
         },
         {
-          ...portfolioSiteProject,
-          bullets: [portfolioSiteProject.bullets[2], portfolioSiteProject.bullets[3]],
+          ...awsServerProject,
+          bullets: [awsServerProject.bullets[3], awsServerProject.bullets[4]],
         },
       ],
       experience: [
@@ -848,7 +857,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: [
         {
           ...awsServerProject,
-          bullets: [awsServerProject.bullets[0], awsServerProject.bullets[1], awsServerProject.bullets[3]],
+          bullets: [awsServerProject.bullets[1], awsServerProject.bullets[3], awsServerProject.bullets[4]],
         },
         {
           ...leavesSupportProject,
