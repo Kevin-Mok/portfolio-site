@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { spawn, spawnSync } from 'node:child_process';
-import { access } from 'node:fs/promises';
-import { mkdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { resumePdfVariants } from './lib/resume-pdf-variants.mjs';
 
@@ -11,6 +11,160 @@ const port = process.env.RESUME_PDF_PORT || '3100';
 const origin = `http://${host}:${port}`;
 const outputDir = path.join(process.cwd(), 'public', 'resume');
 const nextBuildIdPath = path.join(process.cwd(), '.next', 'BUILD_ID');
+const manifestPath = path.join(process.cwd(), '.next', 'cache', 'resume-pdf-manifest.json');
+const resumeStylesPath = path.join(process.cwd(), 'app', 'styles', '13-resume-latex.css');
+const resumeFingerprintTargets = [
+  path.join(process.cwd(), 'app', 'resume', 'page.tsx'),
+  path.join(process.cwd(), 'components', 'tiles', 'content', 'ResumeContent.tsx'),
+  path.join(process.cwd(), 'components', 'tiles', 'content', 'resume'),
+];
+
+function hashContent(content) {
+  return createHash('sha256').update(content).digest('hex');
+}
+
+async function pathExists(targetPath) {
+  try {
+    await access(targetPath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function collectFilesRecursively(targetPath) {
+  let entries;
+  try {
+    entries = await readdir(targetPath, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+
+  const files = [];
+  for (const entry of entries) {
+    const entryPath = path.join(targetPath, entry.name);
+    if (entry.isDirectory()) {
+      const nested = await collectFilesRecursively(entryPath);
+      files.push(...nested);
+      continue;
+    }
+
+    if (entry.isFile()) {
+      files.push(entryPath);
+    }
+  }
+
+  return files;
+}
+
+async function buildGlobalResumeFingerprint() {
+  const files = [];
+
+  for (const target of resumeFingerprintTargets) {
+    if (!(await pathExists(target))) {
+      continue;
+    }
+
+    let directoryEntries;
+    try {
+      directoryEntries = await readdir(target);
+    } catch {
+      files.push(target);
+      continue;
+    }
+
+    if (directoryEntries) {
+      const nestedFiles = await collectFilesRecursively(target);
+      files.push(...nestedFiles);
+    }
+  }
+
+  files.sort();
+
+  const hash = createHash('sha256');
+  for (const filePath of files) {
+    const content = await readFile(filePath);
+    hash.update(filePath);
+    hash.update(content);
+  }
+
+  return hash.digest('hex');
+}
+
+async function loadPdfManifest() {
+  try {
+    const raw = await readFile(manifestPath, 'utf8');
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.version === 1 && parsed.variants && typeof parsed.variants === 'object') {
+      return {
+        version: 1,
+        globalFingerprint: typeof parsed.globalFingerprint === 'string' ? parsed.globalFingerprint : '',
+        variants: parsed.variants,
+      };
+    }
+  } catch {
+    // Treat unreadable/missing manifest as first-run behavior.
+  }
+
+  return {
+    version: 1,
+    globalFingerprint: '',
+    variants: {},
+  };
+}
+
+async function writePdfManifest(manifest) {
+  await mkdir(path.dirname(manifestPath), { recursive: true });
+  await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
+}
+
+function normalizeResumeHtml(html) {
+  const mainMatch = html.match(/<main[^>]*class="[^"]*resume-latex[^"]*"[^>]*>[\s\S]*?<\/main>/i);
+  let normalized = mainMatch ? mainMatch[0] : html;
+
+  normalized = normalized
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/nonce="[^"]*"/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return normalized;
+}
+
+function buildVariantStyleFingerprints(cssText, globalFingerprint) {
+  const variantPattern = /\.resume-variant-([a-z-]+)\s*\{[\s\S]*?\}/g;
+  const variantCssById = {};
+
+  for (const match of cssText.matchAll(variantPattern)) {
+    const variantId = match[1];
+    const cssBlock = match[0];
+    variantCssById[variantId] = cssBlock.trim();
+  }
+
+  const commonCss = cssText.replace(variantPattern, '').trim();
+  const commonCssHash = hashContent(commonCss);
+
+  const styleHashes = {};
+  for (const variant of resumePdfVariants) {
+    styleHashes[variant.id] = hashContent(
+      `${globalFingerprint}\n${commonCssHash}\n${variantCssById[variant.id] ?? ''}`
+    );
+  }
+
+  return styleHashes;
+}
+
+async function fetchVariantHtml(variantId) {
+  const response = await fetch(buildResumeUrl(variantId));
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch rendered resume HTML for variant "${variantId}" (${response.status} ${response.statusText})`
+    );
+  }
+
+  const html = await response.text();
+  return normalizeResumeHtml(html);
+}
 
 function commandExists(command) {
   const result = spawnSync(command, ['--version'], { stdio: 'ignore' });
@@ -169,6 +323,10 @@ async function main() {
 
   const chromeBin = resolveChromeBinary();
   await mkdir(outputDir, { recursive: true });
+  const globalFingerprint = await buildGlobalResumeFingerprint();
+  const cssText = await readFile(resumeStylesPath, 'utf8');
+  const variantStyleFingerprints = buildVariantStyleFingerprints(cssText, globalFingerprint);
+  const previousManifest = await loadPdfManifest();
 
   const server = startNextServer();
   let serverStdout = '';
@@ -185,13 +343,49 @@ async function main() {
   try {
     await waitForServerReady(server);
 
+    let generatedCount = 0;
+    let skippedCount = 0;
+    const nextManifestVariants = {};
+
     for (const variant of resumePdfVariants) {
-      // Keep output visible in CI/local builds for easier diagnosis.
-      console.log(`Generating ${variant.fileName} (${variant.id})`);
-      await generateVariantPdf(variant, chromeBin);
+      const htmlHash = hashContent(await fetchVariantHtml(variant.id));
+      const styleHash = variantStyleFingerprints[variant.id];
+      const pdfPath = path.join(outputDir, variant.fileName);
+      const previousVariant = previousManifest.variants[variant.id];
+      const pdfExists = await pathExists(pdfPath);
+      const shouldRegenerate =
+        !pdfExists ||
+        !previousVariant ||
+        previousVariant.htmlHash !== htmlHash ||
+        previousVariant.styleHash !== styleHash;
+
+      if (shouldRegenerate) {
+        // Keep output visible in CI/local builds for easier diagnosis.
+        console.log(`Generating ${variant.fileName} (${variant.id})`);
+        await generateVariantPdf(variant, chromeBin);
+        generatedCount += 1;
+      } else {
+        console.log(`Skipping ${variant.fileName} (${variant.id}) - unchanged`);
+        skippedCount += 1;
+      }
+
+      nextManifestVariants[variant.id] = {
+        fileName: variant.fileName,
+        htmlHash,
+        styleHash,
+      };
     }
 
-    console.log(`Generated ${resumePdfVariants.length} resume PDFs in ${outputDir}`);
+    await writePdfManifest({
+      version: 1,
+      generatedAt: new Date().toISOString(),
+      globalFingerprint,
+      variants: nextManifestVariants,
+    });
+
+    console.log(
+      `Generated ${generatedCount} resume PDFs and skipped ${skippedCount} unchanged variants in ${outputDir}`
+    );
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     throw new Error(
