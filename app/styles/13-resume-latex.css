@@ -205,6 +205,18 @@
   line-height: 1.2;
 }
 
+.entry-evidence-link {
+  color: #1e4fa3;
+  font-size: 0.88em;
+  line-height: 1.2;
+  text-decoration: underline;
+}
+
+.entry-evidence-link:hover {
+  color: #1e4fa3;
+  text-decoration: underline;
+}
+
 /* Bullets */
 .resume-bullets {
   margin: 0.08rem 0 0 0;

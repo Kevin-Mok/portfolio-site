@@ -15,6 +15,8 @@ export interface ResumeProject {
 export interface WorkExperience {
   company: string;
   title: string;
+  evidenceUrl?: string;
+  evidenceLabel?: string;
   languages: string[];
   date: string;
   bullets: string[];
@@ -206,6 +208,7 @@ const leavesSupportProject: ResumeProject = {
 
 const stbMarketplaceProject: ResumeProject = {
   name: 'STB Marketplace Cog',
+  url: 'https://github.com/Kevin-Mok/stb-mkt',
   languages: ['Python', 'Red-DiscordBot', 'Discord'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
@@ -231,9 +234,15 @@ const nomarStocksProject: ResumeProject = {
   ],
 };
 
+const redHatContributionsUrl =
+  'https://gist.github.com/Kevin-Mok/1652af7a7574c36abaf0ff7509756234#file-red-hat-contributions-md';
+const redHatContributionsLabel = 'Open-source contributions';
+
 const redHatWebExperience: WorkExperience = {
   company: 'Red Hat',
   title: 'Cloud/Software Engineer Intern',
+  evidenceUrl: redHatContributionsUrl,
+  evidenceLabel: redHatContributionsLabel,
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2022 — Aug 2023',
   bullets: [
@@ -248,6 +257,8 @@ const redHatWebExperience: WorkExperience = {
 const redHatCloudExperience: WorkExperience = {
   company: 'Red Hat',
   title: 'Cloud/Software Engineer Intern',
+  evidenceUrl: redHatContributionsUrl,
+  evidenceLabel: redHatContributionsLabel,
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2020 — Aug 2021',
   bullets: [
@@ -262,6 +273,8 @@ const redHatCloudExperience: WorkExperience = {
 const redHatSupportExperience: WorkExperience = {
   company: 'Red Hat',
   title: 'Technical Support Engineer Intern (Tier 1/2)',
+  evidenceUrl: redHatContributionsUrl,
+  evidenceLabel: redHatContributionsLabel,
   languages: ['Ticketing/Triage', 'De-escalation', 'Knowledge Base Writing'],
   date: 'Aug 2022 — Aug 2024',
   bullets: [

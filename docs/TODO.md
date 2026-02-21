@@ -1,9 +1,10 @@
 # TODO
 
-Last updated: 2026-02-21 15:29 UTC
+Last updated: 2026-02-21 15:47 UTC
 
 ## What's Done
 
+- [x] 2026-02-21 15:47 UTC - Add role-row `Open-source contributions` evidence link to all Red Hat resume entries by extending `WorkExperience` with optional evidence fields, wiring the link in `WorkEntry`, and preserving print-safe resume styling.
 - [x] 2026-02-21 15:29 UTC - Reorder active resume variant selection/generation order to prioritize `web-dev` first (default), followed by `web-dev-django`, `python`, `aws`, `aws-web-dev`, `aws-python`, `it-support`, `it-support-aws`, `sales`, and `call-centre`; leave `general` data defined but out of active ordered variants.
 - [x] 2026-02-21 14:51 UTC - Reorder mobile parallax flow so Neofetch appears after `Resume` and before `Settings`, moving Neofetch into the normal section sequence and updating parallax active-section/number-key navigation handling accordingly.
 - [x] 2026-02-21 14:46 UTC - Add mobile bio photo parity with desktop by rendering `ProfilePhoto` in `ParallaxBioSection`, adding responsive mobile sizing, and using face-priority cropping (`object-position`) with a slight size reduction on narrow phones.

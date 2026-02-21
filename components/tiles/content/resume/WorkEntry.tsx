@@ -16,6 +16,16 @@ export const WorkEntry: React.FC<WorkEntryProps> = ({ work }) => {
       <div className="entry-subtitle">
         <span className="entry-position">{work.title}</span>
         <span className="entry-tech-inline">&lt;{work.languages.join(', ')}&gt;</span>
+        {work.evidenceUrl ? (
+          <a
+            href={work.evidenceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="entry-evidence-link"
+          >
+            {work.evidenceLabel ?? 'Evidence'}
+          </a>
+        ) : null}
       </div>
 
       <ul className="resume-bullets">
