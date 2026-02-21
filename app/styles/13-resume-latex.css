@@ -292,26 +292,37 @@
 }
 
 .pdf-download-btn {
-  display: inline-block;
-  padding: 0.55rem 1.1rem;
-  background-color: #000000;
-  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.52rem 1.05rem;
+  background-color: #ffffff;
+  color: #1e4fa3;
   text-decoration: none;
   border-radius: 0;
   font-weight: 600;
-  transition: background-color 0.2s ease;
-  border: none;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #1e4fa3;
   cursor: pointer;
   font-family: inherit;
   font-size: 0.95em;
+  line-height: 1.15;
+}
+
+.resume-latex .pdf-download-btn,
+.resume-latex .pdf-download-btn:hover {
+  color: #1e4fa3;
+  text-decoration: none;
 }
 
 .pdf-download-btn:hover {
-  background-color: #1b1b1b;
+  background-color: #eef3ff;
+  box-shadow: inset 0 0 0 1px rgba(30, 79, 163, 0.2);
 }
 
 .pdf-download-btn:active {
   transform: translateY(1px);
+  background-color: #e2ebff;
 }
 
 .pdf-variant-selector {
@@ -637,6 +648,6 @@
 }
 
 .pdf-download-btn:focus {
-  outline: 2px solid #000000;
+  outline: 2px solid #1e4fa3;
   outline-offset: 2px;
 }
