@@ -1,7 +1,6 @@
 'use client';
 
 import React, { RefObject, ReactNode } from 'react';
-import NeofetchTile from '@/components/tiles/NeofetchTile';
 
 interface Section {
   id: string;
@@ -17,7 +16,7 @@ interface ParallaxScrollContainerProps {
 
 /**
  * ParallaxScrollContainer Component
- * Manages the scrollable content area with fixed Neofetch background
+ * Manages the scrollable content area for the mobile parallax layout
  * Handles section rendering with separators and transitions
  *
  * Section divider design inspired by Kyrre Gjerstad's portfolio (https://www.kyrre.dev/)
@@ -47,33 +46,6 @@ export const ParallaxScrollContainer: React.FC<ParallaxScrollContainerProps> = (
       role="main"
       aria-label="Main content"
     >
-      {/* Top Neofetch hero section (scrolls away with content) */}
-      <section
-        className="relative flex items-center justify-center"
-        style={{
-          minHeight: '65vh',
-          paddingTop: '24px',
-          paddingBottom: '20px',
-          paddingLeft: '16px',
-          paddingRight: '16px',
-          zIndex: 2
-        }}
-        role="region"
-        aria-label="Neofetch section"
-      >
-        <div className="w-full max-w-4xl mx-auto">
-          <div
-            style={{
-              border: '1px solid rgba(var(--accent-color-rgb), 0.25)',
-              background: 'transparent',
-              padding: '20px'
-            }}
-          >
-            <NeofetchTile isBlurred={false} layout="parallax" />
-          </div>
-        </div>
-      </section>
-
       {/* Content Sections */}
       {sections.map((section, index) => (
         <section
@@ -92,7 +64,7 @@ export const ParallaxScrollContainer: React.FC<ParallaxScrollContainerProps> = (
           role="region"
           aria-label={`${section.title} section`}
         >
-          {/* Divider transition from Neofetch to content */}
+          {/* Top divider for first section */}
           {index === 0 && (
             <>
               {/* Line after gradient transition */}

@@ -4,6 +4,7 @@ import React, { useRef, useCallback } from 'react';
 import { usePersonalInfo } from '@/lib/config';
 import Background from '@/components/layout/Background';
 import ScrollProgress from '@/components/ui/ScrollProgress';
+import NeofetchTile from '@/components/tiles/NeofetchTile';
 
 // Import custom hooks
 import { useParallaxScroll } from './parallax/hooks/useParallaxScroll';
@@ -41,6 +42,7 @@ const MobileParallaxLayout: React.FC = () => {
     { id: 'bio', title: 'Bio' },
     { id: 'technologies', title: 'Technologies' },
     { id: 'resume', title: 'Resume' },
+    { id: 'neofetch', title: 'Neofetch' },
     { id: 'settings', title: 'Settings' }
   ];
 
@@ -91,6 +93,19 @@ const MobileParallaxLayout: React.FC = () => {
 
       case 'resume':
         return <ParallaxResumeCtaSection />;
+
+      case 'neofetch':
+        return (
+          <div
+            style={{
+              border: '1px solid rgba(var(--accent-color-rgb), 0.25)',
+              background: 'transparent',
+              padding: '20px'
+            }}
+          >
+            <NeofetchTile isBlurred={false} layout="parallax" />
+          </div>
+        );
 
       case 'settings':
         return <ParallaxThemeSettingsSection />;

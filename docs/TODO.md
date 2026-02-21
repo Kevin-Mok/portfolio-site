@@ -1,9 +1,11 @@
 # TODO
 
-Last updated: 2026-02-20 22:05 UTC
+Last updated: 2026-02-21 14:51 UTC
 
 ## What's Done
 
+- [x] 2026-02-21 14:51 UTC - Reorder mobile parallax flow so Neofetch appears after `Resume` and before `Settings`, moving Neofetch into the normal section sequence and updating parallax active-section/number-key navigation handling accordingly.
+- [x] 2026-02-21 14:46 UTC - Add mobile bio photo parity with desktop by rendering `ProfilePhoto` in `ParallaxBioSection`, adding responsive mobile sizing, and using face-priority cropping (`object-position`) with a slight size reduction on narrow phones.
 - [x] 2026-02-20 22:05 UTC - Rewrite `lib/resume-data.ts` bullets for clearer HR-friendly language, add one additional Spotify bullet to `python` + `aws-python` variants for page-fill balance, and retune per-variant `--resume-print-*` values in `app/styles/13-resume-latex.css` so `build`, `verify:resume-layout`, and `validate-resume-pdfs` all pass.
 - [x] 2026-02-20 21:19 UTC - Regenerate all 11 resume variants in `lib/resume-data.ts` from in-file source-of-truth bullets with role-specific project reshuffling, update sales/call-centre summaries, and recalibrate per-variant `--resume-print-*` controls in `app/styles/13-resume-latex.css` until `build`, `verify:resume-layout`, and `validate-resume-pdfs` all passed.
 - [x] 2026-02-20 18:59 UTC - Add `docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md` to guide AI-assisted resume variant restructuring from README variant points (strongest-bullet selection, one-page fit workflow, and required validation checks), and link it from `docs/resume/README_RESUME.md` + `docs/resume/RESUME_DOCS_INDEX.md`.

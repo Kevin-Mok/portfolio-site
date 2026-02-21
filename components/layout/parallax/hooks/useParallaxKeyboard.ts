@@ -80,26 +80,23 @@ export function useParallaxKeyboard(
           }
           break;
 
-        // Number keys for quick section jump
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-          if (!e.ctrlKey && !e.altKey && !e.metaKey) {
-            const index = parseInt(e.key) - 1;
-            if (index < sections.length) {
-              e.preventDefault();
-              navigateToSection(sections[index].id);
-            }
-          }
-          break;
-
         // Optional: Toggle panel with keyboard shortcut
         case 't':
         case 'T':
           if (e.ctrlKey && options?.onPanelToggle) {
             e.preventDefault();
             options.onPanelToggle();
+          }
+          break;
+
+        default:
+          // Number keys for quick section jump.
+          if (/^[1-9]$/.test(e.key) && !e.ctrlKey && !e.altKey && !e.metaKey) {
+            const index = parseInt(e.key, 10) - 1;
+            if (index < sections.length) {
+              e.preventDefault();
+              navigateToSection(sections[index].id);
+            }
           }
           break;
       }

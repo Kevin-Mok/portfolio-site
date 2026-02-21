@@ -58,6 +58,8 @@ If behavior changes, docs must change immediately.
 
 - When an agent creates a commit, it must push that commit in the same task unless the user explicitly says not to push yet.
 - Default push target is `origin` on the active branch (for `main`, use `git push origin main`).
+- Commit message first line (subject) should be at most 80 characters.
+- Document all meaningful changes in the commit message body instead of overloading the subject line.
 
 ---
 

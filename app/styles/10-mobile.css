@@ -172,6 +172,15 @@
   gap: 16px;
 }
 
+.parallax-bio-photo-wrap {
+  width: min(100%, 320px);
+  margin: 0 auto 18px;
+}
+
+.parallax-bio-photo-wrap img {
+  object-position: center 20%;
+}
+
 .parallax-copy-lead,
 .parallax-copy-body {
   color: var(--theme-text);
@@ -273,6 +282,11 @@
 @media (max-width: 400px) {
   .parallax-panel {
     padding: 16px;
+  }
+
+  .parallax-bio-photo-wrap {
+    width: min(100%, 280px);
+    margin-bottom: 16px;
   }
 
   .parallax-tech-grid {

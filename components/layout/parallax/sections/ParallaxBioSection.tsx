@@ -1,9 +1,35 @@
 import React from 'react';
+import { ProfilePhoto } from '@/components/ui/ProfilePhoto';
 
 interface PersonalInfo {
   name: string;
   greeting?: string;
   title: string;
+  profilePhoto?: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+    exif?: {
+      location?: string;
+      aperture?: string;
+      shutter?: string;
+      iso?: string;
+      model?: string;
+      task?: string;
+    };
+    detectionVariant?: {
+      src: string;
+      exif?: {
+        location?: string;
+        aperture?: string;
+        shutter?: string;
+        iso?: string;
+        model?: string;
+        task?: string;
+      };
+    };
+  };
   bio: {
     intro?: string;
     experience?: string;
@@ -37,6 +63,19 @@ export const ParallaxBioSection: React.FC<ParallaxBioSectionProps> = ({
       <h2 className="parallax-section-title">
         {personal.greeting || `Hi, I'm ${personal.name}`}
       </h2>
+
+      {personal.profilePhoto && (
+        <div className="parallax-bio-photo-wrap">
+          <ProfilePhoto
+            src={personal.profilePhoto.src}
+            alt={personal.profilePhoto.alt}
+            width={personal.profilePhoto.width}
+            height={personal.profilePhoto.height}
+            exif={personal.profilePhoto.exif}
+            detectionVariant={personal.profilePhoto.detectionVariant}
+          />
+        </div>
+      )}
 
       <div className="parallax-copy-stack">
         {intro && <p className="parallax-copy-lead">{intro}</p>}

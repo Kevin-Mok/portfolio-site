@@ -20,7 +20,7 @@ export function useParallaxScroll(
   scrollRef: RefObject<HTMLDivElement>,
   sections: Section[]
 ): UseParallaxScrollReturn {
-  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? 'neofetch');
+  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? '');
   const [scrollPercent, setScrollPercent] = useState(0);
 
   // Framer Motion scroll tracking
@@ -42,14 +42,8 @@ export function useParallaxScroll(
       const percent = Math.round((scrollPosition / maxScrollable) * 100);
       setScrollPercent(percent);
 
-      // Check if we're at the top (Neofetch section)
-      if (scrollPosition < window.innerHeight * 0.4) {
-        setActiveSection('neofetch');  // Special case for top
-        return;
-      }
-
       // Determine active section by closest section center to viewport center.
-      let closestSection = sections[0]?.id ?? 'neofetch';
+      let closestSection = sections[0]?.id ?? '';
       let closestDistance = Number.POSITIVE_INFINITY;
 
       sections.forEach((section) => {
