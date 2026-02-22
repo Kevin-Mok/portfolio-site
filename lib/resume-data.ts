@@ -322,11 +322,16 @@ const redHatCloudExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2020 — Aug 2021',
   bullets: [
-    '<strong>Delivered 7,000+ lines of production Go code</strong> across <strong>10 enterprise repositories</strong>, improving Kubernetes and OpenShift reliability for Fortune 500 customers.',
-    '<strong>Optimized operators and CLI workflows</strong>, cutting deployment time by <strong>66% (45 to 15 minutes)</strong> and speeding up CI/CD.',
-    '<strong>Automated configuration injection pipelines</strong>, removing <strong>80% of manual config errors</strong> and speeding startup by <strong>40%</strong>.',
-    '<strong>Improved container health-probe logic</strong>, reducing false-positive startup failures by <strong>50%</strong> and increasing telemetry accuracy by <strong>30%</strong>.',
-    '<strong>Wrote a 472-line onboarding guide for open-source contributors</strong>, <strong>reducing manual CI intervention by 60%</strong>.',
+    '<strong>Delivered</strong> 50+ merged PRs across 10 repositories using <strong>Go</strong> and <strong>Java</strong>, contributing 7,000+ lines of production-ready code to enterprise business automation ecosystems.',
+    '<strong>Founded</strong> the entire <strong>Helm</strong> charts repository from the ground up, providing a GitOps-ready deployment alternative that simplified infrastructure management for global users.',
+    '<strong>Architected</strong> Kubernetes startup probes within the <strong>Kogito Operator</strong>, reducing container restart failures by <strong>50%</strong> for complex Java-based microservices.',
+    '<strong>Authored</strong> a comprehensive 472-line developer onboarding guide, reducing contributor ramp-up time by <strong>60%</strong> and improving overall team productivity.',
+    '<strong>Contributed</strong> high-impact bug fixes to the <strong>Prometheus Operator</strong> (CNCF), enhancing monitoring reliability for 8,800+ production clusters worldwide.',
+    '<strong>Streamlined</strong> deployment workflows and CLI tools, cutting release cycle times by <strong>66%</strong> and accelerating time-to-market for enterprise automation features.',
+    '<strong>Automated</strong> configuration fetch logic in <strong>Go</strong>, eliminating <strong>80%</strong> of manual setup errors and reducing system startup time by <strong>40%</strong>.',
+    '<strong>Orchestrated</strong> a 587-line refactor to isolate <strong>Quarkus</strong> and <strong>Spring Boot</strong> environment properties, significantly reducing framework-specific deployment friction.',
+    '<strong>Integrated</strong> PostgreSQL and Kafka persistence layers into <strong>Helm</strong> templates, enabling <strong>100%</strong> support for scalable, event-driven enterprise architectures.',
+    '<strong>Centralized</strong> cross-platform CLI builds to include <strong>Windows</strong>, achieving <strong>100%</strong> compatibility across all major developer operating systems.',
   ],
 };
 
