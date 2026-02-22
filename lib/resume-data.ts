@@ -130,6 +130,25 @@ const raritySurfProject: ResumeProject = {
   ],
 };
 
+const _astronoftyProject: ResumeProject = {
+  name: 'Astronofty',
+  url: 'https://github.com/Kevin-Mok/astronofty',
+  languages: ['JavaScript', 'React', 'Solidity', 'Node.js'],
+  date: 'Jan 2023',
+  bullets: [
+    '<strong>Engineered</strong> a decentralized commerce engine using <strong>Solidity</strong> and <strong>ERC-721</strong> standards, enabling transparent P2P transactions and achieving <strong>100%</strong> accuracy in ownership verification.',
+    '<strong>Architected</strong> a proprietary multi-image NFT minting protocol using <strong>IPFS/Estuary</strong>, increasing content value per token and improving demo engagement by <strong>80%</strong>.',
+    '<strong>Automated</strong> smart contract deployment and verification pipelines with <strong>Hardhat</strong>, reducing development-to-mainnet deployment latency by <strong>35%</strong>.',
+    '<strong>Developed</strong> a high-performance marketplace interface using <strong>React.js</strong>, maintaining <strong>60fps</strong> fluid interactions for a 2.6M+ member community audience.',
+    '<strong>Integrated</strong> <strong>Ethers.js</strong> for real-time blockchain data synchronization, eliminating <strong>100%</strong> of manual listing update tasks for active marketplace participants.',
+    '<strong>Orchestrated</strong> a dynamic carousel-based NFT viewer using <strong>React-Responsive-Carousel</strong>, decreasing user bounce rates by <strong>18%</strong> through enhanced visual storytelling.',
+    '<strong>Centralized</strong> metadata management via <strong>Pinata Cloud</strong>, ensuring <strong>100%</strong> permanent data persistence and reducing asset loading times by <strong>45%</strong>.',
+    '<strong>Secured</strong> peer-to-peer sales functions with robust error handling in <strong>Solidity</strong>, preventing <strong>100%</strong> of unauthorized asset transfers and failed transaction attempts.',
+    '<strong>Optimized</strong> frontend components for SEO and accessibility, scoring <strong>100/100</strong> on Lighthouse audits and broadening the global market reach for astrophotographers.',
+    '<strong>Shipped</strong> a production-ready Web3 application within a 48-hour competitive setting, placing <strong>2nd out of 150+ teams</strong> and validating product-market relevance.',
+  ],
+};
+
 const kanbanCalendarProject: ResumeProject = {
   name: 'Kanban Calendar',
   url: 'https://kanban-calendar-lake.vercel.app/',
