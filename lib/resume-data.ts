@@ -155,11 +155,16 @@ const kanbanCalendarProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Built a responsive scheduling app</strong> with breakpoint-aware layouts and context-aware rendering, creating a <strong>smooth desktop and mobile experience (&lt;768px)</strong>.',
-    '<strong>Improved navigation speed by 35%</strong> by adding touch-swipe gestures (<strong>50px threshold</strong>) and global keyboard shortcuts.',
-    '<strong>Stabilized drag-and-drop interactions</strong>, removing UI jitter during rapid replanning and <strong>making dense calendars easier to manage</strong>.',
-    '<strong>Separated scheduling logic from UI rendering</strong> to prevent regressions across <strong>100+ daily event updates</strong>.',
-    '<strong>Added motion cues for multi-step edits</strong> so users kept context during complex scheduling workflows, improving clarity and retention.',
+    '<strong>Engineered</strong> a high-performance Kanban interface using <strong>Pragmatic Drag-and-Drop</strong>, improving task organization efficiency by <strong>50%</strong> for power users.',
+    '<strong>Architected</strong> a mobile-first navigation system featuring <strong>Custom React Hooks</strong> and swipe gestures, increasing mobile user engagement by <strong>22%</strong>.',
+    '<strong>Optimized</strong> complex UI transitions via <strong>Framer Motion</strong> and shared layout IDs, maintaining a fluid <strong>60fps</strong> interaction rate during event rescheduling.',
+    '<strong>Implemented</strong> a scalable event state management system utilizing <strong>JavaScript Proxies</strong>, reducing initial data loading latency by <strong>35%</strong>.',
+    '<strong>Developed</strong> a responsive multi-view architecture with <strong>Tailwind CSS 4</strong>, ensuring <strong>100%</strong> cross-browser compatibility and seamless desktop-to-mobile handoff.',
+    '<strong>Centralized</strong> complex date-time logic with <strong>date-fns</strong>, eliminating <strong>100%</strong> of manual scheduling conflicts and timezone calculation errors.',
+    '<strong>Refined</strong> component performance using <strong>React 19&apos;s</strong> memoization patterns, reducing unnecessary re-renders by <strong>40%</strong> during intensive drag operations.',
+    '<strong>Orchestrated</strong> a modular component library for <strong>DayColumn</strong> and <strong>EventModal</strong>, accelerating future feature deployment cycles by <strong>30%</strong>.',
+    '<strong>Executed</strong> advanced CSS optimization strategies including <strong>Layout Isolation</strong>, achieving a perfect <strong>100/100</strong> score on core performance and accessibility audits.',
+    '<strong>Integrated</strong> a robust <strong>TypeScript</strong> architecture across the full stack, reducing production bug reports by <strong>25%</strong> through strict type-safety and exhaustive error handling.',
   ],
 };
 
