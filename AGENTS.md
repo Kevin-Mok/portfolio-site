@@ -206,6 +206,12 @@ npm run validate-resume-pdfs
 
 - If calibration updates files, include those updates in the same change and rerun verify/validate.
 - Do not commit or push resume-affecting changes until all four commands pass.
+- Enforce this gate with the repository pre-push hook at `.githooks/pre-push`.
+- On a new clone, activate repo hooks once:
+
+```fish
+git config core.hooksPath .githooks
+```
 
 Before major resume edits, read:
 
