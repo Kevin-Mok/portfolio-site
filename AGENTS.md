@@ -85,14 +85,14 @@ For non-trivial tasks (3+ steps, multi-file changes, or architecture decisions):
 
 ## 2) Task Management
 
-1. **Plan First**: Write plan to `tasks/todo.md` with checkable items.
+1. **Plan First**: Write a plan with checkable items in the active ExecPlan (`plans/<task-slug>.md`) or inline for small tasks.
 2. **Verify Plan**: Check in before starting implementation.
 3. **Track Progress**: Mark items complete as you go.
 4. **Explain Changes**: High-level summary at each step.
-5. **Document Results**: Add review section to `tasks/todo.md`.
-6. **Capture Lessons**: Update `tasks/lessons.md` after corrections.
+5. **Document Results**: Add a review section to the active ExecPlan or final task summary.
+6. **Capture Lessons**: If the project uses `tasks/lessons.md`, update it after corrections.
 
-> **Note:** These are guidelines — `tasks/` files may not exist in all projects. Adapt to project structure.
+> **Note:** These are guidelines — adapt to project structure and active repository conventions.
 
 ---
 
@@ -197,7 +197,7 @@ Output format:
 ### 4.1 Read Before You Write
 
 - Read relevant files before modifying (use Read tool, not assumptions).
-- Check project roadmap/TODO for current priorities.
+- Check project roadmap, active plans, and relevant docs for current priorities.
 - Infer patterns from existing code before introducing new ones.
 
 ### 4.2 Make Changes in Small Commits

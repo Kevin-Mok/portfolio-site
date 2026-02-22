@@ -22,20 +22,13 @@ Rules here can tighten or specialize shared policy, but cannot relax it.
 
 ## Required Reading
 
-- Start with `docs/TODO.md` to confirm active scope.
+- Start with the user request and relevant docs for the touched area.
 - If an active ExecPlan exists for the task (check `plans/`), read it fully and treat it as the active spec.
 - For non-trivial tasks, follow `.agent/PLANS.md` requirements while maintaining the task's ExecPlan.
 
 ---
 
 ## Critical Path Rules
-
-### Canonical TODO path (Linux case-sensitive)
-
-The canonical TODO file is exactly `docs/TODO.md` (uppercase).
-
-- Never create `docs/todo.md`.
-- If lowercase `docs/todo.md` appears, treat it as a bug and fix it.
 
 ### Commit and push policy
 
@@ -191,4 +184,3 @@ Before major resume edits, read:
 
 - Error messages must be actionable and context-rich.
 - Prefer clear failure surfaces over silent fallbacks.
-

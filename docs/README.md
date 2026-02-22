@@ -1,11 +1,7 @@
 # Documentation Index
 
-`docs/TODO.md` is the canonical project task log and must remain at this exact path.
-
 ## Folder Layout
 
-- `docs/TODO.md`
-  - Active scope and completed task history.
 - `docs/resume/`
   - Resume feature docs, architecture, maintenance, and PDF layout baseline files.
 - `docs/specs/`
@@ -29,5 +25,6 @@
 
 ## Notes
 
-- Legacy root `todo.md` has been archived to `docs/archive/ROOT_TODO_LEGACY.md`.
+- Historical task log has been archived to `docs/archive/TODO_RETIRED_2026-02-22.md`.
+- The repository no longer uses `docs/TODO.md` as a required task tracker.
 - Keep future docs grouped by purpose under the folders above.
