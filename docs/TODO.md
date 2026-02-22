@@ -1,9 +1,10 @@
 # TODO
 
-Last updated: 2026-02-21 23:47 UTC
+Last updated: 2026-02-22 00:00 UTC
 
 ## What's Done
 
+- [x] 2026-02-22 00:00 UTC - Remove deprecated `general` resume variant from `lib/resume-data.ts` (and `.resume-variant-general` print overrides), delete legacy `public/resume/kevin-mok-resume.pdf`, and update resume docs/prompts/smoke steps to the 10 active variants.
 - [x] 2026-02-21 23:47 UTC - Repoint portfolio bullet selections in `aws` and `aws-web-dev` resume variants to non-Railway evidence (`Cloudflare R2`/performance bullets) after removing Railway claims from `portfolioSiteProject`, and reconfirm `build`, `verify:resume-layout`, and `validate-resume-pdfs` all pass.
 - [x] 2026-02-21 23:29 UTC - Refresh resume variant project/bullet mixes after portfolio bullet updates in `lib/resume-data.ts` (including `general`, `web-dev`, `aws`, `aws-web-dev`, `web-dev-django`, `it-support`, and `it-support-aws`) and recalibrate `.resume-variant-web-dev-django` `--resume-print-top-offset` in `app/styles/13-resume-latex.css` so `build`, `verify:resume-layout`, and `validate-resume-pdfs` all pass.
 - [x] 2026-02-21 21:53 UTC - Make `npm run generate-resume-pdfs` incremental by caching per-variant rendered HTML fingerprints plus a global resume-layout fingerprint, regenerating only changed/missing variants, and persisting cache metadata in `.next/cache/resume-pdf-manifest.json`.

@@ -6,13 +6,12 @@ Source of truth:
 - `lib/resume-data.ts` (`resumeVariants`)
 - `scripts/lib/resume-pdf-variants.mjs` (`resumePdfVariants`)
 
-Canonical active variants: 11
+Canonical active variants: 10
 
 ## Positioning Matrix
 
 | Variant ID | Dropdown Label | PDF File | Purpose | What it is trying to sell |
 |---|---|---|---|---|
-| `general` | General Resume | `kevin-mok-resume.pdf` | Balanced all-around software resume | Broad software engineer who can ship product and handle backend/cloud fundamentals. |
 | `web-dev` | Web Development | `kevin-mok-resume-web-dev.pdf` | Frontend/full-stack applications | TypeScript/React/Node developer who can build and ship web features quickly. |
 | `aws` | AWS/Cloud | `kevin-mok-resume-aws.pdf` | Infrastructure and cloud operations | Cloud/platform engineer focused on AWS, Kubernetes, Terraform, uptime, and deployment reliability. |
 | `python` | Python | `kevin-mok-resume-python.pdf` | Python-centric backend work | Python/Django engineer with backend architecture and data-heavy app experience. |

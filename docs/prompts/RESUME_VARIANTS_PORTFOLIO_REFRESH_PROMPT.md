@@ -25,7 +25,7 @@ const portfolioSiteProject: ResumeProject = {
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Engineered</strong> an automated resume generation pipeline using <strong>Node.js</strong>, eliminating <strong>100%</strong> of manual maintenance for <strong>11</strong> role-specific resume variants.',
+    '<strong>Engineered</strong> an automated resume generation pipeline using <strong>Node.js</strong>, eliminating <strong>100%</strong> of manual maintenance for <strong>10</strong> role-specific resume variants.',
     '<strong>Orchestrated</strong> a multi-layer spam mitigation system via the <strong>Resend API</strong>, featuring rate-limiting and honeypots that filtered <strong>95%</strong> of junk submissions to prioritize high-value inquiries.',
     '<strong>Architected</strong> a dual-mode layout system using <strong>Framer Motion</strong>, delivering a fluid <strong>60fps</strong> tiled desktop experience and a high-engagement parallax mobile interface.',
     '<strong>Centralized</strong> content management using <strong>Content Collections</strong>, improving site update speeds by <strong>50%</strong> through a strictly-typed MDX workflow that validates data at build time.',
@@ -58,7 +58,6 @@ Goal:
 Update resume variants so changed portfolio bullets are reflected where relevant, and replace weaker or less-relevant project selections/bullets when stronger role-fit evidence exists.
 
 Canonical variant IDs (must remain unchanged):
-- general
 - web-dev
 - aws
 - python
@@ -121,7 +120,7 @@ If any acceptance check fails, update diffs, rerun checks, and report final pass
 
 ## Validation Checklist
 
-- All 11 canonical variant IDs remain present and unchanged.
+- All 10 canonical variant IDs remain present and unchanged.
 - Updated portfolio bullets are reflected where they improve role relevance.
 - Weaker or less-relevant projects/bullets are replaced only when a stronger role-fit alternative exists.
 - No invented or inflated claims beyond attached source evidence.

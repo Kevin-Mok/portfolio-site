@@ -46,8 +46,8 @@ Scope constraints:
 - Do not modify unrelated sections.
 
 Per-file requirements:
-- Keep all 11 variant subsections:
-  general, web-dev, aws, python, aws-web-dev, aws-python, web-dev-django, it-support, it-support-aws, sales, call-centre
+- Keep all 10 variant subsections:
+  web-dev, aws, python, aws-web-dev, aws-python, web-dev-django, it-support, it-support-aws, sales, call-centre
 - Exactly 5 bullets per variant.
 - One sentence per bullet.
 - Bullets can be medium-long (resume style), not short fragments.
@@ -64,7 +64,7 @@ Output requirements:
 - One diff per modified file.
 - Before diffs, include a short validation checklist:
   1) files processed in this pass,
-  2) 11 variants confirmed per file,
+  2) 10 variants confirmed per file,
   3) 5 bullets per variant confirmed,
   4) key metrics used per file,
 ```
@@ -102,8 +102,8 @@ Scope constraints:
 - Do not modify unrelated sections.
 
 Per-file requirements:
-- Keep all 11 variant subsections:
-  general, web-dev, aws, python, aws-web-dev, aws-python, web-dev-django, it-support, it-support-aws, sales, call-centre
+- Keep all 10 variant subsections:
+  web-dev, aws, python, aws-web-dev, aws-python, web-dev-django, it-support, it-support-aws, sales, call-centre
 - Exactly 5 bullets per variant.
 - One sentence per bullet.
 - Bullets can be medium-long (resume style), not short fragments.
@@ -120,7 +120,7 @@ Output requirements:
 - One diff per modified file.
 - Before diffs, include a short validation checklist:
   1) files processed in this pass,
-  2) 11 variants confirmed per file,
+  2) 10 variants confirmed per file,
   3) 5 bullets per variant confirmed,
   4) key metrics used per file,
   5) claims softened due to missing numeric proof.

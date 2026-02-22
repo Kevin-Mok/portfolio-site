@@ -46,10 +46,9 @@ Restructure each resume variant in lib/resume-data.ts so each variant sells the 
 Primary source rule:
 For each attached project file, read:
 ## Resume-ready points by variant
-and its 11 variant subsections.
+and its 10 variant subsections.
 
 Variant IDs (must remain unchanged):
-- general
 - web-dev
 - aws
 - python
@@ -115,7 +114,7 @@ If any acceptance check fails:
 
 ## Validation Checklist
 
-- `lib/resume-data.ts` keeps all 11 canonical variant IDs and valid TypeScript structure.
+- `lib/resume-data.ts` keeps all 10 canonical variant IDs and valid TypeScript structure.
 - Each variant uses selected high-impact bullets aligned to `RESUME_VARIANT_POSITIONING.md`.
 - No invented metrics/claims beyond attached source evidence.
 - One-page fit is preserved across variants.

@@ -5,7 +5,6 @@ This document tracks all README files updated in this session.
 ## README files updated
 
 ### WIP
-- `/home/kevin/coding/portfolio-site/README.md`
 
 ### To-Do
 - `/home/kevin/coding/kanban-calendar/README.md`
@@ -19,6 +18,7 @@ This document tracks all README files updated in this session.
 
 ### Done
 - `/home/kevin/coding/nomar-stocks/README.md`
+- `/home/kevin/coding/portfolio-site/README.md`
  
 ## Additional non-README file updated
 

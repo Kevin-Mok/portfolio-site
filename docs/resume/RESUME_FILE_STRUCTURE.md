@@ -56,8 +56,7 @@ portfolio-site/
 │
 ├── public/
 │   ├── resume/                              ← NEW: PDF directory
-│   │   ├── kevin-mok-resume.pdf             (general)
-│   │   ├── kevin-mok-resume-web-dev.pdf     (web dev focused)
+│   │   ├── kevin-mok-resume-web-dev.pdf     (default, web dev focused)
 │   │   ├── kevin-mok-resume-aws.pdf         (AWS focused)
 │   │   ├── kevin-mok-resume-python.pdf      (Python focused)
 │   │   ├── kevin-mok-resume-aws-web-dev.pdf (AWS + Web Dev)
@@ -268,7 +267,7 @@ app/styles/
 ```
 public/
 ├── resume/                           (PDFs)
-│   ├── kevin-mok-resume.pdf          (default)
+│   ├── kevin-mok-resume-web-dev.pdf  (default)
 │   ├── kevin-mok-resume-*.pdf        (variants)
 │   └── (40+ files total)
 └── icons/resume/                     (SVG icons)

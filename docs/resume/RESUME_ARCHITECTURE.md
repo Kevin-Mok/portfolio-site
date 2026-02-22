@@ -299,8 +299,7 @@ Ensures readability even if CDN is unavailable.
 
 ```
 public/resume/
-├── kevin-mok-resume.pdf                    (default)
-├── kevin-mok-resume-web-dev.pdf
+├── kevin-mok-resume-web-dev.pdf            (default)
 ├── kevin-mok-resume-aws.pdf
 ├── kevin-mok-resume-python.pdf
 ├── kevin-mok-resume-aws-web-dev.pdf
@@ -333,7 +332,6 @@ const [selectedPDF, setSelectedPDF] = useState(pdfVariants[0].value);
 
 ```tsx
 const pdfVariants = [
-  { label: 'General Resume', value: 'kevin-mok-resume.pdf' },
   { label: 'Web Development', value: 'kevin-mok-resume-web-dev.pdf' },
   // ... more variants
 ];

@@ -374,12 +374,6 @@
 }
 
 /* Per-variant print scaling tuned for one-page fill on US Letter */
-.resume-variant-general {
-  --resume-print-scale: 1.125;
-  --resume-print-leading: 0.984;
-  --resume-print-top-offset: 30pt;
-}
-
 .resume-variant-web-dev {
   --resume-print-scale: 1.107;
   --resume-print-leading: 1.019;

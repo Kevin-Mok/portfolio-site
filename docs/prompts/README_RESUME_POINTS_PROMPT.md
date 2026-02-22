@@ -45,7 +45,6 @@ Output format requirements:
 Content requirements:
 - Add a section titled exactly: `## Resume-ready points by variant`
 - Under that section, provide one short bullet per variant id:
-  - general
   - web-dev
   - aws
   - python
@@ -70,7 +69,7 @@ Editing constraints:
 
 Before final diffs:
 - Briefly list any unsupported claims you removed, softened, or converted from numeric to qualitative wording.
-- Confirm all 11 variants are represented in each project's new section.
+- Confirm all 10 variants are represented in each project's new section.
 - Confirm each bullet is one sentence and within the length constraint.
 ```
 

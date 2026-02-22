@@ -120,7 +120,6 @@ All content was preserved and converted from Hugo shortcodes to TypeScript struc
 **All 40+ PDF variants migrated**, including:
 
 #### Primary Resumes
-- `kevin-mok-resume.pdf` (general)
 - `kevin-mok-resume-web-dev.pdf`
 - `kevin-mok-resume-colored.pdf`
 

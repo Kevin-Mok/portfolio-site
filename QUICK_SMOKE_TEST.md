@@ -263,8 +263,8 @@ Expected results:
 - In mobile Resume section CTA, `PDF` link opens `/resume/kevin-mok-resume-web-dev.pdf`.
 
 Failure modes / debugging notes:
-- If desktop defaults to general resume, inspect `lib/resume-data.ts` (`DEFAULT_RESUME_VARIANT_ID`) and `components/tiles/content/ResumeContent.tsx` variant initialization.
-- If mobile PDF still opens general resume, inspect `components/layout/parallax/sections/ParallaxResumeCtaSection.tsx` link target.
+- If desktop no longer defaults to the web-dev resume, inspect `lib/resume-data.ts` (`DEFAULT_RESUME_VARIANT_ID`) and `components/tiles/content/ResumeContent.tsx` variant initialization.
+- If mobile PDF no longer opens web-dev resume, inspect `components/layout/parallax/sections/ParallaxResumeCtaSection.tsx` link target.
 
 ## T8 - Build-time resume PDF generation
 
@@ -277,7 +277,7 @@ npm run build
 ```
 
 ```bash
-for f in public/resume/kevin-mok-resume.pdf public/resume/kevin-mok-resume-web-dev.pdf public/resume/kevin-mok-resume-sales.pdf; do echo "--- $f"; pdfinfo "$f" | rg "Page size|CreationDate"; done
+for f in public/resume/kevin-mok-resume-web-dev.pdf public/resume/kevin-mok-resume-sales.pdf public/resume/kevin-mok-resume-aws.pdf; do echo "--- $f"; pdfinfo "$f" | rg "Page size|CreationDate"; done
 ```
 
 ```bash
@@ -285,7 +285,7 @@ pdffonts public/resume/kevin-mok-resume-web-dev.pdf
 ```
 
 Expected results:
-- Build completes and logs `Generated 11 resume PDFs`.
+- Build completes and logs a resume PDF generation summary for 10 active variants.
 - Generated files exist under `public/resume/` with current timestamps.
 - PDFs report `Page size: 612 x 792 pts (letter)`.
 - `pdffonts` output includes `CMUSerif-*` fonts.

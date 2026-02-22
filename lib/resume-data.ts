@@ -52,7 +52,6 @@ export interface ResumeSectionTitles {
 }
 
 export type ResumeVariantId =
-  | 'general'
   | 'web-dev'
   | 'aws'
   | 'python'
@@ -383,16 +382,6 @@ const pythonSkills = [
   'C',
 ];
 
-const generalBoldSkills = [
-  'JavaScript',
-  'React',
-  'Python',
-  'Django',
-  'Git',
-  'Linux',
-  'Command Line',
-];
-
 const webDevBoldSkills = [
   'TypeScript',
   'JavaScript',
@@ -419,78 +408,6 @@ const defaultSectionTitles: ResumeSectionTitles = {
 export const DEFAULT_RESUME_VARIANT_ID: ResumeVariantId = 'web-dev';
 
 export const resumeVariants: ResumeVariantDefinition[] = [
-  {
-    id: 'general',
-    label: 'General Resume',
-    fileName: 'kevin-mok-resume.pdf',
-    sectionTitles: {
-      ...defaultSectionTitles,
-      projects: 'Projects',
-    },
-    references:
-      'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
-    skillsBold: generalBoldSkills,
-    resume: {
-      contact: sharedContact,
-      projects: [
-        {
-          ...portfolioSiteProject,
-          bullets: [
-            portfolioSiteProject.bullets[0],
-            portfolioSiteProject.bullets[2],
-            portfolioSiteProject.bullets[6],
-          ],
-        },
-        {
-          ...spotifyVisualizedProject,
-          bullets: [
-            spotifyVisualizedProject.bullets[0],
-            spotifyVisualizedProject.bullets[1],
-            spotifyVisualizedProject.bullets[4],
-          ],
-        },
-        {
-          ...awsServerProject,
-          bullets: [awsServerProject.bullets[1], awsServerProject.bullets[2], awsServerProject.bullets[3]],
-        },
-      ],
-      experience: [
-        {
-          ...redHatCloudExperience,
-          bullets: [
-            redHatCloudExperience.bullets[0],
-            redHatCloudExperience.bullets[1],
-            redHatCloudExperience.bullets[2],
-            redHatCloudExperience.bullets[3],
-          ],
-        },
-      ],
-      skills: [
-        'JavaScript',
-        'React',
-        'Python',
-        'Django',
-        'Node.js',
-        'PostgreSQL',
-        'MongoDB',
-        'Bash',
-        'Git',
-        'Linux',
-        'Command Line',
-        'Go(Lang)',
-        'AWS',
-        'Kubernetes',
-        'Terraform',
-        'Docker',
-        'Compose',
-        'Jenkins',
-        'Groovy',
-        'Solidity',
-        'C',
-      ],
-      education: [educationGeneral],
-    },
-  },
   {
     id: 'web-dev',
     label: 'Web Development',

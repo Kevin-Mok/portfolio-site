@@ -51,7 +51,7 @@ Any changes here automatically appear on:
 1. Navigate to: /resume
 2. Press: Cmd+P (Mac) or Ctrl+P (Windows)
 3. Click: "Save as PDF"
-4. Save with correct filename (e.g., kevin-mok-resume.pdf)
+4. Save with correct filename (e.g., kevin-mok-resume-web-dev.pdf)
 5. Replace: public/resume/old-filename.pdf
 6. Commit: "chore: regenerate resume PDFs from updated content"
 ```

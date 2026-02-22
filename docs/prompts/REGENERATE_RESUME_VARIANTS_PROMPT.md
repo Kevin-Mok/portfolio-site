@@ -31,7 +31,6 @@ Goal:
 Regenerate every resume variant in lib/resume-data.ts using the revised "Resume-ready points by variant" bullets, selecting the strongest project points for each target role while preserving one-page US Letter output.
 
 Canonical variant IDs (must remain unchanged):
-- general
 - web-dev
 - aws
 - python
@@ -101,7 +100,7 @@ If any check fails, update diffs, rerun checks, and report final passing status.
 
 ## Validation Checklist
 
-- All 11 canonical variant IDs remain present and unchanged.
+- All 10 canonical variant IDs remain present and unchanged.
 - Each variant reflects the strongest revised bullets for its target role.
 - No invented or inflated claims beyond source evidence.
 - One-page and layout validation checks are run and passing.

@@ -75,8 +75,7 @@ A complete LaTeX-styled resume system was added to the portfolio site. The resum
 ## PDF Variants Available
 
 ### Primary Resumes
-- `kevin-mok-resume.pdf` - General resume (default)
-- `kevin-mok-resume-web-dev.pdf` - Web Development focused
+- `kevin-mok-resume-web-dev.pdf` - Web Development focused (default)
 
 ### Specialized Variants
 - `kevin-mok-resume-aws.pdf` - AWS/Cloud focused
