@@ -117,11 +117,16 @@ const raritySurfProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
   date: 'Mar 2025',
   bullets: [
-    '<strong>Built automated NFT research tools</strong> that turned blockchain data into trading signals and <strong>cut market analysis time by 80%</strong>.',
-    '<strong>Scaled backend services for 3,000+ concurrent requests</strong> with zero downtime during peak mints and <strong>kept API response times under 200ms</strong>.',
-    '<strong>Cut ranking-page load time by 50%</strong> by adding caching and paginated fetching, raising <strong>Lighthouse performance to 95+</strong>.',
-    '<strong>Launched real-time WebSocket alerts</strong> that delivered instant market updates and drove an <strong>80% increase in daily active users</strong>.',
-    '<strong>Standardized CI/CD across frontend, backend, and Discord bots</strong>, <strong>reducing release drift by 40%</strong> and making rollouts more reliable.',
+    '<strong>Architected</strong> a custom file-locking concurrency control system in <strong>Node.js</strong>, ensuring <strong>100% data integrity</strong> and preventing race conditions during high-frequency parallel database writes.',
+    '<strong>Orchestrated</strong> a multi-threaded metadata ingestion engine using <strong>p-queue</strong> and <strong>Helia</strong>, improving data synchronization speed by <strong>50%</strong> across distributed IPFS nodes.',
+    '<strong>Implemented</strong> batch-processing transaction logic with <strong>Prisma</strong>, reducing database contention and overhead by <strong>35%</strong> during large-scale NFT metadata updates.',
+    '<strong>Developed</strong> a sophisticated rarity ranking algorithm using <strong>TypeScript</strong> and <strong>Lodash</strong>, providing users with real-time asset valuation that increased platform engagement by <strong>22%</strong>.',
+    '<strong>Engineered</strong> a high-performance RESTful API via <strong>Express</strong>, maintaining sub-second response times for complex trait-based queries and reducing loading latency by <strong>35%</strong>.',
+    '<strong>Designed</strong> an automated error-recovery system with exponential backoff in <strong>TypeScript</strong>, eliminating <strong>100% of manual intervention</strong> requirements for failed network requests.',
+    '<strong>Optimized</strong> relational data schemas using <strong>PostgreSQL</strong> and <strong>Prisma</strong>, accelerating query execution for price-floor calculations by <strong>40%</strong> through strategic indexing.',
+    '<strong>Centralized</strong> cross-marketplace sales tracking by integrating the <strong>Magic Eden API</strong>, providing a unified data view that reduced user search hesitation across <strong>3 membership tiers</strong>.',
+    '<strong>Automated</strong> end-to-end data pipelines from ingestion to rarity scoring, reducing operational overhead by <strong>15+ hours per week</strong> through staggered background process execution.',
+    '<strong>Standardized</strong> data normalization protocols for heterogeneous NFT traits, ensuring <strong>100% compatibility</strong> across diverse collections and significantly improving platform scalability.',
   ],
 };
 
