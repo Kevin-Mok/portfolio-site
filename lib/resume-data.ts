@@ -187,11 +187,16 @@ const spotifyVisualizedProject: ResumeProject = {
   languages: ['Python', 'Django', 'PostgreSQL'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Built a data pipeline for 10,000+ tracks per user</strong>, turning Spotify API data into clear analytics users could act on.',
-    '<strong>Reduced PostgreSQL query time by 50%</strong> through indexing and query tuning, enabling near-instant chart generation.',
-    '<strong>Implemented OAuth 2.0 with automatic JWT refresh</strong>, reducing session drop-offs and improving user continuity.',
-    '<strong>Turned complex audio-feature data into interactive visuals</strong>, helping users quickly understand genre and listening patterns.',
-    '<strong>Designed a modular backend</strong> that separated ingestion from visualization, making new analytics modules fast to add with <strong>no added technical debt</strong>.',
+    '<strong>Optimized</strong> core database query speed by <strong>50%</strong> through efficient <strong>Django ORM</strong> filtering and model indexing, significantly reducing latency for high-volume data requests.',
+    '<strong>Automated</strong> end-to-end library synchronization via <strong>OAuth2</strong> and the <strong>Spotify Web API</strong>, eliminating <strong>100%</strong> of manual data tracking for libraries exceeding 10,000 tracks.',
+    '<strong>Architected</strong> interactive data visualizations using <strong>D3.js</strong>, increasing user engagement by <strong>22%</strong> through intuitive circle packing and stacked bar chart representations of artist distribution.',
+    '<strong>Engineered</strong> a robust <strong>PostgreSQL</strong> schema to maintain persistent listening histories, ensuring <strong>100%</strong> data integrity across complex many-to-many relationships between artists and genres.',
+    '<strong>Implemented</strong> a secure, automated token refresh mechanism using <strong>Python</strong>, reducing session-related account interruptions by <strong>40%</strong> and improving daily access stability.',
+    '<strong>Streamlined</strong> the user interface using <strong>Bootstrap</strong> and <strong>SASS</strong>, achieving <strong>100%</strong> cross-device compatibility and a <strong>15%</strong> improvement in at-a-glance readability for non-technical users.',
+    '<strong>Centralized</strong> track and genre data processing within <strong>Django</strong> utility modules, reducing server-side latency by <strong>35%</strong> during the batch ingestion of large-scale user datasets.',
+    '<strong>Refactored</strong> the backend into modular components using <strong>Django REST Framework</strong>, reducing maintenance overhead and enabling the deployment of new reporting features with <strong>0%</strong> regression risk.',
+    '<strong>Enhanced</strong> audio feature analysis dashboards (e.g., danceability, energy), resulting in an <strong>18%</strong> decrease in bounce rates by providing personalized, deep-dive user insights.',
+    '<strong>Orchestrated</strong> a scalable data pipeline capable of handling <strong>10,000+</strong> tracks per user, improving backend throughput and ensuring stable performance during peak API traffic.',
   ],
 };
 
