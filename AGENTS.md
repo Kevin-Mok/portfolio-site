@@ -184,6 +184,29 @@ Resume constraints:
 - After any resume content change, recalibrate per-variant page fill (`--resume-print-scale` in `app/styles/13-resume-latex.css`) so each resume variant fills a single US Letter page.
 - Run `npm run validate-resume-pdfs` after regeneration and resolve all failures before considering the resume change done.
 
+Mandatory resume pre-commit gate:
+
+- For any change that affects resume output (`lib/resume-data.ts`, `app/styles/13-resume-latex.css`, `components/tiles/content/resume/*`, `components/tiles/content/ResumeContent.tsx`, `app/resume/page.tsx`, or resume generation/validation scripts), run these commands in order before commit/push:
+
+```fish
+npm run build
+```
+
+```fish
+npm run calibrate:resume-layout
+```
+
+```fish
+npm run verify:resume-layout
+```
+
+```fish
+npm run validate-resume-pdfs
+```
+
+- If calibration updates files, include those updates in the same change and rerun verify/validate.
+- Do not commit or push resume-affecting changes until all four commands pass.
+
 Before major resume edits, read:
 
 - `docs/resume/README_RESUME.md`
