@@ -1,239 +1,292 @@
 # AGENTS.md
 
-Project-specific instructions for AI assistants working in the `portfolio-site` codebase.
+Reusable instructions for AI assistants.
 
-> Base rules live in `AGENTS-BASE.md`.
-> This file adds strict repo-local rules and does not loosen base constraints.
+Use this as the shared cross-repository baseline, then add repository-specific constraints in `AGENTS.repo.md`.
+
+---
+
+## Required Reading and Precedence
+
+Apply instruction layers in this order:
+
+1. `AGENTS.md` (this file, shared baseline)
+2. `AGENTS.repo.md` (repository-specific strict additions)
+3. `AGENTS.override.local.md` (optional local strict additions; untracked)
+
+Precedence rules:
+
+- Lower layers may only add stricter constraints or local specialization.
+- Lower layers must never relax safety or quality requirements from higher layers.
+- Explicit user/developer instructions in the active session take precedence.
+
+For non-trivial tasks (3+ steps, multi-file changes, or architecture decisions):
+
+- Use Plan Mode when available.
+- Create and maintain an ExecPlan per `.agent/PLANS.md` (or `PLANS.md` where that is canonical).
+- Store ExecPlans at `plans/<task-slug>.md` unless instructed otherwise.
 
 ---
 
 ## 0) Prime Directive
 
-- Do not break production behavior unless explicitly asked.
-- Prefer small, safe, reversible changes.
-- Default to minimal diffs and avoid drive-by refactors.
+- **Do not break production behavior** unless explicitly asked.
+- Prefer **small, safe, reversible** changes.
+- Default to minimal diffs — avoid "drive-by refactors" in feature commits.
+- **Surgical precision** — touch only what is needed. Don't remove comments you don't understand, don't clean up orthogonal code, don't delete things that seem unused without asking.
 
 ---
 
-## 1) Critical Path Rules
+## 1) Workflow Orchestration
 
-### Canonical TODO path (Linux case-sensitive)
+### 1.1 Plan Mode Default
 
-The canonical TODO file is exactly `docs/TODO.md` (uppercase).
+- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions).
+- If something goes sideways, STOP and re-plan immediately — don't keep pushing.
+- Use plan mode for verification steps, not just building.
+- Write detailed specs upfront to reduce ambiguity.
 
-- Never create `docs/todo.md`.
+### 1.2 Subagent Strategy
 
-If lowercase `docs/todo.md` appears anywhere, treat it as a bug and fix it.
+- Use subagents liberally to keep main context window clean.
+- Offload research, exploration, and parallel analysis to subagents.
+- For complex problems, throw more compute at it via subagents.
+- One task per subagent for focused execution.
 
-### Root + nested instruction precedence
+### 1.3 Self-Improvement Loop
 
-- Root `AGENTS.md` always applies.
-- Nested `AGENTS.md` files can only add stricter local rules.
-- Local rules never override root/base safety constraints.
+- After ANY correction from the user: update `tasks/lessons.md` with the pattern.
+- Write rules for yourself that prevent the same mistake.
+- Ruthlessly iterate on these lessons until mistake rate drops.
+- Review lessons at session start for relevant project.
 
----
+### 1.4 Verification Before Done
 
-## 2) Workflow
+- Never mark a task complete without proving it works.
+- Diff behavior between main and your changes when relevant.
+- Ask yourself: "Would a staff engineer approve this?"
+- Run tests, check logs, and demonstrate correctness.
 
-### Read before write
+### 1.5 Demand Elegance (Balanced)
 
-- Start with `docs/TODO.md` to confirm active scope.
-- Skim relevant docs in `docs/` and nearby code before editing.
-- Infer intent from existing patterns when requirements are implicit.
+- For non-trivial changes: pause and ask "is there a more elegant way?"
+- If a fix feels hacky: "Knowing everything I know now, implement the elegant solution."
+- Skip this for simple, obvious fixes — don't over-engineer.
+- Challenge your own work before presenting it.
 
-### Keep changes focused
+### 1.6 Autonomous Bug Fixing
 
-- One change, one intent.
-- Avoid unrelated cleanup in feature work.
-- Use follow-up commits for refactors.
-
-### Update docs in the same change
-
-If behavior changes, docs must change immediately.
-
-- Update setup/run/test notes for new workflows.
-- Document gotchas and risks when non-obvious.
-
-### Commit + push policy
-
-- When an agent creates a commit, it must push that commit in the same task unless the user explicitly says not to push yet.
-- Default push target is `origin` on the active branch (for `main`, use `git push origin main`).
-- Commit message first line (subject) should be at most 80 characters.
-- Document all meaningful changes in the commit message body instead of overloading the subject line.
+- When given a bug report: just fix it. Don't ask for hand-holding.
+- Point at logs, errors, failing tests — then resolve them.
+- Zero context switching required from the user.
+- Go fix failing CI tests without being told how.
 
 ---
 
-## 3) Optional Feature Docs
+## 2) Task Management
 
-Do not require per-feature docs in `docs/claude/` for normal changes.
+1. **Plan First**: Write plan to `tasks/todo.md` with checkable items.
+2. **Verify Plan**: Check in before starting implementation.
+3. **Track Progress**: Mark items complete as you go.
+4. **Explain Changes**: High-level summary at each step.
+5. **Document Results**: Add review section to `tasks/todo.md`.
+6. **Capture Lessons**: Update `tasks/lessons.md` after corrections.
 
-- Only create/update `docs/claude/<feature-slug>/` when explicitly requested.
-- Keep feature slugs kebab-case when those docs are used.
-- Prefer root `QUICK_SMOKE_TEST.md` + `docs/TODO.md` as the default documentation path.
-
-### Smoke test formatting rules
-
-- Each shell command in its own code block.
-- Each Discord command in its own code block.
-- Explicit expected results.
-- Include failure modes and where to debug.
+> **Note:** These are guidelines — `tasks/` files may not exist in all projects. Adapt to project structure.
 
 ---
 
-## 4) Repo-Wide Smoke Gate
+## 3) Problem-Solving Approach
 
-Root `QUICK_SMOKE_TEST.md` is the quick validation reference.
+For non-trivial tasks, use recursive decomposition.
 
-- Keep runtime fast (target 15-25 minutes).
+### 3.1 Assumption Surfacing
 
----
-
-## 5) Repo Commands (`portfolio-site`)
-
-### Shell preference
-
-- Always provide shell commands in Fish syntax by default.
-- Use `fish` fenced code blocks for shell snippets unless a different shell is explicitly requested.
-- If Bash syntax is required, label it explicitly.
-
-### Setup
-
-```fish
-npm install
-```
-
-### Running
-
-```fish
-npm run cleanup
-```
-
-```fish
-npm run dev
-```
-
-### Quality checks
-
-```fish
-npm run typecheck
-```
-
-```fish
-npm run lint
-```
-
-### Build
-
-```fish
-npm run build
-```
-
-Dev server URL:
+Before implementation, explicitly state assumptions:
 
 ```text
-http://localhost:3000
+My assumptions:
+1. [Assumption about requirements]
+2. [Assumption about existing behavior]
+3. [Assumption about scope]
+
+Proceeding with implementation. Let me know if any assumptions are wrong.
 ```
+
+### 3.2 Confusion Management
+
+When encountering inconsistencies or unclear requirements:
+
+1. **STOP** — don't push through confusion.
+2. **Name it** — "I'm confused because X says Y but Z suggests W."
+3. **Wait** — ask for clarification before proceeding.
+4. **Never assume** — guessing leads to wasted work and bugs.
+
+### 3.3 Push Back When Warranted
+
+You are not a yes-machine. When you see problems:
+
+- Point out issues directly: "This approach has a problem: [specific issue]."
+- Propose alternatives: "Instead, we could [alternative], which avoids [issue]."
+- Accept override: if the user insists, proceed with their choice.
+- Don't be sycophantic — "Of course!" to bad ideas helps no one.
+
+### Process (Recursive Decomposition)
+
+1. **Decompose** — break the problem into independent subcomponents. Identify top-level structure first.
+2. **Process separately** — address each subcomponent as if invoking a specialized expert.
+3. **Recurse if needed** — if a part is still too complex, break it further and re-process.
+4. **Preserve intermediate work** — reference partial conclusions and refinements.
+5. **Integrate** — synthesize all parts into a unified solution. Avoid unsubstantiated leaps.
+
+### Strict Rules
+
+- Do NOT attempt single-pass answers for complex tasks.
+- Pause and refine ambiguous/incomplete parts before advancing.
+- Prioritize structure and verification over speed.
+- For integration decisions, consider multiple perspectives (user experience, code maintainability, existing patterns).
+
+### Core Principles
+
+- **Simplicity First**: make every change as simple as possible. Impact minimal code.
+- **No Laziness**: find root causes. No temporary fixes. Senior developer standards.
+- **Minimal Impact**: changes should only touch what's necessary. Avoid introducing bugs.
+
+### Atomic Reasoning Structure
+
+For tasks requiring precise, verifiable outputs, use atomic decomposition:
+
+```text
+<atomic_context>
+[Role/persona + background knowledge + persistent rules]
+</atomic_context>
+
+<atomic_task>
+[Single, clear objective. One focused goal only.]
+</atomic_task>
+
+<atomic_constraints>
+- [Hard limits, formats, verification rules]
+- [e.g., No hallucinations; max length X; must match existing patterns]
+</atomic_constraints>
+
+<atomic_variables>
+{{variable1}}: [description or value]
+{{variable2}}: [etc.]
+</atomic_variables>
+
+<atomic_process>
+1. Decompose into 3-8 atomic sub-questions/steps (independent where possible)
+2. Solve each atom individually with high accuracy
+3. Verify each atom's output against constraints
+4. Integrate into unified solution (resolve dependencies, synthesize)
+5. Recurse on any unresolved atom if needed
+</atomic_process>
+```
+
+Output format:
+
+- Atomic decomposition list (brief bullets)
+- Solved atoms (numbered)
+- Final synthesized solution
 
 ---
 
-## 6) Architecture & Conventions
+## 4) Workflow Principles
 
-### Stack
+### 4.1 Read Before You Write
 
-- Next.js 15.5.4 App Router
-- TypeScript strict mode
-- Tailwind CSS v4
-- Modular CSS in `app/styles/`
-- React Context for app-level UI/navigation state
+- Read relevant files before modifying (use Read tool, not assumptions).
+- Check project roadmap/TODO for current priorities.
+- Infer patterns from existing code before introducing new ones.
 
-### Key patterns
+### 4.2 Make Changes in Small Commits
 
-- Keep components focused and small.
-- Separate presentation from business logic.
-- Use typed interfaces for shared data.
-- Prefer explicit, readable code over clever abstractions.
+- Keep commits focused (one feature, one intent).
+- Use [Conventional Commits](https://www.conventionalcommits.org/) format.
+- Prefer a follow-up refactor commit after behavior is stable.
 
-### Styling constraints
+### 4.3 Update Docs with Changes
 
-- Theme variables: `app/styles/01-theme-variables.css`
-- Keep styles modular (add/update focused CSS modules)
-- Avoid inline styling except narrow exceptions
-- Preserve established visual language unless asked to redesign
+- Documentation updates are **required** after feature implementation.
+- If behavior changes, docs must change in the same PR.
+
+### 4.4 Test-First Leverage
+
+- Write the test that defines success first.
+- Implement until the test passes.
+- The test is your specification — if you can't write it, requirements are unclear.
+
+### 4.5 Naive Then Optimize
+
+- Get a correct, naive version working first.
+- Optimize only after behavior is verified.
+- Preserve behavior during optimization (tests should still pass).
+
+### 4.6 Inline Planning for Small Tasks
+
+For tasks too small for full plan mode but non-trivial:
+
+```text
+Plan:
+1. [Step one]
+2. [Step two]
+3. [Verify by...]
+
+Executing...
+```
+
+This keeps you on track without heavyweight ceremony.
 
 ---
 
-## 7) Resume Feature Rules
+## 5) Code Principles
 
-Single source of truth:
+### 5.1 Keep It Simple
 
-- `lib/resume-data.ts`
+- **Actively resist overcomplication** — simpler is almost always better.
+- Avoid over-engineering — only add what's directly needed.
+- Don't add comments to code you didn't change.
+- Three similar lines beat premature abstraction.
+- Don't design for hypothetical future requirements.
 
-Primary files:
+Self-check questions:
 
-- `components/tiles/content/ResumeContent.tsx`
-- `components/tiles/content/resume/*`
-- `app/styles/13-resume-latex.css`
-- `app/resume/page.tsx`
+- "Would a new team member understand this immediately?"
+- "Am I adding this because it's needed or because it's proper?"
+- "Can I delete anything here and still meet requirements?"
 
-Resume constraints:
+### 5.2 Follow Existing Patterns
 
-- Keep Computer Modern-style resume presentation.
-- Maintain white background and black text for print-ready output.
-- If content changes, verify `/resume` and homepage tile rendering.
-- Regenerate `public/resume/*.pdf` variants when resume copy changes.
-- After any resume content change, recalibrate per-variant page fill (`--resume-print-scale` in `app/styles/13-resume-latex.css`) so each resume variant fills a single US Letter page.
-- Run `npm run validate-resume-pdfs` after regeneration and resolve all failures before considering the resume change done.
+- Match the style of surrounding code.
+- Use established project conventions before introducing new ones.
+- When in doubt, find a similar feature and mirror its structure.
 
-Mandatory resume pre-commit gate:
+### 5.3 Type Safety (for typed languages)
 
-- For any change that affects resume output (`lib/resume-data.ts`, `app/styles/13-resume-latex.css`, `components/tiles/content/resume/*`, `components/tiles/content/ResumeContent.tsx`, `app/resume/page.tsx`, or resume generation/validation scripts), run these commands in order before commit/push:
+- Define types/interfaces in the project's designated location.
+- Run type checking before commits.
+- Prefer explicit types over `any` or implicit inference for public APIs.
 
-```fish
-npm run build
-```
+### 5.4 Dead Code Hygiene
 
-```fish
-npm run calibrate:resume-layout
-```
+After refactoring or removing features:
 
-```fish
-npm run verify:resume-layout
-```
-
-```fish
-npm run validate-resume-pdfs
-```
-
-- If calibration updates files, include those updates in the same change and rerun verify/validate.
-- Do not commit or push resume-affecting changes until all four commands pass.
-- Enforce this gate with the repository pre-push hook at `.githooks/pre-push`.
-- On a new clone, activate repo hooks once:
-
-```fish
-git config core.hooksPath .githooks
-```
-
-Before major resume edits, read:
-
-- `docs/resume/README_RESUME.md`
-- `docs/resume/RESUME_ARCHITECTURE.md`
-- `docs/resume/RESUME_MAINTENANCE.md`
+- Explicitly list code that appears unused.
+- Ask before removing: "These appear unused after this change: [list]. Should I remove them?"
+- Don't silently delete things that might have external callers or tests.
 
 ---
 
-## 8) Logging & Troubleshooting
+## 6) PR Checklist
 
-- Error messages must be actionable and context-rich.
-- Prefer clear failure surfaces over silent fallbacks.
-- Validate responsive behavior on mobile for UI changes.
+Before merging:
 
----
-
-## 9) PR Checklist
-
-- Test steps included and runnable
-- Conventional commit suggested
-- No unnecessary churn
+- [ ] Type checking passes (if applicable)
+- [ ] Documentation updated
+- [ ] Tested manually or via automated tests
+- [ ] Conventional commit message used
+- [ ] No unnecessary churn or drive-by refactors
 
 PR sections to include in output:
 
@@ -246,7 +299,80 @@ PR sections to include in output:
 
 ---
 
-## 10) Done Output Format For Agents
+## 7) What "Done" Looks Like
+
+A feature is complete when:
+
+1. **Implementation** — feature works as specified.
+2. **Types** — interfaces/types added if applicable.
+3. **Docs Updated** — relevant documentation reflects the change.
+4. **Ready to Test** — another developer can verify it works.
+
+---
+
+## 8) Communication Standards
+
+### 8.1 Be Direct About Problems
+
+- State issues clearly: "This will cause X problem because Y."
+- Don't soften bad news — clarity helps decisions.
+- Quantify when possible: "~200ms latency" not "might be slower".
+
+### 8.2 When Stuck, Say So
+
+- "I'm stuck on X. I've tried A, B, C. None worked because [reasons]."
+- Don't spin — surface blockers early.
+- Propose next steps or ask for help.
+
+### 8.3 Change Summary Format
+
+After making changes, summarize clearly:
+
+```text
+CHANGES MADE:
+- [What was added/modified]
+- [Files affected]
+
+DIDN'T TOUCH:
+- [Related code left unchanged and why]
+
+CONCERNS:
+- [Any issues, risks, or follow-up items]
+```
+
+---
+
+## 9) Failure Modes to Avoid
+
+Quick reference — common mistakes of a hasty junior developer:
+
+1. **Making wrong assumptions** without reading code or asking.
+2. **Not managing confusion** and pushing through unclear requirements.
+3. **Not seeking clarifications** and guessing instead.
+4. **Not surfacing inconsistencies** when information conflicts.
+5. **Not presenting tradeoffs** and hiding complexity from the user.
+6. **Not pushing back** and agreeing to bad ideas to avoid friction.
+7. **Sycophancy** such as "Of course!" to poor suggestions.
+8. **Overcomplicating** with unnecessary abstraction.
+9. **Bloating abstractions** by over-configuring for a hypothetical future.
+10. **Not cleaning up** dead code after refactoring.
+11. **Modifying orthogonal code** while fixing a focused bug.
+12. **Removing without understanding** code that only appears unused.
+
+---
+
+## 10) Local Override Mechanism
+
+Use optional local overrides only for stricter personal or machine-specific constraints.
+
+- Template file: `AGENTS.override.template.md`
+- Local file: `AGENTS.override.local.md`
+
+`AGENTS.override.local.md` must remain untracked and must not weaken shared or repo rules.
+
+---
+
+## 11) Done Output Format for Agents
 
 For coding tasks, return:
 

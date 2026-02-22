@@ -1,9 +1,12 @@
 # TODO
 
-Last updated: 2026-02-22 00:34 UTC
+Last updated: 2026-02-22 22:57 UTC
 
 ## What's Done
 
+- [x] 2026-02-22 22:57 UTC - Restore `AGENTS.md` to near parity with `/home/kevin/coding/quit-weed/AGENTS-BASE.md` after consolidation, keeping layered precedence (`AGENTS.md` -> `AGENTS.repo.md` -> `AGENTS.override.local.md`) and preserving local override/docs output sections.
+- [x] 2026-02-22 22:50 UTC - Consolidate agent governance around canonical `AGENTS.md`: add `AGENTS.repo.md` for `portfolio-site`-specific constraints, add `AGENTS.override.template.md` + ignored local override support, deprecate `AGENTS-BASE.md`, remove `CLAUDE.md`, and record this work in `plans/agents-docs-consolidation.md`.
+- [x] 2026-02-22 17:31 UTC - Regenerate all 10 resume variants in `lib/resume-data.ts` with stronger role-specific bullet subsets, retune `python` and `web-dev-django` print controls in `app/styles/13-resume-latex.css`, and pass the full resume gate (`build`, `calibrate:resume-layout`, `verify:resume-layout`, `validate-resume-pdfs`).
 - [x] 2026-02-22 00:34 UTC - Make a small resume copy tweak in `lib/resume-data.ts` (`60fps` -> `60 FPS`) and rerun the full resume gate (`build`, `calibrate:resume-layout`, `verify:resume-layout`, `validate-resume-pdfs`) to test enforcement workflow.
 - [x] 2026-02-22 00:12 UTC - Add repository pre-push enforcement for resume-affecting changes via `.githooks/pre-push` (build -> calibrate -> verify -> validate) and document one-time `git config core.hooksPath .githooks` activation in `AGENTS.md`.
 - [x] 2026-02-22 00:09 UTC - Tighten `AGENTS.md` resume workflow so resume-affecting edits must run `build` + `calibrate:resume-layout` + `verify:resume-layout` + `validate-resume-pdfs` (in order) before commit/push, with rerun requirements after calibration changes.
