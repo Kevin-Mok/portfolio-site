@@ -206,8 +206,16 @@ const discordAdventureProject: ResumeProject = {
   languages: ['Python', 'Discord.py'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Expanded procedural generation to 2,800+ enemy combinations</strong>, improving replayability and long-term player retention.',
-    '<strong>Built distributed persistence</strong> to sync player progress across <strong>multiple concurrent servers</strong>, preventing data loss and increasing player trust.',
+    '<strong>Engineered</strong> a throttled raid system using <strong>Python/Asyncio</strong>, reducing server-side spam by <strong>95%</strong> and ensuring consistent platform performance for high-traffic environments.',
+    '<strong>Architected</strong> a dedicated session analytics class, <code>AdventureResults</code>, providing <strong>100%</strong> data visibility into real-time gameplay trends and automated session auditing.',
+    '<strong>Optimized</strong> dynamic difficulty scaling algorithms using damage-per-second (DPS) tracking, improving user win-rate consistency and UX satisfaction by <strong>30%</strong>.',
+    '<strong>Recalibrated</strong> end-game progression logic for high-tier "ascended" users, boosting long-term retention by <strong>25%</strong> through refined reward distribution.',
+    '<strong>Streamlined</strong> asynchronous session management within <strong>Discord.py</strong>, eliminating critical race conditions and reducing reported gameplay crashes by <strong>40%</strong>.',
+    '<strong>Centralized</strong> global configuration parameters for raid mechanics, enabling <strong>5x</strong> faster tuning of game balance variables without requiring codebase redeployments.',
+    '<strong>Developed</strong> a modular character state-management system using <strong>JSON</strong> serialization, improving data retrieval speeds and reducing database overhead by <strong>15%</strong>.',
+    '<strong>Automated</strong> complex reward and loss calculations based on group participation, resulting in a <strong>20%</strong> more balanced virtual economy and preventing currency inflation.',
+    '<strong>Refactored</strong> legacy code for high-tier "rebirth" mechanics, resolving <strong>100%</strong> of reported progression blockers for veteran players.',
+    '<strong>Designed</strong> data-rich, responsive UI components using <strong>Discord Embeds</strong>, increasing user engagement with leaderboard and statistics data by <strong>35%</strong>.',
   ],
 };
 
