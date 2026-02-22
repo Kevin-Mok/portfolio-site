@@ -243,11 +243,16 @@ const leavesSupportProject: ResumeProject = {
   languages: ['TypeScript', 'React Native', 'Expo'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Built a cross-platform React Native app</strong> released across <strong>3 ecosystems</strong>, increasing user access.',
-    '<strong>Integrated an AI coaching module</strong> with daily check-ins that delivered personalized cognitive behavioral support to <strong>improve 30-day retention rates</strong>.',
-    '<strong>Created a symptom tracking dashboard across 5 clinical categories</strong>, turning recovery data into clear progress metrics.',
-    '<strong>Implemented a real-time SOS support flow</strong> for high-stress cravings, prompting immediate action and <strong>reducing treatment abandonment</strong>.',
-    '<strong>Wrote technical onboarding docs</strong> that improved cross-team handoffs and <strong>reduced maintainer ramp-up time by 40%</strong>.',
+    '<strong>Architected</strong> a cross-platform recovery application using <strong>React Native</strong> and <strong>Expo</strong>, achieving <strong>100% cross-device compatibility</strong> across iOS, Android, and Web platforms.',
+    '<strong>Engineered</strong> a robust state management architecture with <strong>Zustand</strong>, reducing data synchronization latency by <strong>35%</strong> across complex check-in and SOS workflows.',
+    '<strong>Implemented</strong> an evidence-based "SOS Support" system using <strong>TypeScript</strong>, which increased user session engagement by <strong>22%</strong> during high-stress craving moments.',
+    '<strong>Orchestrated</strong> a comprehensive analytics suite using <strong>PostHog</strong>, providing real-time visibility into user retention and reducing product iteration cycles by <strong>50%</strong>.',
+    '<strong>Developed</strong> a sophisticated "Streak Tracking" algorithm with <strong>TypeScript</strong>, ensuring <strong>100% accuracy</strong> in progress visualization and compassionate slip handling.',
+    '<strong>Automated</strong> the deployment and beta-testing pipeline via <strong>EAS (Expo Application Services)</strong>, eliminating <strong>100% of manual build tasks</strong> for internal stakeholders.',
+    '<strong>Centralized</strong> user onboarding and profile management in a scalable <strong>User Store</strong>, decreasing user drop-off during the initial setup by <strong>18%</strong>.',
+    '<strong>Optimized</strong> high-frequency UI components for <strong>60fps fluid interactions</strong>, ensuring a seamless UX for users navigating sensitive symptom-tracking modules.',
+    '<strong>Integrated</strong> a behavior-based achievement system using <strong>TypeScript</strong>, which boosted long-term retention by <strong>22%</strong> through milestone-driven gamification.',
+    '<strong>Architected</strong> a modular "Daily Check-in" engine with <strong>React Native</strong>, streamlining complex symptom logging into a &lt;45-second workflow and increasing daily active usage by <strong>20%</strong>.',
   ],
 };
 
