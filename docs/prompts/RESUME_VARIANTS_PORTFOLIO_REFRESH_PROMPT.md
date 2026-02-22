@@ -5,14 +5,14 @@ Use this prompt when `portfolioSiteProject` bullets changed and you want to refr
 ## Attach These Files
 
 Core context:
-- `/home/kevin/coding/portfolio-site/docs/resume/RESUME-READMES.md`
+- `/home/kevin/coding/portfolio-site/docs/resume/workflows/RESUME-READMES.md`
 - `/home/kevin/coding/portfolio-site/docs/resume/RESUME_VARIANT_POSITIONING.md`
 - `/home/kevin/coding/portfolio-site/docs/resume/resume-generation-spec.md`
 - `/home/kevin/coding/portfolio-site/lib/resume-data.ts`
 - `/home/kevin/coding/portfolio-site/app/styles/13-resume-latex.css`
 
 Source content:
-- All README/MD files listed in `docs/resume/RESUME-READMES.md`
+- All README/MD files listed in `docs/resume/workflows/RESUME-READMES.md`
 
 ## Updated Portfolio Source (Authoritative)
 
@@ -45,7 +45,7 @@ const portfolioSiteProject: ResumeProject = {
 You are refreshing resume variants in portfolio-site after portfolio-site project bullets were revised.
 
 Attached files include:
-- docs/resume/RESUME-READMES.md
+- docs/resume/workflows/RESUME-READMES.md
 - docs/resume/RESUME_VARIANT_POSITIONING.md
 - docs/resume/resume-generation-spec.md
 - lib/resume-data.ts

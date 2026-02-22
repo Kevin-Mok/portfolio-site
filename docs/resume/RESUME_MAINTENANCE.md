@@ -593,6 +593,6 @@ For major resume restructuring:
 
 ## Related Documentation
 
-- [RESUME_FEATURE_OVERVIEW.md](./RESUME_FEATURE_OVERVIEW.md) - High-level overview
+- [reference/RESUME_FEATURE_OVERVIEW.md](./reference/RESUME_FEATURE_OVERVIEW.md) - High-level overview
 - [RESUME_ARCHITECTURE.md](./RESUME_ARCHITECTURE.md) - Technical architecture
-- [RESUME_MIGRATION.md](./RESUME_MIGRATION.md) - Migration from old site
+- [reference/RESUME_MIGRATION.md](./reference/RESUME_MIGRATION.md) - Migration from old site

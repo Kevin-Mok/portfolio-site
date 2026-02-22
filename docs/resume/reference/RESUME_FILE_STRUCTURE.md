@@ -91,6 +91,11 @@ portfolio-site/
 │   ├── RESUME_MAINTENANCE.md
 │   ├── RESUME_MIGRATION.md
 │   └── RESUME_FILE_STRUCTURE.md
+│   ├── workflows/
+│   │   ├── CLAUDE_RESUME_CHECKLIST.md
+│   │   └── RESUME-READMES.md
+│   └── reviews/
+│       └── RESUME_COMMIT_497f9c8_CHANGELOG.md
 │
 └── (other root files...)
 ```
@@ -165,11 +170,11 @@ portfolio-site/
 
 ### Documentation (5 files)
 
-1. **docs/resume/RESUME_FEATURE_OVERVIEW.md** - High-level overview
+1. **docs/resume/reference/RESUME_FEATURE_OVERVIEW.md** - High-level overview
 2. **docs/resume/RESUME_ARCHITECTURE.md** - Technical architecture
 3. **docs/resume/RESUME_MAINTENANCE.md** - Maintenance guide
-4. **docs/resume/RESUME_MIGRATION.md** - Migration details
-5. **docs/resume/RESUME_FILE_STRUCTURE.md** - This file
+4. **docs/resume/reference/RESUME_MIGRATION.md** - Migration details
+5. **docs/resume/reference/RESUME_FILE_STRUCTURE.md** - This file
 
 ## Import Dependencies
 
@@ -415,6 +420,6 @@ Browser Displays Resume
 ## Related Documentation
 
 - [RESUME_FEATURE_OVERVIEW.md](./RESUME_FEATURE_OVERVIEW.md) - Feature overview
-- [RESUME_ARCHITECTURE.md](./RESUME_ARCHITECTURE.md) - Technical architecture
-- [RESUME_MAINTENANCE.md](./RESUME_MAINTENANCE.md) - How to maintain
+- [RESUME_ARCHITECTURE.md](../RESUME_ARCHITECTURE.md) - Technical architecture
+- [RESUME_MAINTENANCE.md](../RESUME_MAINTENANCE.md) - How to maintain
 - [RESUME_MIGRATION.md](./RESUME_MIGRATION.md) - Migration from old site

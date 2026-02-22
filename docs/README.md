@@ -3,7 +3,9 @@
 ## Folder Layout
 
 - `docs/resume/`
-  - Resume feature docs, architecture, maintenance, and PDF layout baseline files.
+  - Resume feature core docs, architecture, maintenance, and PDF layout baseline files.
+  - `docs/resume/workflows/` for checklist/tracking docs used during resume update workflows.
+  - `docs/resume/reviews/` for point-in-time review snapshots/changelogs.
 - `docs/specs/`
   - Long-form technical specs for major features.
 - `docs/ops/`

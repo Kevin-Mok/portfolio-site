@@ -4,6 +4,13 @@
 
 This directory contains the core resume feature documentation. Related AI prompt workflows live in `docs/prompts/` and are linked from this index.
 
+## Folder Organization
+
+- `docs/resume/` contains core, long-lived resume documentation.
+- `docs/resume/workflows/` contains checklists/source lists used during update workflows.
+- `docs/resume/reviews/` contains point-in-time change review snapshots.
+- `docs/prompts/` contains AI prompt workflows for resume-related generation tasks.
+
 ## Documentation Files
 
 ### 📖 README_RESUME.md
@@ -22,7 +29,7 @@ This directory contains the core resume feature documentation. Related AI prompt
 
 ---
 
-### 🎯 RESUME_FEATURE_OVERVIEW.md
+### 🎯 reference/RESUME_FEATURE_OVERVIEW.md
 **High-level overview of what was built**
 
 - Feature summary and quick access points
@@ -89,7 +96,7 @@ This directory contains the core resume feature documentation. Related AI prompt
 
 ---
 
-### 📦 RESUME_MIGRATION.md
+### 📦 reference/RESUME_MIGRATION.md
 **Documentation of migration from old Hugo site**
 
 - Overview of migration scope
@@ -122,7 +129,7 @@ This directory contains the core resume feature documentation. Related AI prompt
 
 ---
 
-### 📁 RESUME_FILE_STRUCTURE.md
+### 📁 reference/RESUME_FILE_STRUCTURE.md
 **Complete file organization and structure**
 
 - Full directory tree with all 1000+ files
@@ -170,6 +177,38 @@ This directory contains the core resume feature documentation. Related AI prompt
 
 ---
 
+### ✅ workflows/CLAUDE_RESUME_CHECKLIST.md
+**Operational checklist for assistant-driven resume updates**
+
+- Pre-flight checks before resume edits
+- Verification steps and command reminders
+- Common pitfalls and guardrails
+
+**Best for**: Repeatable, low-miss execution during resume updates.
+
+---
+
+### 📋 workflows/RESUME-READMES.md
+**Tracking list of source README/MD files used for resume bullet workflows**
+
+- Tracks WIP, to-do, and completed source documents
+- Used by prompt workflows that refresh variants from source bullets
+
+**Best for**: Keeping multi-repo source coverage organized during resume refresh cycles.
+
+---
+
+### 📝 reviews/RESUME_COMMIT_497f9c8_CHANGELOG.md
+**Point-in-time review snapshot for commit `497f9c8`**
+
+- Per-variant bullet selection deltas
+- Exact added/removed text references
+- Variant-specific print layout variable changes
+
+**Best for**: Auditing and revisiting the specific changes made in that commit.
+
+---
+
 ### 🤖 docs/prompts/README_RESUME_POINTS_PROMPT.md
 **ChatGPT prompt for variant-aware README bullet generation**
 
@@ -203,11 +242,11 @@ This directory contains the core resume feature documentation. Related AI prompt
 | Task | Start Here |
 |------|-----------|
 | First time reading? | README_RESUME.md |
-| Want overview? | RESUME_FEATURE_OVERVIEW.md |
+| Want overview? | reference/RESUME_FEATURE_OVERVIEW.md |
 | Understand architecture? | RESUME_ARCHITECTURE.md |
 | Update resume content? | RESUME_MAINTENANCE.md |
-| Find a file? | RESUME_FILE_STRUCTURE.md |
-| Understand migration? | RESUME_MIGRATION.md |
+| Find a file? | reference/RESUME_FILE_STRUCTURE.md |
+| Understand migration? | reference/RESUME_MIGRATION.md |
 | Need PDF layout rules? | resume-generation-spec.md |
 | Choose the right variant? | RESUME_VARIANT_POSITIONING.md |
 | Generate README bullets with AI? | docs/prompts/README_RESUME_POINTS_PROMPT.md |
@@ -221,7 +260,7 @@ This directory contains the core resume feature documentation. Related AI prompt
 | Developer (contributing) | RESUME_ARCHITECTURE.md |
 | Architect (understanding design) | RESUME_ARCHITECTURE.md |
 | New contributor (learning) | README_RESUME.md |
-| Project manager (overview) | RESUME_FEATURE_OVERVIEW.md |
+| Project manager (overview) | reference/RESUME_FEATURE_OVERVIEW.md |
 | Job applicant (targeting roles) | RESUME_VARIANT_POSITIONING.md |
 | AI-assisted documentation editor | docs/prompts/README_RESUME_POINTS_PROMPT.md |
 | AI-assisted resume restructuring | docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md |
@@ -229,9 +268,9 @@ This directory contains the core resume feature documentation. Related AI prompt
 ## Documentation Statistics
 
 ### Total Documentation
-- **9 markdown files** for resume feature
-- **2,806 lines** of documentation
-- **~80 KB** of documentation
+- **12 markdown files** under `docs/resume/` (9 core + 3 auxiliary)
+- **3,536 lines** of documentation
+- **~132 KB** of documentation
 - **~50+ diagrams** and code examples
 
 ### Coverage
@@ -297,15 +336,15 @@ Every document links to related documentation:
 ```
 README_RESUME.md
 ├─ links to all other docs
-├─ RESUME_FEATURE_OVERVIEW.md
+├─ reference/RESUME_FEATURE_OVERVIEW.md
 │  └─ links to RESUME_MAINTENANCE.md for updates
 ├─ RESUME_ARCHITECTURE.md
 │  └─ links to RESUME_MAINTENANCE.md for customization
 ├─ RESUME_MAINTENANCE.md
 │  └─ links to other docs for specific tasks
-├─ RESUME_MIGRATION.md
+├─ reference/RESUME_MIGRATION.md
 │  └─ links to RESUME_ARCHITECTURE.md for technical details
-├─ RESUME_FILE_STRUCTURE.md
+├─ reference/RESUME_FILE_STRUCTURE.md
 │  └─ links to RESUME_MAINTENANCE.md for common tasks
 ├─ RESUME_VARIANT_POSITIONING.md
 │  └─ links to `lib/resume-data.ts` variant source of truth
@@ -318,7 +357,7 @@ README_RESUME.md
 ## How to Use This Documentation
 
 ### For Quick Reference
-→ Use **RESUME_FILE_STRUCTURE.md** quick reference tables
+→ Use **reference/RESUME_FILE_STRUCTURE.md** quick reference tables
 
 ### For Variant Selection
 → Use **RESUME_VARIANT_POSITIONING.md** before applying to role-specific jobs
@@ -330,7 +369,7 @@ README_RESUME.md
 → Use **docs/prompts/README_RESUME_POINTS_PROMPT.md** to generate variant-aware resume bullets
 
 ### For Learning
-→ Start with **README_RESUME.md**, then read **RESUME_FEATURE_OVERVIEW.md**
+→ Start with **README_RESUME.md**, then read **reference/RESUME_FEATURE_OVERVIEW.md**
 
 ### For Development
 → Read **RESUME_ARCHITECTURE.md** for technical details
@@ -339,7 +378,7 @@ README_RESUME.md
 → Keep **RESUME_MAINTENANCE.md** handy for common updates
 
 ### For Understanding Decisions
-→ See **RESUME_ARCHITECTURE.md** (Design Decisions section) and **RESUME_FEATURE_OVERVIEW.md** (Design Decisions section)
+→ See **RESUME_ARCHITECTURE.md** (Design Decisions section) and **reference/RESUME_FEATURE_OVERVIEW.md** (Design Decisions section)
 
 ### For Problem Solving
 → See **RESUME_MAINTENANCE.md** (Troubleshooting section) and **README_RESUME.md** (Troubleshooting section)
@@ -360,8 +399,8 @@ When making changes to the resume feature:
 
 1. **Update content**: Edit `lib/resume-data.ts`, then update RESUME_MAINTENANCE.md if instructions changed
 2. **Update styling**: Edit `app/styles/13-resume-latex.css`, then update RESUME_ARCHITECTURE.md and RESUME_MAINTENANCE.md
-3. **Add files**: Update RESUME_FILE_STRUCTURE.md with new files
-4. **Major changes**: Update RESUME_FEATURE_OVERVIEW.md and RESUME_ARCHITECTURE.md
+3. **Add files**: Update reference/RESUME_FILE_STRUCTURE.md with new files
+4. **Major changes**: Update reference/RESUME_FEATURE_OVERVIEW.md and RESUME_ARCHITECTURE.md
 
 ## Document Maintenance
 
@@ -377,8 +416,8 @@ When making changes to the resume feature:
 ### Future Updates
 When you update the resume, consider also updating:
 - RESUME_MAINTENANCE.md (if new sections added)
-- RESUME_FEATURE_OVERVIEW.md (if content changes significantly)
-- RESUME_FILE_STRUCTURE.md (if file structure changes)
+- reference/RESUME_FEATURE_OVERVIEW.md (if content changes significantly)
+- reference/RESUME_FILE_STRUCTURE.md (if file structure changes)
 - RESUME_VARIANT_POSITIONING.md (if variants are added/removed/repositioned)
 - resume-generation-spec.md (if layout rules/tolerances change)
 - docs/prompts/README_RESUME_POINTS_PROMPT.md (if variants, repos, or claim policy changes)

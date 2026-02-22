@@ -11,9 +11,9 @@ Before starting work on resume:
 - [ ] Identify which documentation applies to your task:
   - Updating content? → `RESUME_MAINTENANCE.md`
   - Understanding code? → `RESUME_ARCHITECTURE.md`
-  - Finding files? → `RESUME_FILE_STRUCTURE.md`
-  - Understanding migration? → `RESUME_MIGRATION.md`
-  - Need overview? → `RESUME_FEATURE_OVERVIEW.md`
+  - Finding files? → `reference/RESUME_FILE_STRUCTURE.md`
+  - Understanding migration? → `reference/RESUME_MIGRATION.md`
+  - Need overview? → `reference/RESUME_FEATURE_OVERVIEW.md`
 
 ## Single Source of Truth
 
@@ -176,11 +176,11 @@ Don't do these:
 Keep these docs handy:
 
 - **Quick start**: `docs/resume/README_RESUME.md`
-- **Overview**: `docs/resume/RESUME_FEATURE_OVERVIEW.md`
+- **Overview**: `docs/resume/reference/RESUME_FEATURE_OVERVIEW.md`
 - **Architecture**: `docs/resume/RESUME_ARCHITECTURE.md`
 - **How to update**: `docs/resume/RESUME_MAINTENANCE.md`
-- **Migration details**: `docs/resume/RESUME_MIGRATION.md`
-- **File locations**: `docs/resume/RESUME_FILE_STRUCTURE.md`
+- **Migration details**: `docs/resume/reference/RESUME_MIGRATION.md`
+- **File locations**: `docs/resume/reference/RESUME_FILE_STRUCTURE.md`
 - **Doc index**: `docs/resume/RESUME_DOCS_INDEX.md`
 
 ## Getting Help

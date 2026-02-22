@@ -467,5 +467,5 @@ If issues arise, can quickly revert to old site:
 ## Related Documentation
 
 - [RESUME_FEATURE_OVERVIEW.md](./RESUME_FEATURE_OVERVIEW.md) - Feature overview
-- [RESUME_ARCHITECTURE.md](./RESUME_ARCHITECTURE.md) - Technical details
-- [RESUME_MAINTENANCE.md](./RESUME_MAINTENANCE.md) - How to maintain
+- [RESUME_ARCHITECTURE.md](../RESUME_ARCHITECTURE.md) - Technical details
+- [RESUME_MAINTENANCE.md](../RESUME_MAINTENANCE.md) - How to maintain

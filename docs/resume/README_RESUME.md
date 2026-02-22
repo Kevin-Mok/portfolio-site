@@ -11,10 +11,17 @@ The resume feature is fully implemented and live on your portfolio site.
 
 ## Documentation Index
 
+## Folder Organization
+
+- `docs/resume/` contains the core long-lived resume documentation.
+- `docs/resume/workflows/` contains workflow helpers (checklists and source tracking files).
+- `docs/resume/reviews/` contains point-in-time review snapshots/changelogs.
+- `docs/prompts/` contains AI prompt workflows referenced by the resume docs.
+
 ### Choose your documentation based on your needs:
 
 #### 🔍 **I want an overview of what was built**
-→ Read: **[RESUME_FEATURE_OVERVIEW.md](./RESUME_FEATURE_OVERVIEW.md)**
+→ Read: **[reference/RESUME_FEATURE_OVERVIEW.md](./reference/RESUME_FEATURE_OVERVIEW.md)**
 
 This file covers:
 - What's in the resume
@@ -76,7 +83,7 @@ This file covers:
 ---
 
 #### 📦 **I want to know what was migrated from the old site**
-→ Read: **[RESUME_MIGRATION.md](./RESUME_MIGRATION.md)**
+→ Read: **[reference/RESUME_MIGRATION.md](./reference/RESUME_MIGRATION.md)**
 
 This file covers:
 - What content was brought over
@@ -92,7 +99,7 @@ This file covers:
 ---
 
 #### 📁 **I want to understand the file organization**
-→ Read: **[RESUME_FILE_STRUCTURE.md](./RESUME_FILE_STRUCTURE.md)**
+→ Read: **[reference/RESUME_FILE_STRUCTURE.md](./reference/RESUME_FILE_STRUCTURE.md)**
 
 This file covers:
 - Complete directory tree
@@ -273,6 +280,8 @@ docs/prompts/RESUME_VARIANT_RESTRUCTURE_PROMPT.md
 | Contact icons | `public/icons/resume/` |
 | Full-page route | `app/resume/page.tsx` |
 | Navigation | `contexts/FocusContext.tsx`, `components/tiles/NavigationTile.tsx`, `components/layout/Polybar.tsx` |
+| Workflow helper docs | `docs/resume/workflows/` |
+| Review snapshots | `docs/resume/reviews/` |
 
 ## Architecture at a Glance
 
@@ -339,11 +348,11 @@ Browser renders professional LaTeX-styled resume
 
 ### Documentation (9 files)
 - This README
-- RESUME_FEATURE_OVERVIEW.md
+- reference/RESUME_FEATURE_OVERVIEW.md
 - RESUME_ARCHITECTURE.md
 - RESUME_MAINTENANCE.md
-- RESUME_MIGRATION.md
-- RESUME_FILE_STRUCTURE.md
+- reference/RESUME_MIGRATION.md
+- reference/RESUME_FILE_STRUCTURE.md
 - RESUME_VARIANT_POSITIONING.md
 - docs/prompts/README_RESUME_POINTS_PROMPT.md
 - resume-generation-spec.md
@@ -391,7 +400,7 @@ Each documentation file is comprehensive and self-contained. Look for the specif
 
 ```
 README_RESUME.md (you are here)
-├── RESUME_FEATURE_OVERVIEW.md
+├── reference/RESUME_FEATURE_OVERVIEW.md
 │   ├── What was built
 │   ├── Quick access points
 │   ├── Key files
@@ -408,13 +417,13 @@ README_RESUME.md (you are here)
 │   ├── Customize styling
 │   ├── Test changes
 │   └── Troubleshooting
-├── RESUME_MIGRATION.md
+├── reference/RESUME_MIGRATION.md
 │   ├── What was migrated
 │   ├── Content transformation
 │   ├── Asset migration
 │   ├── Styling preserved
 │   └── Features enhanced
-├── RESUME_FILE_STRUCTURE.md
+├── reference/RESUME_FILE_STRUCTURE.md
 │   ├── Complete file organization
 │   ├── Component hierarchy
 │   ├── Data organization
