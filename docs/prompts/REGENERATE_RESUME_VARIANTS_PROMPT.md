@@ -1,34 +1,30 @@
-# ChatGPT Prompt: Regenerate All Resume Variants From Revised Bullets
+# ChatGPT Prompt: Regenerate All Resume Variants From `lib/resume-data.ts`
 
-Use this prompt when the project README bullet sets are already revised and you want ChatGPT to rebuild every resume variant with the strongest role-fit points.
+Use this prompt when you want to rebalance all resume variants to use the strongest project/bullet combinations while treating `lib/resume-data.ts` as the source of truth.
 
 ## Attach These Files
 
-Core resume context:
-- `/home/kevin/coding/portfolio-site/docs/archive/UPDATED_README_PATHS.md`
-- `/home/kevin/coding/portfolio-site/docs/resume/RESUME_VARIANT_POSITIONING.md`
-- `/home/kevin/coding/portfolio-site/docs/resume/resume-generation-spec.md`
+Required:
 - `/home/kevin/coding/portfolio-site/lib/resume-data.ts`
-- `/home/kevin/coding/portfolio-site/app/styles/13-resume-latex.css`
 
-Source content:
-- All project README/MD files listed in `docs/archive/UPDATED_README_PATHS.md`
+Recommended:
+- `/home/kevin/coding/portfolio-site/docs/resume/RESUME_VARIANT_POSITIONING.md`
+- `/home/kevin/coding/portfolio-site/app/styles/13-resume-latex.css`
+- `/home/kevin/coding/portfolio-site/docs/resume/resume-generation-spec.md`
 
 ## Copy/Paste Prompt
 
 ```text
-You are regenerating all resume variants in portfolio-site from revised README bullets.
+You are regenerating all resume variants in portfolio-site, using lib/resume-data.ts as the single source of truth.
 
 Attached files include:
-- docs/archive/UPDATED_README_PATHS.md
-- docs/resume/RESUME_VARIANT_POSITIONING.md
-- docs/resume/resume-generation-spec.md
-- lib/resume-data.ts
-- app/styles/13-resume-latex.css
-- all project README/MD files listed in UPDATED_README_PATHS.md
+- lib/resume-data.ts (required)
+- docs/resume/RESUME_VARIANT_POSITIONING.md (recommended)
+- app/styles/13-resume-latex.css (recommended)
+- docs/resume/resume-generation-spec.md (recommended)
 
 Goal:
-Regenerate every resume variant in lib/resume-data.ts using the revised "Resume-ready points by variant" bullets, selecting the strongest project points for each target role while preserving one-page US Letter output.
+Rebuild every resume variant in lib/resume-data.ts by selecting the strongest project combinations and strongest bullet subsets for each role angle, while preserving one-page US Letter output for every variant.
 
 Canonical variant IDs (must remain unchanged):
 - web-dev
@@ -42,55 +38,54 @@ Canonical variant IDs (must remain unchanged):
 - sales
 - call-centre
 
-Primary source rule:
-For each project file, only use evidence from:
-1) that file's revised "Resume-ready points by variant" section,
-2) existing verified facts already present in lib/resume-data.ts.
-Do not invent new claims, metrics, timelines, employers, tools, or outcomes.
+Primary source rule (strict):
+1) Treat lib/resume-data.ts as the only source of truth.
+2) Reuse only projects, bullet content, dates, companies, and technologies already defined there.
+3) Do not invent or import new claims, metrics, timelines, employers, tools, or outcomes.
 
 Selection policy (strict):
-1) For each variant, select only projects that best match the variant positioning.
-2) Within each selected project, choose the strongest bullets for that variant from revised source bullets.
-3) Prioritize quantified impact, ownership, and technical depth.
-4) Keep each variant focused; do not force every project into every variant.
-5) Remove weaker or repetitive bullets even if they are recent.
-6) Keep language recruiter-friendly, concise, and defensible.
+1) For each variant, keep only the projects with the strongest role relevance.
+2) Within selected projects, keep only the strongest bullets for that variant.
+3) Prefer quantified impact, ownership, technical depth, and clear business/user outcomes.
+4) Remove weaker, repetitive, or generic bullets even if they are recent.
+5) Keep each variant focused; do not force every project into every variant.
 
 Scoring rubric for bullet selection:
-- 40% role relevance to variant positioning
+- 40% role relevance to the target variant
 - 30% impact strength (metrics/outcomes)
 - 20% ownership/complexity
 - 10% clarity/scannability
 
 Edit scope:
 - Required: lib/resume-data.ts
-- Optional (last resort only): app/styles/13-resume-latex.css print variables
+- Optional (last resort only): app/styles/13-resume-latex.css per-variant print variables:
   - --resume-print-scale
   - --resume-print-leading
   - --resume-print-top-offset
 - Do not modify other files.
 
 One-page fit workflow (strict order):
-1) Select strongest projects/bullets per variant.
+1) Select strongest projects and bullets per variant.
 2) Reduce project count and bullet count where needed.
 3) Only if overflow remains, tune per-variant print variables.
 
-Formatting and data constraints:
-- Preserve TypeScript structure and all variant IDs.
-- Keep Computer Modern print style, white background, and black text behavior.
-- Preserve existing date ranges and factual history unless source evidence requires correction.
-- Keep bullets specific and non-generic.
+Formatting and structure constraints:
+- Preserve TypeScript types and object structure in lib/resume-data.ts.
+- Preserve all variant IDs, labels, and file names.
+- Preserve Computer Modern-style print behavior, white background, and black text.
+- Keep claims concise, recruiter-readable, and defensible.
 
 Output requirements:
 1) Return unified diffs only.
-2) Include diffs only for files you changed.
+2) Include diffs only for files changed.
 3) Before diffs, include:
    - variant-by-variant project selection summary,
    - bullet count per project in each variant,
-   - any softened or removed claims due to weak proof.
+   - any softened/removed claims and why.
 
-Acceptance checks to run and report:
+Mandatory acceptance checks (run in order and report status):
 - npm run build
+- npm run calibrate:resume-layout
 - npm run verify:resume-layout
 - npm run validate-resume-pdfs
 
@@ -100,8 +95,8 @@ If any check fails, update diffs, rerun checks, and report final passing status.
 
 ## Validation Checklist
 
-- All 10 canonical variant IDs remain present and unchanged.
-- Each variant reflects the strongest revised bullets for its target role.
-- No invented or inflated claims beyond source evidence.
-- One-page and layout validation checks are run and passing.
-- CSS print variable edits are only used when content pruning is insufficient.
+- All 10 canonical variant IDs remain present and unchanged in `lib/resume-data.ts`.
+- Variant project/bullet choices are strongest-role-fit selections from existing source content.
+- No invented claims or imported evidence outside `lib/resume-data.ts`.
+- One-page layout checks pass for all variants after regeneration.
+- CSS print variable changes are only used when content pruning alone is insufficient.

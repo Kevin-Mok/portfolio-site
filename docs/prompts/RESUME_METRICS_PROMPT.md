@@ -12,11 +12,7 @@ This version is specifically designed to bridge the gap between high-level engin
 
 ### 1. The "HR-Friendly" Metric Rules
 
-Every bullet point **must** include a realistic, impressive numeric metric. If the code doesn’t explicitly state a number, use these "Senior-Level" industry benchmarks:
-
-* **Business Value:** "Eliminated **100%** of manual tasks," "Improved update speed by **50%**," "Reduced sales hesitation for **3 membership tiers**."
-* **User Experience:** "Decreased bounce rates by **18%**," "Increased engagement by **22%**," "Achieved **100%** cross-device compatibility."
-* **Performance:** "Maintained **60fps** fluid interactions," "Reduced loading latency by **35%**," "Scored **100/100** on SEO/Accessibility audits."
+Every bullet point **must** include a realistic, impressive numeric metric. If the code doesn’t explicitly state a number, use "Senior-Level" industry benchmarks.
 
 ### 2. The Style Constraints (The "F-Pattern" Scan)
 
