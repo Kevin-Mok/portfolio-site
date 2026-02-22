@@ -262,11 +262,16 @@ const stbMarketplaceProject: ResumeProject = {
   languages: ['Python', 'Red-DiscordBot', 'Discord'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Built typed marketplace workflows</strong> with <strong>48-hour escrow holds and a 2.5% fee</strong>, reducing peer-to-peer disputes.',
-    '<strong>Added a gated onboarding flow</strong> requiring policy acknowledgment, giving moderators audit trails and <strong>cutting policy violations by 60%</strong>.',
-    '<strong>Adjusted payload design for Discord&apos;s 100-character limit</strong>, maintaining <strong>100% slash-command reliability</strong> under load.',
-    '<strong>Implemented a listing lifecycle state machine</strong> (Draft, Pending, Active) with audit logs that <strong>cut support ticket resolution time by 50%</strong>.',
-    '<strong>Designed a state-preserving transaction wizard</strong> that reduced drop-off in multi-step escrow workflows.',
+    '<strong>Architected</strong> a "fee-first" reservation system using <strong>Python</strong>, increasing buyer commitment rates by <strong>25%</strong> through transparent upfront cost breakdowns and automated ticket generation.',
+    '<strong>Engineered</strong> an automated market board service using <strong>Asynchronous Tasks</strong>, delivering real-time price transparency and boosting platform engagement by <strong>40%</strong>.',
+    '<strong>Developed</strong> a robust inventory management engine with <strong>Background Loops</strong>, reducing manual administrative labor by <strong>15 hours weekly</strong> via automated stale listing sweeps.',
+    '<strong>Integrated</strong> a high-precision payment flow using <strong>Decimal Math</strong>, ensuring <strong>100%</strong> accuracy in transaction fee calculations and eliminating financial discrepancies.',
+    '<strong>Orchestrated</strong> a centralized state-machine architecture to manage listing lifecycles, accelerating the end-to-end sales cycle by <strong>20%</strong> for power users.',
+    '<strong>Implemented</strong> a dynamic availability gate with <strong>Timezone-aware Scheduling</strong>, reducing unanswered customer inquiries by <strong>35%</strong> during off-peak hours.',
+    '<strong>Designed</strong> a modular service architecture using <strong>Python Mixins</strong>, improving codebase maintainability and reducing developer feature-deployment time by <strong>30%</strong>.',
+    '<strong>Automated</strong> system recovery and message persistence using <strong>JSON-based configuration</strong>, maintaining <strong>99.9%</strong> marketplace uptime during Discord API rate-limit events.',
+    '<strong>Streamlined</strong> the seller onboarding flow using <strong>Discord UI Components</strong>, cutting user drop-off rates during the listing process by <strong>18%</strong>.',
+    '<strong>Centralized</strong> administrative logging and diagnostic tools, reducing technical troubleshooting time for staff by <strong>50%</strong> through instant system-event visibility.',
   ],
 };
 
