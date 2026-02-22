@@ -1,9 +1,10 @@
 # TODO
 
-Last updated: 2026-02-22 00:12 UTC
+Last updated: 2026-02-22 00:34 UTC
 
 ## What's Done
 
+- [x] 2026-02-22 00:34 UTC - Make a small resume copy tweak in `lib/resume-data.ts` (`60fps` -> `60 FPS`) and rerun the full resume gate (`build`, `calibrate:resume-layout`, `verify:resume-layout`, `validate-resume-pdfs`) to test enforcement workflow.
 - [x] 2026-02-22 00:12 UTC - Add repository pre-push enforcement for resume-affecting changes via `.githooks/pre-push` (build -> calibrate -> verify -> validate) and document one-time `git config core.hooksPath .githooks` activation in `AGENTS.md`.
 - [x] 2026-02-22 00:09 UTC - Tighten `AGENTS.md` resume workflow so resume-affecting edits must run `build` + `calibrate:resume-layout` + `verify:resume-layout` + `validate-resume-pdfs` (in order) before commit/push, with rerun requirements after calibration changes.
 - [x] 2026-02-22 00:00 UTC - Remove deprecated `general` resume variant from `lib/resume-data.ts` (and `.resume-variant-general` print overrides), delete legacy `public/resume/kevin-mok-resume.pdf`, and update resume docs/prompts/smoke steps to the 10 active variants.

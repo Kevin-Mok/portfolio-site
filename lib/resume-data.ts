@@ -185,7 +185,7 @@ const portfolioSiteProject: ResumeProject = {
   bullets: [
     '<strong>Engineered an automated resume generation pipeline</strong> using Node.js, eliminating <strong>100% of manual maintenance</strong> for 10 role-specific resume variants.',
     '<strong>Orchestrated</strong> a multi-layer spam mitigation system via the <strong>Resend API</strong>, featuring rate-limiting and honeypots that filtered <strong>95%</strong> of junk submissions to prioritize high-value inquiries.',
-    '<strong>Developed device-specific layouts</strong> via Framer Motion, delivering a <strong>smooth 60fps desktop interface</strong> and a <strong>high-engagement mobile experience</strong>.',
+    '<strong>Developed device-specific layouts</strong> via Framer Motion, delivering a <strong>smooth 60 FPS desktop interface</strong> and a <strong>high-engagement mobile experience</strong>.',
     '<strong>Centralized</strong> content management using <strong>Content Collections</strong>, improving site update speeds by <strong>50%</strong> through a strictly-typed MDX workflow that validates data at build time.',
     '<strong>Optimized asset delivery</strong> by integrating Cloudflare R2 and Next.js patterns, <strong>reducing global image loading latency by 40%</strong>.',
     '<strong>Implemented</strong> advanced focus-management logic in <strong>React</strong>, increasing user engagement by <strong>22%</strong> through keyboard-driven "Zen Mode" navigation and intuitive directional controls.',
