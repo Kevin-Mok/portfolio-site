@@ -387,9 +387,9 @@
 }
 
 .resume-variant-python {
-  --resume-print-scale: 1.098;
-  --resume-print-top-offset: 13.747pt;
-  --resume-print-leading: 1.043;
+  --resume-print-scale: 1.064;
+  --resume-print-top-offset: 22.734pt;
+  --resume-print-leading: 1.029;
 }
 
 .resume-variant-aws-web-dev {
@@ -405,9 +405,9 @@
 }
 
 .resume-variant-web-dev-django {
-  --resume-print-scale: 1.134;
-  --resume-print-leading: 1.05;
-  --resume-print-top-offset: 25.7pt;
+  --resume-print-scale: 1.132;
+  --resume-print-leading: 1.049;
+  --resume-print-top-offset: 24.25pt;
 }
 
 .resume-variant-it-support {

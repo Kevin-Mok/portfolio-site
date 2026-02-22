@@ -476,7 +476,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       projects: [
         {
           ...nomarStocksProject,
-          bullets: [nomarStocksProject.bullets[0], nomarStocksProject.bullets[1], nomarStocksProject.bullets[7]],
+          bullets: [nomarStocksProject.bullets[1], nomarStocksProject.bullets[0], nomarStocksProject.bullets[7]],
         },
         {
           ...portfolioSiteProject,
@@ -491,9 +491,9 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ...kanbanCalendarProject,
           bullets: [
             kanbanCalendarProject.bullets[0],
-            kanbanCalendarProject.bullets[1],
             kanbanCalendarProject.bullets[2],
             kanbanCalendarProject.bullets[3],
+            kanbanCalendarProject.bullets[6],
           ],
         },
       ],
@@ -543,14 +543,24 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         },
         {
           ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[4]],
+          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[2], raritySurfProject.bullets[6]],
         },
         {
           ...portfolioSiteProject,
           bullets: [portfolioSiteProject.bullets[4]],
         },
       ],
-      experience: [redHatCloudExperience],
+      experience: [
+        {
+          ...redHatCloudExperience,
+          bullets: [
+            redHatCloudExperience.bullets[0],
+            redHatCloudExperience.bullets[1],
+            redHatCloudExperience.bullets[2],
+            redHatCloudExperience.bullets[5],
+          ],
+        },
+      ],
       skills: awsSkills,
       education: [educationDefault],
     },
@@ -574,12 +584,19 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           bullets: [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
-            spotifyVisualizedProject.bullets[2],
             spotifyVisualizedProject.bullets[3],
             spotifyVisualizedProject.bullets[4],
+            spotifyVisualizedProject.bullets[6],
           ],
         },
-        discordAdventureProject,
+        {
+          ...discordAdventureProject,
+          bullets: [
+            discordAdventureProject.bullets[0],
+            discordAdventureProject.bullets[4],
+            discordAdventureProject.bullets[5],
+          ],
+        },
         {
           ...stbMarketplaceProject,
           bullets: [
@@ -594,9 +611,9 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ...redHatCloudExperience,
           bullets: [
             redHatCloudExperience.bullets[0],
-            redHatCloudExperience.bullets[1],
             redHatCloudExperience.bullets[2],
-            redHatCloudExperience.bullets[3],
+            redHatCloudExperience.bullets[6],
+            redHatCloudExperience.bullets[5],
           ],
         },
       ],
@@ -638,8 +655,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         {
           ...nomarStocksProject,
           bullets: [
-            nomarStocksProject.bullets[0],
             nomarStocksProject.bullets[1],
+            nomarStocksProject.bullets[0],
             nomarStocksProject.bullets[7],
           ],
         },
@@ -651,7 +668,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             redHatCloudExperience.bullets[0],
             redHatCloudExperience.bullets[1],
             redHatCloudExperience.bullets[2],
-            redHatCloudExperience.bullets[3],
+            redHatCloudExperience.bullets[5],
           ],
         },
       ],
@@ -682,21 +699,27 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           bullets: [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
-            spotifyVisualizedProject.bullets[2],
             spotifyVisualizedProject.bullets[3],
             spotifyVisualizedProject.bullets[4],
           ],
         },
-        discordAdventureProject,
+        {
+          ...discordAdventureProject,
+          bullets: [
+            discordAdventureProject.bullets[0],
+            discordAdventureProject.bullets[4],
+            discordAdventureProject.bullets[5],
+          ],
+        },
       ],
       experience: [
         {
           ...redHatCloudExperience,
           bullets: [
             redHatCloudExperience.bullets[0],
-            redHatCloudExperience.bullets[1],
             redHatCloudExperience.bullets[2],
-            redHatCloudExperience.bullets[3],
+            redHatCloudExperience.bullets[6],
+            redHatCloudExperience.bullets[5],
           ],
         },
       ],
@@ -721,8 +744,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           bullets: [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
-            spotifyVisualizedProject.bullets[2],
-            spotifyVisualizedProject.bullets[4],
+            spotifyVisualizedProject.bullets[3],
+            spotifyVisualizedProject.bullets[6],
           ],
         },
         {
