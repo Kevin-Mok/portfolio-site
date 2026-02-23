@@ -34,12 +34,18 @@ const ResumeContentComponent: React.FC<ResumeContentProps> = ({
   const sectionTitles = useMemo(
     () => ({
       projects: selectedVariant.sectionTitles?.projects ?? 'Web Dev Projects',
-      experience: selectedVariant.sectionTitles?.experience ?? 'Work Experience',
+      experience:
+        selectedVariant.sectionTitles?.experience ??
+        (selectedVariant.otherExperience && selectedVariant.otherExperience.length > 0
+          ? 'Relevant Work Experience'
+          : 'Work Experience'),
       skills: selectedVariant.sectionTitles?.skills ?? 'Skills',
       education: selectedVariant.sectionTitles?.education ?? 'Education',
     }),
-    [selectedVariant.sectionTitles]
+    [selectedVariant.otherExperience, selectedVariant.sectionTitles]
   );
+  const otherExperienceTitle =
+    selectedVariant.otherExperienceTitle ?? 'Other Work Experience';
 
   const resume = selectedVariant.resume;
   const boldSkills = useMemo(
@@ -76,23 +82,27 @@ const ResumeContentComponent: React.FC<ResumeContentProps> = ({
         </div>
       </div>
 
-      {selectedVariant.summary && (
-        <ResumeSection title="Summary">
-          <p className="resume-summary">{selectedVariant.summary}</p>
-        </ResumeSection>
-      )}
-
-      <ResumeSection title={sectionTitles.projects}>
-        {resume.projects.map((project) => (
-          <ProjectEntry key={`${project.name}-${project.date}`} project={project} />
-        ))}
-      </ResumeSection>
-
       <ResumeSection title={sectionTitles.experience}>
         {resume.experience.map((work) => (
           <WorkEntry key={`${work.company}-${work.date}-${work.title}`} work={work} />
         ))}
       </ResumeSection>
+
+      {resume.projects.length > 0 ? (
+        <ResumeSection title={sectionTitles.projects}>
+          {resume.projects.map((project) => (
+            <ProjectEntry key={`${project.name}-${project.date}`} project={project} />
+          ))}
+        </ResumeSection>
+      ) : null}
+
+      {selectedVariant.otherExperience && selectedVariant.otherExperience.length > 0 ? (
+        <ResumeSection title={otherExperienceTitle}>
+          {selectedVariant.otherExperience.map((work) => (
+            <WorkEntry key={`${work.company}-${work.date}-${work.title}`} work={work} />
+          ))}
+        </ResumeSection>
+      ) : null}
 
       <ResumeSection title={sectionTitles.skills}>
         {selectedVariant.skillsHtmlLines && selectedVariant.skillsHtmlLines.length > 0 ? (

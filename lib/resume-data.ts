@@ -14,7 +14,9 @@ export interface ResumeProject {
 
 export interface WorkExperience {
   company: string;
+  companyUrl?: string;
   title: string;
+  titleUrl?: string;
   evidenceUrl?: string;
   evidenceLabel?: string;
   languages: string[];
@@ -68,6 +70,8 @@ export interface ResumeVariantDefinition {
   label: string;
   fileName: string;
   resume: Resume;
+  otherExperience?: WorkExperience[];
+  otherExperienceTitle?: string;
   sectionTitles?: Partial<ResumeSectionTitles>;
   summary?: string;
   skillsBold?: string[];
@@ -112,21 +116,21 @@ const educationCustomerSupport: Education = {
 };
 
 const raritySurfProject: ResumeProject = {
-  name: 'Magic Eden NFT Sniper',
-  url: 'https://github.com/Kevin-Mok#featured-projects',
-  languages: ['TypeScript', 'JavaScript', 'Node.js', 'React'],
-  date: 'Mar 2025',
+  name: 'Rarity Surf',
+  url: 'https://github.com/Kevin-Mok/rarity-surf',
+  languages: ['Python', 'Django', 'GraphQL', 'PostgreSQL', 'React'],
+  date: 'Sept 2024 — Feb 2025',
   bullets: [
-    '<strong>Architected</strong> a custom file-locking concurrency control system in <strong>Node.js</strong>, ensuring <strong>100% data integrity</strong> and preventing race conditions during high-frequency parallel database writes.',
-    '<strong>Orchestrated</strong> a multi-threaded metadata ingestion engine using <strong>p-queue</strong> and <strong>Helia</strong>, improving data synchronization speed by <strong>50%</strong> across distributed IPFS nodes.',
-    '<strong>Implemented</strong> batch-processing transaction logic with <strong>Prisma</strong>, reducing database contention and overhead by <strong>35%</strong> during large-scale NFT metadata updates.',
-    '<strong>Developed</strong> a sophisticated rarity ranking algorithm using <strong>TypeScript</strong> and <strong>Lodash</strong>, providing users with real-time asset valuation that increased platform engagement by <strong>22%</strong>.',
-    '<strong>Engineered</strong> a high-performance RESTful API via <strong>Express</strong>, maintaining sub-second response times for complex trait-based queries and reducing loading latency by <strong>35%</strong>.',
-    '<strong>Designed</strong> an automated error-recovery system with exponential backoff in <strong>TypeScript</strong>, eliminating <strong>100% of manual intervention</strong> requirements for failed network requests.',
-    '<strong>Optimized</strong> relational data schemas using <strong>PostgreSQL</strong> and <strong>Prisma</strong>, accelerating query execution for price-floor calculations by <strong>40%</strong> through strategic indexing.',
-    '<strong>Centralized</strong> cross-marketplace sales tracking by integrating the <strong>Magic Eden API</strong>, providing a unified data view that reduced user search hesitation across <strong>3 membership tiers</strong>.',
-    '<strong>Automated</strong> end-to-end data pipelines from ingestion to rarity scoring, reducing operational overhead by <strong>15+ hours per week</strong> through staggered background process execution.',
-    '<strong>Standardized</strong> data normalization protocols for heterogeneous NFT traits, ensuring <strong>100% compatibility</strong> across diverse collections and significantly improving platform scalability.',
+    '<strong>Architected</strong> a <strong>Django + GraphQL</strong> platform that used multi-threaded Python ingestion workers, increasing NFT metadata retrieval speed by <strong>400%</strong>.',
+    '<strong>Integrated</strong> real-time <strong>OpenSea API</strong> listing and sales ingestion, automating high-volume marketplace monitoring and reducing manual tracking by <strong>100%</strong>.',
+    '<strong>Developed</strong> a trait-normalized rarity scoring engine in <strong>Python</strong>, achieving <strong>98% valuation accuracy</strong> against benchmark ranking tools.',
+    '<strong>Optimized</strong> API pagination and request-throttling logic for volatile traffic windows, reducing external-service connection failures by <strong>45%</strong>.',
+    '<strong>Engineered</strong> a <strong>PostgreSQL</strong>-backed token data model with centralized JSON metadata caching, cutting query and lookup latency by <strong>60%</strong>.',
+    '<strong>Built</strong> price/rank filter workflows to surface underpriced rare assets, increasing identified high-margin opportunities by <strong>15%</strong>.',
+    '<strong>Implemented</strong> decentralized metadata handling through <strong>IPFS</strong>, maintaining <strong>100% asset availability</strong> for visual and trait data.',
+    '<strong>Automated</strong> daily market summaries and historical sales snapshots, eliminating <strong>12 manual hours per week</strong> through scheduled data sync jobs.',
+    '<strong>Scaled</strong> multi-collection support to <strong>15+ NFT projects</strong> with configurable rank and price thresholds per collection.',
+    '<strong>Streamlined</strong> rarity and listing filters to run sub-second queries across <strong>thousands of data points</strong> for rapid buy-side decisions.',
   ],
 };
 
@@ -155,13 +159,13 @@ const kanbanCalendarProject: ResumeProject = {
   languages: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Engineered</strong> a high-performance Kanban interface using <strong>Pragmatic Drag-and-Drop</strong>, improving task organization efficiency by <strong>50%</strong> for power users.',
+    '<strong>Engineered a high-performance drag-and-drop</strong> Kanban interface, <strong>improving organization efficiency by 50%</strong> for power users.',
     '<strong>Architected</strong> a mobile-first navigation system featuring <strong>Custom React Hooks</strong> and swipe gestures, increasing mobile user engagement by <strong>22%</strong>.',
-    '<strong>Optimized</strong> complex UI transitions via <strong>Framer Motion</strong> and shared layout IDs, maintaining a fluid <strong>60fps</strong> interaction rate during event rescheduling.',
-    '<strong>Implemented</strong> a scalable event state management system utilizing <strong>JavaScript Proxies</strong>, reducing initial data loading latency by <strong>35%</strong>.',
+    '<strong>Optimized complex UI transitions</strong> using fluid animation logic, <strong>maintaining a premium feel interaction</strong> during event rescheduling.',
+    '<strong>Implemented</strong> an automated data management system, <strong>reducing initial loading times by 35%</strong> and ensuring seamless application performance.',
     '<strong>Developed</strong> a responsive multi-view architecture with <strong>Tailwind CSS 4</strong>, ensuring <strong>100%</strong> cross-browser compatibility and seamless desktop-to-mobile handoff.',
     '<strong>Centralized</strong> complex date-time logic with <strong>date-fns</strong>, eliminating <strong>100%</strong> of manual scheduling conflicts and timezone calculation errors.',
-    '<strong>Refined</strong> component performance using <strong>React 19&apos;s</strong> memoization patterns, reducing unnecessary re-renders by <strong>40%</strong> during intensive drag operations.',
+    '<strong>Refined interface stability</strong> by implementing optimized rendering patterns, <strong>reducing system overhead by 40%</strong> during intensive user interactions.',
     '<strong>Orchestrated</strong> a modular component library for <strong>DayColumn</strong> and <strong>EventModal</strong>, accelerating future feature deployment cycles by <strong>30%</strong>.',
     '<strong>Executed</strong> advanced CSS optimization strategies including <strong>Layout Isolation</strong>, achieving a perfect <strong>100/100</strong> score on core performance and accessibility audits.',
     '<strong>Integrated</strong> a robust <strong>TypeScript</strong> architecture across the full stack, reducing production bug reports by <strong>25%</strong> through strict type-safety and exhaustive error handling.',
@@ -185,7 +189,7 @@ const spotifyVisualizedProject: ResumeProject = {
   name: 'Spotify Visualized',
   url: 'https://github.com/Kevin-Mok/spotify-lib-vis?tab=readme-ov-file#spotify-library-visualizer',
   languages: ['Python', 'Django', 'PostgreSQL'],
-  date: 'Jan 2026 — Feb 2026',
+  date: 'May 2024 — June 2024',
   bullets: [
     '<strong>Optimized</strong> core database query speed by <strong>50%</strong> through efficient <strong>Django ORM</strong> filtering and model indexing, significantly reducing latency for high-volume data requests.',
     '<strong>Automated</strong> end-to-end library synchronization via <strong>OAuth2</strong> and the <strong>Spotify Web API</strong>, eliminating <strong>100%</strong> of manual data tracking for libraries exceeding 10,000 tracks.',
@@ -225,7 +229,8 @@ const portfolioSiteProject: ResumeProject = {
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Engineered an automated resume generation pipeline</strong> using Node.js, eliminating <strong>100% of manual maintenance</strong> for 10 role-specific resume variants.',
+    //'<strong>Engineered an automated resume generation pipeline</strong> using Node.js, eliminating <strong>100% of manual maintenance</strong> for 10 role-specific resume variants.',
+    '<strong>Architected a Node.js-based generation engine</strong> that synchronized 10 role-specific resume variants, <strong>cutting update time by 95%</strong> and ensuring consistency across all versions.',
     '<strong>Orchestrated</strong> a multi-layer spam mitigation system via the <strong>Resend API</strong>, featuring rate-limiting and honeypots that filtered <strong>95%</strong> of junk submissions to prioritize high-value inquiries.',
     '<strong>Developed device-specific layouts</strong> via Framer Motion, delivering a <strong>smooth 60 FPS desktop interface</strong> and a <strong>high-engagement mobile experience</strong>.',
     '<strong>Centralized</strong> content management using <strong>Content Collections</strong>, improving site update speeds by <strong>50%</strong> through a strictly-typed MDX workflow that validates data at build time.',
@@ -237,7 +242,7 @@ const portfolioSiteProject: ResumeProject = {
   ],
 };
 
-const leavesSupportProject: ResumeProject = {
+const _leavesSupportProject: ResumeProject = {
   name: 'Leaves',
   url: 'http://tryleaves.app/',
   languages: ['TypeScript', 'React Native', 'Expo'],
@@ -283,7 +288,7 @@ const nomarStocksProject: ResumeProject = {
   date: 'Jan 2026 — Feb 2026',
   bullets: [
     '<strong>Architected</strong> a tiered membership system supporting <strong>3 distinct subscription levels</strong> using <strong>Next.js</strong>, reducing client-side navigation latency by <strong>50%</strong> through optimized route handling.',
-    '<strong>Engineered an end-to-end automated onboarding pipeline</strong> via Whop API integration, achieving a <strong>100% reduction</strong> in manual administration while ensuring <strong>instant fulfillment</strong> for 16+ community channels.',
+    '<strong>Engineered an end-to-end automated onboarding pipeline</strong> via Whop API integration, achieving a <strong>100% reduction</strong> in manual administration while ensuring <strong>instant fulfillment</strong>.',
     '<strong>Developed</strong> fluid scroll-triggered animations utilizing the <strong>IntersectionObserver API</strong>, contributing to a <strong>22% increase</strong> in user session duration by delivering high-fidelity visual feedback at a <strong>0.3 visibility threshold</strong>.',
     '<strong>Implemented</strong> hardware-accelerated numerical counters via <strong>requestAnimationFrame</strong>, maintaining a consistent <strong>60 FPS</strong> during <strong>2000ms</strong> data-reveal sequences to emphasize key community growth statistics.',
     '<strong>Automated the generation</strong> of dynamic social metadata preview using the Next.js API, <strong>increasing social media click-through rates (CTR) by 40%</strong>.',
@@ -364,6 +369,24 @@ const digitalMarketplaceExperience: WorkExperience = {
     '<strong>Implemented KYC and middleman verification checks</strong>, reducing fraud exposure and bringing <strong>chargeback risk close to zero</strong>.',
     '<strong>Standardized P&amp;L tracking and payment records</strong>, keeping operations fully auditable across gateways and fulfillment logs.',
   ],
+};
+
+const nomarFreelanceExperience: WorkExperience = {
+  company: 'www.ntcharts.com',
+  companyUrl: 'https://www.ntcharts.com/',
+  title: 'Freelance Frontend Developer',
+  languages: nomarStocksProject.languages,
+  date: nomarStocksProject.date,
+  bullets: nomarStocksProject.bullets,
+};
+
+const stbFreelanceExperience: WorkExperience = {
+  company: 'Fortnite Items Marketplace',
+  companyUrl: 'https://github.com/Kevin-Mok/stb-mkt',
+  title: 'Freelance Python Engineer',
+  languages: stbMarketplaceProject.languages,
+  date: stbMarketplaceProject.date,
+  bullets: stbMarketplaceProject.bullets,
 };
 
 const webSkills = [
@@ -469,22 +492,21 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     id: 'web-dev',
     label: 'Web Development',
     fileName: 'kevin-mok-resume-web-dev.pdf',
-    sectionTitles: defaultSectionTitles,
+    sectionTitles: {
+      ...defaultSectionTitles,
+      projects: 'Web Dev Projects',
+      experience: 'Web Dev Work Experience',
+    },
     skillsBold: webDevBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [
-        {
-          ...nomarStocksProject,
-          bullets: [nomarStocksProject.bullets[1], nomarStocksProject.bullets[0], nomarStocksProject.bullets[7]],
-        },
         {
           ...portfolioSiteProject,
           bullets: [
             portfolioSiteProject.bullets[0],
             portfolioSiteProject.bullets[2],
             portfolioSiteProject.bullets[4],
-            portfolioSiteProject.bullets[6],
           ],
         },
         {
@@ -493,18 +515,16 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             kanbanCalendarProject.bullets[0],
             kanbanCalendarProject.bullets[2],
             kanbanCalendarProject.bullets[3],
-            kanbanCalendarProject.bullets[6],
           ],
         },
       ],
       experience: [
         {
-          ...redHatWebExperience,
+          ...nomarFreelanceExperience,
           bullets: [
-            redHatWebExperience.bullets[0],
-            redHatWebExperience.bullets[1],
-            redHatWebExperience.bullets[2],
-            redHatWebExperience.bullets[3],
+            nomarFreelanceExperience.bullets[1],
+            nomarFreelanceExperience.bullets[0],
+            nomarFreelanceExperience.bullets[7],
           ],
         },
       ],
@@ -516,6 +536,16 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         },
       ],
     },
+    otherExperience: [
+      {
+        ...redHatWebExperience,
+        bullets: [
+          redHatWebExperience.bullets[0],
+          redHatWebExperience.bullets[1],
+          redHatWebExperience.bullets[3],
+        ],
+      },
+    ],
   },
   {
     id: 'aws',
@@ -523,10 +553,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     fileName: 'kevin-mok-resume-aws.pdf',
     sectionTitles: {
       ...defaultSectionTitles,
-      projects: 'Projects',
+      projects: 'AWS/Cloud Projects',
     },
-    references:
-      'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
     skillsBold: awsBoldSkills,
     resume: {
       contact: sharedContact,
@@ -537,17 +565,14 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             awsServerProject.bullets[0],
             awsServerProject.bullets[1],
             awsServerProject.bullets[2],
-            awsServerProject.bullets[3],
             awsServerProject.bullets[4],
           ],
         },
         {
-          ...raritySurfProject,
-          bullets: [raritySurfProject.bullets[1], raritySurfProject.bullets[2], raritySurfProject.bullets[6]],
-        },
-        {
           ...portfolioSiteProject,
-          bullets: [portfolioSiteProject.bullets[4]],
+          bullets: [
+            portfolioSiteProject.bullets[4],
+          ],
         },
       ],
       experience: [
@@ -558,12 +583,20 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             redHatCloudExperience.bullets[1],
             redHatCloudExperience.bullets[2],
             redHatCloudExperience.bullets[5],
+            redHatCloudExperience.bullets[6],
           ],
         },
       ],
       skills: awsSkills,
       education: [educationDefault],
     },
+    otherExperienceTitle: 'IT Support Experience',
+    otherExperience: [
+      {
+        ...redHatSupportExperience,
+        bullets: [redHatSupportExperience.bullets[4]],
+      },
+    ],
   },
   {
     id: 'python',
@@ -571,10 +604,9 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     fileName: 'kevin-mok-resume-python.pdf',
     sectionTitles: {
       ...defaultSectionTitles,
-      projects: 'Projects',
+      projects: 'Python Projects',
+      experience: 'Python Work Experience',
     },
-    references:
-      'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
     skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
@@ -585,41 +617,40 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
             spotifyVisualizedProject.bullets[3],
-            spotifyVisualizedProject.bullets[4],
-            spotifyVisualizedProject.bullets[6],
           ],
         },
         {
-          ...discordAdventureProject,
+          ...raritySurfProject,
           bullets: [
-            discordAdventureProject.bullets[0],
-            discordAdventureProject.bullets[4],
-            discordAdventureProject.bullets[5],
-          ],
-        },
-        {
-          ...stbMarketplaceProject,
-          bullets: [
-            stbMarketplaceProject.bullets[0],
-            stbMarketplaceProject.bullets[2],
-            stbMarketplaceProject.bullets[3],
+            raritySurfProject.bullets[0],
+            raritySurfProject.bullets[2],
+            raritySurfProject.bullets[9],
           ],
         },
       ],
       experience: [
         {
-          ...redHatCloudExperience,
+          ...stbFreelanceExperience,
           bullets: [
-            redHatCloudExperience.bullets[0],
-            redHatCloudExperience.bullets[2],
-            redHatCloudExperience.bullets[6],
-            redHatCloudExperience.bullets[5],
+            stbFreelanceExperience.bullets[0],
+            stbFreelanceExperience.bullets[2],
+            stbFreelanceExperience.bullets[9],
           ],
         },
       ],
       skills: pythonSkills,
       education: [educationDefault],
     },
+    otherExperience: [
+      {
+        ...redHatCloudExperience,
+        bullets: [
+          redHatCloudExperience.bullets[0],
+          redHatCloudExperience.bullets[2],
+          redHatCloudExperience.bullets[5],
+        ],
+      },
+    ],
   },
   {
     id: 'aws-web-dev',
@@ -627,10 +658,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     fileName: 'kevin-mok-resume-aws-web-dev.pdf',
     sectionTitles: {
       ...defaultSectionTitles,
-      projects: 'Projects',
+      projects: 'AWS + Web Projects',
     },
-    references:
-      'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
     skillsBold: awsBoldSkills,
     resume: {
       contact: sharedContact,
@@ -641,23 +670,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             awsServerProject.bullets[0],
             awsServerProject.bullets[1],
             awsServerProject.bullets[2],
-            awsServerProject.bullets[3],
-          ],
-        },
-        {
-          ...portfolioSiteProject,
-          bullets: [
-            portfolioSiteProject.bullets[2],
-            portfolioSiteProject.bullets[4],
-            portfolioSiteProject.bullets[6],
-          ],
-        },
-        {
-          ...nomarStocksProject,
-          bullets: [
-            nomarStocksProject.bullets[1],
-            nomarStocksProject.bullets[0],
-            nomarStocksProject.bullets[7],
+            awsServerProject.bullets[4],
           ],
         },
       ],
@@ -669,7 +682,12 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             redHatCloudExperience.bullets[1],
             redHatCloudExperience.bullets[2],
             redHatCloudExperience.bullets[5],
+            redHatCloudExperience.bullets[6],
           ],
+        },
+        {
+          ...nomarFreelanceExperience,
+          bullets: [nomarFreelanceExperience.bullets[1], nomarFreelanceExperience.bullets[0]],
         },
       ],
       skills: awsSkills,
@@ -682,17 +700,19 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     fileName: 'kevin-mok-resume-aws-python.pdf',
     sectionTitles: {
       ...defaultSectionTitles,
-      projects: 'Projects',
+      projects: 'AWS + Python Projects',
     },
-    references:
-      'See my LinkedIn for references from my Red Hat managers/mentee, a startup client, and a graduate student mentor.',
     skillsBold: pythonBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [
         {
           ...awsServerProject,
-          bullets: [awsServerProject.bullets[1], awsServerProject.bullets[2], awsServerProject.bullets[3]],
+          bullets: [
+            awsServerProject.bullets[1],
+            awsServerProject.bullets[2],
+            awsServerProject.bullets[4],
+          ],
         },
         {
           ...spotifyVisualizedProject,
@@ -700,7 +720,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
             spotifyVisualizedProject.bullets[3],
-            spotifyVisualizedProject.bullets[4],
           ],
         },
         {
@@ -718,8 +737,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           bullets: [
             redHatCloudExperience.bullets[0],
             redHatCloudExperience.bullets[2],
-            redHatCloudExperience.bullets[6],
             redHatCloudExperience.bullets[5],
+            redHatCloudExperience.bullets[6],
           ],
         },
       ],
@@ -733,7 +752,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     fileName: 'kevin-mok-resume-web-dev-django.pdf',
     sectionTitles: {
       ...defaultSectionTitles,
-      projects: 'Projects',
+      projects: 'Web Dev Projects',
+      experience: 'Python Work Experience',
     },
     skillsBold: pythonBoldSkills,
     resume: {
@@ -749,42 +769,35 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ],
         },
         {
-          ...kanbanCalendarProject,
-          bullets: [
-            kanbanCalendarProject.bullets[0],
-            kanbanCalendarProject.bullets[1],
-            kanbanCalendarProject.bullets[3],
-          ],
-        },
-        {
-          ...stbMarketplaceProject,
-          bullets: [
-            stbMarketplaceProject.bullets[0],
-            stbMarketplaceProject.bullets[2],
-            stbMarketplaceProject.bullets[3],
-          ],
+          ...raritySurfProject,
+          bullets: [raritySurfProject.bullets[0], raritySurfProject.bullets[2], raritySurfProject.bullets[4]],
         },
       ],
       experience: [
         {
-          ...redHatWebExperience,
-          bullets: [
-            redHatWebExperience.bullets[0],
-            redHatWebExperience.bullets[1],
-            redHatWebExperience.bullets[2],
-            redHatWebExperience.bullets[3],
-          ],
+          ...stbFreelanceExperience,
+          bullets: [stbFreelanceExperience.bullets[0], stbFreelanceExperience.bullets[2]],
         },
       ],
       skills: pythonSkills,
       education: [educationDefault],
     },
+    otherExperience: [
+      {
+        ...redHatWebExperience,
+        bullets: [redHatWebExperience.bullets[0], redHatWebExperience.bullets[1]],
+      },
+    ],
   },
   {
     id: 'it-support',
     label: 'IT Support',
     fileName: 'kevin-mok-resume-it-support.pdf',
-    sectionTitles: defaultSectionTitles,
+    sectionTitles: {
+      ...defaultSectionTitles,
+      projects: 'Technical Support Projects',
+      experience: 'IT Support Work Experience',
+    },
     skillsHtmlLines: [
       '<strong>IT Support Skills:</strong> Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
       '<strong>Customer Support:</strong> Cross-team Collaboration, Communication, User Training, Documentation',
@@ -801,18 +814,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       contact: sharedContact,
       projects: [
         {
-          ...leavesSupportProject,
-          bullets: [leavesSupportProject.bullets[2], leavesSupportProject.bullets[3], leavesSupportProject.bullets[4]],
-        },
-        {
-          ...stbMarketplaceProject,
-          bullets: [
-            stbMarketplaceProject.bullets[1],
-            stbMarketplaceProject.bullets[3],
-            stbMarketplaceProject.bullets[4],
-          ],
-        },
-        {
           ...awsServerProject,
           bullets: [awsServerProject.bullets[3], awsServerProject.bullets[4]],
         },
@@ -827,6 +828,14 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             redHatSupportExperience.bullets[4],
           ],
         },
+        {
+          ...digitalMarketplaceExperience,
+          bullets: [
+            digitalMarketplaceExperience.bullets[1],
+            digitalMarketplaceExperience.bullets[2],
+            digitalMarketplaceExperience.bullets[5],
+          ],
+        },
       ],
       skills: [],
       education: [educationSupport],
@@ -836,7 +845,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     id: 'it-support-aws',
     label: 'IT Support + AWS',
     fileName: 'kevin-mok-resume-it-support-aws.pdf',
-    sectionTitles: defaultSectionTitles,
+    sectionTitles: {
+      ...defaultSectionTitles,
+      projects: 'Technical Support Projects',
+      experience: 'IT Support Work Experience',
+    },
     skillsHtmlLines: [
       '<strong>IT Support Skills:</strong> Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
       '<strong>Customer Support:</strong> Cross-team Collaboration, Communication, User Training, Documentation',
@@ -856,23 +869,24 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ...awsServerProject,
           bullets: [awsServerProject.bullets[1], awsServerProject.bullets[3], awsServerProject.bullets[4]],
         },
-        {
-          ...leavesSupportProject,
-          bullets: [leavesSupportProject.bullets[3], leavesSupportProject.bullets[4]],
-        },
-        {
-          ...stbMarketplaceProject,
-          bullets: [stbMarketplaceProject.bullets[1], stbMarketplaceProject.bullets[3]],
-        },
       ],
       experience: [
         {
           ...redHatSupportExperience,
           bullets: [
+            redHatSupportExperience.bullets[0],
             redHatSupportExperience.bullets[1],
             redHatSupportExperience.bullets[2],
             redHatSupportExperience.bullets[3],
             redHatSupportExperience.bullets[4],
+          ],
+        },
+        {
+          ...digitalMarketplaceExperience,
+          bullets: [
+            digitalMarketplaceExperience.bullets[1],
+            digitalMarketplaceExperience.bullets[2],
+            digitalMarketplaceExperience.bullets[5],
           ],
         },
       ],
@@ -886,10 +900,9 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     fileName: 'kevin-mok-resume-sales.pdf',
     sectionTitles: {
       ...defaultSectionTitles,
-      projects: 'Web Dev Projects',
+      projects: 'Sales Projects',
+      experience: 'Customer Support Work Experience',
     },
-    summary:
-      'Revenue-focused customer operations professional with high-value transaction support, negotiation, and dispute prevention experience, consistently improving GMV outcomes and customer trust.',
     skillsHtmlLines: [
       '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, clear written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
       '<strong>Technical:</strong> Microsoft 365, VPN/log basics, Linux basics',
@@ -902,29 +915,27 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     ],
     resume: {
       contact: sharedContact,
-      projects: [
-        {
-          ...nomarStocksProject,
-          bullets: [nomarStocksProject.bullets[1], nomarStocksProject.bullets[6], nomarStocksProject.bullets[8]],
-        },
-        {
-          ...stbMarketplaceProject,
-          bullets: [stbMarketplaceProject.bullets[0], stbMarketplaceProject.bullets[1], stbMarketplaceProject.bullets[4]],
-        },
-      ],
+      projects: [],
       experience: [
         {
           ...digitalMarketplaceExperience,
           bullets: [
             digitalMarketplaceExperience.bullets[0],
             digitalMarketplaceExperience.bullets[1],
+            digitalMarketplaceExperience.bullets[2],
             digitalMarketplaceExperience.bullets[3],
-            digitalMarketplaceExperience.bullets[5],
+            digitalMarketplaceExperience.bullets[4],
           ],
         },
         {
           ...redHatSupportExperience,
-          bullets: [redHatSupportExperience.bullets[4]],
+          bullets: [
+            redHatSupportExperience.bullets[0],
+            redHatSupportExperience.bullets[1],
+            redHatSupportExperience.bullets[2],
+            redHatSupportExperience.bullets[3],
+            redHatSupportExperience.bullets[4],
+          ],
         },
       ],
       skills: [],
@@ -937,10 +948,9 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     fileName: 'kevin-mok-resume-call-centre.pdf',
     sectionTitles: {
       ...defaultSectionTitles,
-      projects: 'Dev Projects',
+      projects: 'Customer Support Projects',
+      experience: 'Customer Support Work Experience',
     },
-    summary:
-      'High-volume customer support professional with Tier 1/2 troubleshooting, de-escalation, and documentation discipline, improving response quality and reducing escalation friction across phone/chat/email queues.',
     skillsHtmlLines: [
       '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, <strong>SLA awareness</strong>, call/chat/email etiquette, documentation and <strong>KB</strong> writing',
       '<strong>Technical:</strong> <strong>Microsoft 365</strong>, <strong>VPN/log basics</strong>, <strong>Linux</strong>',
@@ -953,28 +963,27 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     ],
     resume: {
       contact: sharedContact,
-      projects: [
-        {
-          ...leavesSupportProject,
-          bullets: [leavesSupportProject.bullets[1], leavesSupportProject.bullets[3], leavesSupportProject.bullets[4]],
-        },
-        {
-          ...stbMarketplaceProject,
-          bullets: [stbMarketplaceProject.bullets[1], stbMarketplaceProject.bullets[3], stbMarketplaceProject.bullets[4]],
-        },
-      ],
+      projects: [],
       experience: [
         {
-          ...digitalMarketplaceExperience,
+          ...redHatSupportExperience,
           bullets: [
-            digitalMarketplaceExperience.bullets[1],
-            digitalMarketplaceExperience.bullets[2],
-            digitalMarketplaceExperience.bullets[3],
+            redHatSupportExperience.bullets[0],
+            redHatSupportExperience.bullets[1],
+            redHatSupportExperience.bullets[2],
+            redHatSupportExperience.bullets[3],
+            redHatSupportExperience.bullets[4],
           ],
         },
         {
-          ...redHatSupportExperience,
-          bullets: [redHatSupportExperience.bullets[3], redHatSupportExperience.bullets[4]],
+          ...digitalMarketplaceExperience,
+          bullets: [
+            digitalMarketplaceExperience.bullets[0],
+            digitalMarketplaceExperience.bullets[1],
+            digitalMarketplaceExperience.bullets[2],
+            digitalMarketplaceExperience.bullets[4],
+            digitalMarketplaceExperience.bullets[5],
+          ],
         },
       ],
       skills: [],
