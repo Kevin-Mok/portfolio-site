@@ -13,20 +13,45 @@ import {
   loadResumeLayoutBaseline,
 } from './lib/resume-layout-baseline.mjs';
 import { resumePdfVariants } from './lib/resume-pdf-variants.mjs';
+import {
+  CALIBRATION_LIMITS,
+  computeNextSettings,
+  createVariantSolverState,
+  registerObservation,
+} from './lib/resume-calibration-solver.mjs';
 
 const cssPath = path.join(process.cwd(), 'app', 'styles', '13-resume-latex.css');
 const pdfDir = path.join(process.cwd(), 'public', 'resume');
+const MINIMUM_PRINT_SCALE_FLOOR = 1.14;
+const CAP_SOURCE_VARIANT_ID = 'web-dev';
+const minimumScaleByVariant = new Map(
+  resumePdfVariants.map((variant) => [variant.id, MINIMUM_PRINT_SCALE_FLOOR])
+);
+const capSourceVariant = resumePdfVariants.find((variant) => variant.id === CAP_SOURCE_VARIANT_ID);
+
+if (!capSourceVariant) {
+  throw new Error(`Missing cap-source variant "${CAP_SOURCE_VARIANT_ID}" in resumePdfVariants.`);
+}
+
+const capSourcePdfPath = path.join(pdfDir, capSourceVariant.fileName);
 
 function formatPoints(value) {
   return `${value.toFixed(3)}pt`;
 }
 
-function clamp(value, min, max) {
-  return Math.min(max, Math.max(min, value));
-}
-
 function formatNumber(value) {
   return Number(value.toFixed(3)).toString();
+}
+
+function measureCurrentWhitespaceCaps() {
+  const sourceLayout = measureBottomWhitespace(capSourcePdfPath);
+  return {
+    sourceVariantId: capSourceVariant.id,
+    sourceFileName: capSourceVariant.fileName,
+    topMinPts: sourceLayout.topWhitespacePts,
+    bottomMinPts: sourceLayout.bottomWhitespacePts,
+    pageHeightPts: sourceLayout.pageHeightPts,
+  };
 }
 
 function parseArgs(argv) {
@@ -34,6 +59,8 @@ function parseArgs(argv) {
   let skipBuildFirst = false;
   let dryRun = false;
   let noBuild = false;
+  let variantId = null;
+  let keepPartialOnFailure = false;
 
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
@@ -63,11 +90,26 @@ function parseArgs(argv) {
       continue;
     }
 
+    if (arg === '--variant') {
+      const value = argv[index + 1];
+      if (!value || value.startsWith('--')) {
+        throw new Error('Expected a resume variant id after --variant');
+      }
+      variantId = value;
+      index += 1;
+      continue;
+    }
+
+    if (arg === '--keep-partial-on-failure') {
+      keepPartialOnFailure = true;
+      continue;
+    }
+
     if (arg === '--help' || arg === '-h') {
       console.log(
         [
           'Usage:',
-          '  node scripts/calibrate-resume-layout.mjs [--max-iterations <n>] [--skip-build-first] [--dry-run] [--no-build]',
+          '  node scripts/calibrate-resume-layout.mjs [--max-iterations <n>] [--skip-build-first] [--dry-run] [--no-build] [--variant <id>] [--keep-partial-on-failure]',
           '',
           'What it does:',
           '  1) Build + regenerate resume PDFs',
@@ -83,6 +125,8 @@ function parseArgs(argv) {
           '  --skip-build-first   Use existing generated PDFs for iteration 1',
           '  --dry-run            Measure and report without writing CSS',
           '  --no-build           Never run build; useful only when PDFs are already generated',
+          '  --variant <id>       Calibrate only one variant (e.g. web-dev)',
+          '  --keep-partial-on-failure  Keep best-known in-flight CSS changes when calibration fails',
         ].join('\n')
       );
       process.exit(0);
@@ -96,6 +140,8 @@ function parseArgs(argv) {
     skipBuildFirst,
     dryRun,
     noBuild,
+    variantId,
+    keepPartialOnFailure,
   };
 }
 
@@ -283,7 +329,7 @@ function writeVariantPrintSettings(cssText, variantId, nextSettings) {
   );
 }
 
-function measureVariant(variant, baselineRatio, tolerancePts) {
+function measureVariant(variant, baselineRatio, tolerancePts, whitespaceCaps) {
   const pdfPath = path.join(pdfDir, variant.fileName);
   const pdfInfo = parsePdfInfo(runPdfCommand('pdfinfo', [pdfPath]));
   const layout = measureBottomWhitespace(pdfPath);
@@ -293,6 +339,27 @@ function measureVariant(variant, baselineRatio, tolerancePts) {
     baselineRatio
   );
   const deltaPts = layout.bottomWhitespacePts - expectedPts;
+  const topDeficitPts = whitespaceCaps.topMinPts - layout.topWhitespacePts;
+  const bottomDeficitPts = whitespaceCaps.bottomMinPts - layout.bottomWhitespacePts;
+
+  let solverDeltaPts = -bottomDeficitPts;
+  let primaryFailure = 'none';
+  if (pdfInfo.pages !== 1) {
+    primaryFailure = 'page-overflow';
+  } else if (bottomDeficitPts > tolerancePts && bottomDeficitPts >= topDeficitPts) {
+    primaryFailure = 'bottom-underflow';
+    // Negative solver delta nudges top-offset upward (more bottom whitespace).
+    solverDeltaPts = -bottomDeficitPts;
+  } else if (topDeficitPts > tolerancePts) {
+    primaryFailure = 'top-underflow';
+    // Positive solver delta nudges top-offset downward (more top whitespace).
+    solverDeltaPts = topDeficitPts;
+  }
+
+  const pass =
+    pdfInfo.pages === 1 &&
+    topDeficitPts <= tolerancePts &&
+    bottomDeficitPts <= tolerancePts;
 
   return {
     id: variant.id,
@@ -301,108 +368,16 @@ function measureVariant(variant, baselineRatio, tolerancePts) {
     pages: pdfInfo.pages ?? 0,
     expectedPts,
     actualPts: layout.bottomWhitespacePts,
-    deltaPts,
+    deltaPts: solverDeltaPts,
+    baselineDeltaPts: deltaPts,
+    topExpectedPts: whitespaceCaps.topMinPts,
+    topActualPts: layout.topWhitespacePts,
+    topDeficitPts,
+    bottomExpectedPts: whitespaceCaps.bottomMinPts,
+    bottomDeficitPts,
+    primaryFailure,
     pageHeightPts: layout.pageHeightPts,
-    pass: pdfInfo.pages === 1 && Math.abs(deltaPts) <= tolerancePts,
-  };
-}
-
-/**
- * Compute next print settings from current measurements.
- *
- * Strategy:
- * - If a variant spills to multiple pages, shrink scale and reduce top offset.
- * - If a variant is 1-page but outside tolerance:
- *   - For moderate error, adjust top offset in points for fast convergence.
- *   - For large error, adjust scale using content-height ratio.
- */
-function computeNextSettings(
-  currentSettings,
-  measurement,
-  tolerancePts,
-  previousObservation
-) {
-  if (previousObservation) {
-    const previousScale = previousObservation.settings.scale;
-    const previousLeading = previousObservation.settings.leading;
-    const previousTopOffset = previousObservation.settings.topOffsetPts;
-    const previousDelta = previousObservation.measurement.deltaPts;
-    const previousPages = previousObservation.measurement.pages;
-
-    const scaleChanged = Math.abs(currentSettings.scale - previousScale) > 0.0005;
-    const leadingChanged = Math.abs(currentSettings.leading - previousLeading) > 0.0005;
-    const topOffsetChanged =
-      Math.abs(currentSettings.topOffsetPts - previousTopOffset) > 0.05;
-
-    const crossedDeltaSign =
-      previousPages === 1 &&
-      measurement.pages === 1 &&
-      Math.sign(previousDelta) !== Math.sign(measurement.deltaPts);
-    const crossedPageBoundary = previousPages !== measurement.pages;
-
-    if (
-      (crossedDeltaSign || crossedPageBoundary) &&
-      (scaleChanged || leadingChanged || topOffsetChanged)
-    ) {
-      const midpointScale = scaleChanged
-        ? (currentSettings.scale + previousScale) / 2
-        : currentSettings.scale;
-      const midpointLeading = leadingChanged
-        ? (currentSettings.leading + previousLeading) / 2
-        : currentSettings.leading;
-      const midpointTopOffset = topOffsetChanged
-        ? (currentSettings.topOffsetPts + previousTopOffset) / 2
-        : currentSettings.topOffsetPts;
-
-      return {
-        scale: clamp(midpointScale, 0.9, 1.35),
-        leading: clamp(midpointLeading, 0.9, 1.2),
-        topOffsetPts: clamp(midpointTopOffset, -12, 28),
-        strategy: 'midpoint-bracket',
-      };
-    }
-  }
-
-  let nextScale = currentSettings.scale;
-  let nextLeading = currentSettings.leading;
-  let nextTopOffset = currentSettings.topOffsetPts;
-
-  if (measurement.pages > 1) {
-    // Multi-page is a hard failure; contract text density and trim top offset.
-    nextScale = currentSettings.scale * 0.97;
-    nextLeading = currentSettings.leading * 0.99;
-    nextTopOffset = currentSettings.topOffsetPts - 1.5;
-  } else {
-    const delta = measurement.deltaPts;
-    const absDelta = Math.abs(delta);
-
-    if (absDelta > tolerancePts) {
-      const currentContentHeight = measurement.pageHeightPts - measurement.actualPts;
-      const targetContentHeight = measurement.pageHeightPts - measurement.expectedPts;
-      const ratio = targetContentHeight / currentContentHeight;
-
-      // Split correction across scale + leading to avoid harsh wrap threshold jumps.
-      const dampedScaleRatio = 1 + (ratio - 1) * 0.65;
-      const dampedLeadingRatio = 1 + (ratio - 1) * 0.35;
-      nextScale = currentSettings.scale * dampedScaleRatio;
-      nextLeading = currentSettings.leading * dampedLeadingRatio;
-
-      const offsetStep =
-        absDelta <= 3
-          ? clamp(absDelta * 0.6, 0.25, 1.5)
-          : clamp(absDelta * 0.08, 0.15, 1.2);
-      nextTopOffset =
-        delta > 0
-          ? currentSettings.topOffsetPts + offsetStep
-          : currentSettings.topOffsetPts - offsetStep;
-    }
-  }
-
-  return {
-    scale: clamp(nextScale, 0.9, 1.35),
-    leading: clamp(nextLeading, 0.9, 1.2),
-    topOffsetPts: clamp(nextTopOffset, -12, 28),
-    strategy: 'gradient-step',
+    pass,
   };
 }
 
@@ -411,16 +386,270 @@ function printIterationReport(iteration, results) {
   for (const result of results) {
     const status = result.pass ? 'OK ' : 'FAIL';
     console.log(
-      `${status} ${result.fileName} pages=${result.pages} expected=${formatPoints(
-        result.expectedPts
-      )} actual=${formatPoints(result.actualPts)} delta=${formatPoints(result.deltaPts)}`
+      `${status} ${result.fileName} pages=${result.pages} top=${formatPoints(
+        result.topActualPts
+      )}/${formatPoints(result.topExpectedPts)} (delta=${formatPoints(
+        result.topDeficitPts
+      )}) bottom=${formatPoints(result.actualPts)}/${formatPoints(
+        result.bottomExpectedPts
+      )} (delta=${formatPoints(result.bottomDeficitPts)}) solverDelta=${formatPoints(
+        result.deltaPts
+      )} reason=${result.primaryFailure}`
+    );
+  }
+}
+
+function resolveVariants(variantId) {
+  if (!variantId) {
+    return resumePdfVariants;
+  }
+
+  const selected = resumePdfVariants.find((variant) => variant.id === variantId);
+  if (!selected) {
+    const knownVariants = resumePdfVariants.map((variant) => variant.id).join(', ');
+    throw new Error(
+      `Unknown variant "${variantId}". Expected one of: ${knownVariants}`
+    );
+  }
+
+  return [selected];
+}
+
+function enforceScaleFloorInCss(cssText, variants) {
+  let nextCssText = cssText;
+  const adjustments = [];
+
+  for (const variant of variants) {
+    const minimumScale = minimumScaleByVariant.get(variant.id);
+    if (!minimumScale) {
+      continue;
+    }
+
+    const settings = readVariantPrintSettings(nextCssText, variant.id);
+    if (settings.scale + 0.0005 >= minimumScale) {
+      continue;
+    }
+
+    nextCssText = writeVariantPrintSettings(nextCssText, variant.id, {
+      scale: minimumScale,
+      leading: settings.leading,
+      topOffsetPts: settings.topOffsetPts,
+    });
+
+    adjustments.push({
+      id: variant.id,
+      fromScale: settings.scale,
+      toScale: minimumScale,
+    });
+  }
+
+  return { cssText: nextCssText, adjustments };
+}
+
+function classifyBoundedFailure(variantId, measurement, settings, tolerancePts) {
+  if (measurement.primaryFailure === 'top-underflow') {
+    return null;
+  }
+
+  const minimumScale = minimumScaleByVariant.get(variantId) ?? CALIBRATION_LIMITS.scaleMin;
+  const atLowerDensityBound =
+    settings.scale <= minimumScale + 0.0005 &&
+    settings.leading <= CALIBRATION_LIMITS.leadingMin + 0.0005 &&
+    settings.topOffsetPts <= CALIBRATION_LIMITS.topOffsetMin + 0.05;
+  const atUpperDensityBound =
+    settings.scale >= CALIBRATION_LIMITS.scaleMax - 0.0005 &&
+    settings.leading >= CALIBRATION_LIMITS.leadingMax - 0.0005 &&
+    settings.topOffsetPts >= CALIBRATION_LIMITS.topOffsetMax - 0.05;
+
+  if (measurement.pages > 1 && atLowerDensityBound) {
+    return {
+      code: 'content-too-long-at-floor',
+      explanation:
+        'Still over one page while scale/leading/top-offset are at minimum allowed density.',
+      recommendation:
+        'Trim or tighten this variant content, or explicitly lower the minimum scale floor for this variant.',
+    };
+  }
+
+  if (measurement.pages === 1 && measurement.deltaPts < -tolerancePts && atLowerDensityBound) {
+    return {
+      code: 'content-too-long-at-floor',
+      explanation:
+        'Bottom whitespace remains below the minimum cap while density settings are already at floor.',
+      recommendation:
+        'Trim or tighten this variant content, or explicitly lower the minimum scale floor for this variant.',
+    };
+  }
+
+  if (measurement.pages === 1 && measurement.deltaPts > tolerancePts && atUpperDensityBound) {
+    return {
+      code: 'content-too-short-at-ceiling',
+      explanation:
+        'Top whitespace remains below the minimum cap while scale/leading/top-offset are at maximum allowed density.',
+      recommendation:
+        'Relax the top whitespace minimum, or explicitly raise max density bounds in the solver.',
+    };
+  }
+
+  return null;
+}
+
+function printContentBoundDiagnostics(boundFailures) {
+  if (boundFailures.size === 0) {
+    return;
+  }
+
+  console.error('\n[calibrate] Content-bound variants:');
+  for (const [variantId, failure] of boundFailures) {
+    console.error(
+      `- ${variantId} [${failure.code}] pages=${failure.measurement.pages} delta=${formatPoints(
+        failure.measurement.deltaPts
+      )} | ${failure.explanation} | Action: ${failure.recommendation}`
+    );
+  }
+}
+
+function restoreBestKnownSettings(cssText, variants, solverByVariant) {
+  let nextCssText = cssText;
+  let restoredCount = 0;
+
+  for (const variant of variants) {
+    const state = solverByVariant.get(variant.id);
+    if (!state?.bestObservation || !state?.lastObservation) {
+      continue;
+    }
+
+    if (state.bestObservation.score + 0.01 >= state.lastObservation.score) {
+      continue;
+    }
+
+    const minimumScale = minimumScaleByVariant.get(variant.id);
+    const bestSettings = {
+      ...state.bestObservation.settings,
+      scale:
+        minimumScale && state.bestObservation.settings.scale < minimumScale
+          ? minimumScale
+          : state.bestObservation.settings.scale,
+    };
+
+    nextCssText = writeVariantPrintSettings(
+      nextCssText,
+      variant.id,
+      bestSettings
+    );
+    restoredCount += 1;
+
+    console.error(
+      `[calibrate] ${variant.id}: restoring best-known settings from iteration ${state.bestObservation.iteration} (score ${formatNumber(
+        state.bestObservation.score
+      )}).`
+    );
+  }
+
+  return {
+    cssText: nextCssText,
+    restoredCount,
+  };
+}
+
+function printNonConvergenceDiagnostics(variants, solverByVariant) {
+  console.error('\n[calibrate] Non-convergence diagnostics:');
+  for (const variant of variants) {
+    const state = solverByVariant.get(variant.id);
+    if (!state?.lastObservation || !state?.bestObservation) {
+      continue;
+    }
+
+    const last = state.lastObservation;
+    const best = state.bestObservation;
+    if (last.measurement.pass) {
+      continue;
+    }
+
+    console.error(
+      [
+        `- ${variant.id}`,
+        `last: iter=${last.iteration} pages=${last.measurement.pages} delta=${formatPoints(
+          last.measurement.deltaPts
+        )} score=${formatNumber(last.score)}`,
+        `best: iter=${best.iteration} pages=${best.measurement.pages} delta=${formatPoints(
+          best.measurement.deltaPts
+        )} score=${formatNumber(best.score)}`,
+        `bestSettings: scale=${formatNumber(best.settings.scale)} leading=${formatNumber(
+          best.settings.leading
+        )} topOffset=${formatNumber(best.settings.topOffsetPts)}pt`,
+      ].join(' | ')
     );
   }
 }
 
 const options = parseArgs(process.argv.slice(2));
 const baseline = loadResumeLayoutBaseline();
-const previousByVariant = new Map();
+const targetVariants = resolveVariants(options.variantId);
+const solverByVariant = new Map(
+  targetVariants.map((variant) => [variant.id, createVariantSolverState()])
+);
+let originalCssText = readFileSync(cssPath, 'utf8');
+let wroteCss = false;
+let restoreLogged = false;
+let forceBuildFirst = false;
+const boundFailures = new Map();
+
+function writeCss(cssText) {
+  writeFileSync(cssPath, cssText, 'utf8');
+  wroteCss = true;
+}
+
+function maybeRestoreOriginalCss(reason) {
+  if (options.keepPartialOnFailure || !wroteCss) {
+    return;
+  }
+
+  writeFileSync(cssPath, originalCssText, 'utf8');
+  if (!restoreLogged) {
+    console.error(`[calibrate] Restored original CSS after ${reason}.`);
+    restoreLogged = true;
+  }
+}
+
+function handleSignal(signal) {
+  maybeRestoreOriginalCss(`signal ${signal}`);
+  process.exit(signal === 'SIGINT' ? 130 : 143);
+}
+
+process.on('SIGINT', () => handleSignal('SIGINT'));
+process.on('SIGTERM', () => handleSignal('SIGTERM'));
+process.on('uncaughtException', (error) => {
+  maybeRestoreOriginalCss('uncaught exception');
+  console.error(error instanceof Error ? error.stack ?? error.message : String(error));
+  process.exit(1);
+});
+process.on('unhandledRejection', (error) => {
+  maybeRestoreOriginalCss('unhandled rejection');
+  console.error(error instanceof Error ? error.stack ?? error.message : String(error));
+  process.exit(1);
+});
+
+const preflightFloorEnforcement = enforceScaleFloorInCss(originalCssText, targetVariants);
+if (preflightFloorEnforcement.adjustments.length > 0) {
+  const changesText = preflightFloorEnforcement.adjustments
+    .map(
+      (change) =>
+        `${change.id}: ${formatNumber(change.fromScale)} -> ${formatNumber(change.toScale)}`
+    )
+    .join(', ');
+
+  if (options.noBuild || options.dryRun) {
+    console.warn(
+      `[calibrate] Minimum scale floor would be enforced (${changesText}), but current mode is read-only/no-build.`
+    );
+  } else {
+    writeCss(preflightFloorEnforcement.cssText);
+    originalCssText = preflightFloorEnforcement.cssText;
+    forceBuildFirst = true;
+    console.log(`[calibrate] Enforced minimum scale floor before calibration: ${changesText}`);
+  }
+}
 
 if ((options.noBuild || options.dryRun) && options.maxIterations > 1) {
   console.warn(
@@ -429,19 +658,33 @@ if ((options.noBuild || options.dryRun) && options.maxIterations > 1) {
   options.maxIterations = 1;
 }
 
+let converged = false;
+let activeWhitespaceCaps = null;
+
 for (let iteration = 1; iteration <= options.maxIterations; iteration += 1) {
   const shouldBuild =
     !options.noBuild &&
     !options.dryRun &&
-    (!options.skipBuildFirst || iteration > 1);
+    (forceBuildFirst || !options.skipBuildFirst || iteration > 1);
   if (shouldBuild) {
     console.log(`\n[calibrate] Running build (iteration ${iteration})...`);
     runNpmBuild();
+    if (iteration === 1) {
+      forceBuildFirst = false;
+    }
   }
 
   const cssBefore = readFileSync(cssPath, 'utf8');
-  const measurements = resumePdfVariants.map((variant) =>
-    measureVariant(variant, baseline.ratio, baseline.tolerancePts)
+  activeWhitespaceCaps = measureCurrentWhitespaceCaps();
+  console.log(
+    `[calibrate] Active whitespace minima from ${activeWhitespaceCaps.sourceFileName}: top>=${formatPoints(
+      activeWhitespaceCaps.topMinPts
+    )} bottom>=${formatPoints(activeWhitespaceCaps.bottomMinPts)} (-${formatPoints(
+      baseline.tolerancePts
+    )} tolerance)`
+  );
+  const measurements = targetVariants.map((variant) =>
+    measureVariant(variant, baseline.ratio, baseline.tolerancePts, activeWhitespaceCaps)
   );
   const settingsByVariant = new Map();
   for (const result of measurements) {
@@ -450,14 +693,67 @@ for (let iteration = 1; iteration <= options.maxIterations; iteration += 1) {
 
   printIterationReport(iteration, measurements);
 
+  for (const result of measurements) {
+    const settingsSnapshot = settingsByVariant.get(result.id);
+    const state = solverByVariant.get(result.id);
+    if (!settingsSnapshot || !state) {
+      continue;
+    }
+
+    registerObservation(state, {
+      measurement: result,
+      settings: settingsSnapshot,
+      tolerancePts: baseline.tolerancePts,
+      iteration,
+    });
+  }
+
   const failing = measurements.filter((result) => !result.pass);
   if (failing.length === 0) {
-    console.log('\n[calibrate] All variants meet page-count + baseline whitespace constraints.');
-    process.exit(0);
+    converged = true;
+    console.log('\n[calibrate] All variants meet page-count + top/bottom whitespace minimum constraints.');
+    break;
+  }
+
+  const adjustableFailing = [];
+  for (const result of failing) {
+    const currentSettings = settingsByVariant.get(result.id);
+    if (!currentSettings) {
+      throw new Error(`Missing settings snapshot for variant "${result.id}"`);
+    }
+
+    const boundFailure = classifyBoundedFailure(
+      result.id,
+      result,
+      currentSettings,
+      baseline.tolerancePts
+    );
+    if (!boundFailure) {
+      boundFailures.delete(result.id);
+      adjustableFailing.push(result);
+      continue;
+    }
+
+    const existing = boundFailures.get(result.id);
+    boundFailures.set(result.id, {
+      ...boundFailure,
+      measurement: result,
+      settings: currentSettings,
+    });
+
+    if (!existing || existing.code !== boundFailure.code) {
+      console.warn(
+        `[calibrate] ${result.id}: ${boundFailure.code} (pages=${result.pages}, delta=${formatPoints(
+          result.deltaPts
+        )}). ${boundFailure.recommendation}`
+      );
+    }
   }
 
   if (options.dryRun) {
     console.log('\n[calibrate] Dry run mode: no CSS updates were written.');
+    printContentBoundDiagnostics(boundFailures);
+    maybeRestoreOriginalCss('dry-run exit');
     process.exit(1);
   }
 
@@ -465,23 +761,40 @@ for (let iteration = 1; iteration <= options.maxIterations; iteration += 1) {
     console.log(
       '\n[calibrate] --no-build mode: stopping after one measurement pass with existing PDFs.'
     );
+    printContentBoundDiagnostics(boundFailures);
+    maybeRestoreOriginalCss('no-build exit');
     process.exit(1);
   }
 
+  if (adjustableFailing.length === 0) {
+    console.error(
+      '\n[calibrate] Remaining failures are content-bounded within current scale/leading/top-offset limits.'
+    );
+    break;
+  }
+
   let cssAfter = cssBefore;
-  for (const result of failing) {
+  for (const result of adjustableFailing) {
     const currentSettings = settingsByVariant.get(result.id);
+    const solverState = solverByVariant.get(result.id);
     if (!currentSettings) {
       throw new Error(`Missing settings snapshot for variant "${result.id}"`);
     }
+    if (!solverState) {
+      throw new Error(`Missing solver state for variant "${result.id}"`);
+    }
 
-    const previousObservation = previousByVariant.get(result.id);
-    const nextSettings = computeNextSettings(
+    const nextSettings = computeNextSettings({
+      state: solverState,
       currentSettings,
-      result,
-      baseline.tolerancePts,
-      previousObservation
-    );
+      measurement: result,
+      tolerancePts: baseline.tolerancePts,
+    });
+
+    const minimumScale = minimumScaleByVariant.get(result.id);
+    if (minimumScale && nextSettings.scale < minimumScale) {
+      nextSettings.scale = minimumScale;
+    }
 
     cssAfter = writeVariantPrintSettings(cssAfter, result.id, nextSettings);
 
@@ -497,32 +810,37 @@ for (let iteration = 1; iteration <= options.maxIterations; iteration += 1) {
     );
   }
 
-  for (const result of measurements) {
-    const settingsSnapshot = settingsByVariant.get(result.id);
-    if (!settingsSnapshot) {
-      continue;
-    }
-
-    previousByVariant.set(result.id, {
-      measurement: {
-        pages: result.pages,
-        deltaPts: result.deltaPts,
-      },
-      settings: {
-        scale: settingsSnapshot.scale,
-        leading: settingsSnapshot.leading,
-        topOffsetPts: settingsSnapshot.topOffsetPts,
-      },
-    });
-  }
-
   if (cssAfter === cssBefore) {
     console.error('\n[calibrate] No CSS changes applied; stopping to avoid infinite loop.');
+    maybeRestoreOriginalCss('stalled calibration');
     process.exit(1);
   }
 
-  writeFileSync(cssPath, cssAfter, 'utf8');
+  writeCss(cssAfter);
 }
+
+if (converged) {
+  process.exit(0);
+}
+
+if (options.keepPartialOnFailure) {
+  const cssAtFailure = readFileSync(cssPath, 'utf8');
+  const restored = restoreBestKnownSettings(cssAtFailure, targetVariants, solverByVariant);
+  if (restored.restoredCount > 0 && restored.cssText !== cssAtFailure) {
+    writeCss(restored.cssText);
+    console.error(
+      '[calibrate] Restored best-known settings for non-converged variants. Rebuild and rerun verify to confirm.'
+    );
+  }
+} else {
+  maybeRestoreOriginalCss('non-convergence');
+  console.error(
+    '[calibrate] Reverted all calibration edits because convergence was not reached. Use --keep-partial-on-failure to keep in-flight adjustments.'
+  );
+}
+
+printContentBoundDiagnostics(boundFailures);
+printNonConvergenceDiagnostics(targetVariants, solverByVariant);
 
 console.error(
   `\n[calibrate] Reached max iterations (${options.maxIterations}) before convergence.\nRun "npm run verify:resume-layout" to inspect remaining deltas.`

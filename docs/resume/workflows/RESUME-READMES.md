@@ -7,6 +7,7 @@ This document tracks all README files updated in this session.
 ### WIP
 
 ### To-Do
+- `/mnt/linux-files-3/github-repos/rarity-surf/README.md`
 
 - `/home/kevin/coding/nomar-stocks/README.md`
 - `/home/kevin/coding/portfolio-site/README.md`

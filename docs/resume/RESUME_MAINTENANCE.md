@@ -194,7 +194,16 @@ Optional automated calibration loop:
 npm run calibrate:resume-layout
 ```
 
-If layout verification or validation fails, tune per-variant print controls (`--resume-print-scale`, `--resume-print-leading`, `--resume-print-top-offset`) in `app/styles/13-resume-latex.css`, regenerate, and re-validate until all variants pass.
+Target one variant during debugging:
+
+```bash
+npm run calibrate:resume-layout -- --variant web-dev
+```
+
+When calibration cannot converge within the iteration limit, the script now restores best-known settings for non-converged variants and prints iteration diagnostics (last vs best score/delta/settings).
+Layout gates enforce minimum top/bottom whitespace floors derived from the current generated `web-dev` PDF (`public/resume/kevin-mok-resume-web-dev.pdf`), with a `1pt` deficit tolerance.
+
+If layout verification still fails after calibration, tune per-variant print controls (`--resume-print-scale`, `--resume-print-leading`, `--resume-print-top-offset`) in `app/styles/13-resume-latex.css`, regenerate, and re-validate until all variants pass. For `web-dev`, fallback trimming order is: trim one project bullet first, then retry calibration.
 If generation fails with `No Next.js production build found at .next/BUILD_ID`, run `npm run build` first.
 
 ### Prerequisites

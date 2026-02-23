@@ -87,11 +87,12 @@ export function hasBoldFont(fonts, expectedFamilyPrefix) {
 }
 
 /**
- * Measure bottom whitespace for the first page in a PDF.
+ * Measure top + bottom whitespace for the first page in a PDF.
  *
- * The metric uses `pdftotext -bbox-layout` and reads the maximum `yMax`
- * across all <word> entries. Bottom whitespace is the distance (in points)
- * from that final rendered word box to the page bottom.
+ * The metric uses `pdftotext -bbox-layout` and reads:
+ * - minimum `yMin` across all <word> entries (top content edge)
+ * - maximum `yMax` across all <word> entries (bottom content edge)
+ * Whitespace is measured in points from page edges to those content edges.
  */
 export function measureBottomWhitespace(pdfPath) {
   const tempDir = mkdtempSync(path.join(tmpdir(), 'resume-layout-'));
@@ -112,25 +113,36 @@ export function measureBottomWhitespace(pdfPath) {
       throw new Error(`Invalid page height parsed from XML: ${pageMatch[2]}`);
     }
 
+    let firstContentYMinPts = Number.POSITIVE_INFINITY;
     let lastContentYMaxPts = 0;
-    for (const match of xml.matchAll(/<word\b[^>]*\byMax="([0-9.]+)"/g)) {
-      const yMax = Number(match[1]);
+    for (const match of xml.matchAll(/<word\b[^>]*\byMin="([0-9.]+)"[^>]*\byMax="([0-9.]+)"/g)) {
+      const yMin = Number(match[1]);
+      const yMax = Number(match[2]);
+
+      if (Number.isFinite(yMin) && yMin < firstContentYMinPts) {
+        firstContentYMinPts = yMin;
+      }
       if (Number.isFinite(yMax) && yMax > lastContentYMaxPts) {
         lastContentYMaxPts = yMax;
       }
     }
 
-    if (lastContentYMaxPts === 0) {
+    if (!Number.isFinite(firstContentYMinPts) || lastContentYMaxPts === 0) {
       throw new Error('Unable to find any word bounding boxes in pdftotext XML output.');
     }
 
+    const topWhitespacePts = firstContentYMinPts;
+    const topWhitespaceRatio = topWhitespacePts / pageHeightPts;
     const bottomWhitespacePts = pageHeightPts - lastContentYMaxPts;
     const bottomWhitespaceRatio = bottomWhitespacePts / pageHeightPts;
 
     return {
       pageWidthPts,
       pageHeightPts,
+      firstContentYMinPts,
       lastContentYMaxPts,
+      topWhitespacePts,
+      topWhitespaceRatio,
       bottomWhitespacePts,
       bottomWhitespaceRatio,
     };

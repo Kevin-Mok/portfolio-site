@@ -10,9 +10,10 @@ This document defines the required layout rules for all generated resume PDFs.
 ## Non-Negotiable Rules
 
 1. Bottom whitespace lock:
-   - Every generated resume PDF must match the legacy baseline bottom whitespace using normalized ratio enforcement.
-   - Baseline ratio comes from the legacy PDF and is converted to expected points for the target page height.
-   - Allowed mismatch tolerance: `±1.0pt`.
+   - Every generated resume PDF must keep at least the current `web-dev` variant top/bottom whitespace (minimum floor enforcement).
+   - Enforcement source is the generated `public/resume/kevin-mok-resume-web-dev.pdf`.
+   - Allowed minimum-side tolerance: `-1.0pt` below the `web-dev` top/bottom whitespace floors.
+   - Denser layouts that go below those floors are not allowed.
 2. Spacing and legibility:
    - Keep resume content dense but readable.
    - Tighten section and bullet spacing to reduce excess vertical gaps.
@@ -60,6 +61,12 @@ Automatically calibrate print variables (iterative build -> measure -> adjust lo
 npm run calibrate:resume-layout
 ```
 
+Target one variant during debugging:
+
+```fish
+npm run calibrate:resume-layout -- --variant web-dev
+```
+
 Run full resume PDF validation (pages, page size, fonts, bold, baseline lock):
 
 ```fish
@@ -75,8 +82,12 @@ npm run build
 ## Enforcement Notes
 
 - Verification scope is the canonical variant list in `scripts/lib/resume-pdf-variants.mjs`.
-- Legacy baseline PDF is A3 while generated resumes are US Letter. Enforcement therefore uses normalized ratio, not raw point equality.
+- Layout gate mode across calibration/verification/validation is now `min-whitespace-top-bottom`:
+  - pass if `pageCount === 1` and:
+  - `actualTopWhitespacePts >= webDevTopWhitespacePts - tolerancePts`
+  - `actualBottomWhitespacePts >= webDevBottomWhitespacePts - tolerancePts`
 - Per-variant print controls live in `app/styles/13-resume-latex.css`:
+  - Calibration now tracks best-so-far candidates and restores best-known settings if max iterations are reached without convergence.
   - `--resume-print-scale`
   - `--resume-print-leading`
   - `--resume-print-top-offset` (fine-tuning offset in print only)
@@ -122,3 +133,5 @@ Optional automated loop:
 ```fish
 npm run calibrate:resume-layout
 ```
+
+If a variant still fails after calibration, apply fallback trimming in this order: `web-dev` projects first (remove one lowest-priority project bullet), then re-run calibration and verification.

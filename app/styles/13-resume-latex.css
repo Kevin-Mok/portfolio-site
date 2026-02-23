@@ -14,6 +14,16 @@
   --resume-print-scale: 1;
   --resume-print-leading: 1;
   --resume-print-top-offset: 0pt;
+  --resume-print-min-section-gap: 0.42rem;
+  --resume-print-min-entry-gap: 0.3rem;
+  --resume-print-min-subtitle-gap: 0.11rem;
+  --resume-print-min-bullets-top-gap: 0.09rem;
+  --resume-print-min-bullet-gap: 0.09rem;
+  --resume-print-min-bullet-line-height: 1.22;
+  --resume-section-title-font-size: 1.24em;
+  --resume-company-font-size: 1.13em;
+  --resume-job-title-font-size: 1.06em;
+  --resume-bullet-font-size: 1em;
 }
 
 .resume-latex,
@@ -113,7 +123,7 @@
 }
 
 .resume-section-title {
-  font-size: 1.08em;
+  font-size: var(--resume-section-title-font-size);
   font-weight: 700;
   color: #000000;
   margin: 0.36rem 0 0.18rem 0;
@@ -125,7 +135,7 @@
 
 /* Entries */
 .resume-entry {
-  margin-bottom: 0.34rem;
+  margin-bottom: 0.42rem;
 }
 
 .resume-entry-header {
@@ -149,7 +159,7 @@
   color: #000000;
   font-weight: 700;
   margin: 0;
-  font-size: 1.05em;
+  font-size: 1.03em;
   line-height: 1.15;
 }
 
@@ -180,16 +190,23 @@
 
 .entry-company {
   font-weight: 700;
-  font-size: 1.12em;
+  font-size: var(--resume-company-font-size);
   color: #000000;
   margin: 0;
   line-height: 1.12;
 }
 
+.entry-company-link,
+.entry-company-link:hover,
+.entry-company-link:visited {
+  color: #000000;
+  text-decoration: none;
+}
+
 .entry-subtitle {
   display: flex;
   gap: 0.42rem;
-  margin-bottom: 0.08rem;
+  margin-bottom: 0.12rem;
   flex-wrap: wrap;
   align-items: baseline;
 }
@@ -197,6 +214,14 @@
 .entry-position {
   font-weight: 700;
   color: #000000;
+  font-size: var(--resume-job-title-font-size);
+}
+
+.entry-position-link,
+.entry-position-link:hover,
+.entry-position-link:visited {
+  color: #000000;
+  text-decoration: none;
 }
 
 .entry-tech {
@@ -207,7 +232,7 @@
 
 .entry-evidence-link {
   color: #1e4fa3;
-  font-size: 0.88em;
+  font-size: var(--resume-job-title-font-size);
   line-height: 1.2;
   text-decoration: underline;
 }
@@ -219,14 +244,15 @@
 
 /* Bullets */
 .resume-bullets {
-  margin: 0.08rem 0 0 0;
+  margin: 0.12rem 0 0 0;
   padding-left: 1.05rem;
   list-style: disc;
 }
 
 .resume-bullets li {
-  margin-bottom: 0.06rem;
-  line-height: 1.2;
+  font-size: var(--resume-bullet-font-size);
+  margin-bottom: 0.08rem;
+  line-height: 1.24;
 }
 
 .resume-bullets li:last-child {
@@ -282,7 +308,7 @@
 
 .education-institution {
   font-weight: 700;
-  font-size: 1.06em;
+  font-size: 1.04em;
   color: #000000;
   margin: 0;
 }
@@ -375,63 +401,69 @@
 
 /* Per-variant print scaling tuned for one-page fill on US Letter */
 .resume-variant-web-dev {
-  --resume-print-scale: 1.107;
-  --resume-print-leading: 1.019;
-  --resume-print-top-offset: 18.139pt;
+  --resume-print-scale: 1.14;
+  --resume-print-leading: 0.9;
+  --resume-print-top-offset: -12pt;
+  --resume-print-min-section-gap: 0.42rem;
+  --resume-print-min-entry-gap: 0.3rem;
+  --resume-print-min-subtitle-gap: 0.11rem;
+  --resume-print-min-bullets-top-gap: 0.09rem;
+  --resume-print-min-bullet-gap: 0.09rem;
+  --resume-print-min-bullet-line-height: 1.22;
 }
 
 .resume-variant-aws {
-  --resume-print-scale: 1.123;
-  --resume-print-leading: 1.021;
-  --resume-print-top-offset: 26.547pt;
+  --resume-print-scale: 1.14;
+  --resume-print-leading: 0.962;
+  --resume-print-top-offset: -6.847pt;
 }
 
 .resume-variant-python {
-  --resume-print-scale: 1.064;
-  --resume-print-top-offset: 22.734pt;
-  --resume-print-leading: 1.029;
+  --resume-print-scale: 1.14;
+  --resume-print-top-offset: -12pt;
+  --resume-print-leading: 0.9;
 }
 
 .resume-variant-aws-web-dev {
-  --resume-print-scale: 1.083;
-  --resume-print-leading: 1.012;
-  --resume-print-top-offset: 12.4pt;
+  --resume-print-scale: 1.182;
+  --resume-print-leading: 0.978;
+  --resume-print-top-offset: 18.212pt;
 }
 
 .resume-variant-aws-python {
-  --resume-print-scale: 1.098;
-  --resume-print-leading: 1.03;
-  --resume-print-top-offset: 15.117pt;
+  --resume-print-scale: 1.14;
+  --resume-print-leading: 0.937;
+  --resume-print-top-offset: 8.144pt;
 }
 
 .resume-variant-web-dev-django {
-  --resume-print-scale: 1.132;
-  --resume-print-leading: 1.049;
-  --resume-print-top-offset: 24.25pt;
+  --resume-print-scale: 1.14;
+  --resume-print-leading: 0.996;
+  --resume-print-top-offset: 17.516pt;
 }
 
 .resume-variant-it-support {
-  --resume-print-scale: 1.163;
-  --resume-print-top-offset: 21.586pt;
-  --resume-print-leading: 1.013;
+  --resume-print-scale: 1.196;
+  --resume-print-top-offset: 25.643pt;
+  --resume-print-leading: 0.926;
 }
 
 .resume-variant-it-support-aws {
-  --resume-print-scale: 1.221;
-  --resume-print-top-offset: 19.837pt;
-  --resume-print-leading: 1.042;
+  --resume-print-scale: 1.14;
+  --resume-print-top-offset: -0.302pt;
+  --resume-print-leading: 0.9;
 }
 
 .resume-variant-sales {
-  --resume-print-scale: 1.058;
-  --resume-print-leading: 1.024;
-  --resume-print-top-offset: 32.5pt;
+  --resume-print-scale: 1.24;
+  --resume-print-leading: 0.994;
+  --resume-print-top-offset: 28pt;
 }
 
 .resume-variant-call-centre {
-  --resume-print-scale: 1.07;
-  --resume-print-leading: 1.016;
-  --resume-print-top-offset: 25.017pt;
+  --resume-print-scale: 1.243;
+  --resume-print-leading: 1.006;
+  --resume-print-top-offset: 26.347pt;
 }
 
 /* Mobile */
@@ -528,6 +560,10 @@
     font-size: calc(11.05pt * var(--resume-print-scale));
     line-height: calc(1.18 * var(--resume-print-leading));
     padding-top: var(--resume-print-top-offset);
+    --resume-section-title-font-size: 1.22em;
+    --resume-company-font-size: 1.13em;
+    --resume-job-title-font-size: 1.08em;
+    --resume-bullet-font-size: 1em;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -571,17 +607,16 @@
   }
 
   .resume-section {
-    margin-bottom: 0.3rem;
+    margin-bottom: max(0.36rem, var(--resume-print-min-section-gap));
     page-break-inside: avoid;
   }
 
   .resume-section-title {
     margin: 0.22rem 0 0.1rem 0;
-    font-size: 1.04em;
   }
 
   .resume-entry {
-    margin-bottom: 0.19rem;
+    margin-bottom: max(0.24rem, var(--resume-print-min-entry-gap));
     page-break-inside: avoid;
   }
 
@@ -594,10 +629,6 @@
     row-gap: 0.04rem;
   }
 
-  .entry-company {
-    font-size: 1.08em;
-  }
-
   .entry-date {
     justify-self: end;
     text-align: right;
@@ -605,18 +636,18 @@
   }
 
   .entry-subtitle {
-    margin-bottom: 0.04rem;
+    margin-bottom: max(0.08rem, var(--resume-print-min-subtitle-gap));
     gap: 0.24rem;
   }
 
   .resume-bullets {
-    margin-top: 0.03rem;
+    margin-top: max(0.06rem, var(--resume-print-min-bullets-top-gap));
     padding-left: 0.93rem;
   }
 
   .resume-bullets li {
-    margin-bottom: 0.04rem;
-    line-height: 1.12;
+    margin-bottom: max(0.06rem, var(--resume-print-min-bullet-gap));
+    line-height: max(1.16, var(--resume-print-min-bullet-line-height));
   }
 
   .education-details {
@@ -631,8 +662,17 @@
     row-gap: 0.04rem;
   }
 
+  .education-institution {
+    font-size: 1.02em;
+  }
+
   .resume-skills-lines {
-    gap: 0.03rem;
+    gap: max(0.03rem, var(--resume-print-min-bullet-gap));
+  }
+
+  .resume-skill-line,
+  .resume-skills-inline {
+    line-height: max(1.16, var(--resume-print-min-bullet-line-height));
   }
 
   .resume-section-title,

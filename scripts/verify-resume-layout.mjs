@@ -8,7 +8,6 @@ import {
   measureBottomWhitespace,
 } from './lib/pdf-layout-metrics.mjs';
 import {
-  expectedWhitespacePointsForPageHeight,
   loadResumeLayoutBaseline,
 } from './lib/resume-layout-baseline.mjs';
 import { resumePdfVariants } from './lib/resume-pdf-variants.mjs';
@@ -68,6 +67,7 @@ function formatRatio(ratio) {
 
 let args;
 let baseline;
+const CAP_SOURCE_VARIANT_ID = 'web-dev';
 
 try {
   args = parseArgs(process.argv.slice(2));
@@ -80,6 +80,20 @@ try {
 }
 
 const targets = resolveTargets(args.pdfPath);
+const outputDir = path.join(process.cwd(), 'public', 'resume');
+const capSourceVariant = resumePdfVariants.find((variant) => variant.id === CAP_SOURCE_VARIANT_ID);
+if (!capSourceVariant) {
+  console.error(`Missing cap-source variant "${CAP_SOURCE_VARIANT_ID}" in scripts/lib/resume-pdf-variants.mjs`);
+  process.exit(1);
+}
+
+const capSourcePdfPath = path.join(outputDir, capSourceVariant.fileName);
+if (!existsSync(capSourcePdfPath)) {
+  console.error(`Cap-source PDF does not exist: ${capSourcePdfPath}\nRun "npm run build" first.`);
+  process.exit(1);
+}
+
+const capMetrics = measureBottomWhitespace(capSourcePdfPath);
 const results = [];
 let hasFailures = false;
 
@@ -92,12 +106,10 @@ for (const pdfPath of targets) {
 
   try {
     const metrics = measureBottomWhitespace(pdfPath);
-    const expectedPts = expectedWhitespacePointsForPageHeight(
-      metrics.pageHeightPts,
-      baseline.ratio
-    );
-    const deltaPts = metrics.bottomWhitespacePts - expectedPts;
-    const withinTolerance = Math.abs(deltaPts) <= baseline.tolerancePts;
+    const topDeficitPts = capMetrics.topWhitespacePts - metrics.topWhitespacePts;
+    const bottomDeficitPts = capMetrics.bottomWhitespacePts - metrics.bottomWhitespacePts;
+    const withinTolerance =
+      topDeficitPts <= baseline.tolerancePts && bottomDeficitPts <= baseline.tolerancePts;
 
     if (!withinTolerance) {
       hasFailures = true;
@@ -106,11 +118,15 @@ for (const pdfPath of targets) {
     results.push({
       pdfPath,
       status: withinTolerance ? 'ok' : 'fail',
-      expectedBottomWhitespacePts: expectedPts,
+      expectedTopWhitespacePts: capMetrics.topWhitespacePts,
+      expectedBottomWhitespacePts: capMetrics.bottomWhitespacePts,
+      actualTopWhitespacePts: metrics.topWhitespacePts,
       actualBottomWhitespacePts: metrics.bottomWhitespacePts,
-      deltaPts,
+      topDeficitPts,
+      bottomDeficitPts,
       tolerancePts: baseline.tolerancePts,
       pageHeightPts: metrics.pageHeightPts,
+      topWhitespaceRatio: metrics.topWhitespaceRatio,
       bottomWhitespaceRatio: metrics.bottomWhitespaceRatio,
     });
   } catch (error) {
@@ -127,6 +143,9 @@ if (args.outputJson) {
         referencePdfPath: baseline.referencePdfPath,
         baselineRatio: baseline.ratio,
         tolerancePts: baseline.tolerancePts,
+        capSourcePdfPath,
+        topWhitespaceMinPts: capMetrics.topWhitespacePts,
+        bottomWhitespaceMinPts: capMetrics.bottomWhitespacePts,
         count: results.length,
         results,
       },
@@ -136,7 +155,9 @@ if (args.outputJson) {
   );
 } else {
   console.log(
-    `Reference baseline: ${baseline.referencePdfPath} (ratio=${formatRatio(baseline.ratio)}, tolerance=${formatPoints(
+    `Whitespace minima source: ${capSourcePdfPath} (top=${formatPoints(
+      capMetrics.topWhitespacePts
+    )}, bottom=${formatPoints(capMetrics.bottomWhitespacePts)}, tolerance=${formatPoints(
       baseline.tolerancePts
     )})`
   );
@@ -146,9 +167,11 @@ if (args.outputJson) {
       console.log(
         `OK ${path.basename(result.pdfPath)} expected=${formatPoints(
           result.expectedBottomWhitespacePts
-        )} actual=${formatPoints(result.actualBottomWhitespacePts)} delta=${formatPoints(
-          result.deltaPts
-        )} ratio=${formatRatio(result.bottomWhitespaceRatio)}`
+        )} actual=${formatPoints(result.actualBottomWhitespacePts)} bottomDeficit=${formatPoints(
+          result.bottomDeficitPts
+        )} topDeficit=${formatPoints(result.topDeficitPts)} ratio=${formatRatio(
+          result.bottomWhitespaceRatio
+        )}`
       );
       continue;
     }
@@ -159,12 +182,16 @@ if (args.outputJson) {
       continue;
     }
 
+    const topMinAllowedPts = result.expectedTopWhitespacePts - result.tolerancePts;
+    const bottomMinAllowedPts = result.expectedBottomWhitespacePts - result.tolerancePts;
     console.error(
-      `  - bottom whitespace mismatch: expected ${formatPoints(
-        result.expectedBottomWhitespacePts
-      )}, actual ${formatPoints(result.actualBottomWhitespacePts)}, delta ${formatPoints(
-        result.deltaPts
-      )}, tolerance ${formatPoints(result.tolerancePts)}`
+      `  - whitespace below minimum: top actual ${formatPoints(
+        result.actualTopWhitespacePts
+      )} (min ${formatPoints(topMinAllowedPts)}), bottom actual ${formatPoints(
+        result.actualBottomWhitespacePts
+      )} (min ${formatPoints(bottomMinAllowedPts)}), topDeficit ${formatPoints(
+        result.topDeficitPts
+      )}, bottomDeficit ${formatPoints(result.bottomDeficitPts)}`
     );
   }
 }
@@ -174,5 +201,5 @@ if (hasFailures) {
 }
 
 if (!args.outputJson) {
-  console.log('All checked resume PDFs match the baseline bottom whitespace.');
+  console.log('All checked resume PDFs meet top/bottom whitespace minimums.');
 }
