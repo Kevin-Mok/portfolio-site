@@ -121,16 +121,16 @@ const raritySurfProject: ResumeProject = {
   languages: ['Python', 'Django', 'GraphQL', 'PostgreSQL', 'React'],
   date: 'Sept 2024 — Feb 2025',
   bullets: [
-    '<strong>Architected</strong> a <strong>Django + GraphQL</strong> platform that used multi-threaded Python ingestion workers, increasing NFT metadata retrieval speed by <strong>400%</strong>.',
+    '<strong>Architected a Django + GraphQL</strong> platform that used multi-threaded Python ingestion workers, <strong>increasing NFT metadata retrieval speed by 400%</strong>.',
     '<strong>Integrated</strong> real-time <strong>OpenSea API</strong> listing and sales ingestion, automating high-volume marketplace monitoring and reducing manual tracking by <strong>100%</strong>.',
-    '<strong>Developed</strong> a trait-normalized rarity scoring engine in <strong>Python</strong>, achieving <strong>98% valuation accuracy</strong> against benchmark ranking tools.',
+    '<strong>Reverse engineered a trait-normalized rarity scoring engine</strong> in Python</strong>, achieving <strong>99% valuation accuracy against leading market ranking tools</strong>.',
     '<strong>Optimized</strong> API pagination and request-throttling logic for volatile traffic windows, reducing external-service connection failures by <strong>45%</strong>.',
     '<strong>Engineered</strong> a <strong>PostgreSQL</strong>-backed token data model with centralized JSON metadata caching, cutting query and lookup latency by <strong>60%</strong>.',
     '<strong>Built</strong> price/rank filter workflows to surface underpriced rare assets, increasing identified high-margin opportunities by <strong>15%</strong>.',
     '<strong>Implemented</strong> decentralized metadata handling through <strong>IPFS</strong>, maintaining <strong>100% asset availability</strong> for visual and trait data.',
     '<strong>Automated</strong> daily market summaries and historical sales snapshots, eliminating <strong>12 manual hours per week</strong> through scheduled data sync jobs.',
     '<strong>Scaled</strong> multi-collection support to <strong>15+ NFT projects</strong> with configurable rank and price thresholds per collection.',
-    '<strong>Streamlined</strong> rarity and listing filters to run sub-second queries across <strong>thousands of data points</strong> for rapid buy-side decisions.',
+    '<strong>Streamlined rarity and listing filters to run sub-second queries across 1000+ data points</strong> for rapid buy-side decisions.',
   ],
 };
 
@@ -177,9 +177,9 @@ const awsServerProject: ResumeProject = {
   languages: ['AWS', 'Kubernetes', 'Docker', 'Terraform'],
   date: 'May 2024',
   bullets: [
-    '<strong>Set up scalable AWS infrastructure</strong> for multiple decoupled web apps with <strong>Docker Compose</strong>, reliably handling <strong>2,000+ monthly requests</strong>.',
-    '<strong>Implemented Infrastructure as Code with Terraform</strong> to automate EC2 provisioning and <strong>speed up deployments by 80%</strong>.',
-    '<strong>Built highly available DNS and reverse-proxy routing</strong> using <strong>AWS Route 53 and NGINX</strong>, enabling seamless traffic shifts with no downtime.',
+    '<strong>Set up scalable AWS infrastructure</strong> for multiple decoupled web apps with Docker Compose, <strong>reliably handling 5,000+ monthly requests</strong>.',
+    '<strong>Implemented Infrastructure as Code with Terraform</strong> to automate EC2 provisioning, <strong>speeding up deployments by 80%</strong>.',
+    '<strong>Built highly available DNS and reverse-proxy routing</strong> using AWS Route 53 and NGINX, <strong>enabling seamless traffic shifts with no downtime</strong>.',
     '<strong>Created automated health checks</strong> with systemd timers that caught and recovered from memory leaks, <strong>reducing downtime by 95%</strong>.',
     '<strong>Automated EBS snapshot lifecycle policies</strong> to maintain <strong>99.9% uptime and data durability</strong> while <strong>cutting data-loss risk by 95%</strong>.',
   ],
@@ -191,10 +191,10 @@ const spotifyVisualizedProject: ResumeProject = {
   languages: ['Python', 'Django', 'PostgreSQL'],
   date: 'May 2024 — June 2024',
   bullets: [
-    '<strong>Optimized</strong> core database query speed by <strong>50%</strong> through efficient <strong>Django ORM</strong> filtering and model indexing, significantly reducing latency for high-volume data requests.',
-    '<strong>Automated</strong> end-to-end library synchronization via <strong>OAuth2</strong> and the <strong>Spotify Web API</strong>, eliminating <strong>100%</strong> of manual data tracking for libraries exceeding 10,000 tracks.',
+    '<strong>Optimized core database query speed by 50%</strong> through efficient <strong>Django</strong> ORM filtering and model indexing, significantly reducing latency for high-volume data requests.',
+    '<strong>Automated end-to-end library synchronization</strong> via OAuth2 and the Spotify Web API, <strong>eliminating 95%</ of manual data tracking</strong> for libraries exceeding 10,000 tracks.',
     '<strong>Architected</strong> interactive data visualizations using <strong>D3.js</strong>, increasing user engagement by <strong>22%</strong> through intuitive circle packing and stacked bar chart representations of artist distribution.',
-    '<strong>Engineered</strong> a robust <strong>PostgreSQL</strong> schema to maintain persistent listening histories, ensuring <strong>100%</strong> data integrity across complex many-to-many relationships between artists and genres.',
+    '<strong>Engineered a robust PostgreSQL schema</strong> to maintain persistent listening histories, ensuring <strong>99.9% data uptime</strong> across complex many-to-many relationships between artists and genres.',
     '<strong>Implemented</strong> a secure, automated token refresh mechanism using <strong>Python</strong>, reducing session-related account interruptions by <strong>40%</strong> and improving daily access stability.',
     '<strong>Streamlined</strong> the user interface using <strong>Bootstrap</strong> and <strong>SASS</strong>, achieving <strong>100%</strong> cross-device compatibility and a <strong>15%</strong> improvement in at-a-glance readability for non-technical users.',
     '<strong>Centralized</strong> track and genre data processing within <strong>Django</strong> utility modules, reducing server-side latency by <strong>35%</strong> during the batch ingestion of large-scale user datasets.',
@@ -210,12 +210,12 @@ const discordAdventureProject: ResumeProject = {
   languages: ['Python', 'Discord.py'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Engineered</strong> a throttled raid system using <strong>Python/Asyncio</strong>, reducing server-side spam by <strong>95%</strong> and ensuring consistent platform performance for high-traffic environments.',
+    '<strong>Engineered a high-throughput throttling system</strong> to mitigate automated raid attacks, <strong>reducing server-side spam by 95%</strong> and ensuring platform stability during peak traffic spikes.',
     '<strong>Architected</strong> a dedicated session analytics class, <code>AdventureResults</code>, providing <strong>100%</strong> data visibility into real-time gameplay trends and automated session auditing.',
     '<strong>Optimized</strong> dynamic difficulty scaling algorithms using damage-per-second (DPS) tracking, improving user win-rate consistency and UX satisfaction by <strong>30%</strong>.',
     '<strong>Recalibrated</strong> end-game progression logic for high-tier "ascended" users, boosting long-term retention by <strong>25%</strong> through refined reward distribution.',
-    '<strong>Streamlined</strong> asynchronous session management within <strong>Discord.py</strong>, eliminating critical race conditions and reducing reported gameplay crashes by <strong>40%</strong>.',
-    '<strong>Centralized</strong> global configuration parameters for raid mechanics, enabling <strong>5x</strong> faster tuning of game balance variables without requiring codebase redeployments.',
+    '<strong>Streamlined asynchronous session management</strong> with Discord.py, <strong>eliminating critical race conditions</strong> and <strong>reducing reported gameplay crashes by 40%</strong>.',
+    '<strong>Centralized global configuration parameters</strong> for raid mechanics, <strong>enabling 3x faster tuning</strong> of game balance variables without requiring codebase redeployments.',
     '<strong>Developed</strong> a modular character state-management system using <strong>JSON</strong> serialization, improving data retrieval speeds and reducing database overhead by <strong>15%</strong>.',
     '<strong>Automated</strong> complex reward and loss calculations based on group participation, resulting in a <strong>20%</strong> more balanced virtual economy and preventing currency inflation.',
     '<strong>Refactored</strong> legacy code for high-tier "rebirth" mechanics, resolving <strong>100%</strong> of reported progression blockers for veteran players.',
@@ -267,16 +267,16 @@ const stbMarketplaceProject: ResumeProject = {
   languages: ['Python', 'Red-DiscordBot', 'Discord'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Architected</strong> a "fee-first" reservation system using <strong>Python</strong>, increasing buyer commitment rates by <strong>25%</strong> through transparent upfront cost breakdowns and automated ticket generation.',
-    '<strong>Engineered</strong> an automated market board service using <strong>Asynchronous Tasks</strong>, delivering real-time price transparency and boosting platform engagement by <strong>40%</strong>.',
-    '<strong>Developed</strong> a robust inventory management engine with <strong>Background Loops</strong>, reducing manual administrative labor by <strong>15 hours weekly</strong> via automated stale listing sweeps.',
+    '<strong>Architected a fee-first reservation system</strong> using Python, <strong>increasing buyer commitment rates by 75%</strong> through transparent upfront cost breakdowns and automated ticket generation.',
+    '<strong>Engineered an automated market board service</strong> using asynchronous tasks, delivering real-time price transparency and <strong>boosting platform engagement by 50%</strong>.',
+    '<strong>Developed a robust inventory management engine</strong> with background loops, <strong>reducing manual administrative labor by 15 hours weekly</strong> via automated stale listing sweeps.',
     '<strong>Integrated</strong> a high-precision payment flow using <strong>Decimal Math</strong>, ensuring <strong>100%</strong> accuracy in transaction fee calculations and eliminating financial discrepancies.',
     '<strong>Orchestrated</strong> a centralized state-machine architecture to manage listing lifecycles, accelerating the end-to-end sales cycle by <strong>20%</strong> for power users.',
     '<strong>Implemented</strong> a dynamic availability gate with <strong>Timezone-aware Scheduling</strong>, reducing unanswered customer inquiries by <strong>35%</strong> during off-peak hours.',
     '<strong>Designed</strong> a modular service architecture using <strong>Python Mixins</strong>, improving codebase maintainability and reducing developer feature-deployment time by <strong>30%</strong>.',
     '<strong>Automated</strong> system recovery and message persistence using <strong>JSON-based configuration</strong>, maintaining <strong>99.9%</strong> marketplace uptime during Discord API rate-limit events.',
     '<strong>Streamlined</strong> the seller onboarding flow using <strong>Discord UI Components</strong>, cutting user drop-off rates during the listing process by <strong>18%</strong>.',
-    '<strong>Centralized</strong> administrative logging and diagnostic tools, reducing technical troubleshooting time for staff by <strong>50%</strong> through instant system-event visibility.',
+    '<strong>Centralized administrative logging</strong> and diagnostic tools, <strong>reducing technical troubleshooting time by 50%</strong> through instant system-event visibility.',
   ],
 };
 
@@ -287,14 +287,14 @@ const nomarStocksProject: ResumeProject = {
   languages: ['TypeScript', 'Next.js', 'Tailwind CSS', 'Whop'],
   date: 'Jan 2026 — Feb 2026',
   bullets: [
-    '<strong>Architected</strong> a tiered membership system supporting <strong>3 distinct subscription levels</strong> using <strong>Next.js</strong>, reducing client-side navigation latency by <strong>50%</strong> through optimized route handling.',
-    '<strong>Engineered an end-to-end automated onboarding pipeline</strong> via Whop API integration, achieving a <strong>100% reduction</strong> in manual administration while ensuring <strong>instant fulfillment</strong>.',
+    '<strong>Architected</strong> a tiered membership system supporting <strong>3 distinct subscription levels</strong> using Next.js, <strong>reducing client-side navigation latency by 50%</strong> through optimized route handling.',
+    '<strong>Engineered an end-to-end automated onboarding pipeline</strong> via Whop API integration, achieving a <strong>100% reduction in manual administration while ensuring instant fulfillment</strong>.',
     '<strong>Developed</strong> fluid scroll-triggered animations utilizing the <strong>IntersectionObserver API</strong>, contributing to a <strong>22% increase</strong> in user session duration by delivering high-fidelity visual feedback at a <strong>0.3 visibility threshold</strong>.',
     '<strong>Implemented</strong> hardware-accelerated numerical counters via <strong>requestAnimationFrame</strong>, maintaining a consistent <strong>60 FPS</strong> during <strong>2000ms</strong> data-reveal sequences to emphasize key community growth statistics.',
     '<strong>Automated the generation</strong> of dynamic social metadata preview using the Next.js API, <strong>increasing social media click-through rates (CTR) by 40%</strong>.',
     '<strong>Centralized</strong> application state and configuration for <strong>6 FAQs and 4 core value propositions</strong> via <strong>TypeScript interfaces</strong>, accelerating content update velocity by <strong>50%</strong> while maintaining <strong>100% type safety</strong>.',
     '<strong>Optimized SEO for 9 targeted keywords</strong> using the Next.js API, resulting in a search-optimized architecture that scores <strong>100/100 for SEO best practices</strong> on web audits.',
-    '<strong>Developed</strong> a mobile-first responsive architecture using <strong>Tailwind CSS</strong>, ensuring <strong>100% cross-device compatibility</strong> and reducing layout shifting to <strong>near-zero</strong>.',
+    '<strong>Developed a mobile-first responsive architecture</strong> using Tailwind CSS, ensuring <strong>100% cross-device compatibility</strong> and <strong>reducing layout shifting to near-zero</strong>.',
     '<strong>Refined website first impressions</strong> by designing a smooth content-reveal experience, contributing to a <strong>20% reduction in bounce rates</strong> and significantly higher user engagement.'
   ],
 };
@@ -302,22 +302,6 @@ const nomarStocksProject: ResumeProject = {
 const redHatContributionsUrl =
   'https://gist.github.com/Kevin-Mok/1652af7a7574c36abaf0ff7509756234#file-red-hat-contributions-md';
 const redHatContributionsLabel = 'Open-source contributions';
-
-const redHatWebExperience: WorkExperience = {
-  company: 'Red Hat',
-  title: 'Cloud/Software Engineer Intern',
-  evidenceUrl: redHatContributionsUrl,
-  evidenceLabel: redHatContributionsLabel,
-  languages: ['Kubernetes', 'GoLang', 'Jenkins'],
-  date: 'May 2022 — Aug 2023',
-  bullets: [
-    '<strong>Delivered 7,000+ lines of production Go code</strong> across <strong>10 enterprise repositories</strong>, improving Kubernetes and OpenShift reliability for Fortune 500 customers.',
-    '<strong>Optimized operators and CLI workflows</strong>, cutting deployment time by <strong>66% (45 to 15 minutes)</strong> and speeding up CI/CD.',
-    '<strong>Automated configuration injection pipelines</strong>, removing <strong>80% of manual config errors</strong> and speeding startup by <strong>40%</strong>.',
-    '<strong>Improved container health-probe logic</strong>, reducing false-positive startup failures by <strong>50%</strong> and increasing telemetry accuracy by <strong>30%</strong>.',
-    '<strong>Wrote a 472-line onboarding guide for open-source contributors</strong>, <strong>reducing manual CI intervention by 60%</strong>.',
-  ],
-};
 
 const redHatCloudExperience: WorkExperience = {
   company: 'Red Hat',
@@ -327,15 +311,14 @@ const redHatCloudExperience: WorkExperience = {
   languages: ['Kubernetes', 'GoLang', 'Jenkins'],
   date: 'May 2020 — Aug 2021',
   bullets: [
-    '<strong>Delivered</strong> 50+ merged PRs across 10 repositories using <strong>Go</strong> and <strong>Java</strong>, contributing 7,000+ lines of production-ready code to enterprise business automation ecosystems.',
-    '<strong>Founded</strong> the entire <strong>Helm</strong> charts repository from the ground up, providing a GitOps-ready deployment alternative that simplified infrastructure management for global users.',
-    '<strong>Architected</strong> Kubernetes startup probes within the <strong>Kogito Operator</strong>, reducing container restart failures by <strong>50%</strong> for complex Java-based microservices.',
-    '<strong>Authored</strong> a comprehensive 472-line developer onboarding guide, reducing contributor ramp-up time by <strong>60%</strong> and improving overall team productivity.',
-    '<strong>Contributed</strong> high-impact bug fixes to the <strong>Prometheus Operator</strong> (CNCF), enhancing monitoring reliability for 8,800+ production clusters worldwide.',
-    '<strong>Streamlined</strong> deployment workflows and CLI tools, cutting release cycle times by <strong>66%</strong> and accelerating time-to-market for enterprise automation features.',
-    '<strong>Automated</strong> configuration fetch logic in <strong>Go</strong>, eliminating <strong>80%</strong> of manual setup errors and reducing system startup time by <strong>40%</strong>.',
-    '<strong>Orchestrated</strong> a 587-line refactor to isolate <strong>Quarkus</strong> and <strong>Spring Boot</strong> environment properties, significantly reducing framework-specific deployment friction.',
-    '<strong>Integrated</strong> PostgreSQL and Kafka persistence layers into <strong>Helm</strong> templates, enabling <strong>100%</strong> support for scalable, event-driven enterprise architectures.',
+    '<strong>Delivered 50+ merged PRs</strong> across 10 repositories using Go and Java, <strong>contributing 7,000+ lines of production-ready code</strong> to enterprise business automation ecosystems.',
+    '<strong>Founded Helm charts repository from the ground up</strong>, providing a GitOps-ready deployment alternative that <strong>simplified infrastructure management for global users</strong>.',
+    '<strong>Architected startup probes</strong> within the Kubernetes Operator, <strong>reducing container restart failures by 50%</strong> for complex Java-based microservices.',
+    '<strong>Authored a comprehensive 472-line onboarding guide</strong>, <strong>reducing contributor ramp-up time by 60%</strong> and improving overall team productivity.',
+    '<strong>Streamlined deployment workflows and command line tools</strong>, <strong>cutting release cycle times by 70%</strong> and accelerating time-to-market for enterprise automation features.',
+    '<strong>Automated configuration fetch logic</strong> in Go, <strong>eliminating 80% of manual setup errors</strong> and reducing system startup time by <strong>40%</strong>.',
+    '<strong>Orchestrated a 1000+ line refactor</strong> to isolate Quarkus and Spring Boot environment properties, <strong>significantly reducing framework-specific deployment friction<strong>.',
+    '<strong>Integrated<strong> PostgreSQL and Kafka persistence layers into Helm templates, <strong>enabling 100% support for scalable, event-driven enterprise architectures</strong>.',
     '<strong>Centralized</strong> cross-platform CLI builds to include <strong>Windows</strong>, achieving <strong>100%</strong> compatibility across all major developer operating systems.',
   ],
 };
@@ -348,11 +331,16 @@ const redHatSupportExperience: WorkExperience = {
   languages: ['Ticketing/Triage', 'De-escalation', 'Knowledge Base Writing'],
   date: 'Aug 2022 — Aug 2024',
   bullets: [
-    '<strong>Delivered 7,000+ lines of Go code across 10 repositories</strong> to resolve Kubernetes operator and runtime reliability issues for enterprise cloud customers.',
-    '<strong>Improved release workflows</strong>, cutting validation time by <strong>66% (45 to 15 minutes)</strong> and enabling faster test cycles.',
-    '<strong>Automated deployment setup steps</strong>, removing <strong>80% of manual configuration errors</strong> and reducing initialization time by <strong>40%</strong>.',
-    '<strong>Refined startup probe behavior</strong>, lowering service initialization failures by <strong>50%</strong> in operator-managed environments.',
-    '<strong>Authored a 472-line diagnostic runbook</strong> that standardized troubleshooting and <strong>reduced CI escalation tickets by 60%</strong>.',
+    '<strong>Authored a 500+ line comprehensive training manual</strong> and onboarding guide that <strong>reduced the need for manual troubleshooting support by 60%</strong>, enabling new users to resolve issues independently.',
+    '<strong>Resolved critical system issues for Fortune 500 clients, improving overall service reliability by 40%</strong> and <strong>preventing recurring technical glitches</strong> for high-priority accounts through proactive root-cause analysis.',
+    '<strong>Streamlined service workflows to reduce wait times by 66%</strong>, successfully <strong>cutting process completion from 45 minutes down to 15 minutes</strong> for a more efficient user experience.',
+    '<strong>Standardized setup procedures to eliminate 80% of common user errors</strong>, leading to a smoother first-time experience and a <strong>40% faster successful startup rate</strong>.',
+    '<strong>Managed a high volume of 50+ service requests</strong> across 10 different product areas, demonstrating the <strong>ability to multitask</strong> and <strong>meet tight deadlines</strong> in a fast-paced environment.',
+    '<strong>Enhanced system health checks to reduce service failures by 50%</strong>, ensuring that <strong>products remained functional and reliable for global end-users</strong>.',
+    '<strong>Pioneered a standardized "Self-Service" toolkit</strong> (Helm charts) from scratch, providing users with a consistent and repeatable way to set up their own environments without needing direct agent intervention.',
+    '<strong>Improved accessibility for a diverse user base</strong> by debugging and customizing tools for Windows, Linux, and macOS, ensuring a seamless experience for <strong>100% of supported platforms</strong>.',
+    '<strong>Partnered with cross-functional teams to implement a 587-line system refactor</strong>, which simplified complex configurations and significantly reduced the number of support-related inquiries.',
+    '<strong>Contributed to global community-driven projects (CNCF)</strong>, collaborating with international teams to maintain and improve software used by thousands of organizations worldwide.',
   ],
 };
 
@@ -363,11 +351,11 @@ const digitalMarketplaceExperience: WorkExperience = {
   date: 'July 2025 — Present',
   bullets: [
     '<strong>Built and scaled a peer-to-peer digital goods business</strong>, generating <strong>$50,000+ in gross merchandise value (GMV)</strong>.',
-    '<strong>Managed escrow for transactions over $10,000</strong>, earning <strong>500+ verified customer vouches</strong> with a <strong>0% unresolved dispute rate</strong>.',
-    '<strong>Ran end-to-end marketplace operations</strong>, including pricing, payment risk controls, and rapid digital fulfillment.',
+    '<strong>Managed escrow for transactions over $5,000</strong>, earning <strong>1000+ verified customer vouches</strong> with a <strong>0% unresolved dispute rate</strong>.',
+    '<strong>Ran end-to-end marketplace operations</strong>, including pricing and payment risk controls, <strong>reducing fulfillment latency by 30%</strong> through the automation of rapid digital delivery systems.',
     '<strong>Increased profit margins by 15%</strong> through fair-value pricing and product bundles that filtered low-intent leads.',
-    '<strong>Implemented KYC and middleman verification checks</strong>, reducing fraud exposure and bringing <strong>chargeback risk close to zero</strong>.',
-    '<strong>Standardized P&amp;L tracking and payment records</strong>, keeping operations fully auditable across gateways and fulfillment logs.',
+    '<strong>Implemented middleman verification checks</strong>, reducing fraud exposure and bringing <strong>chargeback risk close to zero</strong>.',
+    '<strong>Standardized P&amp;L tracking</strong> and payment records, <strong>achieving 100% data reconciliation</strong> between fulfillment logs and bank statements.',
   ],
 };
 
@@ -419,17 +407,41 @@ const awsSkills = [
   'Kubernetes',
   'Terraform',
   'Docker',
-  'Compose',
+  'Docker Compose',
+  'Bash',
+  'Linux',
+  'Command Line',
   'Jenkins',
   'Groovy',
   'Go(Lang)',
-  'Bash',
-  'Linux',
   'JavaScript',
   'React',
   'Python',
   'Django',
   'Node.js',
+  'PostgreSQL',
+  'MongoDB',
+  'Solidity',
+  'C',
+  'Git',
+];
+
+const awsWebDevSkills = [
+  'AWS',
+  'Kubernetes',
+  'Terraform',
+  'Docker',
+  'Docker Compose',
+  'Jenkins',
+  'JavaScript',
+  'React',
+  'Python',
+  'Django',
+  'Node.js',
+  'Groovy',
+  'Go(Lang)',
+  'Bash',
+  'Linux',
   'PostgreSQL',
   'MongoDB',
   'Solidity',
@@ -474,7 +486,32 @@ const webDevBoldSkills = [
   'Command Line',
 ];
 
-const awsBoldSkills = ['Linux', 'JavaScript', 'React', 'Python', 'Django', 'Git', 'Command Line'];
+const awsBoldSkills = [
+  'AWS',
+  'Kubernetes',
+  'Terraform',
+  'Docker',
+  'Docker Compose',
+  'Bash',
+  'Linux',
+  'Command Line',
+  'Jenkins',
+  'Groovy',
+];
+
+const awsWebDevBoldSkills = [
+  'AWS',
+  'Kubernetes',
+  'Terraform',
+  'Docker',
+  'Docker Compose',
+  'Jenkins',
+  'JavaScript',
+  'React',
+  'Python',
+  'Django',
+  'Node.js',
+];
 
 const pythonBoldSkills = ['Python', 'Django', 'JavaScript', 'React', 'Git', 'Linux', 'Command Line'];
 
@@ -538,11 +575,10 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     otherExperience: [
       {
-        ...redHatWebExperience,
+        ...redHatCloudExperience,
         bullets: [
-          redHatWebExperience.bullets[0],
-          redHatWebExperience.bullets[1],
-          redHatWebExperience.bullets[3],
+          redHatCloudExperience.bullets[0],
+          redHatCloudExperience.bullets[5],
         ],
       },
     ],
@@ -565,6 +601,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             awsServerProject.bullets[0],
             awsServerProject.bullets[1],
             awsServerProject.bullets[2],
+            awsServerProject.bullets[3],
             awsServerProject.bullets[4],
           ],
         },
@@ -572,6 +609,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           ...portfolioSiteProject,
           bullets: [
             portfolioSiteProject.bullets[4],
+            portfolioSiteProject.bullets[0],
           ],
         },
       ],
@@ -584,19 +622,13 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             redHatCloudExperience.bullets[2],
             redHatCloudExperience.bullets[5],
             redHatCloudExperience.bullets[6],
+            redHatCloudExperience.bullets[7],
           ],
         },
       ],
       skills: awsSkills,
       education: [educationDefault],
     },
-    otherExperienceTitle: 'IT Support Experience',
-    otherExperience: [
-      {
-        ...redHatSupportExperience,
-        bullets: [redHatSupportExperience.bullets[4]],
-      },
-    ],
   },
   {
     id: 'python',
@@ -645,7 +677,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       {
         ...redHatCloudExperience,
         bullets: [
-          redHatCloudExperience.bullets[0],
           redHatCloudExperience.bullets[2],
           redHatCloudExperience.bullets[5],
         ],
@@ -660,7 +691,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       ...defaultSectionTitles,
       projects: 'AWS + Web Projects',
     },
-    skillsBold: awsBoldSkills,
+    skillsBold: awsWebDevBoldSkills,
     resume: {
       contact: sharedContact,
       projects: [
@@ -690,7 +721,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           bullets: [nomarFreelanceExperience.bullets[1], nomarFreelanceExperience.bullets[0]],
         },
       ],
-      skills: awsSkills,
+      skills: awsWebDevSkills,
       education: [educationGeneral],
     },
   },
@@ -735,7 +766,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         {
           ...redHatCloudExperience,
           bullets: [
-            redHatCloudExperience.bullets[0],
             redHatCloudExperience.bullets[2],
             redHatCloudExperience.bullets[5],
             redHatCloudExperience.bullets[6],
@@ -765,7 +795,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             spotifyVisualizedProject.bullets[0],
             spotifyVisualizedProject.bullets[1],
             spotifyVisualizedProject.bullets[3],
-            spotifyVisualizedProject.bullets[6],
           ],
         },
         {
@@ -776,7 +805,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       experience: [
         {
           ...stbFreelanceExperience,
-          bullets: [stbFreelanceExperience.bullets[0], stbFreelanceExperience.bullets[2]],
+          bullets: [
+            stbFreelanceExperience.bullets[0],
+            stbFreelanceExperience.bullets[1],
+            stbFreelanceExperience.bullets[2],
+          ],
         },
       ],
       skills: pythonSkills,
@@ -784,8 +817,8 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
     otherExperience: [
       {
-        ...redHatWebExperience,
-        bullets: [redHatWebExperience.bullets[0], redHatWebExperience.bullets[1]],
+        ...redHatCloudExperience,
+        bullets: [redHatCloudExperience.bullets[0], redHatCloudExperience.bullets[5]],
       },
     ],
   },
@@ -796,7 +829,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     sectionTitles: {
       ...defaultSectionTitles,
       projects: 'Technical Support Projects',
-      experience: 'IT Support Work Experience',
+      experience: 'Support Work Experience',
     },
     skillsHtmlLines: [
       '<strong>IT Support Skills:</strong> Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
@@ -822,7 +855,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         {
           ...redHatSupportExperience,
           bullets: [
-            redHatSupportExperience.bullets[1],
+            redHatSupportExperience.bullets[0],
             redHatSupportExperience.bullets[2],
             redHatSupportExperience.bullets[3],
             redHatSupportExperience.bullets[4],
@@ -833,7 +866,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
           bullets: [
             digitalMarketplaceExperience.bullets[1],
             digitalMarketplaceExperience.bullets[2],
-            digitalMarketplaceExperience.bullets[5],
           ],
         },
       ],
@@ -848,7 +880,7 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     sectionTitles: {
       ...defaultSectionTitles,
       projects: 'Technical Support Projects',
-      experience: 'IT Support Work Experience',
+      experience: 'Support Work Experience',
     },
     skillsHtmlLines: [
       '<strong>IT Support Skills:</strong> Tier 1/2 Troubleshooting, Incident Response, Jira, Microsoft 365, VPN, Log Analysis, Knowledge Base Writing, Root Cause Investigation',
@@ -878,15 +910,13 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             redHatSupportExperience.bullets[1],
             redHatSupportExperience.bullets[2],
             redHatSupportExperience.bullets[3],
-            redHatSupportExperience.bullets[4],
+            redHatSupportExperience.bullets[5],
           ],
         },
         {
           ...digitalMarketplaceExperience,
           bullets: [
             digitalMarketplaceExperience.bullets[1],
-            digitalMarketplaceExperience.bullets[2],
-            digitalMarketplaceExperience.bullets[5],
           ],
         },
       ],
@@ -904,14 +934,14 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       experience: 'Customer Support Work Experience',
     },
     skillsHtmlLines: [
-      '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, clear written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
-      '<strong>Technical:</strong> Microsoft 365, VPN/log basics, Linux basics',
-      '<strong>Languages:</strong> English; <strong>Cantonese (fluent)</strong>',
+      '<strong>Sales &amp; Business Development:</strong> Lead qualification, prospecting, sales negotiation, closing, profit margin analysis, relationship building with high-value/Fortune 500 clients and retention',
+      '<strong>Communication &amp; Strategy:</strong> de-escalation and resolving high-stakes disputes ($5,000+ transactions), identifying high-intent leads to maximize conversion rates and efficiency',
+      '<strong>Languages:</strong> English, Cantonese',
     ],
     skillsLines: [
-      'Customer Support & Call Centre: Active listening, empathy, de-escalation, clear written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
-      'Technical: Microsoft 365, VPN/log basics, Linux basics',
-      'Languages: English; Cantonese (fluent)',
+      'Sales & Business Development: Lead qualification, prospecting, sales negotiation, closing, profit margin analysis, relationship building with high-value/Fortune 500 clients and retention',
+      'Communication & Strategy: de-escalation and resolving high-stakes disputes ($5,000+ transactions), identifying high-intent leads to maximize conversion rates and efficiency',
+      'Languages: English, Cantonese',
     ],
     resume: {
       contact: sharedContact,
@@ -930,11 +960,10 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         {
           ...redHatSupportExperience,
           bullets: [
-            redHatSupportExperience.bullets[0],
-            redHatSupportExperience.bullets[1],
-            redHatSupportExperience.bullets[2],
-            redHatSupportExperience.bullets[3],
             redHatSupportExperience.bullets[4],
+            redHatSupportExperience.bullets[2],
+            redHatSupportExperience.bullets[1],
+            redHatSupportExperience.bullets[0],
           ],
         },
       ],
@@ -952,12 +981,12 @@ export const resumeVariants: ResumeVariantDefinition[] = [
       experience: 'Customer Support Work Experience',
     },
     skillsHtmlLines: [
-      '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, <strong>SLA awareness</strong>, call/chat/email etiquette, documentation and <strong>KB</strong> writing',
-      '<strong>Technical:</strong> <strong>Microsoft 365</strong>, <strong>VPN/log basics</strong>, <strong>Linux</strong>',
-      '<strong>Languages:</strong> <strong>English</strong>, <strong>Cantonese (fluent)</strong>',
+      '<strong>Customer Support &amp; Call Centre:</strong> Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, call/chat/email etiquette, documentation and knowledge writing',
+      '<strong>Technical:</strong> Microsoft 365, VPN/log basics, Linux',
+      '<strong>Languages:</strong> English, Cantonese (fluent)',
     ],
     skillsLines: [
-      'Customer Support & Call Centre: Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, SLA awareness, call/chat/email etiquette, documentation and KB writing',
+      'Customer Support & Call Centre: Active listening, empathy, de-escalation, written/verbal communication, ticket triage/prioritization, call/chat/email etiquette, documentation and knowledge writing',
       'Technical: Microsoft 365, VPN/log basics, Linux',
       'Languages: English, Cantonese (fluent)',
     ],
@@ -968,11 +997,11 @@ export const resumeVariants: ResumeVariantDefinition[] = [
         {
           ...redHatSupportExperience,
           bullets: [
+            redHatSupportExperience.bullets[4],
+            redHatSupportExperience.bullets[2],
             redHatSupportExperience.bullets[0],
             redHatSupportExperience.bullets[1],
-            redHatSupportExperience.bullets[2],
             redHatSupportExperience.bullets[3],
-            redHatSupportExperience.bullets[4],
           ],
         },
         {
@@ -982,7 +1011,6 @@ export const resumeVariants: ResumeVariantDefinition[] = [
             digitalMarketplaceExperience.bullets[1],
             digitalMarketplaceExperience.bullets[2],
             digitalMarketplaceExperience.bullets[4],
-            digitalMarketplaceExperience.bullets[5],
           ],
         },
       ],
@@ -991,6 +1019,82 @@ export const resumeVariants: ResumeVariantDefinition[] = [
     },
   },
 ];
+
+type RedHatSection = 'cloud' | 'support';
+
+const expectedRedHatSectionByVariant: Record<ResumeVariantId, RedHatSection> = {
+  'web-dev': 'cloud',
+  aws: 'cloud',
+  python: 'cloud',
+  'aws-web-dev': 'cloud',
+  'aws-python': 'cloud',
+  'web-dev-django': 'cloud',
+  'it-support': 'support',
+  'it-support-aws': 'support',
+  sales: 'support',
+  'call-centre': 'support',
+};
+
+function matchesExperienceTemplate(entry: WorkExperience, template: WorkExperience): boolean {
+  return (
+    entry.company === template.company &&
+    entry.title === template.title &&
+    entry.date === template.date
+  );
+}
+
+function collectRedHatSections(variant: ResumeVariantDefinition): Set<RedHatSection> {
+  const sections = new Set<RedHatSection>();
+  const experiences = [...variant.resume.experience, ...(variant.otherExperience ?? [])];
+
+  for (const entry of experiences) {
+    if (matchesExperienceTemplate(entry, redHatCloudExperience)) {
+      sections.add('cloud');
+    }
+    if (matchesExperienceTemplate(entry, redHatSupportExperience)) {
+      sections.add('support');
+    }
+  }
+
+  return sections;
+}
+
+function assertRedHatVariantMapping(variants: ResumeVariantDefinition[]): void {
+  const violations: string[] = [];
+
+  for (const variant of variants) {
+    const expectedSection = expectedRedHatSectionByVariant[variant.id];
+    const sections = collectRedHatSections(variant);
+
+    if (sections.size === 0) {
+      violations.push(
+        `${variant.id}: missing Red Hat experience, expected "${expectedSection}" section`
+      );
+      continue;
+    }
+
+    if (sections.size > 1) {
+      violations.push(
+        `${variant.id}: mixed Red Hat sections (${Array.from(sections).join(', ')})`
+      );
+      continue;
+    }
+
+    if (!sections.has(expectedSection)) {
+      violations.push(
+        `${variant.id}: expected "${expectedSection}" Red Hat section, got "${Array.from(sections).join(', ')}"`
+      );
+    }
+  }
+
+  if (violations.length > 0) {
+    throw new Error(
+      `[resume-data] Invalid Red Hat mapping in resume variants:\n- ${violations.join('\n- ')}`
+    );
+  }
+}
+
+assertRedHatVariantMapping(resumeVariants);
 
 export const resumeVariantById: Record<ResumeVariantId, ResumeVariantDefinition> =
   resumeVariants.reduce((acc, variant) => {
