@@ -203,6 +203,12 @@
   text-decoration: none;
 }
 
+.entry-link-ntcharts,
+.entry-link-ntcharts:hover,
+.entry-link-ntcharts:visited {
+  color: #1e4fa3;
+}
+
 .entry-subtitle {
   display: flex;
   gap: 0.42rem;

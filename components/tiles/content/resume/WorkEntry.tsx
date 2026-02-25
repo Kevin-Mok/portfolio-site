@@ -6,6 +6,8 @@ interface WorkEntryProps {
 }
 
 export const WorkEntry: React.FC<WorkEntryProps> = ({ work }) => {
+  const isNtchartsLink = work.companyUrl?.includes('ntcharts.com');
+
   return (
     <div className="resume-entry">
       <div className="resume-entry-header">
@@ -15,7 +17,7 @@ export const WorkEntry: React.FC<WorkEntryProps> = ({ work }) => {
               href={work.companyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="entry-company-link"
+              className={`entry-company-link${isNtchartsLink ? ' entry-link-ntcharts' : ''}`}
             >
               {work.company}
             </a>

@@ -6,13 +6,20 @@ interface ProjectEntryProps {
 }
 
 export const ProjectEntry: React.FC<ProjectEntryProps> = ({ project }) => {
+  const isNtchartsLink = project.url?.includes('ntcharts.com');
+
   return (
     <div className="resume-entry">
       <div className="resume-entry-header">
         <div className="entry-headline">
           {project.url ? (
             <h3 className="entry-title">
-              <a href={project.url} target="_blank" rel="noopener noreferrer" className="entry-title-link">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`entry-title-link${isNtchartsLink ? ' entry-link-ntcharts' : ''}`}
+              >
                 {project.name}
               </a>
             </h3>
