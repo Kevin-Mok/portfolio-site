@@ -9,7 +9,9 @@
   },
   "enforcement": {
     "mode": "normalized_ratio",
-    "tolerancePts": 1
+    "tolerancePts": 1,
+    "topWhitespaceMinPts": 4.894,
+    "bottomWhitespaceMinPts": 21.793
   },
   "notes": [
     "Legacy baseline PDF is A3. Generated resumes are US Letter.",

@@ -23,17 +23,9 @@ import {
 const cssPath = path.join(process.cwd(), 'app', 'styles', '13-resume-latex.css');
 const pdfDir = path.join(process.cwd(), 'public', 'resume');
 const MINIMUM_PRINT_SCALE_FLOOR = 1.14;
-const CAP_SOURCE_VARIANT_ID = 'web-dev';
 const minimumScaleByVariant = new Map(
   resumePdfVariants.map((variant) => [variant.id, MINIMUM_PRINT_SCALE_FLOOR])
 );
-const capSourceVariant = resumePdfVariants.find((variant) => variant.id === CAP_SOURCE_VARIANT_ID);
-
-if (!capSourceVariant) {
-  throw new Error(`Missing cap-source variant "${CAP_SOURCE_VARIANT_ID}" in resumePdfVariants.`);
-}
-
-const capSourcePdfPath = path.join(pdfDir, capSourceVariant.fileName);
 
 function formatPoints(value) {
   return `${value.toFixed(3)}pt`;
@@ -43,14 +35,19 @@ function formatNumber(value) {
   return Number(value.toFixed(3)).toString();
 }
 
-function measureCurrentWhitespaceCaps() {
-  const sourceLayout = measureBottomWhitespace(capSourcePdfPath);
+function measureCurrentWhitespaceCaps(baseline) {
+  if (!baseline.whitespaceCaps) {
+    throw new Error(
+      `Missing enforcement whitespace caps in ${baseline.baselinePath}. Set enforcement.topWhitespaceMinPts and enforcement.bottomWhitespaceMinPts.`
+    );
+  }
+
   return {
-    sourceVariantId: capSourceVariant.id,
-    sourceFileName: capSourceVariant.fileName,
-    topMinPts: sourceLayout.topWhitespacePts,
-    bottomMinPts: sourceLayout.bottomWhitespacePts,
-    pageHeightPts: sourceLayout.pageHeightPts,
+    sourceVariantId: 'enforcement-values',
+    sourceFileName: path.basename(baseline.baselinePath),
+    topMinPts: baseline.whitespaceCaps.topMinPts,
+    bottomMinPts: baseline.whitespaceCaps.bottomMinPts,
+    pageHeightPts: null,
   };
 }
 
@@ -675,7 +672,7 @@ for (let iteration = 1; iteration <= options.maxIterations; iteration += 1) {
   }
 
   const cssBefore = readFileSync(cssPath, 'utf8');
-  activeWhitespaceCaps = measureCurrentWhitespaceCaps();
+  activeWhitespaceCaps = measureCurrentWhitespaceCaps(baseline);
   console.log(
     `[calibrate] Active whitespace minima from ${activeWhitespaceCaps.sourceFileName}: top>=${formatPoints(
       activeWhitespaceCaps.topMinPts

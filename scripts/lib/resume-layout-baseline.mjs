@@ -25,6 +25,8 @@ export function loadResumeLayoutBaseline() {
   const tolerancePts = baseline?.enforcement?.tolerancePts;
   const mode = baseline?.enforcement?.mode;
   const referencePdfPath = baseline?.reference?.pdfPath;
+  const topWhitespaceMinPts = baseline?.enforcement?.topWhitespaceMinPts;
+  const bottomWhitespaceMinPts = baseline?.enforcement?.bottomWhitespaceMinPts;
 
   if (!Number.isFinite(ratio) || ratio <= 0) {
     throw new Error(`Invalid baseline ratio in ${baselinePath}. Expected a positive number.`);
@@ -44,11 +46,40 @@ export function loadResumeLayoutBaseline() {
     throw new Error(`Invalid reference.pdfPath in ${baselinePath}.`);
   }
 
+  const hasTopCap = topWhitespaceMinPts !== undefined;
+  const hasBottomCap = bottomWhitespaceMinPts !== undefined;
+  if (hasTopCap !== hasBottomCap) {
+    throw new Error(
+      `Invalid enforcement caps in ${baselinePath}. Expected both topWhitespaceMinPts and bottomWhitespaceMinPts, or neither.`
+    );
+  }
+
+  let whitespaceCaps = null;
+  if (hasTopCap && hasBottomCap) {
+    if (!Number.isFinite(topWhitespaceMinPts) || topWhitespaceMinPts < 0) {
+      throw new Error(
+        `Invalid enforcement.topWhitespaceMinPts in ${baselinePath}. Expected a non-negative number.`
+      );
+    }
+
+    if (!Number.isFinite(bottomWhitespaceMinPts) || bottomWhitespaceMinPts < 0) {
+      throw new Error(
+        `Invalid enforcement.bottomWhitespaceMinPts in ${baselinePath}. Expected a non-negative number.`
+      );
+    }
+
+    whitespaceCaps = {
+      topMinPts: topWhitespaceMinPts,
+      bottomMinPts: bottomWhitespaceMinPts,
+    };
+  }
+
   return {
     ratio,
     tolerancePts,
     mode,
     referencePdfPath,
+    whitespaceCaps,
     raw: baseline,
     baselinePath,
   };

@@ -427,25 +427,25 @@
 .resume-variant-aws-web-dev {
   --resume-print-scale: 1.182;
   --resume-print-leading: 0.978;
-  --resume-print-top-offset: 18.212pt;
+  --resume-print-top-offset: 0.819pt;
 }
 
 .resume-variant-aws-python {
   --resume-print-scale: 1.14;
-  --resume-print-leading: 0.937;
-  --resume-print-top-offset: 8.144pt;
+  --resume-print-leading: 0.919;
+  --resume-print-top-offset: -12pt;
 }
 
 .resume-variant-web-dev-django {
   --resume-print-scale: 1.14;
   --resume-print-leading: 0.996;
-  --resume-print-top-offset: 17.516pt;
+  --resume-print-top-offset: 0.666pt;
 }
 
 .resume-variant-it-support {
-  --resume-print-scale: 1.196;
-  --resume-print-top-offset: 25.643pt;
-  --resume-print-leading: 0.926;
+  --resume-print-scale: 1.177;
+  --resume-print-top-offset: 5.421pt;
+  --resume-print-leading: 0.918;
 }
 
 .resume-variant-it-support-aws {
@@ -455,15 +455,15 @@
 }
 
 .resume-variant-sales {
-  --resume-print-scale: 1.24;
-  --resume-print-leading: 0.994;
-  --resume-print-top-offset: 28pt;
+  --resume-print-scale: 1.191;
+  --resume-print-leading: 0.978;
+  --resume-print-top-offset: 5.619pt;
 }
 
 .resume-variant-call-centre {
-  --resume-print-scale: 1.243;
-  --resume-print-leading: 1.006;
-  --resume-print-top-offset: 26.347pt;
+  --resume-print-scale: 1.194;
+  --resume-print-leading: 0.99;
+  --resume-print-top-offset: 3.805pt;
 }
 
 /* Mobile */

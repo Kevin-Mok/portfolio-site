@@ -15,12 +15,11 @@ import {
 import {
   loadResumeLayoutBaseline,
 } from './lib/resume-layout-baseline.mjs';
-import { resumePdfFileNames, resumePdfVariants } from './lib/resume-pdf-variants.mjs';
+import { resumePdfFileNames } from './lib/resume-pdf-variants.mjs';
 
 const allowedFontFamilies = new Set(['CMUSerif']);
 const expectedBoldFamilyPrefix = 'CMUSerif';
 const pdfDir = path.join(process.cwd(), 'public', 'resume');
-const CAP_SOURCE_VARIANT_ID = 'web-dev';
 
 function formatPercent(value) {
   return `${(value * 100).toFixed(2)}%`;
@@ -51,23 +50,16 @@ try {
   validateGeneratedPdfsExist();
   baseline = loadResumeLayoutBaseline();
 
-  const capSourceVariant = resumePdfVariants.find((variant) => variant.id === CAP_SOURCE_VARIANT_ID);
-  if (!capSourceVariant) {
+  if (!baseline.whitespaceCaps) {
     throw new Error(
-      `Missing cap-source variant "${CAP_SOURCE_VARIANT_ID}" in scripts/lib/resume-pdf-variants.mjs.`
-    );
-  }
-
-  const capSourcePdfPath = path.join(pdfDir, capSourceVariant.fileName);
-  if (!existsSync(capSourcePdfPath)) {
-    throw new Error(
-      `Cap-source PDF missing at ${capSourcePdfPath}\nRun "npm run build" before validation.`
+      `Missing enforcement whitespace caps in ${baseline.baselinePath}. Set enforcement.topWhitespaceMinPts and enforcement.bottomWhitespaceMinPts.`
     );
   }
 
   capMetrics = {
-    ...measureBottomWhitespace(capSourcePdfPath),
-    sourcePdfPath: capSourcePdfPath,
+    topWhitespacePts: baseline.whitespaceCaps.topMinPts,
+    bottomWhitespacePts: baseline.whitespaceCaps.bottomMinPts,
+    sourceLabel: `${path.basename(baseline.baselinePath)}#enforcement`,
   };
 } catch (error) {
   const message = error instanceof Error ? error.message : String(error);
@@ -163,7 +155,7 @@ if (hasFailures) {
 console.log(
   [
     'All resume PDFs passed validation.',
-    `Whitespace minima source: ${capMetrics.sourcePdfPath}`,
+    `Whitespace minima source: ${capMetrics.sourceLabel}`,
     `Top min=${formatPoints(capMetrics.topWhitespacePts)} Bottom min=${formatPoints(
       capMetrics.bottomWhitespacePts
     )} tolerance=${formatPoints(baseline.tolerancePts)}`,
