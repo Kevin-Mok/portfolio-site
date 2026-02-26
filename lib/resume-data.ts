@@ -326,8 +326,6 @@ const redHatCloudExperience: WorkExperience = {
 const redHatSupportExperience: WorkExperience = {
   company: 'Red Hat',
   title: 'Technical Support Engineer Intern (Tier 1/2)',
-  evidenceUrl: redHatContributionsUrl,
-  evidenceLabel: redHatContributionsLabel,
   languages: ['Ticketing/Triage', 'De-escalation', 'Knowledge Base Writing'],
   date: 'Aug 2022 — Aug 2024',
   bullets: [
@@ -340,7 +338,6 @@ const redHatSupportExperience: WorkExperience = {
     '<strong>Pioneered a standardized "Self-Service" toolkit</strong> (Helm charts) from scratch, providing users with a consistent and repeatable way to set up their own environments without needing direct agent intervention.',
     '<strong>Improved accessibility for a diverse user base</strong> by debugging and customizing tools for Windows, Linux, and macOS, ensuring a seamless experience for <strong>100% of supported platforms</strong>.',
     '<strong>Partnered with cross-functional teams to implement a 587-line system refactor</strong>, which simplified complex configurations and significantly reduced the number of support-related inquiries.',
-    '<strong>Contributed to global community-driven projects (CNCF)</strong>, collaborating with international teams to maintain and improve software used by thousands of organizations worldwide.',
   ],
 };
 
