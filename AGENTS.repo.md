@@ -37,6 +37,19 @@ Rules here can tighten or specialize shared policy, but cannot relax it.
 - Keep commit subjects at or under 80 characters.
 - Put meaningful details in the commit body.
 
+### Large file policy (Git LFS)
+
+- Track large binary files with Git LFS before commit.
+- Threshold: treat files larger than 5 MB as large by default.
+- Always include `.gitattributes` updates in the same change when adding new LFS patterns.
+- Before committing media-heavy changes, run:
+
+```fish
+find . -path ./.git -prune -o -path ./node_modules -prune -o -path ./.next -prune -o -type f -size +5M -print
+```
+
+- For newly introduced large file types, add/update LFS patterns first, then stage files so they are stored as LFS pointers.
+
 ---
 
 ## Repo Commands (`portfolio-site`)
@@ -177,6 +190,34 @@ Before major resume edits, read:
 - Root `QUICK_SMOKE_TEST.md` is the quick validation reference.
 - Keep smoke runtime fast (target 15-25 minutes).
 - Manual UI checks should include desktop and mobile behavior when UI changes.
+
+---
+
+## Toronto Zoo Blog Standard
+
+For any Toronto Zoo blog/page work, apply these defaults unless the user explicitly overrides them:
+
+- Route pattern: `app/toronto-zoo/YYYY/M/D/page.tsx` with canonical path `/toronto-zoo/YYYY/M/D`.
+- Add legacy aliases when requested (for example `/toronto-zoo/M/D` or `/toronto-zoo/YY/M/D`) that redirect to the canonical route.
+- Use server-rendered pages (App Router server components) and keep media optimized for fast load.
+- Keep the visual direction white/green with a wildlife-preservation tone.
+- Ensure headings are non-monospace and theme-consistent.
+- Ensure mobile-friendly layout with no scroll-triggered animations.
+- Structure content with separate sections for each animal talk when source material supports it.
+- For animal talk sections, write at least 2 short paragraphs per animal.
+- Media baseline per animal: exactly 2 highlight photos + 1 highlight video when source files exist.
+- Toronto Zoo source-of-truth directory for this format: `/mnt/linux-files-3/hevin/2.28.26 - Toronto Zoo`.
+- Choose the most zoomed-in photos where the animal fills the frame; crop wide shots tighter to animal-only framing when needed.
+- Keep one consistent animal-focused crop style across all highlight videos.
+- Re-encode videos from original source media with quality retention prioritized (`-movflags +faststart`, compatibility-safe H.264).
+- Caption every displayed image.
+- Keep video poster images enabled so previews are visible before playback.
+- Keep media max height aligned across images/videos (target about two-thirds viewport on desktop) for balanced layout.
+- Photo pairs for each animal should render side-by-side in one row on desktop breakpoints.
+- Animal feature media can use full-width treatment for landscape emphasis.
+- Keep transcript artifacts under `docs/toronto-zoo/YYYY-MM-DD/transcripts/` and include a README.
+- Prefer offline transcription workflows (no API key requirement).
+- Use canonical spellings in authored copy: `Pemba`, `Jita`, `Zoya`, `Minu`, `Akron`.
 
 ---
 
