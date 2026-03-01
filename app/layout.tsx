@@ -50,7 +50,7 @@ export default function RootLayout({
   const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL;
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Preconnect to CDN for faster image loading (only if CDN configured) */}
         {cdnUrl && (
