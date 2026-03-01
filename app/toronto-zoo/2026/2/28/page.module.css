@@ -1,0 +1,239 @@
+.page {
+  --zoo-green: #4a8b00;
+  --zoo-green-strong: #2f6a00;
+  --zoo-green-soft: #eaf5df;
+  --zoo-ink: #1f3d22;
+  --zoo-ink-muted: #4b6650;
+  --zoo-border: #b7d5a2;
+  --zoo-card: #ffffff;
+  --zoo-media-max-height: min(66vh, 720px);
+
+  min-height: 100vh;
+  background:
+    radial-gradient(140% 90% at 100% 0%, #f4faec 0%, transparent 42%),
+    radial-gradient(130% 75% at 0% 100%, #eef8e3 0%, transparent 45%),
+    #f8fcf3;
+  color: var(--zoo-ink);
+  padding: 28px 16px 80px;
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    "Trebuchet MS",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1160px;
+}
+
+.hero {
+  background: var(--zoo-card);
+  border: 1px solid var(--zoo-border);
+  border-top: 6px solid var(--zoo-green);
+  border-radius: 22px;
+  box-shadow: 0 18px 52px rgba(39, 81, 25, 0.1);
+  padding: 28px 22px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--zoo-green-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 10px 0 12px;
+  color: var(--zoo-ink);
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    "Trebuchet MS",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4.2vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--zoo-ink-muted);
+  font-size: clamp(1rem, 1.45vw, 1.22rem);
+  line-height: 1.65;
+  max-width: 73ch;
+}
+
+.metaRow {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: var(--zoo-green-strong);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.sectionCard {
+  margin-top: 22px;
+  background: var(--zoo-card);
+  border: 1px solid var(--zoo-border);
+  border-radius: 18px;
+  box-shadow: 0 10px 32px rgba(51, 90, 31, 0.08);
+  padding: 22px 18px;
+}
+
+.sectionCard p {
+  margin: 0 0 14px;
+  color: var(--zoo-ink-muted);
+  line-height: 1.7;
+}
+
+.sectionCard p:last-child {
+  margin-bottom: 0;
+}
+
+.gallerySection {
+  margin-top: 26px;
+}
+
+.sectionIntro {
+  margin-bottom: 14px;
+}
+
+.sectionTitle {
+  margin: 0 0 8px;
+  color: var(--zoo-green-strong);
+  font-family:
+    "Avenir Next",
+    "Segoe UI",
+    "Trebuchet MS",
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.sectionIntro p {
+  margin: 0;
+  color: var(--zoo-ink-muted);
+  line-height: 1.68;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.photoGridLandscape {
+  grid-template-columns: 1fr;
+}
+
+.photoGridTwoUp {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mediaCard,
+.videoCard {
+  margin: 0;
+  background: var(--zoo-card);
+  border: 1px solid var(--zoo-border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(57, 99, 36, 0.11);
+}
+
+.fullWidthCard {
+  grid-column: 1 / -1;
+}
+
+.imageFrame {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(180deg, #f8fff0 0%, #f0fae5 100%);
+}
+
+.imageFrame img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: var(--zoo-media-max-height);
+}
+
+.caption {
+  display: grid;
+  gap: 8px;
+  padding: 12px 13px 14px;
+  color: var(--zoo-ink-muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.captionLabel {
+  color: var(--zoo-green-strong);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.videoStandalone {
+  margin-top: 16px;
+}
+
+.video {
+  width: auto;
+  max-width: 100%;
+  max-height: var(--zoo-media-max-height);
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  object-fit: contain;
+  background: #0f190f;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 20px 12px 56px;
+  }
+
+  .hero {
+    border-radius: 16px;
+    padding: 20px 16px;
+  }
+
+  .sectionCard {
+    border-radius: 14px;
+    padding: 16px 14px;
+  }
+
+  .photoGrid,
+  .videoGrid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .caption {
+    font-size: 0.9rem;
+  }
+}
