@@ -7,6 +7,16 @@ ZERO_OID="0000000000000000000000000000000000000000"
 repo_root="$(git rev-parse --show-toplevel)"
 cd "$repo_root"
 
+# Preserve stdin once so both git-lfs and custom gate logic can read it.
+hook_input_file="$(mktemp)"
+trap 'rm -f "$hook_input_file"' EXIT
+cat >"$hook_input_file"
+
+# Run Git LFS upload hook when available.
+if command -v git-lfs >/dev/null 2>&1; then
+  git lfs pre-push "$@" <"$hook_input_file"
+fi
+
 is_resume_affecting_path() {
   local file_path="$1"
 
@@ -78,7 +88,7 @@ while read -r local_ref local_sha remote_ref remote_sha; do
       break 2
     fi
   done < <(collect_changed_files "$local_sha" "$remote_sha")
-done
+done <"$hook_input_file"
 
 if [[ "$resume_changed" -eq 0 ]]; then
   echo "[pre-push] No resume-affecting changes detected in push range. Skipping resume gate."
